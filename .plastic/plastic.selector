@@ -1,4 +1,0 @@
-repository "SquaredGame"
-  path "/"
-    br "/main"
-    co "/main"
