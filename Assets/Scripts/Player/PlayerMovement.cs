@@ -45,7 +45,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         ClimbLadder();
-        Swim();
+        //Na razie psuje wszystko
+        //Swim();
 
     }
 
