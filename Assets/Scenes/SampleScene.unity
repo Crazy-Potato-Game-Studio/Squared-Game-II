@@ -10033,6 +10033,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1830055699041019282, guid: b6e6bccb6034e7d4685a3faa92b14406, type: 3}
+      propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830055699041019282, guid: b6e6bccb6034e7d4685a3faa92b14406, type: 3}
+      propertyPath: m_Volume
+      value: 0.459
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830055699041019282, guid: b6e6bccb6034e7d4685a3faa92b14406, type: 3}
+      propertyPath: DopplerLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830055699041019282, guid: b6e6bccb6034e7d4685a3faa92b14406, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1872178303909920113, guid: b6e6bccb6034e7d4685a3faa92b14406, type: 3}
       propertyPath: m_Interpolate
       value: 1

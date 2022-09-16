@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemButton: {fileID: 2924409211389046962, guid: 268758c3d31075849be0764b51aefddf, type: 3}
+  collectPotion: {fileID: 8300000, guid: 913d838f795d35045b734783b89759bc, type: 3}
 --- !u!58 &4349845310366914419
 CircleCollider2D:
   m_ObjectHideFlags: 0

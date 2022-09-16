@@ -6,6 +6,7 @@ public class PickupItem : MonoBehaviour
 {
     private Inventory inventory;
     public GameObject itemButton;
+    public AudioClip collectPotion;
 
     private void Start() {
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
@@ -23,6 +24,7 @@ public class PickupItem : MonoBehaviour
                     break;
                 }
             }
+            other.GetComponent<AudioSource>().PlayOneShot(collectPotion);
         }
     }
 }
