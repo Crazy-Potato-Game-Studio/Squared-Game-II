@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1931fc7cd81d72e4cb028d47dcdbc74b, type: 3}
+  m_Name: ArchersTower
+  m_EditorClassIdentifier: 
+  id: 1
+  towerName: ArchersTower
+  modelSize: {x: 1, y: 2}
+  modelSprites:
+  - {fileID: 3543018420405065497, guid: e6c0e5b9f3695ed45a85db59d1409023, type: 3}
+  - {fileID: 3543018420405065497, guid: e6c0e5b9f3695ed45a85db59d1409023, type: 3}
+  UISprite: {fileID: 21300000, guid: cb2f6e7109a826444901c99923a58e3b, type: 3}
+  scriptHolder: {fileID: 8307942424980731016, guid: bb1b4ddb0f63df84d85da03068228df4, type: 3}
