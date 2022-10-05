@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8688576382629696018}
   - component: {fileID: 8688576382629696019}
   - component: {fileID: 8688576382629696017}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SlimeEnemyGFX
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,9 +138,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8688576383099433729}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundCheck
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,9 +171,9 @@ GameObject:
   - component: {fileID: 8688576384325083890}
   - component: {fileID: 8688576384325083891}
   - component: {fileID: 8688576384325083900}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SlimeEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,7 +233,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &8688576384325083900
 BoxCollider2D:

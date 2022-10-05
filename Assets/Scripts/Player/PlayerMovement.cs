@@ -64,4 +64,6 @@ public class PlayerMovement : MonoBehaviour
         Vector2 climbVelocity = new Vector2 (rb.velocity.x, Input.GetAxis("Vertical") * climbSpeed);
         rb.velocity = climbVelocity;
     }
+
+    
 }

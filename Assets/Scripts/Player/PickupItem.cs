@@ -27,4 +27,6 @@ public class PickupItem : MonoBehaviour
             other.GetComponent<AudioSource>().PlayOneShot(collectPotion);
         }
     }
+
+    
 }

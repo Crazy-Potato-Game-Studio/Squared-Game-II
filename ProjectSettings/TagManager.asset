@@ -6,11 +6,14 @@ TagManager:
   tags:
   - Spikes
   - towerBuilderSlot
+  - Enemy
+  - Ground
+  - Mine
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - Ground
@@ -18,7 +21,7 @@ TagManager:
   - Woda
   - Platforms
   - PostProcessing
-  - 
+  - Turret
   - 
   - 
   - 
