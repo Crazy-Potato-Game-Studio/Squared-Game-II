@@ -6,20 +6,24 @@ using UnityEngine.UI;
 public class HealthManager : MonoBehaviour
 {
     public GameObject pasekZycia;
-    public float playerHealth;
-    public float maxPlayerHealth;
+    private float playerHealth;
+    [SerializeField] private float maxPlayerHealth;
 
     void Start() {
+        pasekZycia.GetComponent<Slider>().maxValue = maxPlayerHealth;
         pasekZycia.GetComponent<Slider>().value = maxPlayerHealth;
         playerHealth = maxPlayerHealth;
     }
 
-    void LoseHealth(int healthPoints){
+    public void LoseHealth(float healthPoints){
         playerHealth-= healthPoints;
         pasekZycia.GetComponent<Slider>().value = playerHealth;
+        if(playerHealth < 0){
+            playerHealth = 0;
+        }
     }
 
-    void GainHealth(int healthPoints){
+    public void GainHealth(float healthPoints){
         playerHealth+= healthPoints;
         pasekZycia.GetComponent<Slider>().value = playerHealth;
         if(playerHealth>10) playerHealth = 10;

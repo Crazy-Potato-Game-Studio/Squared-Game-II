@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class SpikesTouch : MonoBehaviour
 {
+
+    [SerializeField] private float SpikesDamage = 3f;
+
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player")){
-            Debug.Log("Gracz dotknął kolców");
+            other.GetComponent<HealthManager>().LoseHealth(SpikesDamage);
         }
     }
 }

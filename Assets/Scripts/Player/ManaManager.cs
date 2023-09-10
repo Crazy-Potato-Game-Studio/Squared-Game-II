@@ -10,17 +10,18 @@ public class ManaManager : MonoBehaviour
     public float maxPlayerMana;
 
     void Start() {
+        pasekMany.GetComponent<Slider>().maxValue = maxPlayerMana;
         pasekMany.GetComponent<Slider>().value = maxPlayerMana;
         playerMana = maxPlayerMana;
     }
 
-    void LoseHealth(int healthPoints){
-        playerMana-= healthPoints;
+    public void LoseMana(float manaPoints){
+        playerMana -= manaPoints;
         pasekMany.GetComponent<Slider>().value = playerMana;
     }
 
-    void GainHealth(int healthPoints){
-        playerMana+= healthPoints;
+    public void GainMana(float manaPoints){
+        playerMana += manaPoints;
         pasekMany.GetComponent<Slider>().value = playerMana;
         if(playerMana>10) playerMana = 10;
     }
