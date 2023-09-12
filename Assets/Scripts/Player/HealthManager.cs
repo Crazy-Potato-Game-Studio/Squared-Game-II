@@ -28,6 +28,4 @@ public class HealthManager : MonoBehaviour
         pasekZycia.GetComponent<Slider>().value = playerHealth;
         if(playerHealth>10) playerHealth = 10;
     }
-
-
 }
