@@ -4,15 +4,26 @@ using TMPro;
 public class EnemyHealth : MonoBehaviour
 {
 
-    private int enemyHealth = 100;
+    private float enemyHealth = 100;
     private int enemyXP = 30;
     public GameObject damageText;
     public GameObject xpText;
     public GameObject player;
+    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioSource source;
+    [SerializeField] private Material flashMaterial;
+    [SerializeField] private Material spriteMaterial;
+    [SerializeField] private SpriteRenderer slimeGFX;
+    public float flashTimer = 0;
 
-    public void LoseHP(int damage){
+    public void LoseHP(float damage){
+
+        slimeGFX.material = flashMaterial;
+        slimeGFX.material = spriteMaterial;
+
         enemyHealth -= damage;
         FlyingDamage(damage);
+        source.PlayOneShot(clip);
         if(enemyHealth <= 0)
         {
             EnemyDie();
@@ -35,7 +46,7 @@ public class EnemyHealth : MonoBehaviour
         GameObject.Destroy(floatingPoint, 0.5f);
     }
 
-    void FlyingDamage(int damage){
+    void FlyingDamage(float damage){
         GameObject floatingPoint =  Instantiate(damageText, transform.position, transform.rotation);
         floatingPoint.GetComponent<TextMeshPro>().text = "- " + damage.ToString();
 

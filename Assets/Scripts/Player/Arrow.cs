@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
@@ -6,7 +7,10 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip clip;
     bool hasHit;
+    public float arrowDamage;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -21,8 +25,11 @@ public class Arrow : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
+        source.PlayOneShot(clip);
+
         if(other.gameObject.tag == "Enemy"){
-            other.gameObject.GetComponent<EnemyHealth>().LoseHP(35);
+            arrowDamage = Mathf.Round(arrowDamage);
+            other.gameObject.GetComponent<EnemyHealth>().LoseHP(arrowDamage);
             Destroy(this.gameObject);
         }
 
