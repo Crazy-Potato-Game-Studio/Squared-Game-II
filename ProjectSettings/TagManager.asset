@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Ground
   - Mine
+  - Portal
   layers:
   - Default
   - TransparentFX
