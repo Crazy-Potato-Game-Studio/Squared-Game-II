@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 6017082310806078497}
   - component: {fileID: 4585685466957646810}
   - component: {fileID: 8747480113069827427}
+  - component: {fileID: 3906949834619435700}
   m_Layer: 3
   m_Name: SlimeEnemy
   m_TagString: Enemy
@@ -227,7 +228,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.07731485, y: -0.43655586}
@@ -260,9 +261,6 @@ MonoBehaviour:
   player: {fileID: 0}
   clip: {fileID: 8300000, guid: 1d6be5f56ce5a5d49a6776e971456767, type: 3}
   source: {fileID: 8747480113069827427}
-  flashMaterial: {fileID: 2100000, guid: d35cf6ce312661549a72c95b12677db3, type: 2}
-  spriteMaterial: {fileID: 2100000, guid: cb74b4cbb54ac5543aada6eea9cf6fc0, type: 2}
-  slimeGFX: {fileID: 8688576382629696018}
 --- !u!114 &4585685466957646810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,3 +377,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3906949834619435700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8688576384325083902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d162966f6d38d5c4fabff0ece5a7f074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: d35cf6ce312661549a72c95b12677db3, type: 2}
+  spriteRenderer: {fileID: 8688576382629696018}

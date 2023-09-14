@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7321350364705749669}
   - component: {fileID: 7321350364705749668}
   - component: {fileID: 646882065946481923}
-  - component: {fileID: 331914535795336609}
   - component: {fileID: 1808917236190926088}
   - component: {fileID: 3156039946390070660}
   - component: {fileID: 6426234710881216590}
@@ -123,22 +122,6 @@ PolygonCollider2D:
       - {x: 3.05, y: 0.01}
       - {x: 3.05, y: 0.03}
       - {x: 1.63, y: 1.4499999}
---- !u!58 &331914535795336609
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7321350364705749674}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.021697706, y: 0}
-  serializedVersion: 2
-  m_Radius: 3.0877438
 --- !u!50 &1808917236190926088
 Rigidbody2D:
   serializedVersion: 4
@@ -175,6 +158,7 @@ MonoBehaviour:
   rb: {fileID: 1808917236190926088}
   source: {fileID: 6426234710881216590}
   clip: {fileID: 8300000, guid: 68844145ea6746642943ddd036cc7c8d, type: 3}
+  arrowDamage: 0
 --- !u!82 &6426234710881216590
 AudioSource:
   m_ObjectHideFlags: 0

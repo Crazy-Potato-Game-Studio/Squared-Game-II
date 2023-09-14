@@ -5,25 +5,21 @@ public class EnemyHealth : MonoBehaviour
 {
 
     private float enemyHealth = 100;
-    private int enemyXP = 30;
+    private int enemyXP = 3;
     public GameObject damageText;
     public GameObject xpText;
     public GameObject player;
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource source;
-    [SerializeField] private Material flashMaterial;
-    [SerializeField] private Material spriteMaterial;
-    [SerializeField] private SpriteRenderer slimeGFX;
-    public float flashTimer = 0;
 
     public void LoseHP(float damage){
-
-        slimeGFX.material = flashMaterial;
-        slimeGFX.material = spriteMaterial;
-
         enemyHealth -= damage;
         FlyingDamage(damage);
+
         source.PlayOneShot(clip);
+
+        GetComponent<EnemyChangeColor>().ChangeColor();
+
         if(enemyHealth <= 0)
         {
             EnemyDie();
@@ -32,8 +28,8 @@ public class EnemyHealth : MonoBehaviour
     }
 
     void EnemyDie(){
-        GameObject.Destroy(gameObject);
         player.GetComponent<XPManager>().GainXP(enemyXP);
+        GameObject.Destroy(this.gameObject);
     }
 
     void FlyingXP(int enemyXP)
@@ -43,7 +39,7 @@ public class EnemyHealth : MonoBehaviour
         GameObject floatingPoint =  Instantiate(xpText, transform.position + offset, transform.rotation);
         floatingPoint.GetComponent<TextMeshPro>().text = "+ " + enemyXP.ToString() + "XP";
 
-        GameObject.Destroy(floatingPoint, 0.5f);
+        GameObject.Destroy(floatingPoint, 1f);
     }
 
     void FlyingDamage(float damage){
