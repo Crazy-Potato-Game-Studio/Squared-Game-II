@@ -279,7 +279,7 @@ MonoBehaviour:
   groundCheckPos: {fileID: 8688576383099433729}
   WalkableLayers:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 33344
   bodyCollider: {fileID: 8688576384325083900}
 --- !u!82 &8747480113069827427
 AudioSource:
