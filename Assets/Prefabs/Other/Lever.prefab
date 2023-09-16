@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6429146783127442516}
   - component: {fileID: 4800820236147785400}
   - component: {fileID: 4642015783007025991}
+  - component: {fileID: 836935599779794798}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
@@ -186,6 +187,8 @@ MonoBehaviour:
   leverOff: {fileID: -258920163012198913, guid: 38ad8231a5f0ee74ab1ab526cf371fe1, type: 3}
   clip: {fileID: 8300000, guid: e070783cb31ab9149afb91e04b443949, type: 3}
   source: {fileID: 4642015783007025991}
+  isOn: 0
+  redLight: {fileID: 836935599779794798}
 --- !u!58 &4800820236147785400
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -298,3 +301,44 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &836935599779794798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5454473882410121259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 1
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.56
+  m_Color: {r: 0.9245283, g: 0.23985407, b: 0.23985407, a: 1}
+  m_Intensity: 1
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: fb0b540a1330d8b39d88a19de5409065c750838300000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.05
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.31371307, y: -0.3761568, z: 0}
+  - {x: 0.31504822, y: -0.3751173, z: 0}
+  - {x: 0.31342316, y: -0.2492652, z: 0}
+  - {x: -0.31254387, y: -0.2532897, z: 0}
