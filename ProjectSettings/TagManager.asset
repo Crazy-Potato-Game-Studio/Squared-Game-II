@@ -5,10 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Spikes
-  - towerBuilderSlot
   - Enemy
   - Ground
-  - Mine
   - Portal
   - Cube
   layers:
@@ -20,15 +18,15 @@ TagManager:
   - UI
   - Ground
   - Climbing
-  - Woda
+  - Water
   - Platforms
   - PostProcessing
-  - Turret
+  - PressurePlates
   - Arrow
   - Player
   - NatureAndOther
   - Cubes
-  - PressurePlates
+  - 
   - 
   - 
   - 
@@ -48,16 +46,16 @@ TagManager:
   - name: Background
     uniqueID: 173280251
     locked: 0
-  - name: Nature
+  - name: Nature&Foreground
     uniqueID: 3017289747
-    locked: 0
-  - name: Objects
-    uniqueID: 2644609181
     locked: 0
   - name: Ground
     uniqueID: 1703952613
     locked: 0
-  - name: Player
+  - name: Objects
+    uniqueID: 2644609181
+    locked: 0
+  - name: Player&Enemies
     uniqueID: 2206421191
     locked: 0
   - name: Default

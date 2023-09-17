@@ -12,6 +12,10 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource source;
 
+    private void Start() {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     public void LoseHP(float damage){
         enemyHealth -= damage;
         FlyingDamage(damage);
