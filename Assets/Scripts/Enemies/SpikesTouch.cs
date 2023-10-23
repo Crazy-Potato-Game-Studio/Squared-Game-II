@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpikesTouch : MonoBehaviour
 {
 
-    [SerializeField] private float SpikesDamage = 3f;
+    [SerializeField] private float SpikesDamage = 10f;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player")){

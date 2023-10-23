@@ -4,8 +4,8 @@ using TMPro;
 public class EnemyHealth : MonoBehaviour
 {
 
-    private float enemyHealth = 100;
-    private int enemyXP = 3;
+    [SerializeField] private float enemyHealth;
+    [SerializeField] private int enemyXP;
     public GameObject damageText;
     public GameObject xpText;
     public GameObject player;
@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
 
         source.PlayOneShot(clip);
 
-        GetComponent<EnemyChangeColor>().ChangeColor();
+        GetComponent<EntityChangeColor>().ChangeColor();
 
         if(enemyHealth <= 0)
         {

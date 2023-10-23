@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
         moveInput = Input.GetAxis("Horizontal");
@@ -45,16 +44,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         ClimbLadder();
-        //Na razie psuje wszystko
-        //Swim();
 
-    }
-
-    void Swim(){
-        if(!col.IsTouchingLayers(LayerMask.GetMask("Woda"))){return;}
-
-        Vector2 swimVelocity = new Vector2 (rb.velocity.x /2, rb.velocity.y /2 );
-        rb.velocity = swimVelocity;
     }
 
     void ClimbLadder(){
@@ -64,6 +54,4 @@ public class PlayerMovement : MonoBehaviour
         Vector2 climbVelocity = new Vector2 (rb.velocity.x, Input.GetAxis("Vertical") * climbSpeed);
         rb.velocity = climbVelocity;
     }
-
-    
 }

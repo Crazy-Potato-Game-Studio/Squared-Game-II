@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
@@ -12,7 +13,6 @@ public class EnemyPatrol : MonoBehaviour
     public Rigidbody2D enemyRb;
     public Transform groundCheckPos;
     public LayerMask WalkableLayers;
-    
 
     public Collider2D bodyCollider;
 
@@ -28,6 +28,7 @@ public class EnemyPatrol : MonoBehaviour
         if(mustPatrol){
             Patrol();
         }
+
     }
 
     private void FixedUpdate() {
