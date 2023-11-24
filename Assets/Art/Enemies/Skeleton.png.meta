@@ -1,19 +1,7 @@
 fileFormatVersion: 2
-guid: b56a7f44c0228684b8e3af2bdd45a9e8
+guid: dd83ab2f7d6329d4bbc5ce3b1eee13f5
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -4816990075318955088
-    second: gnomeRun_0
-  - first:
-      213: 2619630402426070558
-    second: gnomeRun_1
-  - first:
-      213: 7739786025465183127
-    second: gnomeRun_2
-  - first:
-      213: 5586113139528226462
-    second: gnomeRun_3
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -53,7 +41,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -125,91 +113,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: gnomeRun_0
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 0
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b3180a4c0d962db0800000000000000
-      internalID: -4816990075318955088
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gnomeRun_1
-      rect:
-        serializedVersion: 2
-        x: 27
-        y: 0
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e166b6bb8fbca5420800000000000000
-      internalID: 2619630402426070558
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gnomeRun_2
-      rect:
-        serializedVersion: 2
-        x: 47
-        y: 0
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 79b726d026e396b60800000000000000
-      internalID: 7739786025465183127
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gnomeRun_3
-      rect:
-        serializedVersion: 2
-        x: 69
-        y: 0
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e96d8bccd4cd58d40800000000000000
-      internalID: 5586113139528226462
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
