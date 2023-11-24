@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
+   
+    [HideInInspector]
     public bool mustPatrol;
     private bool mustFlip;
     public float enemyMoveSpeed;
@@ -12,17 +14,21 @@ public class EnemyPatrol : MonoBehaviour
     public Transform groundCheckPos;
     public LayerMask WalkableLayers;
 
-    public Collider2D flipCollider;
+    public Collider2D bodyCollider;
 
-    private void Start() {
+
+    void Start()
+    {
         mustPatrol = true;
     }
 
+    
     void Update()
     {
         if(mustPatrol){
             Patrol();
         }
+
     }
 
     private void FixedUpdate() {
@@ -33,7 +39,7 @@ public class EnemyPatrol : MonoBehaviour
 
     void Patrol(){
 
-        if(mustFlip || flipCollider.IsTouchingLayers(WalkableLayers)){
+        if(mustFlip || bodyCollider.IsTouchingLayers(WalkableLayers)){
             Flip();
         }
 

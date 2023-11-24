@@ -19,6 +19,7 @@ public class HealthManager : MonoBehaviour
 
     private IEnumerator coroutine;
     [SerializeField] private Collider2D playerCollider;
+    [SerializeField] private Collider2D resistanceCollider;
 
     void Start() {
         pasekZycia.GetComponent<Slider>().maxValue = maxPlayerHealth;
@@ -39,6 +40,8 @@ public class HealthManager : MonoBehaviour
 
             source.PlayOneShot(clip);
             FlyingDamage(healthPoints); 
+            playerCollider.enabled = false;
+            resistanceCollider.enabled = true;
         }
         
         isDamageResistant = true;
@@ -85,5 +88,7 @@ public class HealthManager : MonoBehaviour
     private IEnumerator WaitAndDeleteResistance(float waitTime){
         yield return new WaitForSeconds(waitTime);
         isDamageResistant = false;
+        playerCollider.enabled = true;
+        resistanceCollider.enabled = false;
     }
 }

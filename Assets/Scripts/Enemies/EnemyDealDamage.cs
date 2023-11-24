@@ -7,9 +7,9 @@ public class EnemyDealDamage : MonoBehaviour
 
     [SerializeField] private float damage;
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Player"){
-            other.GetComponent<HealthManager>().LoseHealth(damage);
+            other.gameObject.GetComponent<HealthManager>().LoseHealth(damage);
         }
     }
 }

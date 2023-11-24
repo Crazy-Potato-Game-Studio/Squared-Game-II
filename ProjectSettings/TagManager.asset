@@ -12,16 +12,17 @@ TagManager:
   - Water
   - Lava
   - Platforms
+  - ResistanceCollider
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - Ground
   - Climbing
-  - 
+  - Water
   - Platforms
   - PostProcessing
   - PressurePlates
@@ -29,9 +30,9 @@ TagManager:
   - Player
   - NatureAndOther
   - Cubes
-  - Enemy
-  - EnemyDealDamage
-  - 
+  - Gnome
+  - KnockBack
+  - ResistanceCollider
   - 
   - 
   - 

@@ -26,6 +26,7 @@ public class XPManager : MonoBehaviour
     public void GainXP(int enemyXP){
         PlayerXP += enemyXP;
         XPSlider.GetComponent<Slider>().value = PlayerXP;
+        Debug.Log(PlayerXP);
         if(PlayerXP >= XPToNextLvl){
             NextLvl();
         }
