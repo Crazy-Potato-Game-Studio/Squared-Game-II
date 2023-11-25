@@ -18,18 +18,18 @@ public class UseItems : MonoBehaviour
     public void UseHealthPotion(){
         player.GetComponent<HealthManager>().GainHealth(healthPotionPoints);
         string parentName = transform.parent.name;
-        Debug.Log(parentName);
+        Debug.Log("Used " + this.name + ", from slot: " + parentName);
         string slotNumber = parentName.Substring(parentName.Length - 1);
-        player.GetComponent<Inventory>().isFull[Int64.Parse(slotNumber) -1 ] = false;
+        player.GetComponent<Inventory>().isFull[Int64.Parse(slotNumber)] = false;
         Destroy(this.gameObject);
     }
 
     public void UseManaPotion(){
         player.GetComponent<ManaManager>().GainMana(manaPotionPoints);
         string parentName = transform.parent.name;
-        Debug.Log(parentName);
+        Debug.Log("Used " + this.name + ", from slot: " + parentName);
         string slotNumber = parentName.Substring(parentName.Length - 1);
-        player.GetComponent<Inventory>().isFull[Int64.Parse(slotNumber) -1 ] = false;
+        player.GetComponent<Inventory>().isFull[Int64.Parse(slotNumber)] = false;
         Destroy(this.gameObject);
     }
 }

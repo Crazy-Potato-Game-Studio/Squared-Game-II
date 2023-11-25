@@ -3,7 +3,7 @@ using TMPro;
 
 public class EnemyHealth : MonoBehaviour
 {
-
+    [SerializeField] private GameObject deathParticles;
     [SerializeField] private float enemyHealth;
     [SerializeField] private int enemyXP;
     public GameObject damageText;
@@ -33,6 +33,9 @@ public class EnemyHealth : MonoBehaviour
 
     void EnemyDie(){
         player.GetComponent<XPManager>().GainXP(enemyXP);
+        GameObject particles = Instantiate(deathParticles, transform);
+        particles.transform.parent = null;
+        GameObject.Destroy(particles, 6f);
         GameObject.Destroy(this.gameObject);
     }
 

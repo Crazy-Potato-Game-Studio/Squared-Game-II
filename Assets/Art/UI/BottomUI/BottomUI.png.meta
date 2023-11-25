@@ -148,8 +148,8 @@ TextureImporter:
       name: BottomUI_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 23
+        x: 5
+        y: 51
         width: 6
         height: 9
       alignment: 0
@@ -169,8 +169,8 @@ TextureImporter:
       name: BottomUI_1
       rect:
         serializedVersion: 2
-        x: 15
-        y: 23
+        x: 20
+        y: 51
         width: 8
         height: 9
       alignment: 0
@@ -190,10 +190,10 @@ TextureImporter:
       name: BottomUI_2
       rect:
         serializedVersion: 2
-        x: 31
-        y: 23
-        width: 13
-        height: 13
+        x: 0
+        y: 32
+        width: 27
+        height: 3
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,10 +211,10 @@ TextureImporter:
       name: BottomUI_3
       rect:
         serializedVersion: 2
-        x: 49
-        y: 23
-        width: 5
-        height: 4
+        x: 37
+        y: 32
+        width: 27
+        height: 3
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,10 +232,10 @@ TextureImporter:
       name: BottomUI_4
       rect:
         serializedVersion: 2
-        x: 31
-        y: 15
-        width: 18
-        height: 3
+        x: 1
+        y: 16
+        width: 26
+        height: 2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,9 +253,9 @@ TextureImporter:
       name: BottomUI_5
       rect:
         serializedVersion: 2
-        x: 31
-        y: 8
-        width: 17
+        x: 37
+        y: 16
+        width: 26
         height: 2
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -266,90 +266,6 @@ TextureImporter:
       bones: []
       spriteID: 547eb5dd35467f040800000000000000
       internalID: 4681320649033770821
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BottomUI_6
-      rect:
-        serializedVersion: 2
-        x: 31
-        y: 0
-        width: 17
-        height: 2
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a4376f8b6eba7aa0800000000000000
-      internalID: -6162403770926418777
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BottomUI_7
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 0
-        width: 17
-        height: 2
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 78b6ac1dfead85240800000000000000
-      internalID: 4780811728005524359
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BottomUI_8
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 8
-        width: 17
-        height: 2
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8fa59492cfea7bbe0800000000000000
-      internalID: -1461507156010771720
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BottomUI_9
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 15
-        width: 18
-        height: 3
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 463b879820553c270800000000000000
-      internalID: 8269546810167047012
       vertices: []
       indices: 
       edges: []

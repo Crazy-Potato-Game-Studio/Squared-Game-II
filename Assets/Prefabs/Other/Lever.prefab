@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1950343938069114616}
   - component: {fileID: 196652965366170910}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: E-hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4800820236147785400}
   - component: {fileID: 4642015783007025991}
   - component: {fileID: 836935599779794798}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Color: {r: 0.9245283, g: 0.23985407, b: 0.23985407, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: fb0b540a1330d8b39d88a19de5409065c750838300000000
+  m_ApplyToSortingLayers: fb0b540a1330d8b39d88a19de540906500000000
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0

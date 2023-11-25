@@ -9,6 +9,7 @@ public class Arrow : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip clip;
+    public bool isTouchingGround = false;
     bool hasHit;
     public float arrowDamage;
 
@@ -28,9 +29,11 @@ public class Arrow : MonoBehaviour
         source.PlayOneShot(clip);
 
         if(other.gameObject.tag == "Enemy"){
-            arrowDamage = Mathf.Round(arrowDamage);
-            other.gameObject.GetComponent<EnemyHealth>().LoseHP(arrowDamage);
-            Destroy(this.gameObject);
+            if(!hasHit){
+                arrowDamage = Mathf.Round(arrowDamage);
+                other.gameObject.GetComponent<EnemyHealth>().LoseHP(arrowDamage);
+                Destroy(this.gameObject);
+            }
         }
 
         if(other.gameObject.tag == "Ground"){
@@ -39,8 +42,19 @@ public class Arrow : MonoBehaviour
             rb.velocity = UnityEngine.Vector2.zero;
             rb.isKinematic = true;
             Destroy(GetComponent<PolygonCollider2D>());
-            Destroy(this);
+        }
+
+        if(other.gameObject.tag == "Water" || other.gameObject.tag == "Cube"){
+            Destroy(this.gameObject);
         }
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Ground"){
+            isTouchingGround = true;
+            Destroy(this.gameObject);
+            Debug.Log("Is touching ground");
+        }
     }
 }

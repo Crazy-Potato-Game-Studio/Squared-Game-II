@@ -8,7 +8,6 @@ public class FlyingEnemyGFX : MonoBehaviour
     [SerializeField] AIPath aiPath;
     [SerializeField] Transform returnPoint;
     [SerializeField] GameObject player;
-    private bool playerIsSet = false;
     private float distance;
 
     private void Start() {
@@ -21,10 +20,8 @@ public class FlyingEnemyGFX : MonoBehaviour
 
         if(distance < 13f ){
             GetComponent<AIDestinationSetter>().target = player.transform;
-            playerIsSet = true;
         }else if(distance > 13f ){
             GetComponent<AIDestinationSetter>().target = returnPoint;
-            playerIsSet = false;
         }
 
         if(aiPath.desiredVelocity.x >= 0.01f){

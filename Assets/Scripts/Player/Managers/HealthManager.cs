@@ -16,6 +16,7 @@ public class HealthManager : MonoBehaviour
     public GameObject floatingLava;
     public float sumOfLavaDamage = 0;
     private bool isDamageResistant;
+    [SerializeField] private TextMeshProUGUI healthText;
 
     private IEnumerator coroutine;
     [SerializeField] private Collider2D playerCollider;
@@ -23,8 +24,9 @@ public class HealthManager : MonoBehaviour
 
     void Start() {
         pasekZycia.GetComponent<Slider>().maxValue = maxPlayerHealth;
-        pasekZycia.GetComponent<Slider>().value = maxPlayerHealth;
-        playerHealth = maxPlayerHealth;  
+        playerHealth = maxPlayerHealth;
+        UpdateSliderValue();
+        UpdateHealthText();
     }
 
     public void LoseHealth(float healthPoints){
@@ -32,7 +34,7 @@ public class HealthManager : MonoBehaviour
         if(!isDamageResistant){
             playerHealth-= healthPoints;
             GetComponent<EntityChangeColor>().ChangeColor();
-            pasekZycia.GetComponent<Slider>().value = playerHealth;
+            UpdateSliderValue();
 
             if(playerHealth < 0){
                 playerHealth = 0;
@@ -42,6 +44,7 @@ public class HealthManager : MonoBehaviour
             FlyingDamage(healthPoints); 
             playerCollider.enabled = false;
             resistanceCollider.enabled = true;
+            UpdateHealthText();
         }
         
         isDamageResistant = true;
@@ -51,8 +54,9 @@ public class HealthManager : MonoBehaviour
 
     public void GainHealth(float healthPoints){
         playerHealth+= healthPoints;
-        pasekZycia.GetComponent<Slider>().value = playerHealth;
-        if(playerHealth>10) playerHealth = 10;
+        UpdateSliderValue();
+        if(playerHealth > 10) playerHealth = 10;
+        UpdateHealthText();
     }
 
      void FlyingDamage(float damage){
@@ -73,7 +77,8 @@ public class HealthManager : MonoBehaviour
         sumOfLavaDamage += 1f;
         floatingLava.GetComponent<TextMeshPro>().text = "- " + sumOfLavaDamage.ToString();
         GetComponent<EntityChangeColor>().ChangeColor();
-        pasekZycia.GetComponent<Slider>().value = playerHealth;
+        UpdateSliderValue();
+        UpdateHealthText();
         if(playerHealth < 0){
             playerHealth = 0;
         }
@@ -90,5 +95,13 @@ public class HealthManager : MonoBehaviour
         isDamageResistant = false;
         playerCollider.enabled = true;
         resistanceCollider.enabled = false;
+    }
+
+    private void UpdateHealthText(){
+        healthText.text = playerHealth.ToString() + "/" + maxPlayerHealth.ToString();  
+    }
+
+    private void UpdateSliderValue(){
+        pasekZycia.GetComponent<Slider>().value = playerHealth;
     }
 }
