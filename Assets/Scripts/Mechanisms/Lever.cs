@@ -5,7 +5,6 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class Lever : MonoBehaviour
 {
-    [SerializeField] private GameObject hint;
     private bool playerInRange = false;
     public GameObject whatToTurnOn;
     [SerializeField] private Sprite leverOn;
@@ -15,43 +14,39 @@ public class Lever : MonoBehaviour
     [SerializeField] private AudioSource source; 
     [SerializeField] private bool isOn = false;
     [SerializeField] private Light2D redLight;
+    private GameObject player;
 
     private void Start() {
-
         if(isOn){
             GetComponent<SpriteRenderer>().sprite = leverOn;
             redLight.enabled = true;
         }else{
             redLight.enabled = false;
         }
-        hint.GetComponent<SpriteRenderer>().enabled = false;
-        
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Player"){
-            hint.GetComponent<SpriteRenderer>().enabled = true;
+    private bool PlayerInRange(){
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+        if(distance <= 4f){
             playerInRange = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other) {
-        if(other.gameObject.tag == "Player"){
-            hint.GetComponent<SpriteRenderer>().enabled = false;
+        }else{
             playerInRange = false;
         }
+        return playerInRange;
     }
 
     private void Update() {
 
-        if(playerInRange && Input.GetKeyDown(KeyCode.E)){
+        if(PlayerInRange() && Input.GetKeyDown(KeyCode.E)){
             if(!isOn){
-                whatToTurnOn.GetComponent<Portal>().TurnOn(); // Na razie tylko portale
+                whatToTurnOn.GetComponent<Portal>().TurnOn(); 
                 isOn = true;
                 GetComponent<SpriteRenderer>().sprite = leverOn;
                 redLight.enabled = true;
             }else{
-                whatToTurnOn.GetComponent<Portal>().TurnOff(); // Na razie tylko portale
+                whatToTurnOn.GetComponent<Portal>().TurnOff(); 
                 isOn = false;
                 GetComponent<SpriteRenderer>().sprite = leverOff;
                 redLight.enabled = false;

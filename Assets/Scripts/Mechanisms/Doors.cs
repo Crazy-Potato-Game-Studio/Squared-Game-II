@@ -9,7 +9,7 @@ public class Doors : MonoBehaviour
     [SerializeField] private string keyColor;
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource source;
-    [SerializeField] private SpriteRenderer keyIcon;
+    [SerializeField] private GameObject hint;
     private bool doorsOpen = false;
     private float distance;
     private GameObject player;
@@ -17,13 +17,14 @@ public class Doors : MonoBehaviour
     
     private void Start() {
         SetDoorsBool();
-        keyIcon.enabled = false;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void OpenDoors(){
         doorsOpen = true;
         SetDoorsBool();
+        GameObject.Destroy(hint);
+        Destroy(GetComponent<Hint>());
     }
 
     void CloseDoors(){
@@ -37,39 +38,25 @@ public class Doors : MonoBehaviour
 
     float CalculateDistance(){
         distance = Vector2.Distance(transform.position, player.transform.position);
-
         return distance;
     }
 
     private void Update() {
         if(CalculateDistance() < distanceToOpen){
-            if(!doorsOpen){
-                ShowKeyIcon();
-            }else{
-                keyIcon.enabled = false;
-            }
             if(Input.GetKeyDown(KeyCode.E) && PlayerHasAKey()){
                 OpenDoors();
                 source.PlayOneShot(clip);
                 GameObject.Destroy(GameObject.Find(keyColor + "Item(Clone)"));
             }
-        }else{
-            keyIcon.enabled = false;
         }
     }
 
     bool PlayerHasAKey(){
-        
         if(GameObject.Find(keyColor + "Item(Clone)") != null){
             playerHasAKey = true;
         }else{
             playerHasAKey = false;
         }
-
         return playerHasAKey;
-    }
-
-    void ShowKeyIcon(){
-        keyIcon.enabled = true;
     }
 }
