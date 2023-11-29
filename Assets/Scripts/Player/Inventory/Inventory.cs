@@ -9,14 +9,4 @@ public class Inventory : MonoBehaviour
 
     public GameObject[] slots;
 
-   
-    void Start()
-    {
-        
-    }
-    
-    void Update()
-    {
-        
-    }
 }
