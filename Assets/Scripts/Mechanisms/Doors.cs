@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
 
 public class Doors : MonoBehaviour
 {
+    
     [SerializeField] private Animator animator;
     [SerializeField] private float distanceToOpen;
     [SerializeField] private string keyColor;
@@ -18,19 +21,20 @@ public class Doors : MonoBehaviour
     private void Start() {
         SetDoorsBool();
         player = GameObject.FindGameObjectWithTag("Player");
+        
     }
 
     void OpenDoors(){
         doorsOpen = true;
         SetDoorsBool();
         GameObject.Destroy(hint);
-        Destroy(GetComponent<Hint>());
+        Destroy(GetComponent<Hint>()); //?
     }
 
-    void CloseDoors(){
-        doorsOpen = false;
-        SetDoorsBool();
-    }
+    // void CloseDoors(){
+    //     doorsOpen = false;
+    //     SetDoorsBool();
+    // }
 
     void SetDoorsBool(){
         animator.SetBool("DoorsOpen", doorsOpen);
@@ -42,11 +46,12 @@ public class Doors : MonoBehaviour
     }
 
     private void Update() {
+        
         if(CalculateDistance() < distanceToOpen){
             if(Input.GetKeyDown(KeyCode.E) && PlayerHasAKey()){
                 OpenDoors();
                 source.PlayOneShot(clip);
-                GameObject.Destroy(GameObject.Find(keyColor + "Item(Clone)"));
+                GameObject.Find(keyColor + "Item(Clone)").GetComponent<KeyRemove>().DeleteKey();
             }
         }
     }
@@ -60,3 +65,4 @@ public class Doors : MonoBehaviour
         return playerHasAKey;
     }
 }
+    

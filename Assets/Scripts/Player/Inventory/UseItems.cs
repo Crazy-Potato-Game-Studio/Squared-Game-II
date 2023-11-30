@@ -32,4 +32,6 @@ public class UseItems : MonoBehaviour
         player.GetComponent<Inventory>().isFull[Int64.Parse(slotNumber)] = false;
         Destroy(this.gameObject);
     }
+
+    
 }
