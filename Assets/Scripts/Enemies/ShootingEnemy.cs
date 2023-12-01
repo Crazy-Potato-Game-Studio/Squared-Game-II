@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ShootingEnemy : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class ShootingEnemy : MonoBehaviour
 
    private Rigidbody2D bulletRB;
 
-    
+    private bool playerLeft = false;
 
     void Start()
     {
@@ -40,6 +41,9 @@ public class ShootingEnemy : MonoBehaviour
         }
         
         Debug.DrawRay(transform.position, Vector2.right*distanceHit, Color.red);
+
+        playerLeftCheck();
+
     }
 
     
@@ -52,4 +56,22 @@ public class ShootingEnemy : MonoBehaviour
         }
         
     }
+
+    void playerLeftCheck(){
+        float playerX = player.GetComponent<Transform>().position.x;
+        float enemyX = transform.position.x;
+
+        if(enemyX > playerX){
+            playerLeft = true;
+        }else{
+            playerLeft = false;
+        }
+
+        if(playerLeft){
+            transform.localScale = new Vector2(1,-1);
+        }else{
+            transform.localScale = new Vector2(1,1);
+        }
+    }
+
 }
