@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4783514451142525793}
   - component: {fileID: 1362505876277119471}
   - component: {fileID: 8537296617476817135}
+  - component: {fileID: 6518171515590591323}
   m_Layer: 5
   m_Name: RedKeyItem
   m_TagString: Untagged
@@ -75,3 +76,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6518171515590591323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2924409211389046962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a23e8cc0dd63e946945b59b722b8574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

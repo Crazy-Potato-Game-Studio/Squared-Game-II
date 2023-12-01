@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 801064767946952781}
   - component: {fileID: 801064767946952771}
   m_Layer: 0
-  m_Name: RedDoors
+  m_Name: GreenDoors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 801064767946952780}
   distanceToOpen: 2
-  keyColor: RedKey
+  keyColor: GreenKey
   clip: {fileID: 8300000, guid: 48f19b5b0d4ebfa4690e00049c2baf1a, type: 3}
   source: {fileID: 801064767946952781}
   hint: {fileID: 2092973415867028811}
@@ -340,7 +340,7 @@ SpriteRenderer:
   m_SortingLayerID: -1277677549
   m_SortingLayer: -5
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4809246970282825502, guid: b3949fe3e1952a94dbb58edd45b1caef, type: 3}
+  m_Sprite: {fileID: 3499683669041570755, guid: 6ffa53875e305484585ba50f3a1c97af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -449,7 +449,7 @@ SpriteRenderer:
   m_SortingLayerID: -1277677549
   m_SortingLayer: -5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4277931765395370971, guid: b3949fe3e1952a94dbb58edd45b1caef, type: 3}
+  m_Sprite: {fileID: -551082938411016477, guid: 6ffa53875e305484585ba50f3a1c97af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
