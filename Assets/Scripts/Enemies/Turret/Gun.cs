@@ -5,15 +5,20 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class ShootingEnemy : MonoBehaviour
+public class Gun : MonoBehaviour
 {
    [SerializeField] private float reloadTime;
    [SerializeField] private float bulletForce;
    [SerializeField] private GameObject bullet;
    [SerializeField] private float agroDistance;
+   [SerializeField] private GameObject shootPoint;
+   [SerializeField] private GameObject gunParticles;
+   [SerializeField] private AudioClip clip;
+   [SerializeField] private AudioSource source;
+   [SerializeField] private LineRenderer lineRenderer;
+   [SerializeField] private Material green;
+   [SerializeField] private Material red;
 
-    private bool playerVisible = false;
-    private bool playerLeft = false;
     private bool isReloading = false;
 
     private GameObject player;
@@ -30,55 +35,55 @@ public class ShootingEnemy : MonoBehaviour
     {
         float currentDistance = Vector2.Distance(transform.position, player.transform.position);
 
+        lineRenderer.SetPosition(0, shootPoint.transform.position);
+        RaycastHit2D laser = Physics2D.Raycast(shootPoint.transform.position, transform.right);
+        if(laser){
+            lineRenderer.SetPosition(1, laser.point);
+        }else{
+            lineRenderer.SetPosition(1, transform.right * 100f);
+        }
+        
+
         if(currentDistance <= agroDistance){
             Vector2 raycastDir = player.transform.position - transform.position;
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, raycastDir, agroDistance);
             Debug.DrawRay(transform.position, raycastDir, Color.red);
 
-            if(hit == true){
-
+            if(hit){
+                
                 if(hit.collider.gameObject.tag == "Player"){
-                    playerVisible = true;
                     transform.right = player.transform.position - transform.position;
                     if(!isReloading){
                         StartCoroutine(Shoot());
-                        
                     }
+
+                    lineRenderer.material = green;
+                }else{
+                    lineRenderer.material = red;
                 }
             }
-            playerLeftCheck();
-        }else{
-            playerVisible = false;
         }
     }
 
     IEnumerator Shoot(){
         isReloading = true;
-        GameObject bulletCopy = Instantiate(bullet,transform.position,transform.rotation);
+
+        source.PlayOneShot(clip);
+
+        GameObject bulletCopy = Instantiate(bullet, shootPoint.transform.position, transform.rotation);
         bulletRB = bulletCopy.GetComponent<Rigidbody2D>();
-        bulletRB.AddForce(transform.right*bulletForce);
+        bulletRB.AddForce(new Vector2(transform.right.x + RandomAngle(), transform.right.y + RandomAngle()) * bulletForce);
+
+        GameObject particles = Instantiate(gunParticles, shootPoint.transform.position, shootPoint.transform.rotation);
+        Destroy(particles, 0.5f);
 
         yield return new WaitForSeconds(reloadTime);
 
         isReloading = false;
     }
 
-    void playerLeftCheck(){
-        float playerX = player.GetComponent<Transform>().position.x;
-        float enemyX = transform.position.x;
-
-        if(enemyX > playerX){
-            playerLeft = true;
-        }else{
-            playerLeft = false;
-        }
-
-        if(playerLeft){
-            transform.localScale = new Vector2(1,-1);
-        }else{
-            transform.localScale = new Vector2(1,1);
-        }
+    float RandomAngle(){
+        return Random.Range(-0.2f, 0.2f);
     }
-
 }

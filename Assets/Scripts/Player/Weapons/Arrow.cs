@@ -44,8 +44,16 @@ public class Arrow : MonoBehaviour
             Destroy(GetComponent<PolygonCollider2D>());
         }
 
-        if(other.gameObject.tag == "Water" || other.gameObject.tag == "Cube"){
+        if(other.gameObject.tag == "Water"){
             Destroy(this.gameObject);
+        }
+
+        if(other.gameObject.tag == "Cube"){
+            hasHit = true;
+            rb.velocity = UnityEngine.Vector2.zero;
+            rb.isKinematic = true;
+            Destroy(GetComponent<PolygonCollider2D>());
+            transform.parent = other.gameObject.transform;
         }
         
     }

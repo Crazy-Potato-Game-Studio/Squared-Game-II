@@ -15,7 +15,6 @@ public class HealthManager : MonoBehaviour
     public GameObject lavaText;
     public GameObject floatingLava;
     public float sumOfLavaDamage = 0;
-    private bool isDamageResistant;
     [SerializeField] private TextMeshProUGUI healthText;
 
     private IEnumerator coroutine;
@@ -31,25 +30,18 @@ public class HealthManager : MonoBehaviour
 
     public void LoseHealth(float healthPoints){
 
-        if(!isDamageResistant){
-            playerHealth-= healthPoints;
-            GetComponent<EntityChangeColor>().ChangeColor();
-            UpdateSliderValue();
+        playerHealth-= healthPoints;
+        GetComponent<EntityChangeColor>().ChangeColor();
+        UpdateSliderValue();
 
-            if(playerHealth < 0){
-                playerHealth = 0;
-            }
-
-            source.PlayOneShot(clip);
-            FlyingDamage(healthPoints); 
-            playerCollider.enabled = false;
-            resistanceCollider.enabled = true;
-            UpdateHealthText();
+        if(playerHealth < 0){
+            playerHealth = 0;
         }
-        
-        isDamageResistant = true;
-        coroutine = WaitAndDeleteResistance(1f);
-        StartCoroutine(coroutine);
+
+        source.PlayOneShot(clip);
+        FlyingDamage(healthPoints); 
+
+        UpdateHealthText();
     }
 
     public void GainHealth(float healthPoints){
@@ -88,13 +80,6 @@ public class HealthManager : MonoBehaviour
         sumOfLavaDamage = 0;
         CancelInvoke();
         Destroy(floatingLava);
-    }
-
-    private IEnumerator WaitAndDeleteResistance(float waitTime){
-        yield return new WaitForSeconds(waitTime);
-        isDamageResistant = false;
-        playerCollider.enabled = true;
-        resistanceCollider.enabled = false;
     }
 
     private void UpdateHealthText(){
