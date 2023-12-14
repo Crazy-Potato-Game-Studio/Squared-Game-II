@@ -17,10 +17,6 @@ public class HealthManager : MonoBehaviour
     public float sumOfLavaDamage = 0;
     [SerializeField] private TextMeshProUGUI healthText;
 
-    private IEnumerator coroutine;
-    [SerializeField] private Collider2D playerCollider;
-    [SerializeField] private Collider2D resistanceCollider;
-
     void Start() {
         pasekZycia.GetComponent<Slider>().maxValue = maxPlayerHealth;
         playerHealth = maxPlayerHealth;
@@ -42,6 +38,8 @@ public class HealthManager : MonoBehaviour
         FlyingDamage(healthPoints); 
 
         UpdateHealthText();
+
+        GetComponent<PlayerMovement>().canMove = false;
     }
 
     public void GainHealth(float healthPoints){
