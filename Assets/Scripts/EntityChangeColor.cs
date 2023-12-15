@@ -5,9 +5,9 @@ using UnityEngine;
 public class EntityChangeColor : MonoBehaviour
 {
     [SerializeField] private Material flashMaterial;
-    private Material originalMaterial;
-
     [SerializeField] private SpriteRenderer spriteRenderer;
+    
+    private Material originalMaterial;
     private Coroutine flashRoutine;
 
     private void Start() {

@@ -170,13 +170,13 @@ GameObject:
   - component: {fileID: 8508609216244678097}
   - component: {fileID: 8508609216244678099}
   - component: {fileID: 8508609216244678108}
-  - component: {fileID: 6701454466103220993}
   - component: {fileID: 8639570938586315331}
-  - component: {fileID: 4087270662491121044}
+  - component: {fileID: 6701454466103220993}
   - component: {fileID: 1380649052699956086}
   - component: {fileID: 8508609216244678111}
+  - component: {fileID: 4087270662491121044}
   m_Layer: 3
-  m_Name: BlueSlimeEnemy
+  m_Name: BlueSlime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -195,6 +195,7 @@ Transform:
   m_Children:
   - {fileID: 8508609214704667964}
   - {fileID: 8508609215040252961}
+  - {fileID: 1616133628377431141}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -215,7 +216,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 54f86f1c635c443409402646b1d9b1b9, type: 2}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -245,26 +246,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8399467, y: 1.00072}
   m_EdgeRadius: 0
---- !u!114 &6701454466103220993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8508609216244678110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 539a91df72190af43bf7ef49704adafa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathParticles: {fileID: 4270620169704295951, guid: aaef95a6eb3225a4aa2a76df4c59ce5d, type: 3}
-  enemyHealth: 100
-  enemyXP: 5
-  damageText: {fileID: 6908256027836085079, guid: 23a2083bef4a0e6469a680b0103edd93, type: 3}
-  xpText: {fileID: 8836458219455603597, guid: 22c046fbca1d9414fb374a9197608ffb, type: 3}
-  player: {fileID: 0}
-  clip: {fileID: 8300000, guid: 1d6be5f56ce5a5d49a6776e971456767, type: 3}
-  source: {fileID: 8639570938586315331}
 --- !u!82 &8639570938586315331
 AudioSource:
   m_ObjectHideFlags: 0
@@ -361,7 +342,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4087270662491121044
+--- !u!114 &6701454466103220993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -370,11 +351,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8508609216244678110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d162966f6d38d5c4fabff0ece5a7f074, type: 3}
+  m_Script: {fileID: 11500000, guid: 539a91df72190af43bf7ef49704adafa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashMaterial: {fileID: 2100000, guid: d35cf6ce312661549a72c95b12677db3, type: 2}
-  spriteRenderer: {fileID: 8508609214704667954}
+  deathParticles: {fileID: 4270620169704295951, guid: aaef95a6eb3225a4aa2a76df4c59ce5d, type: 3}
+  enemyHealth: 100
+  enemyXP: 5
+  damageText: {fileID: 6908256027836085079, guid: 23a2083bef4a0e6469a680b0103edd93, type: 3}
+  xpText: {fileID: 8836458219455603597, guid: 22c046fbca1d9414fb374a9197608ffb, type: 3}
+  player: {fileID: 0}
+  clip: {fileID: 8300000, guid: 1d6be5f56ce5a5d49a6776e971456767, type: 3}
+  source: {fileID: 8639570938586315331}
 --- !u!114 &1380649052699956086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +390,52 @@ MonoBehaviour:
   agroDistance: 7
   layerMask:
     serializedVersion: 2
-    m_Bits: 8192
-  enemyMoveSpeed: 150
+    m_Bits: 41024
+  moveSpeed: 7
   animator: {fileID: 8508609214704667955}
+  raycastPoint: {fileID: 1616133628377431141}
+  raycastRadius: 0.4
+--- !u!114 &4087270662491121044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8508609216244678110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d162966f6d38d5c4fabff0ece5a7f074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: d35cf6ce312661549a72c95b12677db3, type: 2}
+  spriteRenderer: {fileID: 8508609214704667954}
+--- !u!1 &8712187435436445188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1616133628377431141}
+  m_Layer: 0
+  m_Name: RaycastPoint1
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1616133628377431141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8712187435436445188}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.051, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8508609216244678097}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

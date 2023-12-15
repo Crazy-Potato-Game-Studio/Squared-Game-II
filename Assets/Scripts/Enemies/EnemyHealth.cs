@@ -6,19 +6,23 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private GameObject deathParticles;
     [SerializeField] private float enemyHealth;
     [SerializeField] private int enemyXP;
+
+    private Vector3 offset;
     public GameObject damageText;
     public GameObject xpText;
     public GameObject player;
+
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource source;
 
     private void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
+        offset = new Vector3(0, 1f);
     }
 
     public void LoseHP(float damage){
         enemyHealth -= damage;
-        FlyingDamage(damage);
+        SpawnDamageText(damage);
 
         source.PlayOneShot(clip);
 
@@ -27,29 +31,30 @@ public class EnemyHealth : MonoBehaviour
         if(enemyHealth <= 0)
         {
             EnemyDie();
-            FlyingXP(enemyXP);
+            SpawnXPText(enemyXP);
         } 
     }
 
-    void EnemyDie(){
+    private void EnemyDie(){
         player.GetComponent<XPManager>().GainXP(enemyXP);
-        GameObject particles = Instantiate(deathParticles, transform);
-        particles.transform.parent = null;
-        GameObject.Destroy(particles, 6f);
+        SpawnDeathParticles();
         GameObject.Destroy(this.gameObject);
     }
 
-    void FlyingXP(int enemyXP)
-    {
-        Vector3 offset;
-        offset = new Vector3(0, 1f);
+    private void SpawnDeathParticles(){
+        GameObject particles = Instantiate(deathParticles, transform);
+        particles.transform.parent = null;
+        GameObject.Destroy(particles, 6f);
+    }
+
+    private void SpawnXPText(int enemyXP){
         GameObject floatingPoint =  Instantiate(xpText, transform.position + offset, transform.rotation);
         floatingPoint.GetComponent<TextMeshPro>().text = "+ " + enemyXP.ToString() + "XP";
 
         GameObject.Destroy(floatingPoint, 1f);
     }
 
-    void FlyingDamage(float damage){
+    void SpawnDamageText(float damage){
         GameObject floatingPoint =  Instantiate(damageText, transform.position, transform.rotation);
         floatingPoint.GetComponent<TextMeshPro>().text = "- " + damage.ToString();
 
