@@ -15,14 +15,13 @@ public class EnemyPatrol : MonoBehaviour
     public LayerMask WalkableLayers;
 
     public Collider2D bodyCollider;
-
+    [SerializeField] private GameObject enemyCanvas;
 
     void Start()
     {
         mustPatrol = true;
     }
 
-    
     void Update()
     {
         if(mustPatrol){
@@ -51,6 +50,6 @@ public class EnemyPatrol : MonoBehaviour
         transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
         enemyMoveSpeed *= -1;
         mustPatrol = true;
+        enemyCanvas.GetComponent<ScaleChanger>().ChangeUIScale(transform.localScale.x);
     }
-
 }

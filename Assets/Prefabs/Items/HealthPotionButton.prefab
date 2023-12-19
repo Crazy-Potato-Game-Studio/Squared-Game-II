@@ -145,6 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126c7805cb9d3c747bba8ad1faeb7e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manaPotionPoints: 5
   healthPotionPoints: 5
+  healthPotionParticles: {fileID: 1641160101548170072, guid: b648ffdad74e9a94d8fa3980af4d0271, type: 3}
   player: {fileID: 0}

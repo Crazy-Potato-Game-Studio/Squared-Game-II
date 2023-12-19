@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class UseItems : MonoBehaviour
 {
-
-    [SerializeField] private float manaPotionPoints = 5f;
     [SerializeField] private float healthPotionPoints = 5f;
+    [SerializeField] private GameObject healthPotionParticles;
 
     public GameObject player;
 
@@ -21,17 +20,9 @@ public class UseItems : MonoBehaviour
         Debug.Log("Used " + this.name + ", from slot: " + parentName);
         string slotNumber = parentName.Substring(parentName.Length - 1);
         player.GetComponent<Inventory>().isFull[Int64.Parse(slotNumber)] = false;
+
+        GameObject particles = Instantiate(healthPotionParticles, player.transform.position, player.transform.rotation);
+        Destroy(particles, 1.2f);
         Destroy(this.gameObject);
     }
-
-    public void UseManaPotion(){
-        player.GetComponent<ManaManager>().GainMana(manaPotionPoints);
-        string parentName = transform.parent.name;
-        Debug.Log("Used " + this.name + ", from slot: " + parentName);
-        string slotNumber = parentName.Substring(parentName.Length - 1);
-        player.GetComponent<Inventory>().isFull[Int64.Parse(slotNumber)] = false;
-        Destroy(this.gameObject);
-    }
-
-    
 }

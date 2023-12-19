@@ -38,8 +38,6 @@ public class HealthManager : MonoBehaviour
         FlyingDamage(healthPoints); 
 
         UpdateHealthText();
-
-        GetComponent<PlayerMovement>().canMove = false;
     }
 
     public void GainHealth(float healthPoints){

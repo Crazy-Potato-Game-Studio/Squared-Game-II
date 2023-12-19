@@ -5,9 +5,10 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class PressurePlate : MonoBehaviour
 {
-    [SerializeField] private float initPosition;
+    private float initPosition;
     private bool moveBack;
-    [SerializeField] private Light2D redLight;
+    [SerializeField] private GameObject whatToTurnOn;
+    [SerializeField] private SpriteRenderer redLight;
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource source;
 
@@ -20,7 +21,8 @@ public class PressurePlate : MonoBehaviour
         if(other.gameObject.tag == "Player" || other.gameObject.tag == "Cube"){
             other.transform.parent = transform;
             redLight.enabled = true;
-            if(transform.childCount < 2){
+            whatToTurnOn.GetComponent<Portal>().TurnOn(); 
+            if(transform.childCount < 3){
                 source.PlayOneShot(clip);
             }
         }
@@ -31,11 +33,8 @@ public class PressurePlate : MonoBehaviour
 
             other.transform.parent = transform;
             redLight.enabled = true;
-
-            if(initPosition - transform.position.y >= 0.1f){
-                
-            }
-            else{
+            whatToTurnOn.GetComponent<Portal>().TurnOn(); 
+            if(initPosition - transform.position.y <= 0.1f){
                 transform.position = transform.position + new Vector3(0, -0.006f, 0);
             }
             moveBack = false;
@@ -45,8 +44,9 @@ public class PressurePlate : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.tag == "Player" || other.gameObject.tag == "Cube"){
             redLight.enabled = false;
+            whatToTurnOn.GetComponent<Portal>().TurnOff(); 
             moveBack = true;
-            if(transform.childCount < 2){
+            if(transform.childCount < 3){
                 source.PlayOneShot(clip);
             }
             other.transform.parent = null;

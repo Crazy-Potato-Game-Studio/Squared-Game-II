@@ -1,15 +1,15 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private GameObject deathParticles;
     [SerializeField] private float enemyHealth;
-    [SerializeField] private int enemyXP;
+    [SerializeField] private Slider slider;
+    [SerializeField] private RectTransform enemyHealthBar;
 
-    private Vector3 offset;
     public GameObject damageText;
-    public GameObject xpText;
     public GameObject player;
 
     [SerializeField] private AudioClip clip;
@@ -17,12 +17,16 @@ public class EnemyHealth : MonoBehaviour
 
     private void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
-        offset = new Vector3(0, 1f);
+        slider.maxValue = enemyHealth;
+        UpdateSlider();
+        SetSliderLength();
     }
 
     public void LoseHP(float damage){
         enemyHealth -= damage;
         SpawnDamageText(damage);
+
+        UpdateSlider();
 
         source.PlayOneShot(clip);
 
@@ -31,12 +35,10 @@ public class EnemyHealth : MonoBehaviour
         if(enemyHealth <= 0)
         {
             EnemyDie();
-            SpawnXPText(enemyXP);
         } 
     }
 
     private void EnemyDie(){
-        player.GetComponent<XPManager>().GainXP(enemyXP);
         SpawnDeathParticles();
         GameObject.Destroy(this.gameObject);
     }
@@ -47,17 +49,18 @@ public class EnemyHealth : MonoBehaviour
         GameObject.Destroy(particles, 6f);
     }
 
-    private void SpawnXPText(int enemyXP){
-        GameObject floatingPoint =  Instantiate(xpText, transform.position + offset, transform.rotation);
-        floatingPoint.GetComponent<TextMeshPro>().text = "+ " + enemyXP.ToString() + "XP";
-
-        GameObject.Destroy(floatingPoint, 1f);
-    }
-
     void SpawnDamageText(float damage){
         GameObject floatingPoint =  Instantiate(damageText, transform.position, transform.rotation);
         floatingPoint.GetComponent<TextMeshPro>().text = "- " + damage.ToString();
 
         GameObject.Destroy(floatingPoint, 0.5f);
+    }
+
+    private void UpdateSlider(){
+        slider.value = enemyHealth;
+    }
+
+    private void SetSliderLength(){
+        enemyHealthBar.sizeDelta = new Vector2(enemyHealth * 3, 12.4f);
     }
 }

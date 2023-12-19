@@ -9,11 +9,10 @@ public class Lever : MonoBehaviour
     public GameObject whatToTurnOn;
     [SerializeField] private Sprite leverOn;
     [SerializeField] private Sprite leverOff;
-
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource source; 
     [SerializeField] private bool isOn = false;
-    [SerializeField] private Light2D redLight;
+    [SerializeField] private SpriteRenderer redLight;
     private GameObject player;
 
     private void Start() {

@@ -18,8 +18,6 @@ public class PlayerMovement : MonoBehaviour
     
     public int extraJumps;
 
-    public bool canMove = true;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,17 +29,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
         moveInput = Input.GetAxis("Horizontal");
-
-        canMove = true;
-
-        if(canMove){
-            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-        }else{
-            rb.AddForce(new Vector2(1000f, 0), ForceMode2D.Impulse);
-            Debug.Log("Add knockback");
-            canMove = true;
-        }
-        
+        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
     }
 
     void Update(){
