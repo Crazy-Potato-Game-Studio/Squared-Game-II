@@ -16,16 +16,18 @@ public class HealthManager : MonoBehaviour
     public GameObject floatingLava;
     public float sumOfLavaDamage = 0;
     [SerializeField] private TextMeshProUGUI healthText;
+    private GameObject cam;
 
     void Start() {
         pasekZycia.GetComponent<Slider>().maxValue = maxPlayerHealth;
         playerHealth = maxPlayerHealth;
         UpdateSliderValue();
         UpdateHealthText();
+        cam = GameObject.FindGameObjectWithTag("Camera");
     }
 
     public void LoseHealth(float healthPoints){
-
+        cam.GetComponent<CameraShaker>().ShakeCamera(healthPoints / 7, 0.2f);
         playerHealth-= healthPoints;
         GetComponent<EntityChangeColor>().ChangeColor();
         UpdateSliderValue();

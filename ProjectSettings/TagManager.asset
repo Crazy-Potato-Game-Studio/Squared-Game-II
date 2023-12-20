@@ -13,6 +13,7 @@ TagManager:
   - Lava
   - Platforms
   - ResistanceCollider
+  - Camera
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - UI
   - Ground
   - Climbing
-  - 
+  - Pickups
   - Platforms
   - PostProcessing
   - PressurePlates

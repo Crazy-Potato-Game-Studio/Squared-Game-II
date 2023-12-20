@@ -45,6 +45,7 @@ public class BlueSlime : MonoBehaviour
             }
         }
 
+
         if(hitTop){
             if(hitTop.collider.gameObject.tag == "Player"){
                 playAnim = true;
@@ -53,8 +54,11 @@ public class BlueSlime : MonoBehaviour
             }
         }
 
-        SetAnimatorBool(playAnim);
+        if(!hitTop && !hitRight && !hitLeft){
+            playAnim = false;
+        }
 
+        SetAnimatorBool(playAnim);
     }
 
     void ChasePlayer(int right){

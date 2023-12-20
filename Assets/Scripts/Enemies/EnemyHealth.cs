@@ -1,13 +1,17 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
+using System.Threading;
 
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private GameObject deathParticles;
     [SerializeField] private float enemyHealth;
     [SerializeField] private Slider slider;
-    [SerializeField] private RectTransform enemyHealthBar;
+    [SerializeField] private RectTransform sliderRect;
+    [SerializeField] private GameObject enemyHealthBar;
+
 
     public GameObject damageText;
     public GameObject player;
@@ -20,9 +24,11 @@ public class EnemyHealth : MonoBehaviour
         slider.maxValue = enemyHealth;
         UpdateSlider();
         SetSliderLength();
+
     }
 
     public void LoseHP(float damage){
+        
         enemyHealth -= damage;
         SpawnDamageText(damage);
 
@@ -58,9 +64,10 @@ public class EnemyHealth : MonoBehaviour
 
     private void UpdateSlider(){
         slider.value = enemyHealth;
+        enemyHealthBar.SetActive(true);
     }
 
     private void SetSliderLength(){
-        enemyHealthBar.sizeDelta = new Vector2(enemyHealth * 3, 12.4f);
+        sliderRect.sizeDelta = new Vector2(enemyHealth * 3, 12.4f);
     }
 }

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7321350364705749668}
   - component: {fileID: 646882065946481923}
   - component: {fileID: 1808917236190926088}
-  - component: {fileID: 3156039946390070660}
   - component: {fileID: 6426234710881216590}
   - component: {fileID: 2658988058479351215}
+  - component: {fileID: 3156039946390070660}
   m_Layer: 12
   m_Name: Arrow
   m_TagString: Untagged
@@ -138,23 +138,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &3156039946390070660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7321350364705749674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50333cb8050374042847e4ccd6491b8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 1808917236190926088}
-  source: {fileID: 6426234710881216590}
-  clip: {fileID: 8300000, guid: 68844145ea6746642943ddd036cc7c8d, type: 3}
-  isTouchingGround: 0
-  arrowDamage: 0
 --- !u!82 &6426234710881216590
 AudioSource:
   m_ObjectHideFlags: 0
@@ -267,3 +250,20 @@ CircleCollider2D:
   m_Offset: {x: -2.1155877, y: 0.07105986}
   serializedVersion: 2
   m_Radius: 0.7
+--- !u!114 &3156039946390070660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7321350364705749674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50333cb8050374042847e4ccd6491b8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1808917236190926088}
+  source: {fileID: 6426234710881216590}
+  clip: {fileID: 8300000, guid: 68844145ea6746642943ddd036cc7c8d, type: 3}
+  isTouchingGround: 0
+  arrowDamage: 0

@@ -345,6 +345,7 @@ MonoBehaviour:
   aiPath: {fileID: 1251805759794566953}
   returnPoint: {fileID: 0}
   player: {fileID: 0}
+  enemyCanvas: {fileID: 1940657396361283207}
 --- !u!114 &1251805759794566957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +361,8 @@ MonoBehaviour:
   deathParticles: {fileID: 663418816019631226, guid: 4415289318bf1ff43b3f95c90c0aa9c8, type: 3}
   enemyHealth: 25
   slider: {fileID: 4367336664276407675}
-  enemyHealthBar: {fileID: 7571587253582846108}
+  sliderRect: {fileID: 7571587253582846108}
+  enemyHealthBar: {fileID: 3185558960231412866}
   damageText: {fileID: 6908256027836085079, guid: 23a2083bef4a0e6469a680b0103edd93, type: 3}
   player: {fileID: 0}
   clip: {fileID: 8300000, guid: acab76ab5a7f9f6468364f755bc54afa, type: 3}

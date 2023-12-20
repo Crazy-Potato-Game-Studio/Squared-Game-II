@@ -613,7 +613,8 @@ MonoBehaviour:
   deathParticles: {fileID: 6539145698243051937, guid: e835cbac0f13bfc4e82334306caf1a91, type: 3}
   enemyHealth: 50
   slider: {fileID: 6532505019203626925}
-  enemyHealthBar: {fileID: 695216183291752961}
+  sliderRect: {fileID: 695216183291752961}
+  enemyHealthBar: {fileID: 5745679965126328893}
   damageText: {fileID: 6908256027836085079, guid: 23a2083bef4a0e6469a680b0103edd93, type: 3}
   player: {fileID: 0}
   clip: {fileID: 8300000, guid: 1d6be5f56ce5a5d49a6776e971456767, type: 3}
