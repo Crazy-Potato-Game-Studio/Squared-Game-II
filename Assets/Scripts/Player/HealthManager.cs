@@ -27,7 +27,7 @@ public class HealthManager : MonoBehaviour
     }
 
     public void LoseHealth(float healthPoints){
-        cam.GetComponent<CameraShaker>().ShakeCamera(healthPoints / 7, 0.2f);
+        cam.GetComponent<CameraShaker>().ShakeCamera(healthPoints / 10, 0.2f);
         playerHealth-= healthPoints;
         GetComponent<EntityChangeColor>().ChangeColor();
         UpdateSliderValue();

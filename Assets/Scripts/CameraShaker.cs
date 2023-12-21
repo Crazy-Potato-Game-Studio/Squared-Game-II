@@ -7,12 +7,9 @@ public class CameraShaker : MonoBehaviour
 {
     private CinemachineVirtualCamera virtualCamera;
     private float shakeTimer;
-    private GameObject mainCamera;
 
     private void Awake() {
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-
     }
 
     public void ShakeCamera(float magnitude, float time){
@@ -29,7 +26,6 @@ public class CameraShaker : MonoBehaviour
                 CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
                 cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0f;
-                mainCamera.transform.rotation = new Quaternion(0,0,0,0);
             }
         }
         
