@@ -28,7 +28,7 @@ public class BlueSlime : MonoBehaviour
         RaycastHit2D hitTop = Physics2D.CircleCast(new Vector2(raycastPoint.position.x, raycastPoint.position.y), raycastRadius, transform.up, 2, layerMask);
 
         if(hitLeft){  
-            if(hitLeft.collider.gameObject.tag == "Player"){
+            if(hitLeft.collider.gameObject.tag == "Player" || hitLeft.collider.gameObject.tag == "ResistanceCollider"){
                 ChasePlayer(-1);
                 playAnim = true;
             }else{
@@ -37,7 +37,7 @@ public class BlueSlime : MonoBehaviour
         }
 
         if(hitRight){
-            if(hitRight.collider.gameObject.tag == "Player"){
+            if(hitRight.collider.gameObject.tag == "Player" || hitRight.collider.gameObject.tag == "ResistanceCollider"){
                 ChasePlayer(1);
                 playAnim = true;
             }else{
@@ -47,7 +47,7 @@ public class BlueSlime : MonoBehaviour
 
 
         if(hitTop){
-            if(hitTop.collider.gameObject.tag == "Player"){
+            if(hitTop.collider.gameObject.tag == "Player" || hitTop.collider.gameObject.tag == "ResistanceCollider"){
                 playAnim = true;
             }else{
                 playAnim = false;

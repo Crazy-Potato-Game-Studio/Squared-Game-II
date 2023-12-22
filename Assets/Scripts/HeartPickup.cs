@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowPickup : MonoBehaviour
+public class HeartPickup : MonoBehaviour
 {
     [SerializeField] private AudioClip clip;
+    [SerializeField] private GameObject healingParticles;
     [SerializeField] private GameObject player;
 
     private void Start() {
@@ -13,9 +14,9 @@ public class ArrowPickup : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Player" || other.gameObject.tag == "ResistanceCollider"){
-            player.GetComponentInChildren<ArrowsManager>().arrowCount++;
-            player.gameObject.GetComponentInChildren<ArrowsManager>().UpdateArrowText();
-            player.gameObject.GetComponent<AudioSource>().PlayOneShot(clip);
+            SpawnParticles(other);
+            player.GetComponent<HealthManager>().GainHealth(25);
+            player.GetComponent<AudioSource>().PlayOneShot(clip);
             Destroy(gameObject);
         }
     }
@@ -24,5 +25,11 @@ public class ArrowPickup : MonoBehaviour
         if(other.gameObject.tag == "Player" || other.gameObject.tag == "ResistanceCollider"){
             transform.position = Vector3.MoveTowards(transform.position, other.transform.position, 0.1f);
         }
+    }
+
+    private void SpawnParticles(Collision2D other){
+        GameObject healParticles = Instantiate(healingParticles, other.transform.position, other.transform.rotation);
+        healingParticles.transform.parent = null;
+        Destroy(healParticles, 5);
     }
 }

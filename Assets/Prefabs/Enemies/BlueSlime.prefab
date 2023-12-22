@@ -514,6 +514,9 @@ MonoBehaviour:
   player: {fileID: 0}
   clip: {fileID: 8300000, guid: 1d6be5f56ce5a5d49a6776e971456767, type: 3}
   source: {fileID: 8639570938586315331}
+  chanceOfDropingItems: 200
+  heart: {fileID: 3710692091689001022, guid: 4d14450ae6a641546ad5c874972ef365, type: 3}
+  arrow: {fileID: 397587817886829463, guid: ea60d531008c4c34d934824ccccd852d, type: 3}
 --- !u!114 &1380649052699956086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,7 +545,7 @@ MonoBehaviour:
   agroDistance: 7
   layerMask:
     serializedVersion: 2
-    m_Bits: 41024
+    m_Bits: 303168
   moveSpeed: 7
   animator: {fileID: 8508609214704667955}
   raycastPoint: {fileID: 1616133628377431141}

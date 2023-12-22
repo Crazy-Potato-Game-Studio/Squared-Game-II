@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8503434462007865762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.76, y: 0.072, z: 0}
+  m_LocalPosition: {x: 0.76, y: -0.15, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8503434462984945154}
@@ -563,6 +563,9 @@ MonoBehaviour:
   player: {fileID: 0}
   clip: {fileID: 8300000, guid: dc6614beca09347ec9b258f12d154bdd, type: 3}
   source: {fileID: 8503434462984945152}
+  chanceOfDropingItems: 50
+  heart: {fileID: 3710692091689001022, guid: 4d14450ae6a641546ad5c874972ef365, type: 3}
+  arrow: {fileID: 397587817886829463, guid: ea60d531008c4c34d934824ccccd852d, type: 3}
 --- !u!114 &8503434462984945182
 MonoBehaviour:
   m_ObjectHideFlags: 0

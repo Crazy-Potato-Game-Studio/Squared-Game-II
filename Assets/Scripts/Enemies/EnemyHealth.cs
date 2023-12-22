@@ -12,19 +12,21 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private RectTransform sliderRect;
     [SerializeField] private GameObject enemyHealthBar;
 
-
     public GameObject damageText;
     public GameObject player;
 
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource source;
 
+    [SerializeField] private int chanceOfDropingItems;
+    [SerializeField] private GameObject heart;
+    [SerializeField] private GameObject arrow;
+
     private void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         slider.maxValue = enemyHealth;
         UpdateSlider();
         SetSliderLength();
-
     }
 
     public void LoseHP(float damage){
@@ -46,6 +48,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void EnemyDie(){
         SpawnDeathParticles();
+        SpawnItems();
         GameObject.Destroy(this.gameObject);
     }
 
@@ -69,5 +72,23 @@ public class EnemyHealth : MonoBehaviour
 
     private void SetSliderLength(){
         sliderRect.sizeDelta = new Vector2(enemyHealth * 3, 12.4f);
+    }
+
+    private void SpawnItems(){
+        for(int i = 0; i < chanceOfDropingItems / 2; i++){
+            if(Random.Range(0, 100) == 1){
+                GameObject item = Instantiate(heart, transform.position, transform.rotation);
+                item.transform.parent = null;
+                item.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f,1f), 3f), ForceMode2D.Impulse);
+            }
+        }
+
+        for(int i = 0; i < chanceOfDropingItems; i++){
+            if(Random.Range(0, 100) == 1){
+                GameObject item = Instantiate(arrow, transform.position, transform.rotation);
+                item.transform.parent = null;
+                item.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f,1f), 3f), ForceMode2D.Impulse);
+            }
+        }
     }
 }

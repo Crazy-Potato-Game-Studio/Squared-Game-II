@@ -6,7 +6,6 @@ public class VerticalPlatform : MonoBehaviour
 {
     private PlatformEffector2D effector;
 
-
     void Start()
     {
         effector = GetComponent<PlatformEffector2D>();
