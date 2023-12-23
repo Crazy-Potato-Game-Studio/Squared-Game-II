@@ -1,37 +1,22 @@
 fileFormatVersion: 2
-guid: e45370df70e6fc4419f1f6102721b93b
+guid: 58d0a2e65e430944786fdd45b0f62766
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6926465925292197261
-    second: BottomUI_0
+      213: 7886631795410796208
+    second: Settings_0
   - first:
-      213: -6882812816431748606
-    second: BottomUI_1
+      213: 2060365850352298717
+    second: Settings_1
   - first:
-      213: -6506336780995852364
-    second: BottomUI_2
+      213: -5339635570483323969
+    second: Settings_2
   - first:
-      213: -2680920653029295207
-    second: BottomUI_3
+      213: -2495782739550021130
+    second: Settings_3
   - first:
-      213: 6101937951061366163
-    second: BottomUI_4
-  - first:
-      213: 4681320649033770821
-    second: BottomUI_5
-  - first:
-      213: -6162403770926418777
-    second: BottomUI_6
-  - first:
-      213: 4780811728005524359
-    second: BottomUI_7
-  - first:
-      213: -1461507156010771720
-    second: BottomUI_8
-  - first:
-      213: 8269546810167047012
-    second: BottomUI_9
+      213: 8154524474551060708
+    second: Settings_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -145,55 +130,97 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BottomUI_0
+      name: Settings_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 51
-        width: 6
-        height: 9
+        x: 11
+        y: 88
+        width: 73
+        height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8583e1af00cf1060800000000000000
-      internalID: 6926465925292197261
+      spriteID: 0bef2cf25d1f27d60800000000000000
+      internalID: 7886631795410796208
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BottomUI_1
+      name: Settings_1
       rect:
         serializedVersion: 2
-        x: 20
-        y: 51
-        width: 8
-        height: 9
+        x: 11
+        y: 37
+        width: 73
+        height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20a641dc5365b70a0800000000000000
-      internalID: -6882812816431748606
+      spriteID: dda289913d3e79c10800000000000000
+      internalID: 2060365850352298717
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BottomUI_2
+      name: Settings_2
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 21
+        width: 73
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbb1d4f3dbdc5e5b0800000000000000
+      internalID: -5339635570483323969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Settings_3
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 0
+        width: 73
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f9d19452d23d5dd0800000000000000
+      internalID: -2495782739550021130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Settings_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 27
-        height: 3
+        y: 80
+        width: 4
+        height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -201,71 +228,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b70fa37b29d4b5a0800000000000000
-      internalID: -6506336780995852364
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BottomUI_3
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 32
-        width: 27
-        height: 3
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 99b3e25ced47bcad0800000000000000
-      internalID: -2680920653029295207
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BottomUI_4
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 16
-        width: 26
-        height: 2
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 395dc7eac307ea450800000000000000
-      internalID: 6101937951061366163
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BottomUI_5
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 16
-        width: 26
-        height: 2
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 547eb5dd35467f040800000000000000
-      internalID: 4681320649033770821
+      spriteID: 4e848d91ec0ba2170800000000000000
+      internalID: 8154524474551060708
       vertices: []
       indices: 
       edges: []
