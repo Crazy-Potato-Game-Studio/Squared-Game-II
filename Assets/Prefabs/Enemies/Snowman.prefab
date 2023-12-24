@@ -318,7 +318,7 @@ AudioSource:
   m_GameObject: {fileID: 3525620857847904370}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 127cc98831fa1a84dbed4bcd9a70530b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -470,11 +470,11 @@ MonoBehaviour:
   slider: {fileID: 3525620859090545276}
   sliderRect: {fileID: 3525620859090545277}
   enemyHealthBar: {fileID: 3525620859090545278}
-  chanceOfDropingItems: 50
   damageText: {fileID: 6908256027836085079, guid: 23a2083bef4a0e6469a680b0103edd93, type: 3}
   player: {fileID: 0}
   clip: {fileID: 8300000, guid: dc6614beca09347ec9b258f12d154bdd, type: 3}
   source: {fileID: 3525620857847904373}
+  chanceOfDropingItems: 50
   heart: {fileID: 3710692091689001022, guid: 4d14450ae6a641546ad5c874972ef365, type: 3}
   arrow: {fileID: 397587817886829463, guid: ea60d531008c4c34d934824ccccd852d, type: 3}
 --- !u!114 &3525620857847904363

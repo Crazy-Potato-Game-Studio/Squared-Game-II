@@ -5,17 +5,10 @@ using UnityEngine.EventSystems;
 
 public class ButtonAnim : MonoBehaviour
 {
-    [SerializeField] private AudioSource source;
-    [SerializeField] private AudioClip clip;
     [SerializeField] private Animator animator;
 
     public void DoAnimation(){
         SetBool(true);
-        PlaySound();
-    }
-
-    private void PlaySound(){
-        source.PlayOneShot(clip);
     }
 
     private void SetBool(bool isHovered){

@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if(!isFrozen){
-            if(Input.GetKeyDown(KeyCode.Space) && extraJumps > 0){
+            if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && extraJumps > 0){
                 rb.velocity = Vector2.up * jumpForce;
                 extraJumps--;
             }
