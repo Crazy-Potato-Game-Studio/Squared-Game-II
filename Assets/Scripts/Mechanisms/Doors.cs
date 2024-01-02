@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
 public class Doors : MonoBehaviour
 {
-    
     [SerializeField] private Animator animator;
     [SerializeField] private float distanceToOpen;
     [SerializeField] private string keyColor;
@@ -51,7 +49,6 @@ public class Doors : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E) && PlayerHasAKey()){
                 OpenDoors();
                 source.PlayOneShot(clip);
-                GameObject.Find(keyColor + "Item(Clone)").GetComponent<KeyRemove>().DeleteKey();
             }
         }
     }
