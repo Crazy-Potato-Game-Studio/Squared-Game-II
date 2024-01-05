@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class Controller2D : RaycastController
 {
     public CollisionInfo collisions;
+    [SerializeField] private LayerMask wallJumpMask;
 
     public override void Start()
     {
+        collisions.faceDir = 1;
         base.Start();
     }
 
@@ -16,8 +19,10 @@ public class Controller2D : RaycastController
         collisions.Reset();
 
         if(velocity.x != 0){
-            HorizontalCollisions(ref velocity);
+            collisions.faceDir = (int)Mathf.Sign(velocity.x);
         }
+
+        HorizontalCollisions(ref velocity);
 
         if(velocity.y != 0){
             VerticalCollisions(ref velocity);
@@ -27,8 +32,12 @@ public class Controller2D : RaycastController
     }
 
     void HorizontalCollisions(ref Vector3 velocity){
-        float directionX = Mathf.Sign(velocity.x);
+        float directionX = collisions.faceDir;
         float rayLenght = Mathf.Abs(velocity.x) + skinWidth;
+
+        if(Mathf.Abs(velocity.x) < skinWidth){
+            rayLenght = skinWidth * 2;
+        }
 
         for(int i = 0; i < verticalRayCount; i++){
             Vector2 rayOrigin = (directionX == -1)?raycastOrigins.bottomLeft:raycastOrigins.bottomRight;
@@ -73,6 +82,7 @@ public class Controller2D : RaycastController
     public struct CollisionInfo{
         public bool above, below;
         public bool left, right;
+        public int faceDir;
 
         public void Reset(){
             above = below = false;
