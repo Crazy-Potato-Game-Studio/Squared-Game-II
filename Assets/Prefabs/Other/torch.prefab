@@ -4816,7 +4816,7 @@ GameObject:
   - component: {fileID: 6894638240999060463}
   - component: {fileID: 8140292682560682761}
   m_Layer: 0
-  m_Name: TorchFire
+  m_Name: burning_loop_5_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
