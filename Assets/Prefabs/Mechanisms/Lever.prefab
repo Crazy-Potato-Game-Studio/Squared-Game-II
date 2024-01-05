@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 4873911297765039497}
   - component: {fileID: 5232173688171798823}
   - component: {fileID: 6429146783127442516}
+  - component: {fileID: 4800820236147785400}
   - component: {fileID: 4642015783007025991}
   - component: {fileID: 4551751354003479363}
   m_Layer: 6
@@ -270,6 +271,22 @@ MonoBehaviour:
   source: {fileID: 4642015783007025991}
   isOn: 0
   redLight: {fileID: 6382939559496407309}
+--- !u!58 &4800820236147785400
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5454473882410121259}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!82 &4642015783007025991
 AudioSource:
   m_ObjectHideFlags: 0
