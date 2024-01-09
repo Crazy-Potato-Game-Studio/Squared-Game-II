@@ -26,7 +26,7 @@ public class Bow : MonoBehaviour
         Vector2 direction = mousePosition - bowPosition;
         transform.right = direction;
 
-        if(GetComponent<ArrowsManager>().arrowCount > 0){
+        if(GetComponentInParent<ItemsManager>().arrowCount > 0){
             canFire = true;
         }else{
             canFire = false;
@@ -58,8 +58,8 @@ public class Bow : MonoBehaviour
         canFire = true;
         arrowGFX.enabled = false;
 
-        GetComponent<ArrowsManager>().arrowCount--;
-        GetComponent<ArrowsManager>().UpdateArrowText();
+        GetComponentInParent<ItemsManager>().arrowCount--;
+        GetComponentInParent<ItemsManager>().UpdateArrowsCount();
     }
 
     void ChargeBow(){

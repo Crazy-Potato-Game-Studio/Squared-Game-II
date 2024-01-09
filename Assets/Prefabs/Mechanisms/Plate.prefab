@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 8347049533882140905}
   - component: {fileID: 8347049533882140909}
   - component: {fileID: 8347049533882140906}
-  - component: {fileID: 6058628723264134621}
   m_Layer: 11
   m_Name: PressurePlate
   m_TagString: Untagged
@@ -307,19 +306,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6058628723264134621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8347049533882140908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 403557ee3094ba34480bba99868861e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 5441202058867743180, guid: e557fc6e3be608b48ac881ad82c7e3c0, type: 3}
 --- !u!1 &8347049534917771893
 GameObject:
   m_ObjectHideFlags: 0

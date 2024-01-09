@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 2145565388301695145}
   - component: {fileID: 6756585614984367898}
   - component: {fileID: 7378687608929456236}
-  - component: {fileID: 397587817886829461}
   m_Layer: 8
   m_Name: ArrowPickup
-  m_TagString: Untagged
+  m_TagString: ArrowPickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,7 +54,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!58 &2145565388301695145
 CircleCollider2D:
@@ -116,21 +115,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 1.2}
+  m_Size: {x: 0.7, y: 1.2}
   m_EdgeRadius: 0
---- !u!114 &397587817886829461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 397587817886829463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 507b476be71e73844adc1923c4eb306d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
 --- !u!1 &7024725189698594791
 GameObject:
   m_ObjectHideFlags: 0

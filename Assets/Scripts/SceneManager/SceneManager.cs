@@ -7,32 +7,20 @@ using TMPro;
 
 public class SceneManager : MonoBehaviour
 {
-    [SerializeField] private GameObject menu;
-    [SerializeField] private GameObject controlsPanel;
-
-    void Start(){
-        menu.SetActive(false);
-    }
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.R)){
             ReloadScene();
         }
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            if(!menu.activeSelf && !controlsPanel.activeSelf){
-                ShowMenu();
+
+        if(Input.GetKeyDown(KeyCode.P)){
+            if(Time.timeScale == 1){
+                Time.timeScale = 0;
             }else{
-                HideMenu();
+                Time.timeScale = 1;
             }
+            
         }
-    }
-
-    private void ShowMenu(){
-        menu.SetActive(true);
-    }
-
-    private void HideMenu(){
-        menu.SetActive(false);
     }
 
     public void LoadFirstScene(){

@@ -51,7 +51,7 @@ public class Doors : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E) && PlayerHasAKey()){
                 OpenDoors();
                 source.PlayOneShot(clip);
-                GameObject.Find(keyColor + "Item(Clone)").GetComponent<KeyRemove>().DeleteKey();
+                //GameObject.Find(keyColor + "Item(Clone)").GetComponent<KeyRemove>().DeleteKey();
             }
         }
     }

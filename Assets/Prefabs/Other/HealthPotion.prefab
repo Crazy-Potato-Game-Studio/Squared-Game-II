@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 7232211449830161533}
   - component: {fileID: 7778771724996814588}
   - component: {fileID: 7787811527875225706}
-  - component: {fileID: 7573012472098926407}
   - component: {fileID: 362317269794722495}
   - component: {fileID: 477499389036839664}
   m_Layer: 0
   m_Name: HealthPotion
-  m_TagString: Untagged
+  m_TagString: Potion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,20 +97,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &7573012472098926407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109133760227713409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 403cb6443576a034a8b79bcc425e8d3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemButton: {fileID: 2924409211389046962, guid: 7164e1c15218f2a4987249d08f0db926, type: 3}
-  collectPotion: {fileID: 8300000, guid: 913d838f795d35045b734783b89759bc, type: 3}
 --- !u!58 &362317269794722495
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -125,9 +110,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.006931782, y: -0.08096963}
+  m_Offset: {x: -0.0024700165, y: -0.08096963}
   serializedVersion: 2
-  m_Radius: 0.5695959
+  m_Radius: 2
 --- !u!60 &477499389036839664
 PolygonCollider2D:
   m_ObjectHideFlags: 0

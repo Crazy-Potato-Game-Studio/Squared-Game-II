@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 928888689811678689}
   - component: {fileID: 928888689811678685}
-  - component: {fileID: 3348256678048526192}
   - component: {fileID: 7503279539605451350}
   - component: {fileID: 928888689811678683}
   m_Layer: 0
@@ -56,20 +55,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &3348256678048526192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928888689811678682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 403cb6443576a034a8b79bcc425e8d3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemButton: {fileID: 2924409211389046962, guid: 839b9f4fb4ce0c44e90023dd8c64f953, type: 3}
-  collectPotion: {fileID: 8300000, guid: 913d838f795d35045b734783b89759bc, type: 3}
 --- !u!58 &7503279539605451350
 CircleCollider2D:
   m_ObjectHideFlags: 0

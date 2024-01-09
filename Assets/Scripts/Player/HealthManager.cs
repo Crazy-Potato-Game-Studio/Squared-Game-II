@@ -18,7 +18,6 @@ public class HealthManager : MonoBehaviour
     public GameObject floatingLava;
     public float sumOfLavaDamage = 0;
     [SerializeField] private TextMeshProUGUI healthText;
-    private GameObject cam;
 
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private BoxCollider2D resistanceCollider;
@@ -29,12 +28,10 @@ public class HealthManager : MonoBehaviour
         playerHealth = maxPlayerHealth;
         UpdateSliderValue();
         UpdateHealthText();
-        cam = GameObject.FindGameObjectWithTag("Camera");
     }
 
     public void LoseHealth(float healthPoints){
         if(!isResistant){
-            cam.GetComponent<CameraShaker>().ShakeCamera(healthPoints / 10, 0.2f);
             playerHealth-= healthPoints;
             GetComponent<EntityChangeColor>().ChangeColor();
             UpdateSliderValue();
