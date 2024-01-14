@@ -21,7 +21,12 @@ public class PressurePlate : MonoBehaviour
         if(other.gameObject.tag == "Player" || other.gameObject.tag == "Cube"){
             other.transform.parent = transform;
             redLight.enabled = true;
-            whatToTurnOn.GetComponent<Portal>().TurnOn(); 
+            if(whatToTurnOn.GetComponent<Portal>() != null){
+                whatToTurnOn.GetComponent<Portal>().TurnOn();
+            }else{
+                whatToTurnOn.GetComponent<NieTak>().isOn = true;
+            }
+            
             if(transform.childCount < 3){
                 source.PlayOneShot(clip);
             }
@@ -33,7 +38,11 @@ public class PressurePlate : MonoBehaviour
 
             other.transform.parent = transform;
             redLight.enabled = true;
-            whatToTurnOn.GetComponent<Portal>().TurnOn(); 
+            if(whatToTurnOn.GetComponent<Portal>() != null){
+                whatToTurnOn.GetComponent<Portal>().TurnOn();
+            }else{
+                whatToTurnOn.GetComponent<NieTak>().isOn = true;
+            }
             if(initPosition - transform.position.y <= 0.1f){
                 transform.position = transform.position + new Vector3(0, -0.006f, 0);
             }
@@ -44,7 +53,11 @@ public class PressurePlate : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.tag == "Player" || other.gameObject.tag == "Cube"){
             redLight.enabled = false;
-            whatToTurnOn.GetComponent<Portal>().TurnOff(); 
+            if(whatToTurnOn.GetComponent<Portal>() != null){
+                whatToTurnOn.GetComponent<Portal>().TurnOff();
+            }else{
+                whatToTurnOn.GetComponent<NieTak>().isOn = false;
+            }
             moveBack = true;
             if(transform.childCount < 3){
                 source.PlayOneShot(clip);

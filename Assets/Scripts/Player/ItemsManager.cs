@@ -14,6 +14,7 @@ public class ItemsManager : MonoBehaviour
     [SerializeField] private AudioClip pickupSound;
 
     private void Awake() {
+        arrowCount = 10;
         UpdatePotionsCount();
         UpdateArrowsCount();
     }

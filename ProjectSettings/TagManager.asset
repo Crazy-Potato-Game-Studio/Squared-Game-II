@@ -54,11 +54,11 @@ TagManager:
   - name: Background
     uniqueID: 173280251
     locked: 0
-  - name: Nature&Foreground
-    uniqueID: 3017289747
-    locked: 0
   - name: Ground
     uniqueID: 1703952613
+    locked: 0
+  - name: Nature&Foreground
+    uniqueID: 3017289747
     locked: 0
   - name: Objects
     uniqueID: 2644609181
