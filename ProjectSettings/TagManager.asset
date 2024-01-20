@@ -17,6 +17,7 @@ TagManager:
   - Potion
   - ArrowPickup
   - Heart
+  - TextLvlViewer
   layers:
   - Default
   - TransparentFX
@@ -54,9 +55,6 @@ TagManager:
   - name: Background
     uniqueID: 173280251
     locked: 0
-  - name: Ground
-    uniqueID: 1703952613
-    locked: 0
   - name: Nature&Foreground
     uniqueID: 3017289747
     locked: 0
@@ -66,12 +64,15 @@ TagManager:
   - name: Player&Enemies
     uniqueID: 2206421191
     locked: 0
+  - name: Ground
+    uniqueID: 1703952613
+    locked: 0
+  - name: Pickups
+    uniqueID: 2843231137
+    locked: 0
   - name: Water
     uniqueID: 2235783587
     locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Pickups
-    uniqueID: 2843231137
     locked: 0
