@@ -5,10 +5,16 @@ using UnityEngine;
 public class PlayerTouchGround : MonoBehaviour
 {
     [SerializeField] private GameObject particles;
+    [SerializeField] private GameObject trampolineParticles;
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Ground" || other.gameObject.tag == "Cube"){
             GameObject currentParticles = Instantiate(particles, GetContactPosition(other), other.transform.rotation);
+            currentParticles.transform.parent = null;
+            Destroy(currentParticles, 1f);
+        }
+        if(other.gameObject.tag == "Trampoline"){
+            GameObject currentParticles = Instantiate(trampolineParticles, GetContactPosition(other), other.transform.rotation);
             currentParticles.transform.parent = null;
             Destroy(currentParticles, 1f);
         }

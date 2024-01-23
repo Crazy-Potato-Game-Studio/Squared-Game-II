@@ -18,6 +18,8 @@ TagManager:
   - ArrowPickup
   - Heart
   - TextLvlViewer
+  - Trampoline
+  - BouncyCube
   layers:
   - Default
   - TransparentFX
@@ -35,8 +37,8 @@ TagManager:
   - Player
   - NatureAndOther
   - Cubes
-  - 
-  - 
+  - BouncyCubes
+  - Trampoline
   - ResistanceCollider
   - 
   - 
@@ -58,9 +60,6 @@ TagManager:
   - name: Nature&Foreground
     uniqueID: 3017289747
     locked: 0
-  - name: Objects
-    uniqueID: 2644609181
-    locked: 0
   - name: Player&Enemies
     uniqueID: 2206421191
     locked: 0
@@ -72,6 +71,9 @@ TagManager:
     locked: 0
   - name: Water
     uniqueID: 2235783587
+    locked: 0
+  - name: Objects
+    uniqueID: 2644609181
     locked: 0
   - name: Default
     uniqueID: 0
