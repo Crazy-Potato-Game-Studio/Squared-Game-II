@@ -28,7 +28,7 @@ public class Doors : MonoBehaviour
         doorsOpen = true;
         SetDoorsBool();
         GameObject.Destroy(hint);
-        Destroy(GetComponent<Hint>()); //?
+        //Destroy(GetComponent<Hint>()); //?
     }
 
     // void CloseDoors(){

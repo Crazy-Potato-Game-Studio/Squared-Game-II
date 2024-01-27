@@ -7,6 +7,11 @@ using TMPro;
 
 public class SceneManager : MonoBehaviour
 {
+    public int levelToLoad;
+
+    private void Awake() {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.R)){
@@ -23,8 +28,12 @@ public class SceneManager : MonoBehaviour
         }
     }
 
-    public void LoadFirstScene(){
+    public void LoadNextLevel(){
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+    }
+
+    public void LoadFirstScene(){
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 
     public void LoadMainMenu(){

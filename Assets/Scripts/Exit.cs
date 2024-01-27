@@ -14,7 +14,9 @@ public class Exit : MonoBehaviour
 
             GetComponent<AudioSource>().Play();
 
-            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex+1);
+            GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().levelToLoad = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex+1;
+            GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().LoadNextLevel();
+
         }
     }
 }

@@ -20,6 +20,9 @@ TagManager:
   - TextLvlViewer
   - Trampoline
   - BouncyCube
+  - CubeNoHint
+  - NextLevelLoader
+  - SceneManager
   layers:
   - Default
   - TransparentFX
