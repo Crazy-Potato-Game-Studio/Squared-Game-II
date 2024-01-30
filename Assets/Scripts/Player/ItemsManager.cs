@@ -7,16 +7,28 @@ public class ItemsManager : MonoBehaviour
 {
     public float arrowCount;
     private float potionsCount;
-    [SerializeField] private TextMeshProUGUI arrowsText;
-    [SerializeField] private TextMeshProUGUI potionsText;
+    private TextMeshProUGUI arrowsText;
+    public TextMeshProUGUI potionsText;
     [SerializeField] private GameObject heartParticles;
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip pickupSound;
 
     private void Awake() {
         arrowCount = 10;
+
+        arrowsText = GameObject.FindGameObjectWithTag("ArrowsUI").GetComponentInChildren<TextMeshProUGUI>();
+        potionsText = GameObject.FindGameObjectWithTag("PotionsUI").GetComponentInChildren<TextMeshProUGUI>();
+
         UpdatePotionsCount();
         UpdateArrowsCount();
+    }
+
+    private void Update() {
+        if(Input.GetKey(KeyCode.H)){
+            if(potionsCount > 0){
+                UsePotion();
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
@@ -39,7 +51,7 @@ public class ItemsManager : MonoBehaviour
         switch (name)
         {
             case "Heart":
-                GetComponent<HealthManager>().GainHealth(20f);
+                GetComponent<HealthManager>().GainHealth(15f);
                 GameObject currentParticles = Instantiate(heartParticles, transform.position, transform.rotation);
                 Destroy(currentParticles, 3f);
                 break;
@@ -54,6 +66,14 @@ public class ItemsManager : MonoBehaviour
             default:
             break;
         }
+    }
+
+    void UsePotion(){
+        potionsCount--;
+        GetComponent<HealthManager>().GainHealth(30f);
+        GameObject currentParticles = Instantiate(heartParticles, transform.position, transform.rotation);
+        Destroy(currentParticles, 3f);
+        UpdatePotionsCount();
     }
 
     void UpdatePotionsCount(){

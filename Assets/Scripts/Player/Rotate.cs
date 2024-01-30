@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
-    [SerializeField] private Camera cam;
+    private Camera cam;
+
+    private void Awake() {
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+    }
 
     void FixedUpdate()
     {

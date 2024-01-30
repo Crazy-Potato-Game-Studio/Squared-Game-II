@@ -10,20 +10,36 @@ public class Arm : MonoBehaviour
     public bool canLiftCube;
     public bool canThrowCube = true;
     public GameObject groundCube;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip cubePickingSound;
+    [SerializeField] private AudioClip cubeThrowingSound;
+
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.E)){
             if(bow.activeSelf == true && canLiftCube){
-                bow.SetActive(false);
-                Destroy(groundCube);
-                cubeGFX.SetActive(true);
+                LiftCube();
             }else if(bow.activeSelf == false && canThrowCube){
-                GameObject realCube = Instantiate(cubePrefab, cubeGFX.transform);
-                realCube.transform.parent = null;
-                realCube.tag = "CubeNoHint";
-                cubeGFX.SetActive(false);
-                bow.SetActive(true);
+                ThrowCube();
             }
         }
+    }
+
+    void LiftCube(){
+        bow.SetActive(false);
+        Destroy(groundCube);
+        cubeGFX.SetActive(true);
+        audioSource.PlayOneShot(cubePickingSound);
+    }
+
+    void ThrowCube(){
+        GameObject realCube = Instantiate(cubePrefab, cubeGFX.transform);
+        realCube.transform.parent = null;
+        cubeGFX.SetActive(false);
+        bow.SetActive(true);
+        audioSource.PlayOneShot(cubeThrowingSound);
     }
 }

@@ -5,14 +5,15 @@ using Pathfinding;
 
 public class Bat : MonoBehaviour
 {
-    [SerializeField] AIPath aiPath;
-    [SerializeField] Transform returnPoint;
-    [SerializeField] GameObject player;
-    [SerializeField] GameObject enemyCanvas;
+    [SerializeField] private AIPath aiPath;
+    [SerializeField] private Transform returnPoint;
+    [SerializeField] private GameObject enemyCanvas;
+    private GameObject player;
     private float distance;
 
-    private void Start() {
+    private void Awake() {
         GetComponent<AIDestinationSetter>().target = returnPoint;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update(){

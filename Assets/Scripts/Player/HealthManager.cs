@@ -17,15 +17,18 @@ public class HealthManager : MonoBehaviour
     public GameObject lavaText;
     public GameObject floatingLava;
     public float sumOfLavaDamage = 0;
-    [SerializeField] private TextMeshProUGUI healthText;
+    private TextMeshProUGUI healthText;
 
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private BoxCollider2D resistanceCollider;
     private bool isResistant;
 
-    void Start() {
+    void Awake() {
+        pasekZycia = GameObject.FindGameObjectWithTag("HealthUI");
+        healthText = pasekZycia.GetComponentInChildren<TextMeshProUGUI>();
         pasekZycia.GetComponent<Slider>().maxValue = maxPlayerHealth;
         playerHealth = maxPlayerHealth;
+
         UpdateSliderValue();
         UpdateHealthText();
     }
@@ -36,8 +39,8 @@ public class HealthManager : MonoBehaviour
             GetComponent<EntityChangeColor>().ChangeColor();
             UpdateSliderValue();
 
-            if(playerHealth < 0){
-                playerHealth = 0;
+            if(playerHealth <= 0){
+                PlayerDeath();
             }
 
             source.PlayOneShot(clip);
@@ -78,7 +81,7 @@ public class HealthManager : MonoBehaviour
         UpdateSliderValue();
         UpdateHealthText();
         if(playerHealth < 0){
-            playerHealth = 0;
+            PlayerDeath();
         }
     }
 
@@ -109,5 +112,10 @@ public class HealthManager : MonoBehaviour
         isResistant = false;
         playerCollider.enabled = true;
         resistanceCollider.enabled = false;
+    }
+
+    void PlayerDeath(){
+        int currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
     }
 }

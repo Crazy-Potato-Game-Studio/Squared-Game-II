@@ -5,14 +5,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-
-    [SerializeField] string levelAndLocation;
-    [SerializeField] GameObject textLvl;
-    private Transform textLvlViewer;
-
-    private void Awake() {
-        textLvlViewer = GameObject.FindGameObjectWithTag("TextLvlViewer").transform;
-    }
+    [SerializeField] Transform spawnPoint;
+    [SerializeField] private GameObject playerPrefab;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player"){
@@ -22,10 +16,11 @@ public class Spawner : MonoBehaviour
             Destroy(col);
 
             GetComponent<AudioSource>().Play();
-
-            GameObject text = Instantiate(textLvl, textLvlViewer);
-            text.GetComponent<TextMeshProUGUI>().text = levelAndLocation;
-            Destroy(text, 3f);
         }
+    }
+
+    public void SpawnPlayer(){
+        GameObject player = Instantiate(playerPrefab, spawnPoint);
+        player.transform.parent = null;
     }
 }

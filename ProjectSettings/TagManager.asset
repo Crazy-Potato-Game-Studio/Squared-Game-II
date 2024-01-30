@@ -17,12 +17,13 @@ TagManager:
   - Potion
   - ArrowPickup
   - Heart
-  - TextLvlViewer
   - Trampoline
   - BouncyCube
-  - CubeNoHint
   - NextLevelLoader
   - SceneManager
+  - PotionsUI
+  - HealthUI
+  - ArrowsUI
   layers:
   - Default
   - TransparentFX

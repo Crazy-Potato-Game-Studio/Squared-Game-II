@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class SceneManager : MonoBehaviour
