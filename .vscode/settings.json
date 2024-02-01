@@ -53,5 +53,5 @@
         "Temp/": true
     },
     "dotnet.preferCSharpExtension": true,
-    "dotnet.defaultSolution": "Squared.sln"
+    "dotnet.defaultSolution": "Squared-Game-II.sln"
 }
