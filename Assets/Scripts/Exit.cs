@@ -25,7 +25,7 @@ public class Exit : MonoBehaviour
     IEnumerator WaitAndLoadNextScene(){
         yield return new WaitForSeconds(0.5f);
 
-        GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().levelToLoad = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex+1;
-        GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().LoadNextLevel();
+        GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManagement>().levelToLoad = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex+1;
+        GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManagement>().LoadNextLevel();
     }
 }

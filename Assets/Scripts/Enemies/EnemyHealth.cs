@@ -18,7 +18,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource source;
 
-    [SerializeField] private int chanceOfDropingItems;
+    [SerializeField] private int minAmountOfDroppedItems;
+    [SerializeField] private int maxAmountOfDroppedItems;
     [SerializeField] private GameObject heart;
     [SerializeField] private GameObject arrow;
 
@@ -75,20 +76,17 @@ public class EnemyHealth : MonoBehaviour
     }
 
     private void SpawnItems(){
-        for(int i = 0; i < chanceOfDropingItems / 2; i++){
-            if(Random.Range(0, 100) == 1){
-                GameObject item = Instantiate(heart, transform.position, transform.rotation);
-                item.transform.parent = null;
-                item.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f,1f), 3f), ForceMode2D.Impulse);
+        for(int i = 0; i < Random.Range(minAmountOfDroppedItems, maxAmountOfDroppedItems); i++){
+            int itemNumber;
+            itemNumber = Random.Range(1,2);
+            if(itemNumber == 1){
+                GameObject currentObj = Instantiate(heart, transform);
+                currentObj.transform.parent = null;
+            }else{
+                GameObject currentObj = Instantiate(arrow, transform);
+                currentObj.transform.parent = null;
             }
-        }
-
-        for(int i = 0; i < chanceOfDropingItems; i++){
-            if(Random.Range(0, 100) == 1){
-                GameObject item = Instantiate(arrow, transform.position, transform.rotation);
-                item.transform.parent = null;
-                item.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f,1f), 3f), ForceMode2D.Impulse);
-            }
+            
         }
     }
 }

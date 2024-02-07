@@ -10,14 +10,12 @@ public class Laser : MonoBehaviour
     [SerializeField] private GameObject particles;
     private GameObject endParticles;
 
-
-
     private void Awake() {
         endParticles = Instantiate(particles, transform.position, transform.rotation);
     }
 
     private void Update(){
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
         lineRenderer.SetPosition(0, shootPoint.position);
 
         if(hit){
@@ -29,8 +27,8 @@ public class Laser : MonoBehaviour
             }
 
         }else{
-            lineRenderer.SetPosition(1, transform.right * 100);
-            endParticles.transform.position = transform.right * 100;
+            lineRenderer.SetPosition(1, transform.up * 100);
+            endParticles.transform.position = transform.up * 100;
         }
     }
 

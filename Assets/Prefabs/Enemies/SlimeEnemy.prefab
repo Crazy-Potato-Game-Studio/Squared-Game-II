@@ -423,7 +423,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2088546105
-  m_SortingLayer: -2
+  m_SortingLayer: -5
   m_SortingOrder: 1
   m_Sprite: {fileID: 368543389579951487, guid: 4dbe9cd73ae854a43befbf27fbf918bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -619,7 +619,8 @@ MonoBehaviour:
   player: {fileID: 0}
   clip: {fileID: 8300000, guid: 1d6be5f56ce5a5d49a6776e971456767, type: 3}
   source: {fileID: 8747480113069827427}
-  chanceOfDropingItems: 100
+  minAmountOfDroppedItems: 0
+  maxAmountOfDroppedItems: 2
   heart: {fileID: 3710692091689001022, guid: 4d14450ae6a641546ad5c874972ef365, type: 3}
   arrow: {fileID: 397587817886829463, guid: ea60d531008c4c34d934824ccccd852d, type: 3}
 --- !u!114 &4585685466957646810
