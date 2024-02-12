@@ -7,38 +7,48 @@ using System;
 public class Doors : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private SpriteRenderer playerColor;
+    private SpriteRenderer playerColor;
     private bool doorsOpen = false;
-    private GameObject player;
+    [SerializeField] private Color color;
+    private AudioSource source;
+    [SerializeField] private AudioClip clip;
 
     private void Awake() {
         SetDoorsBool();
-        player = GameObject.FindGameObjectWithTag("Player");
+        source = GetComponent<AudioSource>();
+        playerColor = GameObject.Find("PlayerGFX").GetComponent<SpriteRenderer>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Player" && playerColor.color == color){
+            OpenDoors();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.gameObject.tag == "Player" && playerColor.color == color){
+            CloseDoors();
+        }
     }
 
     void OpenDoors(){
         doorsOpen = true;
         SetDoorsBool();
+        PlayDoorsSound();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Player" && playerColor.color == new Color(0,1f,0f,1f)){
-            Debug.Log("Player is green");
-        }
+    void CloseDoors(){
+        doorsOpen = false;
+        SetDoorsBool();
+        PlayDoorsSound();
     }
 
-    // void CloseDoors(){
-    //     doorsOpen = false;
-    //     SetDoorsBool();
-    // }
+    void PlayDoorsSound(){
+        source.PlayOneShot(clip);
+    }
 
     void SetDoorsBool(){
         animator.SetBool("DoorsOpen", doorsOpen);
     }
-
-    private void Update() {
-        
-    }
-
 }
     

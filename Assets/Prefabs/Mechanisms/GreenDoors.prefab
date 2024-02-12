@@ -70,6 +70,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 801064767946952780}
+  playerColor: {fileID: 0}
+  color: {r: 0.4392157, g: 0.7019608, b: 0.38431373, a: 1}
+  clip: {fileID: 8300000, guid: 48f19b5b0d4ebfa4690e00049c2baf1a, type: 3}
 --- !u!82 &801064767946952781
 AudioSource:
   m_ObjectHideFlags: 0
@@ -81,8 +84,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 127cc98831fa1a84dbed4bcd9a70530b, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.736
   m_Pitch: 1
   Loop: 0
   Mute: 0
