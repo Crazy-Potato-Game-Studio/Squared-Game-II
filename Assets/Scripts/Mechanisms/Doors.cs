@@ -6,29 +6,25 @@ using System;
 
 public class Doors : MonoBehaviour
 {
-    
     [SerializeField] private Animator animator;
-    [SerializeField] private float distanceToOpen;
-    [SerializeField] private string keyColor;
-    [SerializeField] private AudioClip clip;
-    [SerializeField] private AudioSource source;
-    [SerializeField] private GameObject hint;
+    [SerializeField] private SpriteRenderer playerColor;
     private bool doorsOpen = false;
-    private float distance;
     private GameObject player;
-    private bool playerHasAKey;
-    
-    private void Start() {
+
+    private void Awake() {
         SetDoorsBool();
         player = GameObject.FindGameObjectWithTag("Player");
-        
     }
 
     void OpenDoors(){
         doorsOpen = true;
         SetDoorsBool();
-        GameObject.Destroy(hint);
-        //Destroy(GetComponent<Hint>()); //?
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Player" && playerColor.color == new Color(0,1f,0f,1f)){
+            Debug.Log("Player is green");
+        }
     }
 
     // void CloseDoors(){
@@ -40,29 +36,9 @@ public class Doors : MonoBehaviour
         animator.SetBool("DoorsOpen", doorsOpen);
     }
 
-    float CalculateDistance(){
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        return distance;
-    }
-
     private void Update() {
         
-        if(CalculateDistance() < distanceToOpen){
-            if(Input.GetKeyDown(KeyCode.E) && PlayerHasAKey()){
-                OpenDoors();
-                source.PlayOneShot(clip);
-                //GameObject.Find(keyColor + "Item(Clone)").GetComponent<KeyRemove>().DeleteKey();
-            }
-        }
     }
 
-    bool PlayerHasAKey(){
-        if(GameObject.Find(keyColor + "Item(Clone)") != null){
-            playerHasAKey = true;
-        }else{
-            playerHasAKey = false;
-        }
-        return playerHasAKey;
-    }
 }
     
