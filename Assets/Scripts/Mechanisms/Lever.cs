@@ -12,16 +12,15 @@ public class Lever : MonoBehaviour
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource source; 
     [SerializeField] private bool isOn = false;
-    [SerializeField] private SpriteRenderer redLight;
+    private SpriteRenderer leverSprite;
     private GameObject player;
 
     private void Start() {
         if(isOn){
-            GetComponent<SpriteRenderer>().sprite = leverOn;
-            redLight.enabled = true;
-        }else{
-            redLight.enabled = false;
+            SetSprite(true);
         }
+
+        leverSprite = GetComponent<SpriteRenderer>();
 
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -37,20 +36,41 @@ public class Lever : MonoBehaviour
     }
 
     private void Update() {
-
         if(PlayerInRange() && Input.GetKeyDown(KeyCode.E)){
             if(!isOn){
-                whatToTurnOn.GetComponent<Portal>().TurnOn(); 
+                TurnObjectOn();
                 isOn = true;
-                GetComponent<SpriteRenderer>().sprite = leverOn;
-                redLight.enabled = true;
+                SetSprite(true);
             }else{
-                whatToTurnOn.GetComponent<Portal>().TurnOff(); 
+                TurnObjectOff();
                 isOn = false;
-                GetComponent<SpriteRenderer>().sprite = leverOff;
-                redLight.enabled = false;
+                SetSprite(false);
             }
             source.PlayOneShot(clip);
+        }
+    }
+
+    private void SetSprite(bool spriteOn){
+        if(spriteOn){
+            leverSprite.sprite = leverOn;
+        }else{
+            leverSprite.sprite = leverOff;
+        }
+    }
+
+    private void TurnObjectOn(){
+        if(whatToTurnOn.GetComponent<Portal>() != null){
+            whatToTurnOn.GetComponent<Portal>().TurnOn();
+        }else if(whatToTurnOn.GetComponent<Doors>() != null){
+            whatToTurnOn.GetComponent<Doors>().OpenDoors();
+        }
+    }
+
+    private void TurnObjectOff(){
+        if(whatToTurnOn.GetComponent<Portal>() != null){
+            whatToTurnOn.GetComponent<Portal>().TurnOff();
+        }else if(whatToTurnOn.GetComponent<Doors>() != null){
+            whatToTurnOn.GetComponent<Doors>().CloseDoors();
         }
     }
 }

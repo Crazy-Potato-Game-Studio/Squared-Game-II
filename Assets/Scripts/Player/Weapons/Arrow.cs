@@ -62,7 +62,6 @@ public class Arrow : MonoBehaviour
         if(other.gameObject.tag == "Ground"){
             isTouchingGround = true;
             Destroy(this.gameObject);
-            Debug.Log("Is touching ground");
         }
     }
 }

@@ -36,7 +36,9 @@ public class SceneManagement : MonoBehaviour
     }
 
     public void LoadMainMenu(){
-        SceneManager.LoadScene(0);
+        if(SceneManager.GetActiveScene().buildIndex != 0){
+            SceneManager.LoadScene(0);
+        }
     }
 
     public void Exit(){
@@ -47,7 +49,7 @@ public class SceneManagement : MonoBehaviour
         #endif
     }
 
-    void ReloadScene(){
+    public void ReloadScene(){
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(sceneIndex);
     }

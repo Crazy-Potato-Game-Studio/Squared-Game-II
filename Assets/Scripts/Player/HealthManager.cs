@@ -23,6 +23,13 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private BoxCollider2D resistanceCollider;
     private bool isResistant;
 
+    [SerializeField] private SpriteRenderer playerGFX;
+    [SerializeField] private SpriteRenderer playerEyesGFX;    
+    [SerializeField] private GameObject bow;
+    [SerializeField] private GameObject cubeRotator;
+    [SerializeField] private AudioClip deathMusic;
+    [SerializeField] private GameObject menuButtons;
+
     void Awake() {
         pasekZycia = GameObject.FindGameObjectWithTag("HealthUI");
         healthText = pasekZycia.GetComponentInChildren<TextMeshProUGUI>();
@@ -115,7 +122,20 @@ public class HealthManager : MonoBehaviour
     }
 
     void PlayerDeath(){
-        int currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
+        GetComponent<PlayerMovement>().enabled = false;
+        playerGFX.enabled = false;
+        playerEyesGFX.enabled = false;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        Destroy(playerCollider);
+        Destroy(resistanceCollider);
+        bow.SetActive(false);
+        cubeRotator.SetActive(false);
+        AudioSource src;
+        src = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<AudioSource>();
+        src.clip = deathMusic;
+        src.Play(0);
+        src.volume = 0.3f;
+        menuButtons.SetActive(true);
+        Destroy(this);
     }
 }
