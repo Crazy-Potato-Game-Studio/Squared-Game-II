@@ -8,7 +8,6 @@ public class Portal : MonoBehaviour
 
     public GameObject destinationPortal;
     public bool isOn;
-    [SerializeField] private GameObject hint;
     private bool playerInRange = false;
     private GameObject player;
 
@@ -24,20 +23,17 @@ public class Portal : MonoBehaviour
             TurnOff();
         }
 
-        hint.GetComponent<SpriteRenderer>().enabled = false;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(isOn && other.gameObject.tag == "Player"){
-            hint.GetComponent<SpriteRenderer>().enabled = true;
             playerInRange = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.tag == "Player"){
-            hint.GetComponent<SpriteRenderer>().enabled = false;
             playerInRange = false;
         }
     }
@@ -63,6 +59,5 @@ public class Portal : MonoBehaviour
         portalTop.enabled = false;
         portalLight.enabled = false;
     }
-
 
 }

@@ -76,13 +76,14 @@ public class EnemyHealth : MonoBehaviour
     }
 
     private void SpawnItems(){
-        for(int i = 0; i < Random.Range(minAmountOfDroppedItems, maxAmountOfDroppedItems); i++){
+        for(int i = 0; i < Random.Range(minAmountOfDroppedItems, maxAmountOfDroppedItems+1); i++){
             int itemNumber;
-            itemNumber = Random.Range(1,2);
+            itemNumber = Random.Range(1,3);
+            Debug.Log(itemNumber);
             if(itemNumber == 1){
                 GameObject currentObj = Instantiate(heart, transform);
                 currentObj.transform.parent = null;
-            }else{
+            }else if(itemNumber == 2){
                 GameObject currentObj = Instantiate(arrow, transform);
                 currentObj.transform.parent = null;
             }

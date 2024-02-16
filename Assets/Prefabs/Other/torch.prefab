@@ -4776,9 +4776,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1277677549
+  m_SortingLayer: -6
+  m_SortingOrder: 6
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4873,9 +4873,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1650358115
-  m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingLayerID: -1277677549
+  m_SortingLayer: -6
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1241265217496618076, guid: c20f13f77dc63604b95b907a62c2a412, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4989,7 +4989,7 @@ GameObject:
   - component: {fileID: 4994764003544027099}
   - component: {fileID: 3925819001980887682}
   m_Layer: 0
-  m_Name: Torch
+  m_Name: torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5049,8 +5049,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1650358115
-  m_SortingLayer: -1
+  m_SortingLayerID: -1277677549
+  m_SortingLayer: -6
   m_SortingOrder: 5
   m_Sprite: {fileID: 7509860518518112746, guid: e4ccfa37a94cbf145abc9878b45fff81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

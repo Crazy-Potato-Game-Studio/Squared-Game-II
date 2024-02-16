@@ -81,7 +81,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2088546105
-  m_SortingLayer: -2
+  m_SortingLayer: -5
   m_SortingOrder: 0
   m_Sprite: {fileID: 4987309567611069813, guid: 501a52012cc24ac429b1669994b5ca10, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -344,7 +344,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiPath: {fileID: 1251805759794566953}
   returnPoint: {fileID: 0}
-  player: {fileID: 0}
   enemyCanvas: {fileID: 1940657396361283207}
 --- !u!114 &1251805759794566957
 MonoBehaviour:
@@ -367,7 +366,8 @@ MonoBehaviour:
   player: {fileID: 0}
   clip: {fileID: 8300000, guid: acab76ab5a7f9f6468364f755bc54afa, type: 3}
   source: {fileID: 596281773499312023}
-  chanceOfDropingItems: 25
+  minAmountOfDroppedItems: 0
+  maxAmountOfDroppedItems: 1
   heart: {fileID: 3710692091689001022, guid: 4d14450ae6a641546ad5c874972ef365, type: 3}
   arrow: {fileID: 397587817886829463, guid: ea60d531008c4c34d934824ccccd852d, type: 3}
 --- !u!114 &1251805759794566956
