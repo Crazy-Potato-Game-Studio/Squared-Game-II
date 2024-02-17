@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
@@ -10,18 +11,23 @@ public class Portal : MonoBehaviour
     public bool isOn;
     private bool playerInRange = false;
     private GameObject player;
-
-    [SerializeField] private ParticleSystem particles;
-    [SerializeField] private SpriteRenderer portalTop;
     [SerializeField] private Light2D portalLight;
+    [SerializeField] private GameObject trailPrefab;
+    [SerializeField] private GameObject portalParticles;
+    private AudioSource source;
+    [SerializeField] private GameObject arrow;
     
-    private void Start() {
+    private void Awake() {
 
         if(isOn){
             TurnOn();
         }else{
             TurnOff();
         }
+
+        arrow.transform.right = destinationPortal.transform.position - transform.position;
+
+        source = GetComponent<AudioSource>();
 
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -41,23 +47,34 @@ public class Portal : MonoBehaviour
     private void Update() {
         if(isOn && destinationPortal.GetComponent<Portal>().isOn){
             if(playerInRange && Input.GetKeyDown(KeyCode.E)){
-                player.transform.position = destinationPortal.transform.position;
+                TeleportPlayer();
             }
         }
     }
 
     public void TurnOn(){
         isOn = true;
-        particles.Play();
-        portalTop.enabled = true;
+        arrow.SetActive(true);
         portalLight.enabled = true;
     }
 
     public void TurnOff(){
         isOn = false;
-        particles.Stop();
-        portalTop.enabled = false;
+        arrow.SetActive(false);
         portalLight.enabled = false;
     }
+
+    private void TeleportPlayer(){
+        Destroy(player.GetComponentInChildren<TrailRenderer>().gameObject);
+        player.transform.position = destinationPortal.transform.position;
+        Instantiate(trailPrefab, player.transform);
+        source.Play(0);
+        GameObject currentParticles = Instantiate(portalParticles, transform);
+        Destroy(currentParticles, 2f);
+        GameObject currentParticles2 = Instantiate(portalParticles, destinationPortal.transform);
+        Destroy(currentParticles2, 2f);
+    }
+
+
 
 }
