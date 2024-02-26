@@ -12,6 +12,7 @@ public class ItemsManager : MonoBehaviour
     [SerializeField] private GameObject heartParticles;
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip pickupSound;
+    [SerializeField] private AudioClip powerPickupSound;
 
     private void Awake() {
         arrowCount = 10;
@@ -32,13 +33,13 @@ public class ItemsManager : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag == "Heart" || other.gameObject.tag == "ArrowPickup" || other.gameObject.tag == "Potion"){
+        if(other.gameObject.tag == "Heart" || other.gameObject.tag == "ArrowPickup" || other.gameObject.tag == "Potion" || other.gameObject.tag == "Power"){
             PickupObject(other.gameObject.tag, other);
         }
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        if(other.gameObject.tag == "Heart" || other.gameObject.tag == "ArrowPickup" || other.gameObject.tag == "Potion"){
+        if(other.gameObject.tag == "Heart" || other.gameObject.tag == "ArrowPickup" || other.gameObject.tag == "Potion" || other.gameObject.tag == "Power"){
             other.transform.position = Vector3.MoveTowards(other.transform.position, transform.position, 0.1f);
         }
     }
@@ -46,20 +47,27 @@ public class ItemsManager : MonoBehaviour
     void PickupObject(string name, Collision2D other){
 
         Destroy(other.gameObject);
-        source.PlayOneShot(pickupSound);
+        
 
         switch (name)
         {
             case "Heart":
+                source.PlayOneShot(pickupSound);
                 GetComponent<HealthManager>().GainHealth(15f);
                 GameObject currentParticles = Instantiate(heartParticles, transform.position, transform.rotation);
                 Destroy(currentParticles, 3f);
                 break;
             case "ArrowPickup":
+                source.PlayOneShot(pickupSound);
                 arrowCount++;
                 UpdateArrowsCount();
             break;
-                case "Potion":
+            case "Power":
+                source.PlayOneShot(powerPickupSound);
+                GetComponent<PlayerHasPower>().playerPickedUpPower();
+            break;
+            case "Potion":
+                source.PlayOneShot(pickupSound);
                 potionsCount++;
                 UpdatePotionsCount();  
             break;

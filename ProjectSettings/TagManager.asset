@@ -24,6 +24,9 @@ TagManager:
   - PotionsUI
   - HealthUI
   - ArrowsUI
+  - Power
+  - PowerUI
+  - Lamp
   layers:
   - Default
   - TransparentFX

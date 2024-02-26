@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 5943535151044853275}
   - component: {fileID: 72674415213128332}
   - component: {fileID: 461908677848653666}
+  - component: {fileID: 8863099280445661439}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -465,6 +466,7 @@ MonoBehaviour:
   heartParticles: {fileID: 1641160101548170072, guid: b648ffdad74e9a94d8fa3980af4d0271, type: 3}
   source: {fileID: 964497249592846207}
   pickupSound: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  powerPickupSound: {fileID: 8300000, guid: 7dd89a98231d8524bb8319aa5101cf94, type: 3}
 --- !u!114 &964497249592846085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,6 +527,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: e1f76097d55aeee4baa39adff16f4684, type: 2}
   spriteRenderer: {fileID: 191257540860994499}
+--- !u!114 &8863099280445661439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964497249592846192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 347d59c9b625d6d4f9ca63c2ea154f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1484434278416372327
 GameObject:
   m_ObjectHideFlags: 0
