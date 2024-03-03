@@ -27,6 +27,8 @@ TagManager:
   - Power
   - PowerUI
   - Lamp
+  - InGameMenu
+  - MenuControler
   layers:
   - Default
   - TransparentFX

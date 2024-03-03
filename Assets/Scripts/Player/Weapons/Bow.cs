@@ -25,9 +25,9 @@ public class Bow : MonoBehaviour
             canFire = false;
         }
 
-        if(Input.GetMouseButton(0) && canFire){
+        if(Input.GetMouseButton(0) && canFire && Time.timeScale == 1){
             ChargeBow();
-        }else if(Input.GetMouseButtonUp(0) && canFire){
+        }else if(Input.GetMouseButtonUp(0) && canFire && Time.timeScale == 1){
             Shoot();
         }else{
             if(bowCharge > 0f){

@@ -5,7 +5,20 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] private GameObject sceneManager;
+    [SerializeField] private GameObject sceneManagerPrefab;
     [SerializeField] private GameObject mainMenu;
+    private GameObject[] sceneManagersCount;
+
+    private void Awake() {
+        sceneManagersCount = GameObject.FindGameObjectsWithTag("SceneManager");
+        if(sceneManagersCount.Length > 1){
+            for(int i = 0; i < sceneManagersCount.Length; i++){
+                Destroy(sceneManagersCount[i]);
+            }
+            sceneManager = Instantiate(sceneManagerPrefab);
+            sceneManager.transform.parent = null;
+        }
+    }
 
     public void StartGame(){
         sceneManager.GetComponent<SceneManagement>().LoadFirstScene();
@@ -22,14 +35,11 @@ public class MenuController : MonoBehaviour
     }
 
     public void Exit(){
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            Debug.Log("exit the game");
-            #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else
-                Application.Quit();
-            #endif
-        }
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 
 }
