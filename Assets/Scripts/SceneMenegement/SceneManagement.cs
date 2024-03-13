@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
@@ -42,11 +41,18 @@ public class SceneManagement : MonoBehaviour
     }
 
     public void LoadNextLevel(){
-        SceneManager.LoadScene(1);
+        if(SceneManager.GetActiveScene().buildIndex <7 && SceneManager.GetActiveScene().buildIndex >=4){
+            SceneManager.LoadScene(1);
+        }else if(SceneManager.GetActiveScene().buildIndex <10 && SceneManager.GetActiveScene().buildIndex >=7){
+            SceneManager.LoadScene(2);
+        }else if(SceneManager.GetActiveScene().buildIndex <12 && SceneManager.GetActiveScene().buildIndex >=10){
+            SceneManager.LoadScene(3);
+        }
+        
     }
 
     public void LoadFirstScene(){
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(4);
     }
 
     public void LoadMainMenu(){

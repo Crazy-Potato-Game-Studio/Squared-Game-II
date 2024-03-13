@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 033ffd9036de7a641aa5df6e17720c56
   - enabled: 1
-    path: Assets/Scenes/LoadingScene.unity
+    path: Assets/Scenes/FallingScenes/PlainsLoadingScene.unity
     guid: a9e575db9317fb941997f8d6207951b2
+  - enabled: 1
+    path: Assets/Scenes/FallingScenes/TunnelsLoadingScene.unity
+    guid: fa5b1e7e2095ed248873e83f07151873
+  - enabled: 1
+    path: Assets/Scenes/FallingScenes/TempleLoadingScene.unity
+    guid: caf0dedbb8dd11948b23cedca24ae9f8
   - enabled: 1
     path: Assets/Scenes/Plains/Level1-Plains.unity
     guid: 2b54c6b9de0f55e4ea98ad2ac926f7e6
@@ -35,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Temple/Level1-Temple.unity
     guid: 120d75bd00d170a4f8d4cd36d177d592
+  - enabled: 1
+    path: Assets/Scenes/Temple/Level2-Temple 1.unity
+    guid: 130889b78a5ed1b41a19c3823deaa379
   m_configObjects: {}
