@@ -13,7 +13,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private GameObject enemyHealthBar;
 
     public GameObject damageText;
-    public GameObject player;
+    [HideInInspector] public GameObject player;
 
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource source;

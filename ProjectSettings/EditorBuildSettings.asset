@@ -27,15 +27,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Tunnels/Level1-Tunnels.unity
     guid: c62b5f55657b9ea40bcdb3831e24628b
   - enabled: 1
-    path: Assets/Scenes/Tunnels/Level2-Tunnels 1.unity
-    guid: 52544ebf5fee9ff40be581fc1fb87297
-  - enabled: 1
     path: Assets/Scenes/Tunnels/Level3-Tunnels.unity
     guid: 4cd90f0883aa09546a2c8b692c9d0777
   - enabled: 1
-    path: Assets/Scenes/Tunnels/Level4-Tunnels.unity
-    guid: 733819c1c40806845a177a64b2cbcb9a
-  - enabled: 1
     path: Assets/Scenes/Tunnels/Level5-Tunnels.unity
     guid: 8bfdd87d2c025a944b83826efeeb3cb3
+  - enabled: 1
+    path: Assets/Scenes/Temple/Level1-Temple.unity
+    guid: 120d75bd00d170a4f8d4cd36d177d592
   m_configObjects: {}

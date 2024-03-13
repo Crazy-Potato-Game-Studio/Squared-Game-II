@@ -8,10 +8,13 @@ public class ColorChangerScript : MonoBehaviour
     [SerializeField] private Material material;
     [SerializeField] private GameObject thisColorDoors;
     private GameObject[] colorDoors;
+    private AudioSource source;
+    [SerializeField] private AudioClip clip;
 
     private void Awake() {
         color = material.GetColor("_BaseColor");
         colorDoors = GameObject.FindGameObjectsWithTag("colorDoors");
+        source = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -20,7 +23,10 @@ public class ColorChangerScript : MonoBehaviour
             for(int i = 0; i < colorDoors.Length; i++){
                 colorDoors[i].GetComponent<Collider2D>().isTrigger = false;
             }
-            thisColorDoors.GetComponent<Collider2D>().isTrigger = true;
+            if(thisColorDoors != null){
+                thisColorDoors.GetComponent<Collider2D>().isTrigger = true;
+            }
+            source.PlayOneShot(clip);
         }
     }
 }

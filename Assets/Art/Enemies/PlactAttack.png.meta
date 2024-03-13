@@ -114,7 +114,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 20
+        width: 18
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -133,9 +133,9 @@ TextureImporter:
       name: PlactAttack_1
       rect:
         serializedVersion: 2
-        x: 20
+        x: 18
         y: 0
-        width: 20
+        width: 18
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -154,9 +154,9 @@ TextureImporter:
       name: PlactAttack_2
       rect:
         serializedVersion: 2
-        x: 40
+        x: 36
         y: 0
-        width: 20
+        width: 18
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -175,9 +175,9 @@ TextureImporter:
       name: PlactAttack_3
       rect:
         serializedVersion: 2
-        x: 60
+        x: 54
         y: 0
-        width: 20
+        width: 18
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -196,9 +196,9 @@ TextureImporter:
       name: PlactAttack_4
       rect:
         serializedVersion: 2
-        x: 80
+        x: 72
         y: 0
-        width: 20
+        width: 18
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -217,9 +217,9 @@ TextureImporter:
       name: PlactAttack_5
       rect:
         serializedVersion: 2
-        x: 100
+        x: 90
         y: 0
-        width: 20
+        width: 18
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}

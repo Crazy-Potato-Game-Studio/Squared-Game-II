@@ -4,30 +4,35 @@ using UnityEngine;
 
 public class PlantEnemy : MonoBehaviour
 {
-    private BoxCollider2D bc2d;
-    private Animator anim;
-    public Transform player;
-    void Start()
+    private bool playerInRange;
+    private BoxCollider2D rangeCollider;
+    [SerializeField] private Animator animator;
+
+    void Awake()
     {
-        bc2d = GetComponent<BoxCollider2D>();
-        anim = GetComponent<Animator>();
+        rangeCollider = GetComponent<BoxCollider2D>();
     }
-    void OnTriggerEnter2D(Collider2D col)
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Player"){
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        if(other.gameObject.tag == "Player"){
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.gameObject.tag == "Player"){
+            playerInRange = false;
+        }
+    }
+
+    void Update()
     {
-        if(col.gameObject.tag == "Player"){
-            anim.SetBool("playerInDistance", true);
-        }
-    }
-    void OnTriggerExit2D(Collider2D col){
-        if(col.gameObject.tag == "Player"){
-            anim.SetBool("playerInDistance", false);
-        }
-    }
-    void Update(){
-        if(player.position.x > transform.position.x){
-            transform.localScale = new Vector2(-1, 1);
-        }else{
-            transform.localScale = new Vector2(1, 1);
-        }
+        animator.SetBool("plantAngry", playerInRange);
     }
 }
