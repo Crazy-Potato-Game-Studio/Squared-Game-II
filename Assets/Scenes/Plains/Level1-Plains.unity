@@ -54220,6 +54220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 964497249592846192, guid: 6c06cec95c3a0a6489b969de8ebc7679, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 964497249592846195, guid: 6c06cec95c3a0a6489b969de8ebc7679, type: 3}
       propertyPath: m_FalloffIntensity
       value: 1

@@ -29,6 +29,10 @@ public class SceneManagement : MonoBehaviour
         }
     }
 
+    public void LoadLevel(int sceneNumber){
+        SceneManager.LoadScene(sceneNumber);
+    }
+
     public void PouseGame(){
         Time.timeScale = 0;
         inGameMenu.GetComponent<InGameMenu>().ShowInGameMenu();
