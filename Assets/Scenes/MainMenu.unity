@@ -78926,6 +78926,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4937557040214918961, guid: d386f68265d08764eaf6fe4f74c742c8, type: 3}
+      propertyPath: m_MaxValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4937557040214918961, guid: d386f68265d08764eaf6fe4f74c742c8, type: 3}
+      propertyPath: m_MinValue
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 4937557040214918963, guid: d386f68265d08764eaf6fe4f74c742c8, type: 3}
       propertyPath: m_Name
       value: VolumeControl

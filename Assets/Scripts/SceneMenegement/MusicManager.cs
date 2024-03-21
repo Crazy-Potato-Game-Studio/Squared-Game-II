@@ -1,28 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
-    private AudioClip currentClip;
     private AudioSource source;
-    private bool songBreak = false;
+    [SerializeField] private AudioClip plains;
+    [SerializeField] private AudioClip electricity;
+    [SerializeField] private AudioClip portals;
+    [SerializeField] private AudioClip temple;
 
     private void Awake() {
         source = GetComponent<AudioSource>();
-    }
-
-    private void Update() {
-        if(!source.isPlaying && !songBreak){
-            StartCoroutine("BreakBetweenSongs");
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 8:
+                PlayNewSong(electricity);
+                break;
+            case 10:
+                PlayNewSong(portals);
+                break;
+            case 11:
+                PlayNewSong(temple);
+                break;
+            default:
+                break;
         }
     }
 
-    IEnumerator BreakBetweenSongs(){
-        songBreak = true;
-        currentClip = source.clip;
-        yield return new WaitForSeconds(25f);
-        source.PlayOneShot(currentClip);
-        songBreak = false;
+    public void PlayNewSong(AudioClip currentClip){
+        source.clip = currentClip;
+        source.Play();
     }
 }

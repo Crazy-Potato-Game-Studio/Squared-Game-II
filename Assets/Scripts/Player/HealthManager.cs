@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class HealthManager : MonoBehaviour
@@ -23,12 +24,7 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private BoxCollider2D resistanceCollider;
     private bool isResistant;
 
-    [SerializeField] private SpriteRenderer playerGFX;
-    [SerializeField] private SpriteRenderer playerEyesGFX;    
-    [SerializeField] private GameObject bow;
-    [SerializeField] private GameObject cubeRotator;
-    [SerializeField] private AudioClip deathMusic;
-    [SerializeField] private GameObject menuButtons;
+    [SerializeField] private GameObject levelRestarterPrefab;
 
     void Awake() {
         pasekZycia = GameObject.FindGameObjectWithTag("HealthUI");
@@ -74,30 +70,6 @@ public class HealthManager : MonoBehaviour
         GameObject.Destroy(floatingPoint, 0.5f);
     }
 
-    public void StartLavaDamage(){
-        InvokeRepeating("LavaDamage", 0, 0.2f);
-        floatingLava =  Instantiate(lavaText, transform.position + new Vector3(0,1f,0), transform.rotation);
-        floatingLava.transform.parent = this.transform;
-    }
-
-    public void LavaDamage(){
-        playerHealth -= 1f;
-        sumOfLavaDamage += 1f;
-        floatingLava.GetComponent<TextMeshPro>().text = "- " + sumOfLavaDamage.ToString();
-        GetComponent<EntityChangeColor>().ChangeColor();
-        UpdateSliderValue();
-        UpdateHealthText();
-        if(playerHealth < 0){
-            PlayerDeath();
-        }
-    }
-
-    public void StopLavaDamage(){
-        sumOfLavaDamage = 0;
-        CancelInvoke();
-        Destroy(floatingLava);
-    }
-
     private void UpdateHealthText(){
         healthText.text = playerHealth.ToString() + "/" + maxPlayerHealth.ToString();  
     }
@@ -121,21 +93,9 @@ public class HealthManager : MonoBehaviour
         resistanceCollider.enabled = false;
     }
 
-    void PlayerDeath(){
-        GetComponent<PlayerMovement>().enabled = false;
-        playerGFX.enabled = false;
-        playerEyesGFX.enabled = false;
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        Destroy(playerCollider);
-        Destroy(resistanceCollider);
-        bow.SetActive(false);
-        cubeRotator.SetActive(false);
-        AudioSource src;
-        src = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<AudioSource>();
-        src.clip = deathMusic;
-        src.Play(0);
-        src.volume = 0.3f;
-        menuButtons.SetActive(true);
-        Destroy(this);
+    public void PlayerDeath(){
+        GameObject levelRestarter = Instantiate(levelRestarterPrefab, transform);
+        levelRestarter.transform.parent = null;
+        Destroy(this.gameObject);
     }
 }

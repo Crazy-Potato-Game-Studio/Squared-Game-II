@@ -13,8 +13,10 @@ public class CameraFollow : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        if(player){
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, player.position, smoothSpeed);
+            transform.position = smoothedPosition + offset;
+        }
         
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, player.position, smoothSpeed);
-        transform.position = smoothedPosition + offset;
     }
 }

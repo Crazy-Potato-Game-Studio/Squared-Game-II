@@ -7,6 +7,7 @@ public class Arm : MonoBehaviour
     [SerializeField] private GameObject cubeGFX;
     [SerializeField] private GameObject cubePrefab;
     [SerializeField] private GameObject bow;
+    [SerializeField] private GameObject hintPrefab;
     public bool canLiftCube;
     public bool canThrowCube = true;
     public GameObject groundCube;

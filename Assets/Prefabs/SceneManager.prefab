@@ -45,9 +45,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 127cc98831fa1a84dbed4bcd9a70530b, type: 2}
   m_audioClip: {fileID: 8300000, guid: ae919a4a3d1649d44a802bbb023306d6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.697
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -154,3 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d6c6f6e6632074fb4e5d02176ad27b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plains: {fileID: 8300000, guid: ae919a4a3d1649d44a802bbb023306d6, type: 3}
+  electricity: {fileID: 8300000, guid: dc21100f5051a634db7d2826d88a5fe9, type: 3}
+  portals: {fileID: 8300000, guid: 877474f355459a74595ef2df0375b333, type: 3}
+  temple: {fileID: 8300000, guid: d944c3c9960bbe04e9caa9c4f87a89c9, type: 3}

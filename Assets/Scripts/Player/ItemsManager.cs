@@ -25,7 +25,7 @@ public class ItemsManager : MonoBehaviour
     }
 
     private void Update() {
-        if(Input.GetKey(KeyCode.H)){
+        if(Input.GetKeyDown(KeyCode.H)){
             if(potionsCount > 0){
                 UsePotion();
             }
@@ -48,7 +48,6 @@ public class ItemsManager : MonoBehaviour
 
         Destroy(other.gameObject);
         
-
         switch (name)
         {
             case "Heart":

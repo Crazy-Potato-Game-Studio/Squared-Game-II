@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Collider2D col;
+    private float gravityForce;
     [SerializeField] private Collider2D resistanceCollider;
     public float speed;
     public float jumpForce;
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         defaultMaterial = playerSprite.material;
+        gravityForce = rb.gravityScale;
     }
 
     void FixedUpdate()
@@ -60,11 +63,15 @@ public class PlayerMovement : MonoBehaviour
             if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && extraJumps > 0){
                 rb.velocity = Vector2.up * jumpForce;
                 extraJumps--;
-                source.PlayOneShot(jumpClip);
+                if(!col.IsTouchingLayers(LayerMask.GetMask("Climbing")) || resistanceCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
+                    source.PlayOneShot(jumpClip);
+                }
             }
 
             if(col.IsTouchingLayers(LayerMask.GetMask("Climbing")) || resistanceCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
                 ClimbLadder();
+            }else{
+                rb.gravityScale = gravityForce;
             }
         }
     }
@@ -72,6 +79,8 @@ public class PlayerMovement : MonoBehaviour
     void ClimbLadder(){
         Vector2 climbVelocity = new Vector2 (rb.velocity.x, Input.GetAxis("Vertical") * climbSpeed);
         rb.velocity = climbVelocity;
+
+        rb.gravityScale = 0;
     }
 
     IEnumerator PlayerFrozen(){

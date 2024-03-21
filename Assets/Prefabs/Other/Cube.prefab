@@ -287,3 +287,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outline: {fileID: 4492946262537439692}
+  hintPrefab: {fileID: 4336013608476755844, guid: 0d8ceed4e073bb5478c52f434e3bf44d, type: 3}

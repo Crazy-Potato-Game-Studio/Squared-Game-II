@@ -399,12 +399,7 @@ MonoBehaviour:
   sumOfLavaDamage: 0
   playerCollider: {fileID: 964497249592846203}
   resistanceCollider: {fileID: 1484434279285575288}
-  playerGFX: {fileID: 191257540860994499}
-  playerEyesGFX: {fileID: 3828119049051012315}
-  bow: {fileID: 1484434278949605050}
-  cubeRotator: {fileID: 1484434278668224395}
-  deathMusic: {fileID: 8300000, guid: 3eadf5fad4db2c04288e911bdef35e1d, type: 3}
-  menuButtons: {fileID: 0}
+  levelRestarterPrefab: {fileID: 7475199729345324204, guid: 9b0184dd3b792d74c80ba43f2d7ae8f3, type: 3}
 --- !u!114 &964497249592846206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,6 +476,7 @@ MonoBehaviour:
   cubeGFX: {fileID: 1484434279094141617}
   cubePrefab: {fileID: 4492946263009504804, guid: c1eaf74dc428c014d9195b9b5041173c, type: 3}
   bow: {fileID: 1484434278949605050}
+  hintPrefab: {fileID: 4336013608476755844, guid: 0d8ceed4e073bb5478c52f434e3bf44d, type: 3}
   canLiftCube: 0
   canThrowCube: 1
   groundCube: {fileID: 0}
