@@ -10,6 +10,7 @@ public class LevelLoader : MonoBehaviour
     private GameObject sceneManagement;
 
     [SerializeField] private AudioClip plains;
+    [SerializeField] private AudioClip slimeKing;
     [SerializeField] private AudioClip electricity;
     [SerializeField] private AudioClip portals;
     [SerializeField] private AudioClip temple;
@@ -27,12 +28,15 @@ public class LevelLoader : MonoBehaviour
             switch (nextLevelNumber)
             {
                 case 8:
+                    sceneManagement.GetComponent<MusicManager>().PlayNewSong(slimeKing);
+                    break;
+                case 9:
                     sceneManagement.GetComponent<MusicManager>().PlayNewSong(electricity);
                     break;
-                case 10:
+                case 11:
                     sceneManagement.GetComponent<MusicManager>().PlayNewSong(portals);
                     break;
-                case 11:
+                case 12:
                     sceneManagement.GetComponent<MusicManager>().PlayNewSong(temple);
                     break;
                 default:

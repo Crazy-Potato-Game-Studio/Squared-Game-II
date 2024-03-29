@@ -23,6 +23,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private GameObject heart;
     [SerializeField] private GameObject arrow;
 
+    [SerializeField] private bool isBoss;
+
     private void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         slider.maxValue = enemyHealth;
@@ -48,6 +50,9 @@ public class EnemyHealth : MonoBehaviour
     }
 
     private void EnemyDie(){
+        if(GetComponent<SlimeKing>()){
+            GetComponent<SlimeKing>().OpenTheDoors();
+        }
         SpawnDeathParticles();
         SpawnItems();
         GameObject.Destroy(this.gameObject);
@@ -72,7 +77,9 @@ public class EnemyHealth : MonoBehaviour
     }
 
     private void SetSliderLength(){
-        sliderRect.sizeDelta = new Vector2(enemyHealth * 3, 12.4f);
+        if(!isBoss){
+            sliderRect.sizeDelta = new Vector2(enemyHealth * 3, 12.4f);
+        }
     }
 
     private void SpawnItems(){

@@ -375,7 +375,7 @@ MonoBehaviour:
   checkRadius: 0.2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 35544
+    m_Bits: 2132696
   extraJumps: 5
 --- !u!114 &964497249592846204
 MonoBehaviour:

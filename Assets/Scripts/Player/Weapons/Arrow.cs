@@ -15,7 +15,7 @@ public class Arrow : MonoBehaviour
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(this.gameObject, 10f);
+        Destroy(gameObject, 10f);
     }
 
     private void Update() {
@@ -32,7 +32,7 @@ public class Arrow : MonoBehaviour
             if(!hasHit){
                 arrowDamage = Mathf.Round(arrowDamage);
                 other.gameObject.GetComponent<EnemyHealth>().LoseHP(arrowDamage);
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
 
@@ -44,8 +44,8 @@ public class Arrow : MonoBehaviour
             Destroy(GetComponent<PolygonCollider2D>());
         }
 
-        if(other.gameObject.tag == "Water"){
-            Destroy(this.gameObject);
+        if(other.gameObject.tag == "Water" || other.gameObject.tag == "Lava"){
+            Destroy(gameObject);
         }
 
         if(other.gameObject.tag == "Cube"){
@@ -61,7 +61,7 @@ public class Arrow : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Ground"){
             isTouchingGround = true;
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

@@ -20,7 +20,7 @@ public class Arm : MonoBehaviour
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.E)){
+        if(Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.E)){
             if(bow.activeSelf == true && canLiftCube){
                 LiftCube();
             }else if(bow.activeSelf == false && canThrowCube){

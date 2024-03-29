@@ -1432,38 +1432,22 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 752977569}
     m_ColliderPaths:
-    - - X: -509999900
-        Y: 228749959
-      - X: -509999900
-        Y: 230000041
-      - X: -509999959
-        Y: 230000100
-      - X: -550000041
-        Y: 230000100
-      - X: -550000100
-        Y: 230000041
-      - X: -550000100
-        Y: 228749959
-      - X: -550000041
-        Y: 228749900
-      - X: -509999959
-        Y: 228749900
-    - - X: -509999900
-        Y: 188749959
-      - X: -509999900
-        Y: 190000041
-      - X: -509999959
-        Y: 190000100
-      - X: -530000041
-        Y: 190000100
-      - X: -530000100
-        Y: 190000041
-      - X: -530000100
-        Y: 188749959
-      - X: -530000041
-        Y: 188749900
-      - X: -509999959
-        Y: 188749900
+    - - X: -510000000
+        Y: 230000000
+      - X: -550000000
+        Y: 230000000
+      - X: -550000000
+        Y: 228750000
+      - X: -510000000
+        Y: 228750000
+    - - X: -510000000
+        Y: 190000000
+      - X: -530000000
+        Y: 190000000
+      - X: -530000000
+        Y: 188750000
+      - X: -510000000
+        Y: 188750000
     - - X: -430000000
         Y: 160000000
       - X: -460000000
@@ -1472,22 +1456,14 @@ CompositeCollider2D:
         Y: 158750000
       - X: -430000000
         Y: 158750000
-    - - X: -529999900
-        Y: 148749959
-      - X: -529999900
-        Y: 150000041
-      - X: -529999959
-        Y: 150000100
-      - X: -550000041
-        Y: 150000100
-      - X: -550000100
-        Y: 150000041
-      - X: -550000100
-        Y: 148749959
-      - X: -550000041
-        Y: 148749900
-      - X: -529999959
-        Y: 148749900
+    - - X: -530000000
+        Y: 150000000
+      - X: -550000000
+        Y: 150000000
+      - X: -550000000
+        Y: 148750000
+      - X: -530000000
+        Y: 148750000
     - - X: -430000000
         Y: 130000000
       - X: -450000000
@@ -1514,22 +1490,22 @@ CompositeCollider2D:
         Y: 58750000
   m_CompositePaths:
     m_Paths:
-    - - {x: -51.000027, y: 22.87499}
-      - {x: -51.000027, y: 23.00001}
-      - {x: -55.000015, y: 22.999975}
-      - {x: -54.999973, y: 22.87499}
-    - - {x: -51.000027, y: 18.87499}
-      - {x: -51.000027, y: 19.00001}
-      - {x: -53.00001, y: 18.999975}
-      - {x: -52.999973, y: 18.87499}
+    - - {x: -51.00003, y: 22.875}
+      - {x: -51.00003, y: 23}
+      - {x: -55, y: 22.999971}
+      - {x: -54.99997, y: 22.875}
+    - - {x: -51.00003, y: 18.875}
+      - {x: -51.00003, y: 19}
+      - {x: -53, y: 18.999971}
+      - {x: -52.999973, y: 18.875}
     - - {x: -43.00003, y: 15.875}
       - {x: -43.00003, y: 16}
       - {x: -46, y: 15.999971}
       - {x: -45.999973, y: 15.875}
-    - - {x: -53.000027, y: 14.87499}
-      - {x: -53.000027, y: 15.00001}
-      - {x: -55.000015, y: 14.999974}
-      - {x: -54.999973, y: 14.87499}
+    - - {x: -53.00003, y: 14.875}
+      - {x: -53.00003, y: 15}
+      - {x: -55, y: 14.999971}
+      - {x: -54.99997, y: 14.875}
     - - {x: -43.00003, y: 12.875}
       - {x: -43.00003, y: 13}
       - {x: -45, y: 12.99997}
@@ -1577,6 +1553,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf8fe0843ab9674cbb5f827cb1307d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignorePlayer:
+    serializedVersion: 2
+    m_Bits: 33032
+  collideWithPlayer:
+    serializedVersion: 2
+    m_Bits: 303368
 --- !u!1 &765857818
 GameObject:
   m_ObjectHideFlags: 0
@@ -90768,6 +90750,142 @@ Transform:
   m_Father: {fileID: 1849076900}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1930661396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1930661397}
+  - component: {fileID: 1930661399}
+  - component: {fileID: 1930661398}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1930661397
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930661396}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 899368180622754536}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 30}
+  m_SizeDelta: {x: 1000, y: 50}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &1930661398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930661396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Press RMB to drop the cube.
+
+    You can use it to jump higher.'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: c3e60bf1dfac005448faf9feb153b2e4, type: 2}
+  m_sharedMaterial: {fileID: -5091551437216329321, guid: c3e60bf1dfac005448faf9feb153b2e4, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1930661399
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930661396}
+  m_CullTransparentMesh: 1
 --- !u!1 &1935396187
 GameObject:
   m_ObjectHideFlags: 0
@@ -91104,6 +91222,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86755d96b73d91d4e912898d52c80724, type: 3}
+--- !u!224 &899368180622754536 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 899368179575662419, guid: 86755d96b73d91d4e912898d52c80724, type: 3}
+  m_PrefabInstance: {fileID: 899368180622754535}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1484434279263081925
 PrefabInstance:
   m_ObjectHideFlags: 0

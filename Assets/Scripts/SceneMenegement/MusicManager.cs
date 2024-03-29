@@ -7,6 +7,7 @@ public class MusicManager : MonoBehaviour
 {
     private AudioSource source;
     [SerializeField] private AudioClip plains;
+    [SerializeField] private AudioClip slimeKing;
     [SerializeField] private AudioClip electricity;
     [SerializeField] private AudioClip portals;
     [SerializeField] private AudioClip temple;
@@ -16,12 +17,15 @@ public class MusicManager : MonoBehaviour
         switch (SceneManager.GetActiveScene().buildIndex)
         {
             case 8:
+                PlayNewSong(slimeKing);
+                break;
+            case 9:
                 PlayNewSong(electricity);
                 break;
-            case 10:
+            case 11:
                 PlayNewSong(portals);
                 break;
-            case 11:
+            case 12:
                 PlayNewSong(temple);
                 break;
             default:

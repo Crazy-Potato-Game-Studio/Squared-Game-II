@@ -340,7 +340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8508609216244678110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 48.1, y: 7.64, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8508609214704667964}
@@ -518,6 +518,7 @@ MonoBehaviour:
   maxAmountOfDroppedItems: 6
   heart: {fileID: 3710692091689001022, guid: 4d14450ae6a641546ad5c874972ef365, type: 3}
   arrow: {fileID: 397587817886829463, guid: ea60d531008c4c34d934824ccccd852d, type: 3}
+  isBoss: 0
 --- !u!114 &1380649052699956086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,7 +547,7 @@ MonoBehaviour:
   agroDistance: 15
   layerMask:
     serializedVersion: 2
-    m_Bits: 303168
+    m_Bits: 270400
   moveSpeed: 7
   animator: {fileID: 8508609214704667955}
   raycastPoint: {fileID: 1616133628377431141}

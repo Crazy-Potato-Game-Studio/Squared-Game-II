@@ -5,6 +5,8 @@ using UnityEngine;
 public class VerticalPlatform : MonoBehaviour
 {
     private PlatformEffector2D effector;
+    [SerializeField] private LayerMask ignorePlayer;
+    [SerializeField] private LayerMask collideWithPlayer;
 
     void Start()
     {
@@ -14,13 +16,13 @@ public class VerticalPlatform : MonoBehaviour
     void Update()
     {
         if(Input.GetKey(KeyCode.S)){
-            effector.rotationalOffset = 180f;
+            effector.colliderMask = ignorePlayer;
             StartCoroutine(TimeWaiter());
         }
     }
 
     IEnumerator TimeWaiter(){
         yield return new WaitForSeconds(0.2f);
-        effector.rotationalOffset = 0f;
+        effector.colliderMask = collideWithPlayer;
     }
 }

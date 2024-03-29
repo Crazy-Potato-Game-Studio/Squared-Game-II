@@ -45,11 +45,11 @@ public class SceneManagement : MonoBehaviour
     }
 
     public void LoadNextLevel(){
-        if(SceneManager.GetActiveScene().buildIndex <7 && SceneManager.GetActiveScene().buildIndex >=4){
+        if(SceneManager.GetActiveScene().buildIndex <8 && SceneManager.GetActiveScene().buildIndex >=4){
             SceneManager.LoadScene(1);
-        }else if(SceneManager.GetActiveScene().buildIndex <10 && SceneManager.GetActiveScene().buildIndex >=7){
+        }else if(SceneManager.GetActiveScene().buildIndex <11 && SceneManager.GetActiveScene().buildIndex >=8){
             SceneManager.LoadScene(2);
-        }else if(SceneManager.GetActiveScene().buildIndex <12 && SceneManager.GetActiveScene().buildIndex >=10){
+        }else if(SceneManager.GetActiveScene().buildIndex <13 && SceneManager.GetActiveScene().buildIndex >=11){
             SceneManager.LoadScene(3);
         }
         

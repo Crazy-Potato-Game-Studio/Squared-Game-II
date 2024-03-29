@@ -17,6 +17,7 @@ public class Bow : MonoBehaviour
     [SerializeField] SpriteRenderer bowGFX;
     public float bowCharge;
     bool canFire;
+    bool blockShooting;
 
     private void Update() {
         if(GetComponentInParent<ItemsManager>().arrowCount > 0){
@@ -26,9 +27,14 @@ public class Bow : MonoBehaviour
         }
 
         if(Input.GetMouseButton(0) && canFire && Time.timeScale == 1){
-            ChargeBow();
+            if(!blockShooting){
+                ChargeBow();
+            }
         }else if(Input.GetMouseButtonUp(0) && canFire && Time.timeScale == 1){
-            Shoot();
+            if(!blockShooting){
+                Shoot();
+            }
+            blockShooting = false;
         }else{
             if(bowCharge > 0f){
                 bowCharge -= 1f * Time.deltaTime;
@@ -73,6 +79,14 @@ public class Bow : MonoBehaviour
 
         if(bowCharge > 1f && bowCharge <= 1.5f){
             bowGFX.sprite = bowSprites[2];
+        }
+
+        if(Input.GetMouseButtonDown(1)){
+            bowCharge = 0;
+            canFire = false;
+            blockShooting = true;
+            bowGFX.sprite = bowSprites[0];
+            arrowGFX.enabled = false;
         }
     }
 }
