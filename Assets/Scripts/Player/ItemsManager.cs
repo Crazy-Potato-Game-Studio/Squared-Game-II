@@ -15,11 +15,10 @@ public class ItemsManager : MonoBehaviour
     [SerializeField] private AudioClip powerPickupSound;
 
     private void Awake() {
-        arrowCount = 10;
 
         arrowsText = GameObject.FindGameObjectWithTag("ArrowsUI").GetComponentInChildren<TextMeshProUGUI>();
         potionsText = GameObject.FindGameObjectWithTag("PotionsUI").GetComponentInChildren<TextMeshProUGUI>();
-
+        arrowCount = 5;
         UpdatePotionsCount();
         UpdateArrowsCount();
     }

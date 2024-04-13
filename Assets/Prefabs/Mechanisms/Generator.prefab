@@ -83,8 +83,8 @@ GameObject:
   - component: {fileID: 5960503956613340301}
   - component: {fileID: 5960503956613340300}
   - component: {fileID: 5960503956613340307}
-  - component: {fileID: 5960503956613340302}
   - component: {fileID: 5960503956613340303}
+  - component: {fileID: 5960503956613340302}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -176,22 +176,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.3
---- !u!114 &5960503956613340302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5960503956613340306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbec72c28a9bbaa438eeef75b81dbcd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerAnim: {fileID: 5960503956971585617}
-  turningOnSound: {fileID: 8300000, guid: 82933d73d88d19c46be2916035cb5476, type: 3}
-  source: {fileID: 5960503956613340303}
-  hint: {fileID: 5960503957225204544}
 --- !u!82 &5960503956613340303
 AudioSource:
   m_ObjectHideFlags: 0
@@ -288,6 +272,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5960503956613340302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5960503956613340306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbec72c28a9bbaa438eeef75b81dbcd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerAnim: {fileID: 5960503956971585617}
+  turningOnSound: {fileID: 8300000, guid: 82933d73d88d19c46be2916035cb5476, type: 3}
+  source: {fileID: 5960503956613340303}
+  hint: {fileID: 5960503957225204544}
 --- !u!1 &5960503956971585617
 GameObject:
   m_ObjectHideFlags: 0

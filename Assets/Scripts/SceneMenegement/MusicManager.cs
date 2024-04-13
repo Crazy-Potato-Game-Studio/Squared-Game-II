@@ -7,15 +7,20 @@ public class MusicManager : MonoBehaviour
 {
     private AudioSource source;
     [SerializeField] private AudioClip plains;
+    [SerializeField] private AudioClip memeSong;
     [SerializeField] private AudioClip slimeKing;
     [SerializeField] private AudioClip electricity;
     [SerializeField] private AudioClip portals;
     [SerializeField] private AudioClip temple;
+    [SerializeField] private AudioClip weNeedABite;
 
     private void Awake() {
         source = GetComponent<AudioSource>();
         switch (SceneManager.GetActiveScene().buildIndex)
         {
+            case 0:
+                PlayNewSong(memeSong);
+                break;
             case 8:
                 PlayNewSong(slimeKing);
                 break;
@@ -27,6 +32,9 @@ public class MusicManager : MonoBehaviour
                 break;
             case 12:
                 PlayNewSong(temple);
+                break;
+            case 1:
+                PlayNewSong(weNeedABite);
                 break;
             default:
                 break;

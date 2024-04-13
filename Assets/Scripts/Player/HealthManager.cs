@@ -57,8 +57,8 @@ public class HealthManager : MonoBehaviour
     public void GainHealth(float healthPoints){
         playerHealth+= healthPoints;
         UpdateSliderValue();
-        if(playerHealth > 100){
-            playerHealth = 100;
+        if(playerHealth > maxPlayerHealth){
+            playerHealth = maxPlayerHealth;
         } 
         UpdateHealthText();
     }

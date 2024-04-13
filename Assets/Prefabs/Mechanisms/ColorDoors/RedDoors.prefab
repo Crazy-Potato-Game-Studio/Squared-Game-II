@@ -4981,7 +4981,7 @@ GameObject:
   - component: {fileID: 1578168710215086082}
   m_Layer: 0
   m_Name: RedDoors
-  m_TagString: Untagged
+  m_TagString: colorDoors
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

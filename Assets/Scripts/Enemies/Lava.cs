@@ -7,7 +7,7 @@ public class Lava : MonoBehaviour
     private ParticleSystem lavaParticles;
     [SerializeField] GameObject particles;
     [SerializeField] AudioSource source;
-
+    [SerializeField] private float lavaDamage = 25f;
 
     private void Start() {
         lavaParticles = particles.GetComponent<ParticleSystem>();
@@ -21,7 +21,7 @@ public class Lava : MonoBehaviour
             instantiatedParticles.transform.parent = null;
             instantiatedParticles.Play();
             Destroy(instantiatedParticles.gameObject, 1);
-            GetComponent<HealthManager>().PlayerDeath();
+            GetComponent<HealthManager>().LoseHealth(lavaDamage);
         }
     }
 

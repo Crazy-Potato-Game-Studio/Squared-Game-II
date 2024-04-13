@@ -14,6 +14,7 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private AudioClip electricity;
     [SerializeField] private AudioClip portals;
     [SerializeField] private AudioClip temple;
+    [SerializeField] private AudioClip memeSong;
 
     private void Awake() {
         sceneManagement = GameObject.FindGameObjectWithTag("SceneManager");
@@ -27,6 +28,9 @@ public class LevelLoader : MonoBehaviour
 
             switch (nextLevelNumber)
             {
+                case 0:
+                    sceneManagement.GetComponent<MusicManager>().PlayNewSong(memeSong);
+                    break;
                 case 8:
                     sceneManagement.GetComponent<MusicManager>().PlayNewSong(slimeKing);
                     break;

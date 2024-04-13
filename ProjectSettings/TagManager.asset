@@ -30,6 +30,7 @@ TagManager:
   - InGameMenu
   - MenuControler
   - colorDoors
+  - PressurePlates
   layers:
   - Default
   - TransparentFX

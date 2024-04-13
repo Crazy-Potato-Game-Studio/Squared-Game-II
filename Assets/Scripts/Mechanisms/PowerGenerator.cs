@@ -53,11 +53,20 @@ public class PowerGenerator : MonoBehaviour
             for(int i = 0; i < lamps.Length; i++){
                 lamps[i].GetComponent<Lamp>().LampOn();
             }
+            SetPressurePlates();
         }else{
             for(int i = 0; i < lamps.Length; i++){
                 lamps[i].GetComponent<Lamp>().LampOff();
             }
         }
         
+    }
+
+    private void SetPressurePlates(){
+        GameObject[] pressurePlates = GameObject.FindGameObjectsWithTag("PressurePlates");
+        Debug.Log(pressurePlates.Length);
+        for(int i = 0; i < pressurePlates.Length; i++){
+            pressurePlates[i].GetComponent<PressurePlate>().hasElectricity = true;
+        }
     }
 }
