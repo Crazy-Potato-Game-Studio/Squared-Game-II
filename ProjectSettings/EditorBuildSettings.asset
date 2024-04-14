@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Temple/4-2.unity
     guid: 130889b78a5ed1b41a19c3823deaa379
+  - enabled: 1
+    path: Assets/Scenes/Temple/4-3.unity
+    guid: 2099379da09c6db4b80f9fc16264482e
   m_configObjects: {}

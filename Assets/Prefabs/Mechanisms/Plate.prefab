@@ -368,4 +368,4 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 6054b0c9b8dbc08448c3f712bed474ce, type: 3}
   source: {fileID: 3816024548456502796}
   animator: {fileID: 6503991762101521145}
-  hasElectricity: 0
+  hasElectricity: 1

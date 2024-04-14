@@ -49,7 +49,7 @@ public class SceneManagement : MonoBehaviour
             SceneManager.LoadScene(1);
         }else if(SceneManager.GetActiveScene().buildIndex <11 && SceneManager.GetActiveScene().buildIndex >=8){
             SceneManager.LoadScene(2);
-        }else if(SceneManager.GetActiveScene().buildIndex <13 && SceneManager.GetActiveScene().buildIndex >=11){
+        }else if(SceneManager.GetActiveScene().buildIndex <14 && SceneManager.GetActiveScene().buildIndex >=11){
             SceneManager.LoadScene(3);
         }
         

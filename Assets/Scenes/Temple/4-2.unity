@@ -178,6 +178,14 @@ PrefabInstance:
       propertyPath: thisColorDoors
       value: 
       objectReference: {fileID: 1371237639}
+    - target: {fileID: 3435195661487300426, guid: ecbe0d04657dd284a9e470563ddcaac4, type: 3}
+      propertyPath: sameColorDoors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3435195661487300426, guid: ecbe0d04657dd284a9e470563ddcaac4, type: 3}
+      propertyPath: sameColorDoors.Array.data[0]
+      value: 
+      objectReference: {fileID: 1371237639}
     - target: {fileID: 3435195661487300427, guid: ecbe0d04657dd284a9e470563ddcaac4, type: 3}
       propertyPath: m_Name
       value: BlueColorChanger
@@ -2717,6 +2725,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 224267545}
     m_Modifications:
+    - target: {fileID: 2634241955016523357, guid: 068a19f4bb02c804bb54f00104ef68f9, type: 3}
+      propertyPath: obejctsToTurnOn.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634241955016523357, guid: 068a19f4bb02c804bb54f00104ef68f9, type: 3}
+      propertyPath: obejctsToTurnOn.Array.data[0]
+      value: 
+      objectReference: {fileID: 823683481}
     - target: {fileID: 8347049533882140905, guid: 068a19f4bb02c804bb54f00104ef68f9, type: 3}
       propertyPath: whatToTurnOn
       value: 
@@ -120073,6 +120089,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 224267545}
     m_Modifications:
+    - target: {fileID: 2634241955016523357, guid: 068a19f4bb02c804bb54f00104ef68f9, type: 3}
+      propertyPath: obejctsToTurnOn.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634241955016523357, guid: 068a19f4bb02c804bb54f00104ef68f9, type: 3}
+      propertyPath: obejctsToTurnOn.Array.data[0]
+      value: 
+      objectReference: {fileID: 1875250111}
     - target: {fileID: 8347049533882140905, guid: 068a19f4bb02c804bb54f00104ef68f9, type: 3}
       propertyPath: whatToTurnOn
       value: 
@@ -121516,6 +121540,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 53467511284501404, guid: 12690b1bf980a784b86f6aaa26c17fd2, type: 3}
       propertyPath: thisColorDoors
+      value: 
+      objectReference: {fileID: 1729361517}
+    - target: {fileID: 53467511284501404, guid: 12690b1bf980a784b86f6aaa26c17fd2, type: 3}
+      propertyPath: sameColorDoors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 53467511284501404, guid: 12690b1bf980a784b86f6aaa26c17fd2, type: 3}
+      propertyPath: sameColorDoors.Array.data[0]
       value: 
       objectReference: {fileID: 1729361517}
     - target: {fileID: 53467511284501405, guid: 12690b1bf980a784b86f6aaa26c17fd2, type: 3}

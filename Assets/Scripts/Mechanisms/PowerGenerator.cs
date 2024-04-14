@@ -13,6 +13,7 @@ public class PowerGenerator : MonoBehaviour
 
     private void Awake() {
         SetLamps(false);
+        SetPressurePlates(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -44,6 +45,7 @@ public class PowerGenerator : MonoBehaviour
         Debug.Log("Generator on");
         powerAnim.SetActive(true);
         SetLamps(true);
+        SetPressurePlates(true);
     }
 
     private void SetLamps(bool lampOn){
@@ -53,7 +55,6 @@ public class PowerGenerator : MonoBehaviour
             for(int i = 0; i < lamps.Length; i++){
                 lamps[i].GetComponent<Lamp>().LampOn();
             }
-            SetPressurePlates();
         }else{
             for(int i = 0; i < lamps.Length; i++){
                 lamps[i].GetComponent<Lamp>().LampOff();
@@ -62,11 +63,18 @@ public class PowerGenerator : MonoBehaviour
         
     }
 
-    private void SetPressurePlates(){
+    private void SetPressurePlates(bool platesOn){
         GameObject[] pressurePlates = GameObject.FindGameObjectsWithTag("PressurePlates");
-        Debug.Log(pressurePlates.Length);
-        for(int i = 0; i < pressurePlates.Length; i++){
-            pressurePlates[i].GetComponent<PressurePlate>().hasElectricity = true;
+        if(platesOn){
+            for(int i = 0; i < pressurePlates.Length; i++){
+                pressurePlates[i].GetComponent<PressurePlate>().hasElectricity = true;
+            }
+        }else{
+            for(int i = 0; i < pressurePlates.Length; i++){
+                pressurePlates[i].GetComponent<PressurePlate>().hasElectricity = false;
+            }
         }
+        
     }
+
 }

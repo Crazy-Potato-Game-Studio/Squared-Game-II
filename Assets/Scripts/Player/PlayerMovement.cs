@@ -62,6 +62,9 @@ public class PlayerMovement : MonoBehaviour
         if(!isFrozen){
             if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && extraJumps > 0){
                 rb.velocity = Vector2.up * jumpForce;
+                if(extraJumps == 1){
+                    
+                }
                 extraJumps--;
                 if(!col.IsTouchingLayers(LayerMask.GetMask("Climbing")) || resistanceCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
                     source.PlayOneShot(jumpClip);

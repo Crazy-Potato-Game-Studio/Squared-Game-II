@@ -10,7 +10,7 @@ public class PressurePlate : MonoBehaviour
     [SerializeField] private Animator animator;
     private int numberOfWeights = 0;
     private bool isPressed;
-    public bool hasElectricity;
+    public bool hasElectricity = true;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if((other.gameObject.tag == "Player" || other.gameObject.tag == "Cube" || other.gameObject.tag == "ResistanceCollider") && hasElectricity){
