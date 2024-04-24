@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6517769539419978136}
   - component: {fileID: 6517769539419978139}
   - component: {fileID: 7189063971636200679}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: GreenDoors
   m_TagString: colorDoors
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 6517769539535584477}
   - component: {fileID: 6517769539535584479}
   - component: {fileID: 6517769539535584476}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: ParticlesR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4918,7 +4918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6517769539584638943}
   - component: {fileID: 6517769539584638942}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5000,7 +5000,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6517769540169758318}
   - component: {fileID: 6517769540169758321}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: TopGFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5083,7 +5083,7 @@ GameObject:
   - component: {fileID: 6517769540647037083}
   - component: {fileID: 6517769540647037085}
   - component: {fileID: 6517769540647037082}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: ParticlesL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9886,7 +9886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6517769541302348480}
   - component: {fileID: 6517769541302348483}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: BottomGFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

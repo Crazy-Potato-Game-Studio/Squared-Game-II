@@ -471,7 +471,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3685031865738957460, guid: aaaf0b6826e04f04285ca1ff8516daa3, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3685031865738957460, guid: aaaf0b6826e04f04285ca1ff8516daa3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -479,7 +479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3685031865738957460, guid: aaaf0b6826e04f04285ca1ff8516daa3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.7
+      value: -21.6
       objectReference: {fileID: 0}
     - target: {fileID: 3685031865738957460, guid: aaaf0b6826e04f04285ca1ff8516daa3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -956,6 +956,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf8fe0843ab9674cbb5f827cb1307d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignorePlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  collideWithPlayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &765857818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,7 +1543,7 @@ Transform:
   m_Children:
   - {fileID: 2092103562}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1012351661
 GameObject:

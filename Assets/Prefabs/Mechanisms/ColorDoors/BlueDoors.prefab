@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2854833969406731207}
   - component: {fileID: 2854833969406731200}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: TopGFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 2854833969461468715}
   - component: {fileID: 2854833969461468714}
   - component: {fileID: 8574208349815744123}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: BlueDoors
   m_TagString: colorDoors
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2854833970365207224}
   - component: {fileID: 2854833970365207225}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2854833970698358588}
   - component: {fileID: 2854833970698358589}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: BottomGFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

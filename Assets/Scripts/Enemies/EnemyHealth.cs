@@ -29,6 +29,9 @@ public class EnemyHealth : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         slider.maxValue = enemyHealth;
         UpdateSlider();
+        if(!isBoss){
+            enemyHealthBar.SetActive(false);
+        }
         SetSliderLength();
     }
 
@@ -74,6 +77,15 @@ public class EnemyHealth : MonoBehaviour
     private void UpdateSlider(){
         slider.value = enemyHealth;
         enemyHealthBar.SetActive(true);
+        if(!isBoss){
+            StopAllCoroutines();
+            StartCoroutine(HideHealthBar());
+        }
+    }
+
+    IEnumerator HideHealthBar(){
+        yield return new WaitForSeconds(3f);
+        enemyHealthBar.SetActive(false);
     }
 
     private void SetSliderLength(){
