@@ -14,18 +14,17 @@ public class EntityChangeColor : MonoBehaviour
         originalMaterial = spriteRenderer.material;
     }
 
-    public void ChangeColor(){
+    public void ChangeColor(float resistanceTime){
         if(flashRoutine != null){
             StopCoroutine(flashRoutine);
         }
-
-        flashRoutine =  StartCoroutine(FlashRoutine());
+        flashRoutine =  StartCoroutine(FlashRoutine(resistanceTime));
     }
 
-    public IEnumerator FlashRoutine(){
+    public IEnumerator FlashRoutine(float resistanceTime){
         spriteRenderer.material = flashMaterial;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(resistanceTime);
 
         spriteRenderer.material = originalMaterial;
 

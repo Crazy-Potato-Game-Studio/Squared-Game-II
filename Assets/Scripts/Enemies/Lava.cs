@@ -21,7 +21,7 @@ public class Lava : MonoBehaviour
             instantiatedParticles.transform.parent = null;
             instantiatedParticles.Play();
             Destroy(instantiatedParticles.gameObject, 1);
-            GetComponent<HealthManager>().LoseHealth(lavaDamage);
+            GetComponent<HealthManager>().LoseHealth(lavaDamage, 1f);
         }
     }
 

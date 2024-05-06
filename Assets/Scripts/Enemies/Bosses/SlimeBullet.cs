@@ -18,7 +18,7 @@ public class SlimeBullet : MonoBehaviour
         }
 
         if(other.gameObject.tag == "Player"){
-            other.gameObject.GetComponent<HealthManager>().LoseHealth(15f);
+            other.gameObject.GetComponent<HealthManager>().LoseHealth(15f, 0.7f);
             Destroy(gameObject);
         }
     }

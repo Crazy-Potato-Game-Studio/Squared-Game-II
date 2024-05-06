@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 72674415213128332}
   - component: {fileID: 461908677848653666}
   - component: {fileID: 8863099280445661439}
+  - component: {fileID: 1492687739810288720}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -429,6 +430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 4460779277440924698, guid: 81f3b2529eb776440897165ad8f13201, type: 3}
   source: {fileID: 1484434278948681410}
+  lavaDamage: 25
 --- !u!114 &964497249592846205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,6 +537,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHasPowerPickup: 0
+--- !u!114 &1492687739810288720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964497249592846192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bb99656e53ad042bb476be19c4b188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalVolume: {fileID: 11400000, guid: 62e71933ae7188448a82518a7d9b3842, type: 2}
 --- !u!1 &1484434278416372327
 GameObject:
   m_ObjectHideFlags: 0

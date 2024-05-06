@@ -8,7 +8,7 @@ public class EnemyDealDamage : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Player"){
-            other.gameObject.GetComponent<HealthManager>().LoseHealth(damage);
+            other.gameObject.GetComponent<HealthManager>().LoseHealth(damage, damage / 20);
         }
     }
 }

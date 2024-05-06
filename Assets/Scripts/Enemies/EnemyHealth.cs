@@ -44,7 +44,7 @@ public class EnemyHealth : MonoBehaviour
 
         source.PlayOneShot(clip);
 
-        GetComponent<EntityChangeColor>().ChangeColor();
+        GetComponent<EntityChangeColor>().ChangeColor(1f);
 
         if(enemyHealth <= 0)
         {

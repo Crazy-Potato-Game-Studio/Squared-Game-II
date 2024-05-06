@@ -19,6 +19,7 @@ public class HealthManager : MonoBehaviour
     public GameObject floatingLava;
     public float sumOfLavaDamage = 0;
     private TextMeshProUGUI healthText;
+    private IEnumerator coroutine;
 
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private BoxCollider2D resistanceCollider;
@@ -36,10 +37,10 @@ public class HealthManager : MonoBehaviour
         UpdateHealthText();
     }
 
-    public void LoseHealth(float healthPoints){
+    public void LoseHealth(float healthPoints, float resistanceTime){
         if(!isResistant){
             playerHealth-= healthPoints;
-            GetComponent<EntityChangeColor>().ChangeColor();
+            GetComponent<EntityChangeColor>().ChangeColor(resistanceTime);
             UpdateSliderValue();
 
             if(playerHealth <= 0){
@@ -50,7 +51,8 @@ public class HealthManager : MonoBehaviour
             FlyingDamage(healthPoints); 
 
             UpdateHealthText();
-            StartCoroutine("EnableResistanceCollider");
+            coroutine = EnableResistanceCollider(resistanceTime);
+            StartCoroutine(coroutine);
         }
     }
 
@@ -78,11 +80,11 @@ public class HealthManager : MonoBehaviour
         pasekZycia.GetComponent<Slider>().value = playerHealth;
     }
 
-    IEnumerator EnableResistanceCollider(){
+    public IEnumerator EnableResistanceCollider(float resistanceTime){
         isResistant = true;
         resistanceCollider.enabled = true;
         playerCollider.enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(resistanceTime);
 
         EnablePlayerCollider();
     }

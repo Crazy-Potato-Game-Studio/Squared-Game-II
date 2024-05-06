@@ -23,7 +23,7 @@ public class Laser : MonoBehaviour
             endParticles.transform.position = hit.point;
 
             if(hit.collider.gameObject.tag == "Player"){
-                hit.collider.gameObject.GetComponent<HealthManager>().LoseHealth(50f);
+                hit.collider.gameObject.GetComponent<HealthManager>().LoseHealth(50f, 3f);
             }
 
         }else{
