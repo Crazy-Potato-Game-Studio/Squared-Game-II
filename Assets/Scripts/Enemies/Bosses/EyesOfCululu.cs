@@ -4,13 +4,12 @@ using UnityEngine;
 using Pathfinding;
 using Unity.Mathematics;
 
-public class AcidBat : MonoBehaviour
+public class EyesOfCululu : MonoBehaviour
 {
     [SerializeField] private AIPath aiPath;
     [SerializeField] private Transform returnPoint;
     [SerializeField] private GameObject enemyCanvas;
     private GameObject player;
-    private float distance;
     private bool canShoot;
     [SerializeField] private float canShootDistance;
     [SerializeField] private GameObject acidBullet;
@@ -20,19 +19,13 @@ public class AcidBat : MonoBehaviour
     private void Awake() {
         GetComponent<AIDestinationSetter>().target = returnPoint;
         player = GameObject.FindGameObjectWithTag("Player");
-        GetComponent<AIPath>().endReachedDistance = canShootDistance;
         InvokeRepeating("Shoot", 0, 0.05f);
     }
 
     void Update(){
         if(player){
-            distance = Vector2.Distance(transform.position, player.transform.position);
 
-            if(distance < 15f){
-                GetComponent<AIDestinationSetter>().target = player.transform;
-            }else if(distance > 15f ){
-                GetComponent<AIDestinationSetter>().target = returnPoint;
-            }
+            GetComponent<AIDestinationSetter>().target = player.transform;
 
             if(Vector2.Distance(transform.position, player.transform.position) <= canShootDistance + 1){
                 
@@ -44,7 +37,6 @@ public class AcidBat : MonoBehaviour
                     canShoot = true;
                 }else{
                     canShoot = false;
-                    GetComponent<AIPath>().endReachedDistance = 0.5f;
                 }
             }else{
                 canShoot = false;
@@ -82,3 +74,4 @@ public class AcidBat : MonoBehaviour
         }  
     }
 }
+

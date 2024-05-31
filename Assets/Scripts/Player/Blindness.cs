@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,16 +11,17 @@ public class Blindness : MonoBehaviour
     [SerializeField] private VolumeProfile globalVolume;
     private Vignette vignette;
     private GameObject blindnessIcon;
+    [SerializeField] private float vignetteInitValue;
 
     private void Start() {
         globalVolume.TryGet<Vignette>(out vignette);
-        vignette.active = false;
+        SetVignette(vignetteInitValue);
         blindnessIcon = GameObject.FindGameObjectWithTag("Blindness");
         blindnessIcon.SetActive(false);
     }
 
     public void StartBlindness(){
-        vignette.active = true;
+        SetVignette(1);
         blindnessIcon.SetActive(true);
         StopAllCoroutines();
         StartCoroutine(StopBlindness());
@@ -27,7 +29,11 @@ public class Blindness : MonoBehaviour
 
     IEnumerator StopBlindness(){
         yield return new WaitForSeconds(5f);
-        vignette.active = false;
+        SetVignette(vignetteInitValue);
         blindnessIcon.SetActive(false);
+    }
+
+    private void SetVignette(float vignetteValue){
+        vignette.intensity.value = vignetteValue;
     }
 }
