@@ -2513,10 +2513,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ignorePlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 33032
   collideWithPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 303368
 --- !u!4 &754243723 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8979148546735429227, guid: ea60d531008c4c34d934824ccccd852d, type: 3}

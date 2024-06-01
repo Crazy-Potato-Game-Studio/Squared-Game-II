@@ -45,6 +45,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Tunnels/2-4.unity
     guid: afe8639877e190e43851026af49d8e23
   - enabled: 1
+    path: Assets/Scenes/Tunnels/2-5.unity
+    guid: 8bfdd87d2c025a944b83826efeeb3cb3
+  - enabled: 1
     path: Assets/Scenes/Temple/4-1.unity
     guid: 120d75bd00d170a4f8d4cd36d177d592
   - enabled: 1
