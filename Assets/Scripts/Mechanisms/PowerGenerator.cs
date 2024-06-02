@@ -68,6 +68,7 @@ public class PowerGenerator : MonoBehaviour
         if(platesOn){
             for(int i = 0; i < pressurePlates.Length; i++){
                 pressurePlates[i].GetComponent<PressurePlate>().hasElectricity = true;
+                pressurePlates[i].GetComponent<PressurePlate>().ResetCollider();
             }
         }else{
             for(int i = 0; i < pressurePlates.Length; i++){

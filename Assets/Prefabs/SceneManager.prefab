@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 212217801229464910}
   - component: {fileID: 212217801229464945}
   - component: {fileID: 2698485406755921498}
-  - component: {fileID: 6421477041402157216}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: SceneManager
@@ -142,21 +141,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: 0
---- !u!114 &6421477041402157216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212217801229464908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d6c6f6e6632074fb4e5d02176ad27b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plains: {fileID: 8300000, guid: ae919a4a3d1649d44a802bbb023306d6, type: 3}
-  slimeKing: {fileID: 8300000, guid: 8c69be957a053b5419bf35167e64722a, type: 3}
-  eyesOfClulu: {fileID: 8300000, guid: 31fcff4fd800aa4449ad8dfd5d923d89, type: 3}
-  electricity: {fileID: 8300000, guid: dc21100f5051a634db7d2826d88a5fe9, type: 3}
-  portals: {fileID: 8300000, guid: 877474f355459a74595ef2df0375b333, type: 3}
-  temple: {fileID: 8300000, guid: d944c3c9960bbe04e9caa9c4f87a89c9, type: 3}

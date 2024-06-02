@@ -27,7 +27,9 @@ public class PressurePlate : MonoBehaviour
             if(numberOfWeights == 1){
                PlaySound(); 
             }
-            numberOfWeights--;
+            if(numberOfWeights > 0){
+                numberOfWeights--;
+            }
             UpdateNumberOfWeights();
         }
     }
@@ -74,5 +76,10 @@ public class PressurePlate : MonoBehaviour
 
     private void UpdateAnimatorBool(){
         animator.SetBool("isPressed", isPressed);
+    }
+
+    public void ResetCollider(){
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Collider2D>().enabled = true;
     }
 }
