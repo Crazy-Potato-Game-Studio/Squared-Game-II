@@ -5,15 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
-    public int levelToLoad;
     private GameObject inGameMenu;
+    [SerializeField] private AudioSource audioSource;
+    public string musicName;
+    public int currentLevelNumer;
 
     private void Awake() {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.Escape)){
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)){
             if(SceneManager.GetActiveScene().buildIndex != 0){
                 inGameMenu = GameObject.FindGameObjectWithTag("InGameMenu");
                 if(Time.timeScale == 1){
@@ -45,14 +47,39 @@ public class SceneManagement : MonoBehaviour
     }
 
     public void LoadNextLevel(){
-        if(SceneManager.GetActiveScene().buildIndex <8 && SceneManager.GetActiveScene().buildIndex >=4){
-            SceneManager.LoadScene(1);
-        }else if(SceneManager.GetActiveScene().buildIndex <11 && SceneManager.GetActiveScene().buildIndex >=8){
-            SceneManager.LoadScene(2);
-        }else if(SceneManager.GetActiveScene().buildIndex <99 && SceneManager.GetActiveScene().buildIndex >=11){
-            SceneManager.LoadScene(3);
+        switch (NameOfSceneByBuildIndex(currentLevelNumer + 1))
+        {
+            case '1':
+                //Plains
+                LoadLevel(1);
+            break;
+            case '2':
+                //Tunnels
+                LoadLevel(2);
+            break;
+            case '3':
+                //Winter   
+            break;
+            case '4':
+                //Temple
+                LoadLevel(3);
+            break;
+            case '5':
+                //Hell
+            break;
+            default:
+                // bruh
+            break;
         }
-        
+    }
+
+    private char NameOfSceneByBuildIndex(int buildIndex)
+    {
+        string path = SceneUtility.GetScenePathByBuildIndex(buildIndex);
+        int slash = path.LastIndexOf('/');
+        string name = path.Substring(slash + 1);
+        int dot = name.LastIndexOf('.');
+        return name.Substring(0, dot)[0];
     }
 
     public void LoadFirstScene(){
@@ -84,5 +111,11 @@ public class SceneManagement : MonoBehaviour
         if(Time.timeScale == 0){
             Time.timeScale = 1;
         }
+    }
+
+    public void PlayMusic(AudioClip audioClip){
+        audioSource.clip = audioClip;
+        audioSource.Play();
+        musicName = audioClip.name;
     }
 }

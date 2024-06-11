@@ -32,6 +32,7 @@ TagManager:
   - colorDoors
   - PressurePlates
   - Blindness
+  - Soundtrack
   layers:
   - Default
   - TransparentFX

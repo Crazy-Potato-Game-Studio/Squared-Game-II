@@ -56,6 +56,9 @@ public class EnemyHealth : MonoBehaviour
         if(GetComponent<SlimeKing>()){
             GetComponent<SlimeKing>().OpenTheDoors();
         }
+        if(GetComponent<TheSeekerBoss>()){
+            GetComponent<TheSeekerBoss>().OpenTheDoors();
+        }
         SpawnDeathParticles();
         SpawnItems();
         GameObject.Destroy(this.gameObject);

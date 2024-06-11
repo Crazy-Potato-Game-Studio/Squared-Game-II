@@ -10,15 +10,14 @@ public class LevelLoader : MonoBehaviour
     private GameObject _sceneManagement;
 
     private void Awake() {
-        _sceneManagement = GameObject.FindGameObjectWithTag("SceneManager");
-        nextLevelNumber = _sceneManagement.GetComponent<SceneManagement>().levelToLoad;
         player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<PlayerMovement>().enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player"){
-            SceneManager.LoadScene(nextLevelNumber);
+            _sceneManagement = GameObject.FindGameObjectWithTag("SceneManager");
+            _sceneManagement.GetComponent<SceneManagement>().LoadLevel(_sceneManagement.GetComponent<SceneManagement>().currentLevelNumer+1);
         }
     }
 }
