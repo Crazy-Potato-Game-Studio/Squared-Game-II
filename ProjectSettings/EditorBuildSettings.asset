@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/FallingScenes/TunnelsLoadingScene.unity
     guid: fa5b1e7e2095ed248873e83f07151873
   - enabled: 1
+    path: Assets/Scenes/FallingScenes/WinterLoadingScene.unity
+    guid: 2ec3c512939125d4e8772e6d1af7191e
+  - enabled: 1
     path: Assets/Scenes/FallingScenes/TempleLoadingScene.unity
     guid: caf0dedbb8dd11948b23cedca24ae9f8
   - enabled: 1
@@ -47,6 +50,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tunnels/2-5.unity
     guid: 8bfdd87d2c025a944b83826efeeb3cb3
+  - enabled: 1
+    path: Assets/Scenes/Winter/3-1.unity
+    guid: 2a46821a7e27c8b4eb8718bb97102fcf
   - enabled: 1
     path: Assets/Scenes/Temple/4-1.unity
     guid: 120d75bd00d170a4f8d4cd36d177d592

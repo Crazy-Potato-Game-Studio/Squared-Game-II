@@ -123,7 +123,7 @@ MonoBehaviour:
     m_RuleTransform: 2
   - m_Id: 7
     m_Sprites:
-    - {fileID: -2160835317883551295, guid: 25694b772d9f54642a0e3dfaeab5e526, type: 3}
+    - {fileID: 5449236117264591168, guid: 26723c9aed3fd684fb35e98d27e77b38, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -140,7 +140,7 @@ MonoBehaviour:
     m_RuleTransform: 2
   - m_Id: 8
     m_Sprites:
-    - {fileID: -3894386459863477884, guid: 25694b772d9f54642a0e3dfaeab5e526, type: 3}
+    - {fileID: 6181633935121525593, guid: 26723c9aed3fd684fb35e98d27e77b38, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -157,7 +157,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 10
     m_Sprites:
-    - {fileID: -7353836812904463387, guid: 25694b772d9f54642a0e3dfaeab5e526, type: 3}
+    - {fileID: -1416987311212243531, guid: 26723c9aed3fd684fb35e98d27e77b38, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -174,7 +174,7 @@ MonoBehaviour:
     m_RuleTransform: 2
   - m_Id: 9
     m_Sprites:
-    - {fileID: -613937739168373546, guid: 25694b772d9f54642a0e3dfaeab5e526, type: 3}
+    - {fileID: -335301454654436907, guid: 26723c9aed3fd684fb35e98d27e77b38, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -191,7 +191,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 11
     m_Sprites:
-    - {fileID: -2931684049141251851, guid: 25694b772d9f54642a0e3dfaeab5e526, type: 3}
+    - {fileID: 5856870558985344633, guid: 26723c9aed3fd684fb35e98d27e77b38, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -208,7 +208,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 12
     m_Sprites:
-    - {fileID: 8354616174234693209, guid: 25694b772d9f54642a0e3dfaeab5e526, type: 3}
+    - {fileID: -4384907059832092252, guid: 26723c9aed3fd684fb35e98d27e77b38, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1

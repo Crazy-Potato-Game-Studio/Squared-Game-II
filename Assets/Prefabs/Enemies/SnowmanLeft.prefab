@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathParticles: {fileID: 4039925711168474171, guid: ee8f698a3db5eba41915431bc3349f74, type: 3}
-  enemyHealth: 25
+  enemyHealth: 75
   slider: {fileID: 8503434462623689737}
   sliderRect: {fileID: 8503434462623689736}
   enemyHealthBar: {fileID: 8503434462623689739}
@@ -563,9 +563,11 @@ MonoBehaviour:
   player: {fileID: 0}
   clip: {fileID: 8300000, guid: dc6614beca09347ec9b258f12d154bdd, type: 3}
   source: {fileID: 8503434462984945152}
-  chanceOfDropingItems: 50
+  minAmountOfDroppedItems: 0
+  maxAmountOfDroppedItems: 0
   heart: {fileID: 3710692091689001022, guid: 4d14450ae6a641546ad5c874972ef365, type: 3}
   arrow: {fileID: 397587817886829463, guid: ea60d531008c4c34d934824ccccd852d, type: 3}
+  isBoss: 0
 --- !u!114 &8503434462984945182
 MonoBehaviour:
   m_ObjectHideFlags: 0

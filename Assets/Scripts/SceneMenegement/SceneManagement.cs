@@ -58,11 +58,12 @@ public class SceneManagement : MonoBehaviour
                 LoadLevel(2);
             break;
             case '3':
-                //Winter   
+                //Winter
+                LoadLevel(3);
             break;
             case '4':
                 //Temple
-                LoadLevel(3);
+                LoadLevel(4);
             break;
             case '5':
                 //Hell
