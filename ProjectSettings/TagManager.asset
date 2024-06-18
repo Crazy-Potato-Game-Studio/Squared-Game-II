@@ -33,6 +33,7 @@ TagManager:
   - PressurePlates
   - Blindness
   - Soundtrack
+  - Mirror
   layers:
   - Default
   - TransparentFX
