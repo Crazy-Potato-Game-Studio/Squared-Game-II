@@ -189,7 +189,7 @@ TextureImporter:
       213: 2321694667190823819
     second: WaterLava_65
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -206,10 +206,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -248,6 +250,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -287,6 +291,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1612,9 +1628,71 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      WaterLava_50: 3608552857958552240
+      WaterLava_57: 5583701217231510380
+      WaterLava_13: -5220495911645270722
+      WaterLava_41: 2210283597505976770
+      WaterLava_42: -3568231833024162076
+      WaterLava_46: 6983580996856764510
+      WaterLava_9: 2956328568824292809
+      WaterLava_17: 8729560311423646682
+      WaterLava_32: -4629696542814810589
+      WaterLava_19: -8591770559184107141
+      WaterLava_52: 2699088645250059148
+      WaterLava_31: -1375946773120437461
+      WaterLava_38: 2335844165925223691
+      WaterLava_64: 1333660801816115329
+      WaterLava_8: 3358784980174162282
+      WaterLava_36: -1337425969275984629
+      WaterLava_39: 2199708666289021772
+      WaterLava_1: -557946768799095267
+      WaterLava_59: 1508151842988611044
+      WaterLava_44: 949390913047284591
+      WaterLava_60: -3798424599610361092
+      WaterLava_51: -3631533615192381396
+      WaterLava_12: -4473046782882934502
+      WaterLava_40: -1202516212925724340
+      WaterLava_30: -1046945551365945954
+      WaterLava_21: -151374724435833075
+      WaterLava_63: 7032048428200910395
+      WaterLava_3: -1691016777961083543
+      WaterLava_34: -709712640481164763
+      WaterLava_20: 6502583083972873368
+      WaterLava_28: 5145188847529483023
+      WaterLava_37: -6241689044219664434
+      WaterLava_15: -3801181425008969283
+      WaterLava_26: -6186490964852385273
+      WaterLava_62: -1377830823660440599
+      WaterLava_22: 4647102042628145399
+      WaterLava_55: -987387615959981384
+      WaterLava_23: 8480434586398895400
+      WaterLava_29: -1715681447410680371
+      WaterLava_49: -9153668744896941385
+      WaterLava_11: 8236593705254366961
+      WaterLava_53: 1035984463708719834
+      WaterLava_56: 369223632047068301
+      WaterLava_58: -70173095880399403
+      WaterLava_47: -566667088271097348
+      WaterLava_0: -8490687756662688363
+      WaterLava_65: 2321694667190823819
+      WaterLava_16: -4612930287735324687
+      WaterLava_61: 5565629703781404476
+      WaterLava_14: 8338457448386854095
+      WaterLava_27: -4838822601247717617
+      WaterLava_18: 4473302953119057534
+      WaterLava_35: -6899231564186180360
+      WaterLava_45: -7370876515255782335
+      WaterLava_43: -4316603221976214115
+      WaterLava_25: 3492330564443942968
+      WaterLava_10: -7646206002635663760
+      WaterLava_33: -8952999038810739423
+      WaterLava_54: 4814388322344873999
+      WaterLava_2: -7806072773762331134
+      WaterLava_24: -4601887812532050284
+      WaterLava_48: 148985428382175799
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

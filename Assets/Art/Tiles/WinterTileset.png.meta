@@ -186,7 +186,7 @@ TextureImporter:
       213: 6087071980998634933
     second: WinterTileset_60
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -203,10 +203,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -245,6 +247,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -284,6 +288,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1588,9 +1604,70 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      WinterTileset_5: 6680794142252112752
+      WinterTileset_13: -5451353287410916687
+      WinterTileset_43: -2312124685354325873
+      WinterTileset_46: -9138022598565330035
+      WinterTileset_28: 8297263711446257722
+      WinterTileset_0: 88981196320771615
+      WinterTileset_35: 717712993128145872
+      WinterTileset_55: 7716185028866722342
+      WinterTileset_39: -2184870453546591837
+      WinterTileset_33: -8102815129012298622
+      WinterTileset_49: -3199102101529033957
+      WinterTileset_9: -4161483256999009121
+      WinterTileset_38: 375469006925788231
+      WinterTileset_53: 2877288145308207686
+      WinterTileset_60: 6087071980998634933
+      WinterTileset_8: 2387230377873673903
+      WinterTileset_21: 4611028147205561094
+      WinterTileset_14: -8468638083161079862
+      WinterTileset_58: 591434229132108458
+      WinterTileset_4: -8610943117073429858
+      WinterTileset_24: -1589782807596768264
+      WinterTileset_32: -2650191362586841975
+      WinterTileset_44: -7069690978375260616
+      WinterTileset_11: -669923534307581873
+      WinterTileset_47: 2063152102814198563
+      WinterTileset_7: 667522740340279778
+      WinterTileset_48: -3128656795525430536
+      WinterTileset_52: 1901884239536134287
+      WinterTileset_27: 6817221209448024491
+      WinterTileset_2: 1661451942413982338
+      WinterTileset_19: -2979327823865681364
+      WinterTileset_25: -7919864778759896350
+      WinterTileset_10: 4766698809361920244
+      WinterTileset_34: 1603997677437882297
+      WinterTileset_59: -2273727569160641683
+      WinterTileset_23: 7278355557478941076
+      WinterTileset_3: 4711053954647164902
+      WinterTileset_15: -5558917553676241269
+      WinterTileset_36: 4010797273882647502
+      WinterTileset_12: 1628697460191172352
+      WinterTileset_41: 6671102902101048449
+      WinterTileset_54: 6852617028202126391
+      WinterTileset_1: 5299535208913726446
+      WinterTileset_18: -2139172053380547914
+      WinterTileset_26: -5884700473950050283
+      WinterTileset_56: 1594304671005048735
+      WinterTileset_6: 3441327516732295648
+      WinterTileset_17: 3087267485542614370
+      WinterTileset_42: -1393038582735341358
+      WinterTileset_45: -5448092938683144400
+      WinterTileset_20: 914056631918025418
+      WinterTileset_31: 4280508779023001537
+      WinterTileset_30: -2320734256769199962
+      WinterTileset_57: 2707294600295342847
+      WinterTileset_40: -2561303598317004455
+      WinterTileset_29: 2618150133734960964
+      WinterTileset_50: 953559551410576245
+      WinterTileset_37: -7757368578546100278
+      WinterTileset_22: -832830396215290961
+      WinterTileset_51: -2806291499399050723
+      WinterTileset_16: -487984389699472678
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

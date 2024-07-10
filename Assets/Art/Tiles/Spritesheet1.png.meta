@@ -573,7 +573,7 @@ TextureImporter:
       213: 6849892883533624054
     second: Spritesheet1_189
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -590,10 +590,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -632,6 +634,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -671,6 +675,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -4895,9 +4911,199 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Spritesheet1_80: -7789287915414005434
+      Spritesheet1_164: -4170264615941117307
+      Spritesheet1_58: 2090071422162662578
+      Spritesheet1_9: -5161937085243397024
+      Spritesheet1_51: -5743927515515785042
+      Spritesheet1_72: 1121924416717518424
+      Spritesheet1_3: 6177601795840707154
+      Spritesheet1_168: -4009213961588211582
+      Spritesheet1_25: -968970861074572676
+      Spritesheet1_134: 4528032786334852116
+      Spritesheet1_151: -4691440638145990180
+      Spritesheet1_32: 1218214077836943930
+      Spritesheet1_83: 8076175887951793554
+      Spritesheet1_133: -2727360848772401629
+      Spritesheet1_0: -139993833634153166
+      Spritesheet1_183: -3291409778772902618
+      Spritesheet1_78: 7180092607652507684
+      Spritesheet1_136: -8835223572133787883
+      Spritesheet1_34: 4044228886906069883
+      Spritesheet1_8: -1523198248423669392
+      Spritesheet1_41: 1073351164997594478
+      Spritesheet1_170: 5350413090408440812
+      Spritesheet1_152: 5562723809800663330
+      Spritesheet1_184: 3745569618968996328
+      Spritesheet1_159: 4004289185891567492
+      Spritesheet1_165: 4282255089453333472
+      Spritesheet1_85: 7877189795742793697
+      Spritesheet1_161: 9143485531145025132
+      Spritesheet1_6: -2097873456725742669
+      Spritesheet1_155: 5459643348931953880
+      Spritesheet1_59: 5908456656473169565
+      Spritesheet1_10: 4079888383741630625
+      Spritesheet1_4: -8994849766028663371
+      Spritesheet1_56: -2360844033932683788
+      Spritesheet1_153: 7377136427122186944
+      Spritesheet1_137: 1970824588680515786
+      Spritesheet1_67: 7420208727869384926
+      Spritesheet1_12: -4789580830162787579
+      Spritesheet1_143: 4459986832063629773
+      Spritesheet1_26: -6928238006212318523
+      Spritesheet1_130: -8989400882859293035
+      Spritesheet1_166: 7665661107974951195
+      Spritesheet1_91: -5925344298121610417
+      Spritesheet1_139: 6616858318315414825
+      Spritesheet1_74: -4005370341180280672
+      Spritesheet1_110: -3553360216926545345
+      Spritesheet1_113: 3750799137488512946
+      Spritesheet1_104: -940148101030226880
+      Spritesheet1_42: -1370691560107826514
+      Spritesheet1_86: 8218455803556741172
+      Spritesheet1_162: 6830045592484421776
+      Spritesheet1_145: 5374361694863254797
+      Spritesheet1_75: -5436385196054599533
+      Spritesheet1_55: 3455495893156182280
+      Spritesheet1_95: 1009461992858263052
+      Spritesheet1_127: -8244696338627840582
+      Spritesheet1_57: 6355801538992329153
+      Spritesheet1_109: -6197760233973918341
+      Spritesheet1_52: -6819160296946818343
+      Spritesheet1_150: 287660141027198078
+      Spritesheet1_173: -3735016799410699029
+      Spritesheet1_100: 234270597162570568
+      Spritesheet1_121: -1218304805835991015
+      Spritesheet1_157: 5898292649707518090
+      Spritesheet1_50: -5505759992163676765
+      Spritesheet1_73: -2054676010152437894
+      Spritesheet1_45: 4475160528901671717
+      Spritesheet1_160: -5324558787294295176
+      Spritesheet1_47: -1941503057897064062
+      Spritesheet1_123: 8863986916670164981
+      Spritesheet1_76: 2621407025720091851
+      Spritesheet1_128: -5294147958881081917
+      Spritesheet1_182: -6007509277128027630
+      Spritesheet1_70: 6106975910486183261
+      Spritesheet1_146: 9047468702823088050
+      Spritesheet1_11: -6327150098734960775
+      Spritesheet1_114: 9100324704264439568
+      Spritesheet1_108: -3715983641082938019
+      Spritesheet1_132: -5182133569784501027
+      Spritesheet1_53: 3313774018624563243
+      Spritesheet1_147: 2794410539841108843
+      Spritesheet1_125: -3099821582696442049
+      Spritesheet1_89: 6347303388041931546
+      Spritesheet1_87: 5791103014188765823
+      Spritesheet1_167: -7583246501474965726
+      Spritesheet1_24: 598499680510670046
+      Spritesheet1_94: 2214428810732387586
+      Spritesheet1_122: -4408564672608743016
+      Spritesheet1_13: 2725448943715104036
+      Spritesheet1_23: -8785754271125868566
+      Spritesheet1_35: 3019310561187102002
+      Spritesheet1_92: -2728789840493562317
+      Spritesheet1_15: 5552680279429246378
+      Spritesheet1_185: 9104410728672141327
+      Spritesheet1_144: -8431405567053095403
+      Spritesheet1_141: -6234667400227716337
+      Spritesheet1_63: -7790305656416473096
+      Spritesheet1_79: 4141498688195405796
+      Spritesheet1_88: 8229735468026258171
+      Spritesheet1_93: 4300258867684113742
+      Spritesheet1_27: -3402456621170093802
+      Spritesheet1_84: 7599677265337643429
+      Spritesheet1_178: 5902988459149715523
+      Spritesheet1_131: -7017487455931594935
+      Spritesheet1_99: -8123652614553943002
+      Spritesheet1_60: 3035232684247955090
+      Spritesheet1_18: 9191136078039841726
+      Spritesheet1_138: 8151426215693253843
+      Spritesheet1_54: -1790049998541776748
+      Spritesheet1_69: -144176453599553708
+      Spritesheet1_44: -4559952504757576287
+      Spritesheet1_129: -1960612816820226572
+      Spritesheet1_33: -96123994938320567
+      Spritesheet1_48: -808505383344235975
+      Spritesheet1_2: -3553748220296240832
+      Spritesheet1_61: 3199106303895092387
+      Spritesheet1_179: -3456263976494102502
+      Spritesheet1_148: 7367884690461827863
+      Spritesheet1_28: -2667158407594628929
+      Spritesheet1_116: 8187972581008740110
+      Spritesheet1_171: 6973551657742820897
+      Spritesheet1_172: 1886238580678267036
+      Spritesheet1_117: 6257031078118340964
+      Spritesheet1_17: 1141659940495706453
+      Spritesheet1_37: -8464715794917886984
+      Spritesheet1_149: 4670652610815921065
+      Spritesheet1_126: 3655379367196637558
+      Spritesheet1_66: 7637264605203053397
+      Spritesheet1_102: 6119370893039145074
+      Spritesheet1_119: 158003090735448816
+      Spritesheet1_158: 5760938076736481948
+      Spritesheet1_187: -4145404551273100874
+      Spritesheet1_71: 7124880819579511266
+      Spritesheet1_31: 7682556671705759554
+      Spritesheet1_105: -5204258440869349286
+      Spritesheet1_107: -8901904471814858765
+      Spritesheet1_106: -8641240087987562581
+      Spritesheet1_98: 4126291038470610276
+      Spritesheet1_7: 3128533707715064851
+      Spritesheet1_49: -8148826618061190234
+      Spritesheet1_14: -4376701061865799303
+      Spritesheet1_142: -6166478344566667566
+      Spritesheet1_175: -7730793409578819197
+      Spritesheet1_154: 1910737050324107119
+      Spritesheet1_120: 8413591396956113005
+      Spritesheet1_40: -2819861300710805623
+      Spritesheet1_65: -4695855781209915218
+      Spritesheet1_36: 1163265603253292650
+      Spritesheet1_176: 9019574154706765928
+      Spritesheet1_97: -3267148632137204583
+      Spritesheet1_82: 8412341114929064756
+      Spritesheet1_186: 2800067377345170019
+      Spritesheet1_140: -1018004243169440388
+      Spritesheet1_163: -4791291979915292582
+      Spritesheet1_174: 3750093591215614572
+      Spritesheet1_29: 8421428618741053729
+      Spritesheet1_188: 3017644526899662737
+      Spritesheet1_181: -6735606462096518543
+      Spritesheet1_46: -8874513964176932387
+      Spritesheet1_189: 6849892883533624054
+      Spritesheet1_135: 2097542548930576185
+      Spritesheet1_169: -4178163548684238793
+      Spritesheet1_64: -2648223747458914447
+      Spritesheet1_39: 6638908026353988961
+      Spritesheet1_156: 4187766849308912764
+      Spritesheet1_21: 7962014395509646976
+      Spritesheet1_103: 7117187344610548635
+      Spritesheet1_101: 6753582557794135577
+      Spritesheet1_112: 5633602653001569448
+      Spritesheet1_111: -2871491307394144821
+      Spritesheet1_68: 6258673729529531403
+      Spritesheet1_124: -6618429499743611066
+      Spritesheet1_19: 5911422111159638023
+      Spritesheet1_115: 4798063614345210753
+      Spritesheet1_30: 3396734954691758716
+      Spritesheet1_38: 8237653513435830781
+      Spritesheet1_16: -394037782972814813
+      Spritesheet1_62: 5621659028073696142
+      Spritesheet1_81: -7640835135284876617
+      Spritesheet1_96: -4537873910044286466
+      Spritesheet1_22: 875875431305966394
+      Spritesheet1_5: 6220380622081628702
+      Spritesheet1_20: -1086764097122696710
+      Spritesheet1_43: -1283262946814225742
+      Spritesheet1_177: -794979294101092036
+      Spritesheet1_118: -636540669223543277
+      Spritesheet1_77: -6126974941418919123
+      Spritesheet1_180: 3044776066150175614
+      Spritesheet1_1: -3640076120570157223
+      Spritesheet1_90: -8072164973277756113
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

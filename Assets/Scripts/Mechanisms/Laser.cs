@@ -5,45 +5,93 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
+    [SerializeField] private int reflections = 5;
+    [SerializeField] private int maxLength;
     [SerializeField] private LineRenderer lineRenderer;
-    [SerializeField] public Transform shootPoint;
+    [SerializeField] private LayerMask layerMask;
     [SerializeField] private GameObject particles;
+
+    private Ray2D ray;
+    private RaycastHit2D hit;
+    private bool particlesInstantiated = false;
     private GameObject endParticles;
-    Collider2D lastTouchedMirror;
-    public bool endParticlesInstantiated;
+    private int detectorId;
+    private bool hitDetector;
+    GameObject laserDetector = null;
 
-    private void Update(){
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
-        lineRenderer.SetPosition(0, transform.position + shootPoint.position);
+    private void Update() {
+        
+        if(!particlesInstantiated){
+            endParticles = Instantiate(particles, transform.position, transform.rotation);
+            particlesInstantiated = true;
+        }
 
-        if(hit){
-            if(!endParticlesInstantiated)InstantiateEndParticles();
-            lineRenderer.SetPosition(1, hit.point);
-            if(endParticles)endParticles.transform.position = hit.point;
+        ray = new Ray2D(transform.position, transform.up);
 
-            if(hit.collider.gameObject.tag == "Player"){
-                hit.collider.gameObject.GetComponent<HealthManager>().LoseHealth(50f, 3f);
-            }
+        lineRenderer.positionCount = 1;
+        lineRenderer.SetPosition(0, transform.position);
+        float remainingLength = maxLength;
 
-            if(hit.collider.gameObject.tag == "Mirror"){
-                lastTouchedMirror = hit.collider;
-                lastTouchedMirror.gameObject.GetComponent<Mirror>().SwitchLaser(true);
-                //lastTouchedMirror.gameObject.GetComponent<Mirror>().trans = hit.point;
-            }else{
-                if(lastTouchedMirror){
-                    lastTouchedMirror.gameObject.GetComponent<Mirror>().SwitchLaser(false);
+        for(int i = 0; i < reflections; i++){
+
+            hit = Physics2D.Raycast(ray.origin, ray.direction, remainingLength, layerMask);
+
+            if(hit){
+                lineRenderer.positionCount += 1;
+
+                lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
+
+                remainingLength -= Vector2.Distance(ray.origin, hit.point);
+
+                Vector2 updatedDirection = Vector2.Reflect(ray.direction, hit.normal);
+
+                ray = new Ray2D(hit.point + updatedDirection * 0.01f, updatedDirection);
+
+                endParticles.transform.position = lineRenderer.GetPosition(lineRenderer.positionCount-1);
+
+                if(hit.collider.tag == "Mirror"){
+                    hit.collider.GetComponent<Mirror>().ChangeMaterial();
                 }
+                
+                if(hit.collider.tag != "Mirror"){
+                    break;
+                }
+  
+            }else{
+                lineRenderer.positionCount += 1;
+                lineRenderer.SetPosition(lineRenderer.positionCount - 1, ray.origin + ray.direction * remainingLength);
+
             }
 
-        }else{
-            lineRenderer.SetPosition(1, transform.up * 100);
-            if(endParticles)endParticles.transform.position = transform.up * 100;
+        }
+
+        if(hit.collider.tag == "LaserDetector" && !hitDetector){
+            hitDetector = true;
+            detectorId = hit.collider.gameObject.GetInstanceID();
+            laserDetector = hit.collider.gameObject;
+            laserDetector.GetComponent<LaserDetector>().TurnObjects();
+        }
+
+        if(hit.collider.gameObject.GetInstanceID() != detectorId && hitDetector){
+            hitDetector = false;
+            laserDetector.GetComponent<LaserDetector>().TurnObjects();
+        }
+        
+
+
+        DealDamage(hit);
+    }
+
+    private void DealDamage(RaycastHit2D hit){
+        if(hit.collider.gameObject.tag == "Player" || hit.collider.gameObject.tag == "ResistanceCollider"){
+            if(hit.collider.gameObject.tag == "ResistanceCollider"){
+                hit.collider.gameObject.transform.parent.GetComponent<HealthManager>().LoseHealth(100f, 0f);
+            }else{
+                hit.collider.gameObject.GetComponent<HealthManager>().LoseHealth(100f, 0f);
+            }
         }
     }
 
-    private void InstantiateEndParticles(){
-        endParticles = Instantiate(particles, transform.position, transform.rotation);
-        endParticlesInstantiated = true;
-    }
+
     
 }

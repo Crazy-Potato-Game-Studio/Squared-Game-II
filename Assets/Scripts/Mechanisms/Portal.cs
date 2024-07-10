@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class Portal : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class Portal : MonoBehaviour
     public bool isOn;
     private bool playerInRange = false;
     private GameObject player;
-    [SerializeField] private Light2D portalLight;
+    [SerializeField] private UnityEngine.Rendering.Universal.Light2D portalLight;
     [SerializeField] private GameObject trailPrefab;
     [SerializeField] private GameObject portalParticles;
     private AudioSource source;

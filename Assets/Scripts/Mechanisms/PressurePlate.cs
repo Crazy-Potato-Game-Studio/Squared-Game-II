@@ -36,42 +36,38 @@ public class PressurePlate : MonoBehaviour
 
     private void UpdateNumberOfWeights() {
         if(numberOfWeights == 0){
-            TurnObjectsOff();
+            TurnObjects();
             PlaySound();
             isPressed = false;
             UpdateAnimatorBool();
         }else if(numberOfWeights == 1){
-            TurnObjectsOn();
+            TurnObjects();
             isPressed = true;
             UpdateAnimatorBool();
         }
 
-        //Debug.Log("Number of weights:"+numberOfWeights);
     }
 
     private void PlaySound(){
         source.PlayOneShot(clip);
     }
 
-    private void TurnObjectsOn(){
+    private void TurnObjects(){
         for(int i = 0; i < obejctsToTurnOn.Length; i++){
             if(obejctsToTurnOn[i].gameObject.GetComponent<Portal>() != null){
-                obejctsToTurnOn[i].gameObject.GetComponent<Portal>().TurnOn();
+                if(obejctsToTurnOn[i].gameObject.GetComponent<Portal>().isOn){
+                    obejctsToTurnOn[i].gameObject.GetComponent<Portal>().TurnOff();
+                }else{
+                    obejctsToTurnOn[i].gameObject.GetComponent<Portal>().TurnOn();
+                } 
             }else if(obejctsToTurnOn[i].gameObject.GetComponent<Doors>() != null){
-                obejctsToTurnOn[i].gameObject.GetComponent<Doors>().OpenDoors();
+                if(obejctsToTurnOn[i].gameObject.GetComponent<Doors>().doorsOpen){
+                    obejctsToTurnOn[i].gameObject.GetComponent<Doors>().CloseDoors();
+                }else{
+                    obejctsToTurnOn[i].gameObject.GetComponent<Doors>().OpenDoors();
+                } 
             }
         } 
-    }
-
-    private void TurnObjectsOff(){
-        for (int i = 0; i < obejctsToTurnOn.Length; i++)
-        {
-            if(obejctsToTurnOn[i].GetComponent<Portal>() != null){
-                obejctsToTurnOn[i].GetComponent<Portal>().TurnOff();
-            }else if(obejctsToTurnOn[i].GetComponent<Doors>() != null){
-                obejctsToTurnOn[i].GetComponent<Doors>().CloseDoors();
-            }
-        }
     }
 
     private void UpdateAnimatorBool(){

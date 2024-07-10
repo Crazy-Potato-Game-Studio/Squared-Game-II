@@ -54,6 +54,15 @@ public class HealthManager : MonoBehaviour
             coroutine = EnableResistanceCollider(resistanceTime);
             StartCoroutine(coroutine);
         }
+        if(healthPoints == 100){
+            playerHealth = 0;
+            UpdateSliderValue();
+            UpdateHealthText();
+            FlyingDamage(healthPoints); 
+            PlayerDeath();
+            isResistant = true;
+        }
+
     }
 
     public void GainHealth(float healthPoints){

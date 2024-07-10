@@ -26,7 +26,7 @@ public class Snowman : MonoBehaviour
         if(hit){
             if(hit.collider.gameObject.tag == "Player"){
                 if(!isReloading){
-                        StartCoroutine(Shoot());  
+                    StartCoroutine(Shoot());
                 }
             }
         }
@@ -34,7 +34,7 @@ public class Snowman : MonoBehaviour
         if(hit2){
             if(hit2.collider.gameObject.tag == "Player"){
                 if(!isReloading){
-                        StartCoroutine(Shoot());  
+                    StartCoroutine(Shoot());  
                 }
             }
         }

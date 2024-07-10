@@ -34,6 +34,7 @@ TagManager:
   - Blindness
   - Soundtrack
   - Mirror
+  - LaserDetector
   layers:
   - Default
   - TransparentFX
@@ -59,7 +60,7 @@ TagManager:
   - SlimeKing
   - ColorDoors
   - AcidBullet
-  - 
+  - Mirror
   - 
   - 
   - 

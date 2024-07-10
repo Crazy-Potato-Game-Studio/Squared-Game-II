@@ -99,7 +99,7 @@ TextureImporter:
       213: -5597533813390615771
     second: MoreTiles_31
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -116,10 +116,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -158,6 +160,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -197,6 +201,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -892,9 +908,41 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      MoreTiles_27: -4463813639512756152
+      MoreTiles_17: -1484006259794484704
+      MoreTiles_31: -5597533813390615771
+      MoreTiles_19: 8953696991211449808
+      MoreTiles_21: 3178311096859193888
+      MoreTiles_2: -8022261030868143667
+      MoreTiles_22: -2952923071907214854
+      MoreTiles_3: 6716097818389118216
+      MoreTiles_6: 6910342839809379303
+      MoreTiles_11: -4384907059832092252
+      MoreTiles_20: 3587959664890428050
+      MoreTiles_30: 4871976078102431114
+      MoreTiles_29: -3170826630174973731
+      MoreTiles_9: 8194445505566728295
+      MoreTiles_15: -1639396431209410578
+      MoreTiles_24: -335301454654436907
+      MoreTiles_1: 5449236117264591168
+      MoreTiles_0: 5856870558985344633
+      MoreTiles_7: -1273973920751850436
+      MoreTiles_26: -6383719036744005747
+      MoreTiles_23: 7163804016323663973
+      MoreTiles_4: 9028610271318837166
+      MoreTiles_8: -6112737999047376803
+      MoreTiles_10: -1416987311212243531
+      MoreTiles_12: -7330112019261585269
+      MoreTiles_14: -4091236940592538761
+      MoreTiles_5: -6544669150857845462
+      MoreTiles_16: 560463162602225405
+      MoreTiles_18: -2911881444897013199
+      MoreTiles_25: 6181633935121525593
+      MoreTiles_28: 1727521889999204797
+      MoreTiles_13: 2467014297625537988
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
