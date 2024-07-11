@@ -29,6 +29,11 @@ public class SceneManagement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R)){
             ReloadScene();
         }
+
+        if(Input.GetKeyDown(KeyCode.N)){
+            currentLevelNumer = SceneManager.GetActiveScene().buildIndex;
+            LoadNextLevel();
+        }
     }
 
     public void LoadLevel(int sceneNumber){

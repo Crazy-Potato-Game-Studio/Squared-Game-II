@@ -13,39 +13,33 @@ public class PressurePlate : MonoBehaviour
     public bool hasElectricity = true;
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if((other.gameObject.tag == "Player" || other.gameObject.tag == "Cube" || other.gameObject.tag == "ResistanceCollider") && hasElectricity){
-            if(numberOfWeights == 0){
-                PlaySound();
+        if(hasElectricity){
+            if(other.gameObject.tag == "Player" || other.gameObject.tag == "Cube" || other.gameObject.tag == "ResistanceCollider"){
+                numberOfWeights++;
+                if(numberOfWeights == 1){
+                    PlaySound();
+                    isPressed = true;
+                    UpdateAnimatorBool();
+                    TurnObjects();
+                }
+                
             }
-            numberOfWeights++;
-            UpdateNumberOfWeights();
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if((other.gameObject.tag == "Player" || other.gameObject.tag == "Cube" || other.gameObject.tag == "ResistanceCollider") && hasElectricity){
-            if(numberOfWeights == 1){
-               PlaySound(); 
-            }
-            if(numberOfWeights > 0){
+        if (hasElectricity){
+            if(other.gameObject.tag == "Player" || other.gameObject.tag == "Cube" || other.gameObject.tag == "ResistanceCollider"){
                 numberOfWeights--;
+                if(numberOfWeights == 0){
+                    PlaySound();
+                    isPressed = false;
+                    UpdateAnimatorBool();
+                    TurnObjects();
+                }    
             }
-            UpdateNumberOfWeights();
         }
-    }
-
-    private void UpdateNumberOfWeights() {
-        if(numberOfWeights == 0){
-            TurnObjects();
-            PlaySound();
-            isPressed = false;
-            UpdateAnimatorBool();
-        }else if(numberOfWeights == 1){
-            TurnObjects();
-            isPressed = true;
-            UpdateAnimatorBool();
-        }
-
     }
 
     private void PlaySound(){

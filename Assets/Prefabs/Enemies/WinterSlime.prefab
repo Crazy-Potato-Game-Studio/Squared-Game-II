@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787473617467054213}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.88, y: -0.51, z: 0}
+  m_LocalPosition: {x: 1.01, y: -0.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787473617803443460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.79, y: 0.15, z: 0}
+  m_LocalPosition: {x: 0.79, y: -0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -318,7 +318,7 @@ Transform:
   - {fileID: 787473617467054212}
   - {fileID: 787473618398767782}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &969805209968471344
 Rigidbody2D:
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539a91df72190af43bf7ef49704adafa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathParticles: {fileID: 6539145698243051937, guid: e835cbac0f13bfc4e82334306caf1a91, type: 3}
+  deathParticles: {fileID: 4039925711168474171, guid: ee8f698a3db5eba41915431bc3349f74, type: 3}
   enemyHealth: 70
   slider: {fileID: 3407369118215809134}
   sliderRect: {fileID: 8954442435501505986}

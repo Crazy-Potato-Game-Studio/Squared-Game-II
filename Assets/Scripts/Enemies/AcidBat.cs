@@ -14,7 +14,6 @@ public class AcidBat : MonoBehaviour
     private bool canShoot;
     [SerializeField] private float canShootDistance;
     [SerializeField] private GameObject acidBullet;
-    private bool hasLineOfSight = false;
     [SerializeField] private LayerMask seeLayers;
 
     private void Awake() {

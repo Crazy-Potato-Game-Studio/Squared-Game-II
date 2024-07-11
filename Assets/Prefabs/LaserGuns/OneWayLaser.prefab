@@ -117,7 +117,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 1999144264651030559}
   layerMask:
     serializedVersion: 2
-    m_Bits: 32910024
+    m_Bits: 32909896
   particles: {fileID: 8028156346213390333, guid: b2b5a787a2b27a541938666cc39f5c2c, type: 3}
 --- !u!1 &1999144264437105811
 GameObject:

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class Exit : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         GameObject _sceneManagement = GameObject.FindGameObjectWithTag("SceneManager");
-        _sceneManagement.GetComponent<SceneManagement>().currentLevelNumer = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+        _sceneManagement.GetComponent<SceneManagement>().currentLevelNumer = SceneManager.GetActiveScene().buildIndex;
         _sceneManagement.GetComponent<SceneManagement>().LoadNextLevel();
     }
 

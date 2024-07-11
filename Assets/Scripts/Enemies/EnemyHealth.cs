@@ -42,7 +42,9 @@ public class EnemyHealth : MonoBehaviour
 
         UpdateSlider();
 
-        source.PlayOneShot(clip);
+        if(damage < enemyHealth){
+            source.PlayOneShot(clip);
+        }       
 
         GetComponent<EntityChangeColor>().ChangeColor(1f);
 
@@ -101,7 +103,6 @@ public class EnemyHealth : MonoBehaviour
         for(int i = 0; i < Random.Range(minAmountOfDroppedItems, maxAmountOfDroppedItems+1); i++){
             int itemNumber;
             itemNumber = Random.Range(1,3);
-            Debug.Log(itemNumber);
             if(itemNumber == 1){
                 GameObject currentObj = Instantiate(heart, transform);
                 currentObj.transform.parent = null;
