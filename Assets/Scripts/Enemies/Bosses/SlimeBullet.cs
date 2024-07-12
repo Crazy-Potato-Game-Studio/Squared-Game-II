@@ -21,5 +21,12 @@ public class SlimeBullet : MonoBehaviour
             other.gameObject.GetComponent<HealthManager>().LoseHealth(15f, 0.7f);
             Destroy(gameObject);
         }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Water"){
+            Destroy(gameObject);
+        }
     }
 }

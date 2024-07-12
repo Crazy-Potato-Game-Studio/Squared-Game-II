@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class ItemsManager : MonoBehaviour
 {
-    public float arrowCount;
-    private float potionsCount;
+    public int arrowCount;
+    public int potionsCount;
     private TextMeshProUGUI arrowsText;
     public TextMeshProUGUI potionsText;
     [SerializeField] private GameObject heartParticles;
@@ -15,16 +15,14 @@ public class ItemsManager : MonoBehaviour
     [SerializeField] private AudioClip powerPickupSound;
 
     private void Awake() {
-
         arrowsText = GameObject.FindGameObjectWithTag("ArrowsUI").GetComponentInChildren<TextMeshProUGUI>();
         potionsText = GameObject.FindGameObjectWithTag("PotionsUI").GetComponentInChildren<TextMeshProUGUI>();
-        arrowCount = 5;
         UpdatePotionsCount();
         UpdateArrowsCount();
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.H) || Input.GetKeyDown(KeyCode.Q)){
+        if(Input.GetKeyDown(KeyCode.H)){
             if(potionsCount > 0){
                 UsePotion();
             }
@@ -82,7 +80,7 @@ public class ItemsManager : MonoBehaviour
         UpdatePotionsCount();
     }
 
-    void UpdatePotionsCount(){
+    public void UpdatePotionsCount(){
         potionsText.text = potionsCount.ToString();
     }
 

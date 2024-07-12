@@ -19,6 +19,12 @@ public class Exit : MonoBehaviour
             other.GetComponent<BoxCollider2D>().isTrigger = true;
             Destroy(cam.GetComponent<CameraFollow>());
             GetComponent<AudioSource>().Play();
+            
+            int arrowsNum = other.gameObject.GetComponent<ItemsManager>().arrowCount;
+            int potionsNum = other.gameObject.GetComponent<ItemsManager>().potionsCount;
+
+            SavePlayerItems(arrowsNum, potionsNum);
+
             StartCoroutine("WaitAndLoadNextScene");
             StartCoroutine("HidePlayer");
         }
@@ -36,5 +42,11 @@ public class Exit : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         Destroy(player);
+    }
+
+    void SavePlayerItems(int arrowsNum, int potionsNum){
+        if(GameObject.FindGameObjectWithTag("ItemCounter")){
+            GameObject.FindGameObjectWithTag("ItemCounter").GetComponent<ItemsCounter>().SaveItems(arrowsNum, potionsNum);
+        }
     }
 }

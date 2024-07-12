@@ -35,6 +35,7 @@ TagManager:
   - Soundtrack
   - Mirror
   - LaserDetector
+  - ItemCounter
   layers:
   - Default
   - TransparentFX

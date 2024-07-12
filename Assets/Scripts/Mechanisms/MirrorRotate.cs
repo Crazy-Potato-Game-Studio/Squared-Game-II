@@ -28,10 +28,10 @@ public class MirrorRotate : MonoBehaviour
     {
         if(canRotate){
             if(Input.GetKey(KeyCode.Q)){
-                mirror.transform.Rotate(0, 0, 0.2f);
+                mirror.transform.Rotate(0, 0, 0.2f * Time.fixedDeltaTime * 20);
             }
             if(Input.GetKey(KeyCode.E)){
-                mirror.transform.Rotate(0, 0, -0.2f);
+                mirror.transform.Rotate(0, 0, -0.2f * Time.fixedDeltaTime * 20);
             }
         }
 

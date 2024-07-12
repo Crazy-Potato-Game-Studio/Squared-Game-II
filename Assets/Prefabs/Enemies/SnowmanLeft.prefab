@@ -581,7 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathParticles: {fileID: 4039925711168474171, guid: ee8f698a3db5eba41915431bc3349f74, type: 3}
-  enemyHealth: 75
+  enemyHealth: 25
   slider: {fileID: 8503434462623689737}
   sliderRect: {fileID: 8503434462623689736}
   enemyHealthBar: {fileID: 8503434462623689739}

@@ -42,9 +42,7 @@ public class EnemyHealth : MonoBehaviour
 
         UpdateSlider();
 
-        if(damage < enemyHealth){
-            source.PlayOneShot(clip);
-        }       
+        source.PlayOneShot(clip);  
 
         GetComponent<EntityChangeColor>().ChangeColor(1f);
 
