@@ -11,6 +11,8 @@ public class SlimeKing : MonoBehaviour
     [SerializeField] private GameObject slimeBulletPrefab;
     [SerializeField] private AudioClip slimeShootingClip;
     private AudioSource audioSource;
+    [SerializeField] private float shootTimeMin;
+    [SerializeField] private float shootTimeMax;
 
     [SerializeField] private GameObject doors;
 
@@ -18,7 +20,7 @@ public class SlimeKing : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         InvokeRepeating("ChangeDirection", 0f, 5f);
-        InvokeRepeating("Shoot", 7f, Random.Range(8f,14f));
+        InvokeRepeating("Shoot", 7f, Random.Range(shootTimeMin, shootTimeMax));
         audioSource = GetComponent<AudioSource>();
         direction = 1;
     }

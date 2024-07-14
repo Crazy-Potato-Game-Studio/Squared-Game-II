@@ -7974,6 +7974,8 @@ MonoBehaviour:
   - {fileID: 34471064}
   slimeBulletPrefab: {fileID: 6036683997490583081, guid: 9473fba058b25b841b47e7ab56a95bf1, type: 3}
   slimeShootingClip: {fileID: 8300000, guid: 508d38b71a82a204d8ea5247653cfc7e, type: 3}
+  shootTimeMin: 8
+  shootTimeMax: 14
   doors: {fileID: 31151672}
 --- !u!212 &1092309072
 SpriteRenderer:

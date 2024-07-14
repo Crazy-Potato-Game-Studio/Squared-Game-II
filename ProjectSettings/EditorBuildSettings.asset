@@ -63,6 +63,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Winter/3-4.unity
     guid: 8e9c27a1621e14b4faca3a7cdca0be56
   - enabled: 1
+    path: Assets/Scenes/Winter/3-5.unity
+    guid: 233125a00223fbd4fa8835bc1d7dac0a
+  - enabled: 1
     path: Assets/Scenes/Temple/4-1.unity
     guid: 120d75bd00d170a4f8d4cd36d177d592
   - enabled: 1
