@@ -8,6 +8,7 @@ public class Exit : MonoBehaviour
 {
     private GameObject cam;
     private GameObject player;
+    private GameObject audioListener;
 
     private void Awake() {
         cam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -27,6 +28,9 @@ public class Exit : MonoBehaviour
 
             StartCoroutine("WaitAndLoadNextScene");
             StartCoroutine("HidePlayer");
+
+            audioListener = other.gameObject.transform.Find("AudioListener").gameObject;
+            audioListener.transform.parent = null;
         }
     }
 

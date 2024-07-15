@@ -13,33 +13,41 @@ public class PressurePlate : MonoBehaviour
     public bool hasElectricity = true;
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(hasElectricity){
-            if(other.gameObject.tag == "Player" || other.gameObject.tag == "Cube" || other.gameObject.tag == "ResistanceCollider"){
-                numberOfWeights++;
-                if(numberOfWeights == 1){
-                    PlaySound();
-                    isPressed = true;
-                    UpdateAnimatorBool();
-                    TurnObjects();
-                }
-                
-            }
+        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Cube" || other.gameObject.tag == "ResistanceCollider"){
+            numberOfWeights++; 
         }
-
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (hasElectricity){
-            if(other.gameObject.tag == "Player" || other.gameObject.tag == "Cube" || other.gameObject.tag == "ResistanceCollider"){
-                numberOfWeights--;
-                if(numberOfWeights == 0){
-                    PlaySound();
-                    isPressed = false;
-                    UpdateAnimatorBool();
-                    TurnObjects();
-                }    
-            }
+        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Cube" || other.gameObject.tag == "ResistanceCollider"){
+            numberOfWeights--;   
         }
+    }
+
+    private void Update() {
+        if(hasElectricity){
+            if(numberOfWeights == 1 && !isPressed){
+                Pressure();
+            }
+
+            if(numberOfWeights == 0 && isPressed){
+                NoPressure();
+            } 
+        }
+    }
+
+    private void Pressure(){
+        PlaySound();
+        isPressed = true;
+        UpdateAnimatorBool();
+        TurnObjects();
+    }
+
+    private void NoPressure(){
+        PlaySound();
+        isPressed = false;
+        UpdateAnimatorBool();
+        TurnObjects();
     }
 
     private void PlaySound(){
@@ -68,8 +76,4 @@ public class PressurePlate : MonoBehaviour
         animator.SetBool("isPressed", isPressed);
     }
 
-    public void ResetCollider(){
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<Collider2D>().enabled = true;
-    }
 }

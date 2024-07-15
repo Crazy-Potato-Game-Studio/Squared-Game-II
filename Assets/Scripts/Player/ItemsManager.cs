@@ -74,7 +74,7 @@ public class ItemsManager : MonoBehaviour
 
     void UsePotion(){
         potionsCount--;
-        GetComponent<HealthManager>().GainHealth(30f);
+        GetComponent<HealthManager>().GainHealth(20f);
         GameObject currentParticles = Instantiate(heartParticles, transform.position, transform.rotation);
         Destroy(currentParticles, 3f);
         UpdatePotionsCount();

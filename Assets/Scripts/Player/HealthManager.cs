@@ -27,6 +27,8 @@ public class HealthManager : MonoBehaviour
 
     [SerializeField] private GameObject levelRestarterPrefab;
 
+    [SerializeField] private GameObject audioListener;
+
     void Awake() {
         pasekZycia = GameObject.FindGameObjectWithTag("HealthUI");
         healthText = pasekZycia.GetComponentInChildren<TextMeshProUGUI>();
@@ -107,6 +109,7 @@ public class HealthManager : MonoBehaviour
     public void PlayerDeath(){
         GameObject levelRestarter = Instantiate(levelRestarterPrefab, transform);
         levelRestarter.transform.parent = null;
+        audioListener.transform.parent = null;
         Destroy(this.gameObject);
     }
 }
