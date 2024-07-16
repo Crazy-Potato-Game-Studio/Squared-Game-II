@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
         player.transform.parent = null;
         player.transform.localScale = new Vector3(1,1,1);
 
-        if(SceneManager.GetActiveScene().buildIndex > 5){
+        if(SceneManager.GetActiveScene().buildIndex > 6){
             GivePlayerItems();
         }
     }

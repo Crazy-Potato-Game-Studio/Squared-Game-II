@@ -16,7 +16,7 @@ public class SceneManagement : MonoBehaviour
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)){
-            if(SceneManager.GetActiveScene().buildIndex != 0){
+            if(SceneManager.GetActiveScene().buildIndex != 0 || SceneManager.GetActiveScene().buildIndex != 1){
                 inGameMenu = GameObject.FindGameObjectWithTag("InGameMenu");
                 if(Time.timeScale == 1){
                     PouseGame();
@@ -56,19 +56,19 @@ public class SceneManagement : MonoBehaviour
         {
             case '1':
                 //Plains
-                LoadLevel(1);
+                LoadLevel(2);
             break;
             case '2':
                 //Tunnels
-                LoadLevel(2);
+                LoadLevel(3);
             break;
             case '3':
                 //Winter
-                LoadLevel(3);
+                LoadLevel(4);
             break;
             case '4':
                 //Temple
-                LoadLevel(4);
+                LoadLevel(5);
             break;
             case '5':
                 //Hell
@@ -89,13 +89,13 @@ public class SceneManagement : MonoBehaviour
     }
 
     public void LoadFirstScene(){
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(6);
     }
 
     public void LoadMainMenu(){
         SetTimeScaleToOne();
-        if(SceneManager.GetActiveScene().buildIndex != 0){
-            SceneManager.LoadScene(0);
+        if(SceneManager.GetActiveScene().buildIndex != 1){
+            SceneManager.LoadScene(1);
         }
     }
 
@@ -121,6 +121,7 @@ public class SceneManagement : MonoBehaviour
 
     public void PlayMusic(AudioClip audioClip){
         audioSource.clip = audioClip;
+        Debug.Log(audioSource.clip);
         audioSource.Play();
         musicName = audioClip.name;
     }

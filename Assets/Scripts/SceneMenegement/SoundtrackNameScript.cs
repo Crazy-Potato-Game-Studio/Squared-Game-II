@@ -8,6 +8,7 @@ public class SoundtrackNameScript : MonoBehaviour
     private string soundtrackName;
 
     private void Awake() {
+        
         soundtrackName = soundtrack.name;
 
         Search();

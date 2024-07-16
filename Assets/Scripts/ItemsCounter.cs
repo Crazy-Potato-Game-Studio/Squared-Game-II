@@ -19,7 +19,7 @@ public class ItemsCounter : MonoBehaviour
 
     private void Awake() {
         DontDestroyOnLoad(gameObject);
-        levelArray = new Level[SceneManager.sceneCountInBuildSettings-5]; 
+        levelArray = new Level[SceneManager.sceneCountInBuildSettings]; 
     }
 
     public void SaveItems(int arrows, int potions){
@@ -27,5 +27,6 @@ public class ItemsCounter : MonoBehaviour
         levelArray[SceneManager.GetActiveScene().buildIndex] = newLevel;
 
         Debug.Log("Arrows: "+newLevel.arrowsNumber+", Potions: "+newLevel.potionsNumber);
+        Debug.Log(levelArray.Length);
     }
 }

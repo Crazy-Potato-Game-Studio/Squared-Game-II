@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/CrazyPotatoLogo.unity
+    guid: 1f99cbe8da345174a979eb0d63357495
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 033ffd9036de7a641aa5df6e17720c56
   - enabled: 1
