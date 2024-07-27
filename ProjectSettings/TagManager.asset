@@ -36,6 +36,7 @@ TagManager:
   - Mirror
   - LaserDetector
   - ItemCounter
+  - GlobalVolume
   layers:
   - Default
   - TransparentFX
@@ -85,11 +86,11 @@ TagManager:
   - name: Pickups
     uniqueID: 2843231137
     locked: 0
-  - name: Water
-    uniqueID: 2235783587
-    locked: 0
   - name: Objects
     uniqueID: 2644609181
+    locked: 0
+  - name: Water
+    uniqueID: 2235783587
     locked: 0
   - name: Default
     uniqueID: 0

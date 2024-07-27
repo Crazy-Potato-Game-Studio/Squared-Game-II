@@ -40,18 +40,21 @@ EditorBuildSettings:
     guid: 2bfb31b43c36d064f853a482dfa78120
   - enabled: 1
     path: Assets/Scenes/Tunnels/2-1.unity
-    guid: c62b5f55657b9ea40bcdb3831e24628b
+    guid: a7b77e6d2c8f5ff4ebebdc8eab496d22
   - enabled: 1
     path: Assets/Scenes/Tunnels/2-2.unity
-    guid: 4cd90f0883aa09546a2c8b692c9d0777
+    guid: c62b5f55657b9ea40bcdb3831e24628b
   - enabled: 1
     path: Assets/Scenes/Tunnels/2-3.unity
-    guid: a73859325bec9ba4dbc6e4c1d6cd0629
+    guid: 4cd90f0883aa09546a2c8b692c9d0777
   - enabled: 1
     path: Assets/Scenes/Tunnels/2-4.unity
-    guid: afe8639877e190e43851026af49d8e23
+    guid: a73859325bec9ba4dbc6e4c1d6cd0629
   - enabled: 1
     path: Assets/Scenes/Tunnels/2-5.unity
+    guid: afe8639877e190e43851026af49d8e23
+  - enabled: 1
+    path: Assets/Scenes/Tunnels/2-6.unity
     guid: 8bfdd87d2c025a944b83826efeeb3cb3
   - enabled: 1
     path: Assets/Scenes/Winter/3-1.unity

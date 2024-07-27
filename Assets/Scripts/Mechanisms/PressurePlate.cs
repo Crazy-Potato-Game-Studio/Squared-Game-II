@@ -13,13 +13,13 @@ public class PressurePlate : MonoBehaviour
     public bool hasElectricity = true;
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Cube" || other.gameObject.tag == "ResistanceCollider"){
+        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Cube" || other.gameObject.tag == "ResistanceCollider" || other.gameObject.tag == "Enemy"){
             numberOfWeights++; 
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Cube" || other.gameObject.tag == "ResistanceCollider"){
+        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Cube" || other.gameObject.tag == "ResistanceCollider" || other.gameObject.tag == "Enemy"){
             numberOfWeights--;   
         }
     }

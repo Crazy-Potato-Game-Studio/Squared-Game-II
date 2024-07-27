@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
-using System.Threading;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -24,6 +23,9 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private GameObject arrow;
 
     [SerializeField] private bool isBoss;
+
+    [SerializeField] private AudioClip plainsSoundtrack;
+    [SerializeField] private AudioClip tunnelsSoundtrack;
 
     private void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -55,26 +57,28 @@ public class EnemyHealth : MonoBehaviour
     private void EnemyDie(){
         if(GetComponent<SlimeKing>()){
             GetComponent<SlimeKing>().OpenTheDoors();
+            GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManagement>().PlayMusic(plainsSoundtrack);
         }
         if(GetComponent<TheSeekerBoss>()){
             GetComponent<TheSeekerBoss>().OpenTheDoors();
+            GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManagement>().PlayMusic(tunnelsSoundtrack);
         }
         SpawnDeathParticles();
         SpawnItems();
-        GameObject.Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
     private void SpawnDeathParticles(){
         GameObject particles = Instantiate(deathParticles, transform);
         particles.transform.parent = null;
-        GameObject.Destroy(particles, 6f);
+        Destroy(particles, 6f);
     }
 
     void SpawnDamageText(float damage){
         GameObject floatingPoint =  Instantiate(damageText, transform.position, transform.rotation);
         floatingPoint.GetComponent<TextMeshPro>().text = "- " + damage.ToString();
 
-        GameObject.Destroy(floatingPoint, 0.5f);
+        Destroy(floatingPoint, 0.5f);
     }
 
     private void UpdateSlider(){

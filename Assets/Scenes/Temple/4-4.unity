@@ -769,7 +769,7 @@ PrefabInstance:
     - target: {fileID: 8684439218229144249, guid: b773ebf59dc02c343884446124bc1a90, type: 3}
       propertyPath: soundtrack
       value: 
-      objectReference: {fileID: 8300000, guid: d944c3c9960bbe04e9caa9c4f87a89c9, type: 3}
+      objectReference: {fileID: 8300000, guid: 2f244418c6bdf4e46bdfd8c0e985c211, type: 3}
     - target: {fileID: 9013586156049808656, guid: b773ebf59dc02c343884446124bc1a90, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -3587,7 +3587,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1650358115
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -6579,7 +6579,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2059183709
-  m_SortingLayer: -2
+  m_SortingLayer: -1
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
@@ -9,19 +8,29 @@ public class Arrow : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip clip;
+    [SerializeField] private GameObject arrowPickup;
+    private GameObject player;
     public bool isTouchingGround = false;
     bool hasHit;
     public float arrowDamage;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 10f);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update() {
         if(!hasHit){
             float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
-            transform.rotation = UnityEngine.Quaternion.AngleAxis(angle, UnityEngine.Vector3.forward);
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+
+        if(player){
+            if(hasHit && Vector2.Distance(transform.position, player.transform.position) < 1.3){
+                GameObject newArrow = Instantiate(arrowPickup, transform.position, Quaternion.identity);
+                newArrow.transform.parent = null;
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -39,7 +48,7 @@ public class Arrow : MonoBehaviour
         if(other.gameObject.tag == "Ground"){
             hasHit = true;
             
-            rb.velocity = UnityEngine.Vector2.zero;
+            rb.velocity = Vector2.zero;
             rb.isKinematic = true;
             Destroy(GetComponent<PolygonCollider2D>());
         }
@@ -50,7 +59,7 @@ public class Arrow : MonoBehaviour
 
         if(other.gameObject.tag == "Cube"){
             hasHit = true;
-            rb.velocity = UnityEngine.Vector2.zero;
+            rb.velocity = Vector2.zero;
             rb.isKinematic = true;
             Destroy(GetComponent<PolygonCollider2D>());
             transform.parent = other.gameObject.transform;

@@ -5,19 +5,10 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] private GameObject sceneManager;
-    [SerializeField] private GameObject sceneManagerPrefab;
     [SerializeField] private GameObject mainMenu;
-    private GameObject[] sceneManagersCount;
 
     private void Awake() {
-        sceneManagersCount = GameObject.FindGameObjectsWithTag("SceneManager");
-        if(sceneManagersCount.Length > 1){
-            for(int i = 0; i < sceneManagersCount.Length; i++){
-                Destroy(sceneManagersCount[i]);
-            }
-            sceneManager = Instantiate(sceneManagerPrefab);
-            sceneManager.transform.parent = null;
-        }
+        StartCoroutine(Wait());
     }
 
     public void StartGame(){
@@ -40,6 +31,11 @@ public class MenuController : MonoBehaviour
         #else
             Application.Quit();
         #endif
+    }
+
+    private IEnumerator Wait(){
+        yield return new WaitForSeconds(0.3f);
+        sceneManager = GameObject.FindGameObjectWithTag("SceneManager");
     }
 
 }
