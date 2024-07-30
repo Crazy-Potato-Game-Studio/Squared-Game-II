@@ -30,13 +30,13 @@ public class ItemsManager : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag == "Heart" || other.gameObject.tag == "ArrowPickup" || other.gameObject.tag == "Potion" || other.gameObject.tag == "Power"){
+        if(other.gameObject.tag == "Heart" || other.gameObject.tag == "ArrowPickup" || other.gameObject.tag == "Potion" || other.gameObject.tag == "Power" || other.gameObject.tag == "UnoReverseCard"){
             PickupObject(other.gameObject.tag, other);
         }
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        if(other.gameObject.tag == "Heart" || other.gameObject.tag == "ArrowPickup" || other.gameObject.tag == "Potion" || other.gameObject.tag == "Power"){
+        if(other.gameObject.tag == "Heart" || other.gameObject.tag == "ArrowPickup" || other.gameObject.tag == "Potion" || other.gameObject.tag == "Power" || other.gameObject.tag == "UnoReverseCard"){
             other.transform.position = Vector3.MoveTowards(other.transform.position, transform.position, 0.1f);
         }
     }
@@ -66,6 +66,11 @@ public class ItemsManager : MonoBehaviour
                 source.PlayOneShot(pickupSound);
                 potionsCount++;
                 UpdatePotionsCount();  
+            break;
+            case "UnoReverseCard":
+                source.PlayOneShot(pickupSound);
+                UnoReverseCard.hasUnoReverseCard = true; 
+                GetComponent<UnoReverseCard>().AddUnoCard();
             break;
             default:
             break;

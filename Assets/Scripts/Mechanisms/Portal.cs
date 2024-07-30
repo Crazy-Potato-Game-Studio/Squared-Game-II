@@ -7,6 +7,8 @@ public class Portal : MonoBehaviour
 {
 
     public GameObject destinationPortal;
+    private GameObject[] portals;
+    public string portalColor;
     public bool isOn;
     private bool playerInRange = false;
     private GameObject player;
@@ -22,6 +24,16 @@ public class Portal : MonoBehaviour
             TurnOn();
         }else{
             TurnOff();
+        }
+
+        portals = GameObject.FindGameObjectsWithTag("Portal");
+        for (int i = 0; i < portals.Length; i++)
+        {
+            if(portals[i].GetComponent<Portal>().portalColor == portalColor){
+                if(portals[i].name != name){
+                    destinationPortal = portals[i];
+                }
+            }
         }
 
         arrow.transform.right = destinationPortal.transform.position - transform.position;
@@ -48,18 +60,22 @@ public class Portal : MonoBehaviour
             if(playerInRange && Input.GetKeyDown(KeyCode.E)){
                 TeleportPlayer();
             }
+            arrow.SetActive(true);
+        }else{
+            arrow.SetActive(false);
         }
+
     }
 
     public void TurnOn(){
         isOn = true;
-        arrow.SetActive(true);
+        
         portalLight.enabled = true;
     }
 
     public void TurnOff(){
         isOn = false;
-        arrow.SetActive(false);
+        
         portalLight.enabled = false;
     }
 
@@ -73,7 +89,5 @@ public class Portal : MonoBehaviour
         GameObject currentParticles2 = Instantiate(portalParticles, destinationPortal.transform);
         Destroy(currentParticles2, 2f);
     }
-
-
 
 }

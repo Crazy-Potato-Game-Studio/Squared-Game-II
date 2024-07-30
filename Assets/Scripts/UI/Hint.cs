@@ -32,7 +32,14 @@ public class Hint : MonoBehaviour
     }
 
     void SetGFX(bool isOn){
-        hintGFX.SetActive(isOn);
+        if(hintObject.GetComponent<Portal>()){
+            if(hintObject.GetComponent<Portal>().isOn && hintObject.GetComponent<Portal>().destinationPortal.GetComponent<Portal>().isOn){
+                hintGFX.SetActive(isOn);
+            }
+        }else{
+            hintGFX.SetActive(isOn);
+        }
+
     }
 
 }

@@ -25,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private bool isBoss;
 
     [SerializeField] private AudioClip plainsSoundtrack;
+    [SerializeField] private AudioClip winterSoundtrack;
     [SerializeField] private AudioClip tunnelsSoundtrack;
 
     private void Start() {
@@ -55,10 +56,16 @@ public class EnemyHealth : MonoBehaviour
     }
 
     private void EnemyDie(){
-        if(GetComponent<SlimeKing>()){
+        if(GetComponent<SlimeKing>() && name == "SlimeKing"){
             GetComponent<SlimeKing>().OpenTheDoors();
             GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManagement>().PlayMusic(plainsSoundtrack);
         }
+
+        if(GetComponent<SlimeKing>() && name == "SlimeQueen"){
+            GetComponent<SlimeKing>().OpenTheDoors();
+            GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManagement>().PlayMusic(winterSoundtrack);
+        }
+
         if(GetComponent<TheSeekerBoss>()){
             GetComponent<TheSeekerBoss>().OpenTheDoors();
             GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManagement>().PlayMusic(tunnelsSoundtrack);

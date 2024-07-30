@@ -133068,7 +133068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathParticles: {fileID: 5064093000659800768, guid: eeff5fbf7cf48d44f922f3bb92d011a3, type: 3}
-  enemyHealth: 500
+  enemyHealth: 400
   slider: {fileID: 380427728}
   sliderRect: {fileID: 380427727}
   enemyHealthBar: {fileID: 380427726}
@@ -133082,6 +133082,7 @@ MonoBehaviour:
   arrow: {fileID: 397587817886829463, guid: ea60d531008c4c34d934824ccccd852d, type: 3}
   isBoss: 1
   plainsSoundtrack: {fileID: 0}
+  winterSoundtrack: {fileID: 8300000, guid: f9e5e993711ab5f40aecac3730550b9b, type: 3}
   tunnelsSoundtrack: {fileID: 0}
 --- !u!114 &1900734646
 MonoBehaviour:

@@ -26,7 +26,5 @@ public class ItemsCounter : MonoBehaviour
         Level newLevel = new Level(arrows, potions);
         levelArray[SceneManager.GetActiveScene().buildIndex] = newLevel;
 
-        Debug.Log("Arrows: "+newLevel.arrowsNumber+", Potions: "+newLevel.potionsNumber);
-        Debug.Log(levelArray.Length);
     }
 }

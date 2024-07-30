@@ -72,7 +72,7 @@ public class SceneManagement : MonoBehaviour
             break;
             case '5':
                 //???
-                LoadLevel(5);
+                LoadLevel(3);
             break;
             default:
                 // bruh
@@ -122,7 +122,6 @@ public class SceneManagement : MonoBehaviour
 
     public void PlayMusic(AudioClip audioClip){
         audioSource.clip = audioClip;
-        Debug.Log(audioSource.clip);
         audioSource.Play();
         musicName = audioClip.name;
     }

@@ -18,7 +18,6 @@ TagManager:
   - ArrowPickup
   - Heart
   - Trampoline
-  - BouncyCube
   - NextLevelLoader
   - SceneManager
   - PotionsUI
@@ -31,12 +30,13 @@ TagManager:
   - MenuControler
   - colorDoors
   - PressurePlates
-  - Blindness
   - Soundtrack
   - Mirror
   - LaserDetector
   - ItemCounter
   - GlobalVolume
+  - UnoReverse
+  - UnoReverseCard
   layers:
   - Default
   - TransparentFX
@@ -63,7 +63,7 @@ TagManager:
   - ColorDoors
   - AcidBullet
   - Mirror
-  - 
+  - LineRenderer
   - 
   - 
   - 

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    [SerializeField] private GameObject[] obejctsToTurnOn;
+    [HideInInspector] public GameObject[] obejctsToTurnOn;
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource source;
     [SerializeField] private Animator animator;
+
+    [SerializeField] private Material defaultMaterial;
+    [SerializeField] private Material lightMaterial;
+
     private int numberOfWeights = 0;
     private bool isPressed;
     public bool hasElectricity = true;
@@ -32,7 +36,11 @@ public class PressurePlate : MonoBehaviour
 
             if(numberOfWeights == 0 && isPressed){
                 NoPressure();
-            } 
+            }
+
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material = lightMaterial;
+        }else{
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material = defaultMaterial;
         }
     }
 

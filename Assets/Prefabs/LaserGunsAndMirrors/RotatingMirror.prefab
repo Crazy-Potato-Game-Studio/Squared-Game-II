@@ -34,7 +34,7 @@ Transform:
   - {fileID: 5747474008929463290}
   - {fileID: 37202857797617683}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5747474008609950957
 SpriteRenderer:
@@ -349,6 +349,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b47ba9c643d08b64497afb1eefd7007f, type: 3}
+    - target: {fileID: 4336013608827601904, guid: 0d8ceed4e073bb5478c52f434e3bf44d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4336013608827601904, guid: 0d8ceed4e073bb5478c52f434e3bf44d, type: 3}
       propertyPath: m_SortingOrder
       value: 3

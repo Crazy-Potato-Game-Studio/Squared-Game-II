@@ -50,10 +50,10 @@ public class AcidBat : MonoBehaviour
             }
         }
 
-        if(aiPath.desiredVelocity.x >= 0.01f){
+        if(player && aiPath.desiredVelocity.x >= 0.01f){
             transform.localScale = new Vector2(-1f, 1f);
             enemyCanvas.GetComponent<ScaleChanger>().ChangeUIScale(transform.localScale.x);
-        }else if(aiPath.desiredVelocity.x <= 0.01f){
+        }else if(player && aiPath.desiredVelocity.x <= 0.01f){
             transform.localScale = new Vector2(1f, 1f);
             enemyCanvas.GetComponent<ScaleChanger>().ChangeUIScale(transform.localScale.x);
         }
@@ -73,7 +73,7 @@ public class AcidBat : MonoBehaviour
     private void Shoot(){
         if(canShoot){
             GameObject currentBullet = Instantiate(acidBullet, transform.position, Quaternion.identity);
-            if(currentBullet){
+            if(player && currentBullet){
                 currentBullet.transform.right = player.transform.position - transform.position;
             }
             Rigidbody2D rb = currentBullet.GetComponent<Rigidbody2D>();
