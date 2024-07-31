@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour
 {
-
+    static public float difficultyLevel = 1; 
     [SerializeField] private GameObject arrow;
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private float shootingForce = 5f;
@@ -48,7 +48,7 @@ public class Bow : MonoBehaviour
     void Shoot(){
         GameObject newArrow = Instantiate(arrow, shootingPoint.position, shootingPoint.rotation);
         newArrow.GetComponent<Rigidbody2D>().velocity = transform.right * shootingForce * bowCharge;
-        newArrow.GetComponent<Arrow>().arrowDamage = shootingForce * bowCharge;
+        newArrow.GetComponent<Arrow>().arrowDamage = shootingForce * bowCharge * difficultyLevel;
         bowGFX.sprite = bowSprites[0];
 
         source.PlayOneShot(clip);

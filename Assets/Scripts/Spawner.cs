@@ -31,9 +31,17 @@ public class Spawner : MonoBehaviour
 
     private void Awake() {
         SpawnPlayer();
+        ItemsCounter.lastPlayedLevel = SceneManager.GetActiveScene().buildIndex;
     }
 
     private void GivePlayerItems(){
+
+        player.GetComponent<ItemsManager>().arrowCount = SaveSystem.LoadData().lastLevelArrows;
+        player.GetComponent<ItemsManager>().UpdateArrowsCount();
+
+        player.GetComponent<ItemsManager>().potionsCount = SaveSystem.LoadData().lastLevelPotions;
+        player.GetComponent<ItemsManager>().UpdatePotionsCount();
+        /*
         GameObject itemCounter = GameObject.FindGameObjectWithTag("ItemCounter");
         if(itemCounter && itemCounter.GetComponent<ItemsCounter>().levelArray[SceneManager.GetActiveScene().buildIndex-1] != null){
             player.GetComponent<ItemsManager>().arrowCount = itemCounter.GetComponent<ItemsCounter>().levelArray[SceneManager.GetActiveScene().buildIndex-1].arrowsNumber;
@@ -42,6 +50,6 @@ public class Spawner : MonoBehaviour
         if(itemCounter && itemCounter.GetComponent<ItemsCounter>().levelArray[SceneManager.GetActiveScene().buildIndex-1] != null){
             player.GetComponent<ItemsManager>().potionsCount = itemCounter.GetComponent<ItemsCounter>().levelArray[SceneManager.GetActiveScene().buildIndex-1].potionsNumber;
             player.GetComponent<ItemsManager>().UpdatePotionsCount();
-        }
+        }*/
     }
 }

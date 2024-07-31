@@ -29,15 +29,15 @@ public class Elevator : MonoBehaviour
             moveUp = true;
             GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
             cam.transform.parent = transform;
-            cam.GetComponent<CameraFollow>().player = transform;
+            Destroy(cam.GetComponent<CameraFollow>());
         }
 
-        if(moveUp){
-            rb.velocity = new Vector2(0,1f * Time.deltaTime * 250);
-        }
+        
     }
 
     private void FixedUpdate() {
-        
+        if(moveUp){
+           transform.position = new Vector3(transform.position.x, transform.position.y + Time.deltaTime, transform.position.z);
+        }
     }
 }

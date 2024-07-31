@@ -16,7 +16,7 @@ public class SceneManagement : MonoBehaviour
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)){
-            if(SceneManager.GetActiveScene().buildIndex != 0 || SceneManager.GetActiveScene().buildIndex != 1){
+            if(SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1){
                 inGameMenu = GameObject.FindGameObjectWithTag("InGameMenu");
                 if(Time.timeScale == 1){
                     PouseGame();
@@ -28,11 +28,6 @@ public class SceneManagement : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().buildIndex > 5){
             ReloadScene();
-        }
-
-        if(Input.GetKeyDown(KeyCode.N)){
-            currentLevelNumer = SceneManager.GetActiveScene().buildIndex;
-            LoadNextLevel();
         }
     }
 

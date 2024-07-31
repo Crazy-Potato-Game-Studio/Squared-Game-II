@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ItemsCounter : MonoBehaviour
 {
+    public static int lastPlayedLevel = 0;
+
     public class Level{
         public int arrowsNumber;
         public int potionsNumber;
@@ -26,5 +28,6 @@ public class ItemsCounter : MonoBehaviour
         Level newLevel = new Level(arrows, potions);
         levelArray[SceneManager.GetActiveScene().buildIndex] = newLevel;
 
+        SaveSystem.SaveProgress(this);
     }
 }

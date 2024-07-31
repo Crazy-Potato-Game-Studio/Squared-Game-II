@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -20,9 +21,17 @@ public class MenuController : MonoBehaviour
         currentMenu.SetActive(false);
     }
 
+    public void OpenDiscord(){
+        Application.OpenURL("https://discord.gg/7Gta3VFgvz");
+    }
+
     public void OpenMenu(GameObject menuToOpen){
         mainMenu.SetActive(false);
         menuToOpen.SetActive(true);
+    }
+
+    public void Continue(){
+        SceneManager.LoadScene(SaveSystem.LoadData().lastLevelNumber+1);
     }
 
     public void Exit(){
