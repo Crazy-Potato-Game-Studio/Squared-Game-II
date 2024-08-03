@@ -1,13 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField] Transform spawnPoint;
-    [SerializeField] private GameObject player;
+    private GameObject player;
+    [SerializeField] private GameObject playerPrefab;
+    private AudioListener audioListener;
+
+    private void Awake() {
+        audioListener = GetComponent<AudioListener>();
+        audioListener.enabled = true;
+        StartCoroutine(SpawnPlayer(0.2f));
+        ItemsCounter.lastPlayedLevel = SceneManager.GetActiveScene().buildIndex;
+    }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player"){
@@ -20,36 +30,31 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public void SpawnPlayer(){
+    public IEnumerator SpawnPlayer(float timeToWait){
+        yield return new WaitForSeconds(timeToWait);
+
+        audioListener.enabled = false;
+
+        player = Instantiate(playerPrefab, new Vector2(transform.position.x, transform.position.y + 1), quaternion.identity);
         player.transform.parent = null;
-        player.transform.localScale = new Vector3(1,1,1);
+
+        CameraFollowPlayer(player.transform);
 
         if(SceneManager.GetActiveScene().buildIndex > 6){
             GivePlayerItems();
         }
+        
     }
 
-    private void Awake() {
-        SpawnPlayer();
-        ItemsCounter.lastPlayedLevel = SceneManager.GetActiveScene().buildIndex;
+    private void CameraFollowPlayer(Transform player){
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().player = player;
     }
 
     private void GivePlayerItems(){
-
         player.GetComponent<ItemsManager>().arrowCount = SaveSystem.LoadData().lastLevelArrows;
         player.GetComponent<ItemsManager>().UpdateArrowsCount();
 
         player.GetComponent<ItemsManager>().potionsCount = SaveSystem.LoadData().lastLevelPotions;
         player.GetComponent<ItemsManager>().UpdatePotionsCount();
-        /*
-        GameObject itemCounter = GameObject.FindGameObjectWithTag("ItemCounter");
-        if(itemCounter && itemCounter.GetComponent<ItemsCounter>().levelArray[SceneManager.GetActiveScene().buildIndex-1] != null){
-            player.GetComponent<ItemsManager>().arrowCount = itemCounter.GetComponent<ItemsCounter>().levelArray[SceneManager.GetActiveScene().buildIndex-1].arrowsNumber;
-            player.GetComponent<ItemsManager>().UpdateArrowsCount();
-        }
-        if(itemCounter && itemCounter.GetComponent<ItemsCounter>().levelArray[SceneManager.GetActiveScene().buildIndex-1] != null){
-            player.GetComponent<ItemsManager>().potionsCount = itemCounter.GetComponent<ItemsCounter>().levelArray[SceneManager.GetActiveScene().buildIndex-1].potionsNumber;
-            player.GetComponent<ItemsManager>().UpdatePotionsCount();
-        }*/
     }
 }

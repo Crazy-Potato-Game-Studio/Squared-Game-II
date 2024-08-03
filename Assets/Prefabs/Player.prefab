@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneManegement: {fileID: 212217801229464908, guid: c606c003d2ba7d349a168c06fbae904f, type: 3}
-  itemsCounter: {fileID: 0}
+  itemsCounter: {fileID: 1190520411083494435, guid: 104e258574dee4643a70bb32249c3697, type: 3}
 --- !u!114 &72674415213128332
 MonoBehaviour:
   m_ObjectHideFlags: 0

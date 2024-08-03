@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LaserDetector : MonoBehaviour
 {
-    [SerializeField] private GameObject[] obejctsToTurnOn;
+    [HideInInspector] public GameObject[] obejctsToTurnOn;
     [SerializeField] private GameObject detectorLight;
     [SerializeField] private Material defaultMaterial;
     [SerializeField] private Material lightMaterial;
