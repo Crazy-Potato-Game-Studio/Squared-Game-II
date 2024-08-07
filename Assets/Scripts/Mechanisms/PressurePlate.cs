@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    [HideInInspector] public GameObject[] obejctsToTurnOn;
+    public List<GameObject> obejctsToTurnOn;
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource source;
     [SerializeField] private Animator animator;
@@ -63,7 +63,7 @@ public class PressurePlate : MonoBehaviour
     }
 
     private void TurnObjects(){
-        for(int i = 0; i < obejctsToTurnOn.Length; i++){
+        for(int i = 0; i < obejctsToTurnOn.Count; i++){
             if(obejctsToTurnOn[i].gameObject.GetComponent<Portal>() != null){
                 if(obejctsToTurnOn[i].gameObject.GetComponent<Portal>().isOn){
                     obejctsToTurnOn[i].gameObject.GetComponent<Portal>().TurnOff();

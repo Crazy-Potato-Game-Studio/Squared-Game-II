@@ -5,14 +5,16 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class Lever : MonoBehaviour
 {
-    private bool playerInRange = false;
-    public GameObject whatToTurnOn;
+    public List<GameObject> obejctsToTurnOn;
+    public bool isOn = false;
+
     [SerializeField] private Sprite leverOn;
     [SerializeField] private Sprite leverOff;
-    [SerializeField] private AudioClip clip;
-    [SerializeField] private AudioSource source; 
-    [SerializeField] private bool isOn = false;
     private SpriteRenderer leverSprite;
+
+    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioSource source;
+
     private GameObject player;
 
     private void Start() {
@@ -21,28 +23,28 @@ public class Lever : MonoBehaviour
         }
 
         leverSprite = GetComponent<SpriteRenderer>();
-
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private bool PlayerInRange(){
-        float distance = Vector2.Distance(transform.position, player.transform.position);
-        if(distance <= 4f){
-            playerInRange = true;
-        }else{
-            playerInRange = false;
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Player" || other.gameObject.tag == "ResistanceCollider"){
+            player = other.gameObject;
         }
-        return playerInRange;
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.gameObject.tag == "Player" || other.gameObject.tag == "ResistanceCollider"){
+            player = null;
+        }
     }
 
     private void Update() {
-        if(PlayerInRange() && Input.GetKeyDown(KeyCode.E)){
+        if(player && Input.GetKeyDown(KeyCode.E)){
             if(!isOn){
-                TurnObjectOn();
+                TurnObjects();
                 isOn = true;
                 SetSprite(true);
             }else{
-                TurnObjectOff();
+                TurnObjects();
                 isOn = false;
                 SetSprite(false);
             }
@@ -58,19 +60,21 @@ public class Lever : MonoBehaviour
         }
     }
 
-    private void TurnObjectOn(){
-        if(whatToTurnOn.GetComponent<Portal>() != null){
-            whatToTurnOn.GetComponent<Portal>().TurnOn();
-        }else if(whatToTurnOn.GetComponent<Doors>() != null){
-            whatToTurnOn.GetComponent<Doors>().OpenDoors();
-        }
-    }
-
-    private void TurnObjectOff(){
-        if(whatToTurnOn.GetComponent<Portal>() != null){
-            whatToTurnOn.GetComponent<Portal>().TurnOff();
-        }else if(whatToTurnOn.GetComponent<Doors>() != null){
-            whatToTurnOn.GetComponent<Doors>().CloseDoors();
-        }
+    private void TurnObjects(){
+        for(int i = 0; i < obejctsToTurnOn.Count; i++){
+            if(obejctsToTurnOn[i].gameObject.GetComponent<Portal>() != null){
+                if(obejctsToTurnOn[i].gameObject.GetComponent<Portal>().isOn){
+                    obejctsToTurnOn[i].gameObject.GetComponent<Portal>().TurnOff();
+                }else{
+                    obejctsToTurnOn[i].gameObject.GetComponent<Portal>().TurnOn();
+                } 
+            }else if(obejctsToTurnOn[i].gameObject.GetComponent<Doors>() != null){
+                if(obejctsToTurnOn[i].gameObject.GetComponent<Doors>().doorsOpen){
+                    obejctsToTurnOn[i].gameObject.GetComponent<Doors>().CloseDoors();
+                }else{
+                    obejctsToTurnOn[i].gameObject.GetComponent<Doors>().OpenDoors();
+                } 
+            }
+        } 
     }
 }

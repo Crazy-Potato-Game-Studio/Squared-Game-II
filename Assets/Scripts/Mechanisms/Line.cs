@@ -5,7 +5,8 @@ using UnityEngine.Rendering.Universal;
 
 public class Line : MonoBehaviour
 {
-    [SerializeField] private GameObject pressurePlate;
+    [SerializeField] private GameObject mechanism;
+    [SerializeField] private string mechanismType;
     [SerializeField] private Light2D light2D;
     private LineRenderer lineRenderer;
     int elementsAmount;
@@ -27,12 +28,35 @@ public class Line : MonoBehaviour
     }
 
     private void ShowLine() {
-        elementsAmount = pressurePlate.GetComponent<PressurePlate>().obejctsToTurnOn.Length;
-        lineRenderer.positionCount = elementsAmount + 1;
-        lineRenderer.SetPosition(0, pressurePlate.transform.position);
-        
-        for(int i = 0; i < elementsAmount; i++){
-            lineRenderer.SetPosition(i + 1, pressurePlate.GetComponent<PressurePlate>().obejctsToTurnOn[i].transform.position);
+        if(mechanismType == "PressurePlate"){
+            elementsAmount = mechanism.GetComponent<PressurePlate>().obejctsToTurnOn.Count;
+            lineRenderer.positionCount = elementsAmount + 1;
+            lineRenderer.SetPosition(0, mechanism.transform.position);
+
+            for(int i = 0; i < elementsAmount; i++){
+                lineRenderer.SetPosition(i + 1, mechanism.GetComponent<PressurePlate>().obejctsToTurnOn[i].transform.position);
+            }
         }
+
+        if(mechanismType == "Lever"){
+            elementsAmount = mechanism.GetComponent<Lever>().obejctsToTurnOn.Count;
+            lineRenderer.positionCount = elementsAmount + 1;
+            lineRenderer.SetPosition(0, mechanism.transform.position);
+
+            for(int i = 0; i < elementsAmount; i++){
+                lineRenderer.SetPosition(i + 1, mechanism.GetComponent<Lever>().obejctsToTurnOn[i].transform.position);
+            }
+        }
+
+        if(mechanismType == "LaserDetector"){
+            elementsAmount = mechanism.GetComponent<LaserDetector>().obejctsToTurnOn.Count;
+            lineRenderer.positionCount = elementsAmount + 1;
+            lineRenderer.SetPosition(0, mechanism.transform.position);
+
+            for(int i = 0; i < elementsAmount; i++){
+                lineRenderer.SetPosition(i + 1, mechanism.GetComponent<LaserDetector>().obejctsToTurnOn[i].transform.position);
+            }
+        }
+        
     }
 }

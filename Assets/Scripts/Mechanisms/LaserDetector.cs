@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LaserDetector : MonoBehaviour
 {
-    [HideInInspector] public GameObject[] obejctsToTurnOn;
+    public List<GameObject> obejctsToTurnOn;
     [SerializeField] private GameObject detectorLight;
     [SerializeField] private Material defaultMaterial;
     [SerializeField] private Material lightMaterial;
@@ -12,7 +12,7 @@ public class LaserDetector : MonoBehaviour
     private bool lightIsOn;
 
     public void TurnObjects(){
-        for(int i = 0; i < obejctsToTurnOn.Length; i++){
+        for(int i = 0; i < obejctsToTurnOn.Count; i++){
             if(obejctsToTurnOn[i].gameObject.GetComponent<Portal>() != null){
                 if(obejctsToTurnOn[i].gameObject.GetComponent<Portal>().isOn){
                     obejctsToTurnOn[i].gameObject.GetComponent<Portal>().TurnOff();

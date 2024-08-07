@@ -18,13 +18,14 @@ public class AcidBat : MonoBehaviour
 
     private void Awake() {
         GetComponent<AIDestinationSetter>().target = returnPoint;
-        player = GameObject.FindGameObjectWithTag("Player");
         GetComponent<AIPath>().endReachedDistance = canShootDistance;
         InvokeRepeating("Shoot", 0, 0.05f);
     }
 
     void Update(){
-        if(player){
+        if(!player){
+            player = GameObject.FindGameObjectWithTag("Player");
+        }else{
             distance = Vector2.Distance(transform.position, player.transform.position);
 
             if(distance < 15f){

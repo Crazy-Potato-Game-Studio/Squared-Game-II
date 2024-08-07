@@ -39,12 +39,11 @@ public class Portal : MonoBehaviour
         arrow.transform.right = destinationPortal.transform.position - transform.position;
 
         source = GetComponent<AudioSource>();
-
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(isOn && other.gameObject.tag == "Player"){
+            player = other.gameObject;
             playerInRange = true;
         }
     }

@@ -13,12 +13,12 @@ public class Bat : MonoBehaviour
 
     private void Awake() {
         GetComponent<AIDestinationSetter>().target = returnPoint;
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update(){
-        if(player){
-
+        if(!player){
+            player = GameObject.FindGameObjectWithTag("Player");
+        }else{
             distance = Vector2.Distance(transform.position, player.transform.position);
 
             if(distance < 13f){
@@ -28,7 +28,6 @@ public class Bat : MonoBehaviour
             }
         }
         
-
         if(aiPath.desiredVelocity.x >= 0.01f){
             transform.localScale = new Vector2(-1f, 1f);
             enemyCanvas.GetComponent<ScaleChanger>().ChangeUIScale(transform.localScale.x);
