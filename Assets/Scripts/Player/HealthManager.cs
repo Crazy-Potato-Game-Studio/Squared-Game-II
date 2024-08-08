@@ -110,6 +110,6 @@ public class HealthManager : MonoBehaviour
         GameObject levelRestarter = Instantiate(levelRestarterPrefab, transform);
         levelRestarter.transform.parent = null;
         audioListener.transform.parent = null;
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

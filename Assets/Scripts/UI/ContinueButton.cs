@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class ContinueButton : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class ContinueButton : MonoBehaviour
     }
 
     private void Awake() {
-        if(playerStartedGame){
+        string path = Application.persistentDataPath + "/player.potato";
+        if(playerStartedGame || File.Exists(path)){
             continueText.SetActive(false);
             continueButton.SetActive(true);
         }

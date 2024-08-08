@@ -503,6 +503,7 @@ MonoBehaviour:
   maxPlayerHealth: 100
   clip: {fileID: 8300000, guid: c23089d7fbffb4f4e9f528fd524f4461, type: 3}
   source: {fileID: 964497249592846207}
+  deathSoundObj: {fileID: 9176517638692344636, guid: efabe8f47df149d4394753284a5e934f, type: 3}
   hurtText: {fileID: 7340409451816335979, guid: b59b4072434220a4cbe4b6afff70db7d, type: 3}
   lavaText: {fileID: 7640717504430696962, guid: db562c2111b8ade4280ace94c91028f3, type: 3}
   floatingLava: {fileID: 0}
