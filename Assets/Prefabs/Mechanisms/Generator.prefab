@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 5960503956613340302}
   m_Layer: 0
   m_Name: Generator
-  m_TagString: Untagged
+  m_TagString: Generator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -366,6 +366,8 @@ MonoBehaviour:
   turningOnSound: {fileID: 8300000, guid: 82933d73d88d19c46be2916035cb5476, type: 3}
   source: {fileID: 5960503956613340303}
   hint: {fileID: 5960503957225204544}
+  generatorOn: 0
+  playerInRange: 0
 --- !u!1 &5960503956971585617
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Rotate : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class Rotate : MonoBehaviour
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
-    void FixedUpdate()
-    {
+    public void RotateArm(InputAction.CallbackContext context){
         Vector2 bowPosition = transform.position;
-        Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mousePosition - bowPosition;
-        transform.right = direction;
+        if(cam){
+            Vector2 mousePosition = cam.ScreenToWorldPoint(context.ReadValue<Vector2>());
+            Vector2 direction = mousePosition - bowPosition;
+            transform.right = direction;
+        }        
     }
+
 }

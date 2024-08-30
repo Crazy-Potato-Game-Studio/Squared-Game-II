@@ -13,12 +13,9 @@ public class VerticalPlatform : MonoBehaviour
         effector = GetComponent<PlatformEffector2D>();
     }
 
-    void Update()
-    {
-        if(Input.GetKey(KeyCode.S)){
-            effector.colliderMask = ignorePlayer;
-            StartCoroutine(TimeWaiter());
-        }
+    public void RotatePlatform(){
+        effector.colliderMask = ignorePlayer;
+        StartCoroutine(TimeWaiter());
     }
 
     IEnumerator TimeWaiter(){

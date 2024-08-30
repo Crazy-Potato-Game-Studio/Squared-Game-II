@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Steamworks;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
@@ -14,36 +16,33 @@ public class SceneManagement : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)){
-            if(SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1){
-                inGameMenu = GameObject.FindGameObjectWithTag("InGameMenu");
-                if(Time.timeScale == 1){
-                    PouseGame();
-                }else{         
-                    ResumeGame();
-                }
-            }
-        }
-
-        if(Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().buildIndex > 5){
-            ReloadScene();
-        }
-    }
-
     public void LoadLevel(int sceneNumber){
         SceneManager.LoadScene(sceneNumber);
     }
 
-    public void PouseGame(){
-        Time.timeScale = 0;
-        inGameMenu.GetComponent<InGameMenu>().ShowInGameMenu();
+    public void PauseGame(InputAction.CallbackContext context){
+        if(context.performed){
+            if(SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1){
+                inGameMenu = GameObject.FindGameObjectWithTag("InGameMenu");
+                if(Time.timeScale == 1){
+                    inGameMenu.GetComponent<InGameMenu>().ShowInGameMenu();
+                    Time.timeScale = 0;
+                }else{         
+                    Time.timeScale = 1;
+                    inGameMenu.GetComponent<InGameMenu>().HideInGameMenu();
+                }
+            }
+        }
     }
 
-    public void ResumeGame(){
-        Time.timeScale = 1;
-        inGameMenu = GameObject.FindGameObjectWithTag("InGameMenu");
-        inGameMenu.GetComponent<InGameMenu>().HideInGameMenu();
+    public void ReloadScene(InputAction.CallbackContext context){
+       if(context.performed){
+            if(SceneManager.GetActiveScene().buildIndex > 5){
+                SetTimeScaleToOne();
+                int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+                SceneManager.LoadScene(sceneIndex);
+            }
+       }    
     }
 
     public void LoadNextLevel(){
@@ -103,12 +102,6 @@ public class SceneManagement : MonoBehaviour
         #endif
     }
 
-    public void ReloadScene(){
-        SetTimeScaleToOne();
-        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(sceneIndex);
-    }
-
     private void SetTimeScaleToOne(){
         if(Time.timeScale == 0){
             Time.timeScale = 1;
@@ -119,5 +112,9 @@ public class SceneManagement : MonoBehaviour
         audioSource.clip = audioClip;
         audioSource.Play();
         musicName = audioClip.name;
+    }
+
+    private void OnApplicationQuit() {
+        SteamClient.Shutdown();
     }
 }

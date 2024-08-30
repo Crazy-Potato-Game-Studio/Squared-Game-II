@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float jumpForce;
     float moveInput;
+    float verticalMoveInput;
     float climbSpeed = 7f;
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private Material defaultMaterial;
@@ -41,49 +43,52 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-        moveInput = Input.GetAxis("Horizontal");
-
         if(!isFrozen){
-            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-        }
+            if(col.IsTouchingLayers(LayerMask.GetMask("Climbing")) || resistanceCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
+                rb.velocity = new Vector2(moveInput * speed, verticalMoveInput * climbSpeed);
+                rb.gravityScale = 0;
+            }else{
+                rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+                rb.gravityScale = gravityForce;
+            }
 
+        }
         if(isFrozen){
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
-
     }
 
     void Update(){
-
         if(isGrounded){
             extraJumps = 1;
         }
+    }
 
-        if(!isFrozen){
-            if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && extraJumps > 0){
+    public void Move(InputAction.CallbackContext context){
+        moveInput = context.ReadValue<Vector2>().x;
+    }
+
+    public void ClimbLadder(InputAction.CallbackContext context){
+        verticalMoveInput = context.ReadValue<Vector2>().y;
+    }
+
+    public void Jump(InputAction.CallbackContext context){
+        if(context.performed){
+            if(!isFrozen && extraJumps > 0){
                 rb.velocity = Vector2.up * jumpForce;
-                if(extraJumps == 1){
-                    
-                }
                 extraJumps--;
                 if(!col.IsTouchingLayers(LayerMask.GetMask("Climbing")) || resistanceCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
                     source.PlayOneShot(jumpClip);
                 }
             }
-
-            if(col.IsTouchingLayers(LayerMask.GetMask("Climbing")) || resistanceCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
-                ClimbLadder();
-            }else{
-                rb.gravityScale = gravityForce;
-            }
         }
     }
 
-    void ClimbLadder(){
-        Vector2 climbVelocity = new Vector2 (rb.velocity.x, Input.GetAxis("Vertical") * climbSpeed);
-        rb.velocity = climbVelocity;
-
-        rb.gravityScale = 0;
+    public void GoThroughPlatform(InputAction.CallbackContext context){
+        if(context.performed){
+            GameObject platforms = GameObject.FindGameObjectWithTag("Platforms");
+            platforms.GetComponent<VerticalPlatform>().RotatePlatform();
+        }
     }
 
     IEnumerator PlayerFrozen(){

@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PowerGenerator : MonoBehaviour
 {
-    private bool playerPower;
     [SerializeField] private GameObject powerAnim;
     [SerializeField] private AudioClip turningOnSound;
     [SerializeField] private AudioSource source;
     [SerializeField] private GameObject hint;
-    private bool generatorOn;
+    public bool generatorOn;
+    private GameObject player;
 
     private void Awake() {
         SetLamps(false);
@@ -18,31 +19,25 @@ public class PowerGenerator : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player"){
-            playerPower = other.GetComponent<PlayerHasPower>().playerHasPowerPickup;
+            player = other.gameObject;
             if(!generatorOn){
                 hint.SetActive(true);
             }
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other) {
-        if(other.gameObject.tag == "Player" && Input.GetKey(KeyCode.E) && playerPower){
-            GeneratorOn(other);
+            player.GetComponent<TurnOnGenerator>().playerInRange = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.tag == "Player"){
             hint.SetActive(false);
+            player.GetComponent<TurnOnGenerator>().playerInRange = false;
         }
     }
 
-    private void GeneratorOn(Collider2D other){
+    public void GeneratorOn(){
         generatorOn = true;
         hint.SetActive(false);
-        playerPower = false;
-        other.GetComponent<PlayerHasPower>().PlayerLeftPower();
-        Debug.Log("Generator on");
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHasPower>().PlayerLeftPower();
         powerAnim.SetActive(true);
         SetLamps(true);
         SetPressurePlates(true);

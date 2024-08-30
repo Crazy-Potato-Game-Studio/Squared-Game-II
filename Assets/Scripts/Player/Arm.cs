@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Arm : MonoBehaviour
 {
@@ -19,8 +20,8 @@ public class Arm : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Update() {
-        if(Input.GetMouseButtonDown(1)){
+    public void GetInputForCube(InputAction.CallbackContext context){
+        if(context.performed){
             if(bow.activeSelf == true && canLiftCube){
                 LiftCube();
             }else if(bow.activeSelf == false && canThrowCube){

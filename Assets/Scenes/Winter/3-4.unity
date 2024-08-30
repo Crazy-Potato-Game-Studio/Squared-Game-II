@@ -3867,7 +3867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 969805209968471346, guid: 633bb9892acb9b747a3912ed5d724e78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -64.88488
+      value: -64.71
       objectReference: {fileID: 0}
     - target: {fileID: 969805209968471346, guid: 633bb9892acb9b747a3912ed5d724e78, type: 3}
       propertyPath: m_LocalPosition.y
@@ -90392,6 +90392,10 @@ PrefabInstance:
     - target: {fileID: 3078342714099237544, guid: fe28cee1764eb914eaee5cf7bff04ecb, type: 3}
       propertyPath: m_Name
       value: LaserDetector
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078342714099237544, guid: fe28cee1764eb914eaee5cf7bff04ecb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ItemsManager : MonoBehaviour
 {
@@ -19,14 +20,6 @@ public class ItemsManager : MonoBehaviour
         potionsText = GameObject.FindGameObjectWithTag("PotionsUI").GetComponentInChildren<TextMeshProUGUI>();
         UpdatePotionsCount();
         UpdateArrowsCount();
-    }
-
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.H)){
-            if(potionsCount > 0){
-                UsePotion();
-            }
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
@@ -77,12 +70,16 @@ public class ItemsManager : MonoBehaviour
         }
     }
 
-    void UsePotion(){
-        potionsCount--;
-        GetComponent<HealthManager>().GainHealth(20f);
-        GameObject currentParticles = Instantiate(heartParticles, transform.position, transform.rotation);
-        Destroy(currentParticles, 3f);
-        UpdatePotionsCount();
+    public void UsePotion(InputAction.CallbackContext context){
+        if(context.performed){
+            if(potionsCount > 0){
+                potionsCount--;
+                GetComponent<HealthManager>().GainHealth(20f);
+                GameObject currentParticles = Instantiate(heartParticles, transform.position, transform.rotation);
+                Destroy(currentParticles, 3f);
+                UpdatePotionsCount();
+            }
+        }
     }
 
     public void UpdatePotionsCount(){

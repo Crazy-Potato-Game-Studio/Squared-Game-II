@@ -37,6 +37,7 @@ TagManager:
   - GlobalVolume
   - UnoReverse
   - UnoReverseCard
+  - Generator
   layers:
   - Default
   - TransparentFX
