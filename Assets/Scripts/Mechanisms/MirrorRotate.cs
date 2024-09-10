@@ -5,21 +5,22 @@ using UnityEngine;
 public class MirrorRotate : MonoBehaviour
 {
     private bool canRotate;
+    private GameObject player;
     [SerializeField] private GameObject mirror;
-
-    void Start()
-    {
-       
-    }
+    public bool rotateLeft = false;
+    public bool rotateRight = false;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player" || other.tag == "ResistanceCollider"){
+            player = other.gameObject;
+            player.GetComponent<PlayerRotateMirror>().mirror = gameObject;
             canRotate = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Player" || other.tag == "ResistanceCollider"){
+            player.GetComponent<PlayerRotateMirror>().mirror = null;
             canRotate = false;
         }
     }
@@ -27,11 +28,11 @@ public class MirrorRotate : MonoBehaviour
     void Update()
     {
         if(canRotate){
-            if(Input.GetKey(KeyCode.Q)){
-                mirror.transform.Rotate(0, 0, 0.2f * Time.deltaTime * 100);
+            if(rotateLeft){
+                mirror.transform.Rotate(0, 0, 20f * Time.deltaTime);
             }
-            if(Input.GetKey(KeyCode.E)){
-                mirror.transform.Rotate(0, 0, -0.2f * Time.deltaTime * 100);
+            if(rotateRight){
+                mirror.transform.Rotate(0, 0, -20f * Time.deltaTime);
             }
         }
 

@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 4888992403114308983}
   - component: {fileID: 7514497100721652629}
   - component: {fileID: 7514497100721652628}
+  - component: {fileID: 3526736078161500976}
   m_Layer: 3
   m_Name: WinterSlime
   m_TagString: Enemy
@@ -418,6 +419,9 @@ MonoBehaviour:
   heart: {fileID: 3710692091689001022, guid: 4d14450ae6a641546ad5c874972ef365, type: 3}
   arrow: {fileID: 397587817886829463, guid: ea60d531008c4c34d934824ccccd852d, type: 3}
   isBoss: 0
+  plainsSoundtrack: {fileID: 0}
+  winterSoundtrack: {fileID: 0}
+  tunnelsSoundtrack: {fileID: 0}
 --- !u!114 &5351074870712828953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,6 +588,18 @@ MonoBehaviour:
   visionRange: 10
   enemyBullet: {fileID: 913915545099411122, guid: 92b47f90c43532a488138554c2f6bf35, type: 3}
   bulletForce: 1500
+--- !u!114 &3526736078161500976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969805209968471357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845563a56ee118746b44bc9bc6141fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2142062392410921593
 GameObject:
   m_ObjectHideFlags: 0

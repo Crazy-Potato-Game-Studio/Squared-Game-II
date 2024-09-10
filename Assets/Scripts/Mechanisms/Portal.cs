@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-
     public GameObject destinationPortal;
     private GameObject[] portals;
     public string portalColor;
@@ -56,8 +55,9 @@ public class Portal : MonoBehaviour
 
     private void Update() {
         if(isOn && destinationPortal.GetComponent<Portal>().isOn){
-            if(playerInRange && Input.GetKeyDown(KeyCode.E)){
+            if(playerInRange && player.GetComponent<TurnPortalOn>().playerPressedE && !player.GetComponent<TurnPortalOn>().playerHasTeleported){
                 TeleportPlayer();
+                player.GetComponent<TurnPortalOn>().playerHasTeleported = true;
             }
             arrow.SetActive(true);
         }else{

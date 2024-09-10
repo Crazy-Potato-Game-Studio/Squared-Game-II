@@ -38,6 +38,7 @@ TagManager:
   - UnoReverse
   - UnoReverseCard
   - Generator
+  - Lever
   layers:
   - Default
   - TransparentFX

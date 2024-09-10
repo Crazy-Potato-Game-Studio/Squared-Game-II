@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 6429146783127442516}
   - component: {fileID: 4800820236147785400}
   - component: {fileID: 4642015783007025991}
-  m_Layer: 6
-  m_Name: Lever
+  m_Layer: 0
+  m_Name: Lever 1
   m_TagString: Lever
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5454473882410121259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 31.812, y: 6.375, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: -1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5200407978683223159}

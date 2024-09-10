@@ -31,12 +31,21 @@ public class PlayerMovement : MonoBehaviour
     
     public int extraJumps;
 
+    public bool gravityUp;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         defaultMaterial = playerSprite.material;
         gravityForce = rb.gravityScale;
+
+        if(Physics2D.gravity.y > 0){
+            gravityUp = true;
+        }else{
+            gravityUp = false;
+        }
+
     }
 
     void FixedUpdate()
@@ -75,7 +84,11 @@ public class PlayerMovement : MonoBehaviour
     public void Jump(InputAction.CallbackContext context){
         if(context.performed){
             if(!isFrozen && extraJumps > 0){
-                rb.velocity = Vector2.up * jumpForce;
+                if(gravityUp){
+                    rb.velocity = Vector2.down * jumpForce;
+                }else{
+                    rb.velocity = Vector2.up * jumpForce;
+                }
                 extraJumps--;
                 if(!col.IsTouchingLayers(LayerMask.GetMask("Climbing")) || resistanceCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
                     source.PlayOneShot(jumpClip);

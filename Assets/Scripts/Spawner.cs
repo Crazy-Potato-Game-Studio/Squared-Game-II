@@ -13,6 +13,9 @@ public class Spawner : MonoBehaviour
     private AudioListener audioListener;
 
     private void Awake() {
+        if(Physics2D.gravity.y > 0){
+            Physics2D.gravity *= -1;
+        }
         audioListener = GetComponent<AudioListener>();
         audioListener.enabled = true;
         StartCoroutine(SpawnPlayer(0.2f));

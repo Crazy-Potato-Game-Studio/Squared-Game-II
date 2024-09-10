@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 1380649052699956086}
   - component: {fileID: 8508609216244678111}
   - component: {fileID: 4087270662491121044}
+  - component: {fileID: 5491927151028605790}
   m_Layer: 3
   m_Name: BlueSlime
   m_TagString: Enemy
@@ -570,6 +571,9 @@ MonoBehaviour:
   heart: {fileID: 3710692091689001022, guid: 4d14450ae6a641546ad5c874972ef365, type: 3}
   arrow: {fileID: 397587817886829463, guid: ea60d531008c4c34d934824ccccd852d, type: 3}
   isBoss: 0
+  plainsSoundtrack: {fileID: 0}
+  winterSoundtrack: {fileID: 0}
+  tunnelsSoundtrack: {fileID: 0}
 --- !u!114 &1380649052699956086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,6 +622,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: d35cf6ce312661549a72c95b12677db3, type: 2}
   spriteRenderer: {fileID: 8508609214704667954}
+--- !u!114 &5491927151028605790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8508609216244678110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845563a56ee118746b44bc9bc6141fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8639723271143101700
 GameObject:
   m_ObjectHideFlags: 0

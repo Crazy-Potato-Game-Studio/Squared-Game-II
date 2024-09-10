@@ -5,7 +5,6 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class Lever : MonoBehaviour
 {
-    public List<GameObject> obejctsToTurnOn;
     public bool isOn = false;
 
     [SerializeField] private Sprite leverOn;
@@ -14,8 +13,9 @@ public class Lever : MonoBehaviour
 
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource source;
-
     private GameObject player;
+
+    private bool playerInRange;
 
     private void Start() {
         if(isOn){
@@ -27,29 +27,49 @@ public class Lever : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player" || other.gameObject.tag == "ResistanceCollider"){
+            playerInRange = true;
             player = other.gameObject;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.tag == "Player" || other.gameObject.tag == "ResistanceCollider"){
-            player = null;
+            playerInRange = false;
         }
     }
 
     private void Update() {
-        if(player && Input.GetKeyDown(KeyCode.E)){
+        if(playerInRange && Input.GetKeyDown(KeyCode.E)){
             if(!isOn){
-                TurnObjects();
+                ChangeGravityDir();
                 isOn = true;
                 SetSprite(true);
             }else{
-                TurnObjects();
+                ChangeGravityDir();
                 isOn = false;
                 SetSprite(false);
             }
             source.PlayOneShot(clip);
         }
+
+        if(Physics2D.gravity.y < 0){
+            isOn = true;
+            SetSprite(true);
+        }else{
+            isOn = false;
+            SetSprite(false);
+        }
+    }
+
+    private void ChangeGravityDir(){
+        Physics2D.gravity *= -1;
+        MirrorObjects();
+    }
+
+    private void MirrorObjects(){
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerMovement>().gravityUp = !player.GetComponent<PlayerMovement>().gravityUp;
+        player.GetComponent<Transform>().localScale = new Vector3(1, player.GetComponent<Transform>().localScale.y * -1, 1);
     }
 
     private void SetSprite(bool spriteOn){
@@ -60,21 +80,4 @@ public class Lever : MonoBehaviour
         }
     }
 
-    private void TurnObjects(){
-        for(int i = 0; i < obejctsToTurnOn.Count; i++){
-            if(obejctsToTurnOn[i].gameObject.GetComponent<Portal>() != null){
-                if(obejctsToTurnOn[i].gameObject.GetComponent<Portal>().isOn){
-                    obejctsToTurnOn[i].gameObject.GetComponent<Portal>().TurnOff();
-                }else{
-                    obejctsToTurnOn[i].gameObject.GetComponent<Portal>().TurnOn();
-                } 
-            }else if(obejctsToTurnOn[i].gameObject.GetComponent<Doors>() != null){
-                if(obejctsToTurnOn[i].gameObject.GetComponent<Doors>().doorsOpen){
-                    obejctsToTurnOn[i].gameObject.GetComponent<Doors>().CloseDoors();
-                }else{
-                    obejctsToTurnOn[i].gameObject.GetComponent<Doors>().OpenDoors();
-                } 
-            }
-        } 
-    }
 }

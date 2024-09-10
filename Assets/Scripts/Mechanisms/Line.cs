@@ -38,16 +38,6 @@ public class Line : MonoBehaviour
             }
         }
 
-        if(mechanismType == "Lever"){
-            elementsAmount = mechanism.GetComponent<Lever>().obejctsToTurnOn.Count;
-            lineRenderer.positionCount = elementsAmount + 1;
-            lineRenderer.SetPosition(0, mechanism.transform.position);
-
-            for(int i = 0; i < elementsAmount; i++){
-                lineRenderer.SetPosition(i + 1, mechanism.GetComponent<Lever>().obejctsToTurnOn[i].transform.position);
-            }
-        }
-
         if(mechanismType == "LaserDetector"){
             elementsAmount = mechanism.GetComponent<LaserDetector>().obejctsToTurnOn.Count;
             lineRenderer.positionCount = elementsAmount + 1;

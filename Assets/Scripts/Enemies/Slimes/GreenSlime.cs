@@ -31,9 +31,8 @@ public class GreenSlime : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if(mustPatrol){
-            mustFlip = !Physics2D.OverlapCircle(groundCheckPos.position, 0.1f, WalkableLayers);
-        }
+
+        mustFlip = !Physics2D.OverlapCircle(groundCheckPos.position, 0.1f, WalkableLayers);
     }
 
     void Patrol(){

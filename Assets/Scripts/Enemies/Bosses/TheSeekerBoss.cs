@@ -25,7 +25,6 @@ public class TheSeekerBoss : MonoBehaviour
 
     private void Awake() {
         GetComponent<AIDestinationSetter>().target = returnPoint;
-        player = GameObject.FindGameObjectWithTag("Player");
         InvokeRepeating("Shoot", 0, 0.05f);
         InvokeRepeating("StartTeleport", 5, Random.Range(7, 13));
         color = GetComponent<SpriteRenderer>().color;
@@ -66,6 +65,8 @@ public class TheSeekerBoss : MonoBehaviour
             }else{
                 canShoot = false;
             }
+        }else{
+            player = GameObject.FindGameObjectWithTag("Player");
         }
 
         if(player && aiPath.desiredVelocity.x >= 0.01f){
@@ -105,13 +106,14 @@ public class TheSeekerBoss : MonoBehaviour
     }
 
     private void Shoot(){
-        if(canShoot){
+        if(canShoot && player){
             GameObject currentBullet = Instantiate(acidBullet, transform.position, Quaternion.identity);
             if(player && currentBullet){
                 currentBullet.transform.right = player.transform.position - transform.position;
             }
             Rigidbody2D rb = currentBullet.GetComponent<Rigidbody2D>();
             rb.AddForce(currentBullet.transform.right * 1.5f, ForceMode2D.Impulse);
+            Debug.Log("shoot");
         }  
     }
 
