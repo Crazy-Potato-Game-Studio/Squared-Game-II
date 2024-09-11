@@ -12,4 +12,6 @@ public class MirrorOnGravityChange : MonoBehaviour
             GetComponent<Transform>().localScale = new Vector3(GetComponent<Transform>().localScale.x, 1, GetComponent<Transform>().localScale.z);
         } 
     }
+
+    
 }
