@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2828558671130043360}
   - component: {fileID: 2828558671130043362}
   - component: {fileID: 2828558671130043361}
-  m_Layer: 22
+  m_Layer: 6
   m_Name: ParticlesL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4839,7 +4839,7 @@ GameObject:
   - component: {fileID: 2828558671806166285}
   - component: {fileID: 2828558671806166284}
   - component: {fileID: 7110819706302127793}
-  m_Layer: 22
+  m_Layer: 6
   m_Name: YellowDoors
   m_TagString: colorDoors
   m_Icon: {fileID: 0}
@@ -4932,7 +4932,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2828558672057935487}
   - component: {fileID: 2828558672057935480}
-  m_Layer: 22
+  m_Layer: 6
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5017,7 +5017,7 @@ GameObject:
   - component: {fileID: 2828558672845131121}
   - component: {fileID: 2828558672845131123}
   - component: {fileID: 2828558672845131122}
-  m_Layer: 22
+  m_Layer: 6
   m_Name: ParticlesR
   m_TagString: Untagged
   m_Icon: {fileID: 0}

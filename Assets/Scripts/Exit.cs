@@ -37,6 +37,9 @@ public class Exit : MonoBehaviour
     IEnumerator WaitAndLoadNextScene(){
         yield return new WaitForSeconds(0.5f);
 
+        if(Physics2D.gravity.y > 0){
+            Physics2D.gravity *= -1;
+        }
         GameObject _sceneManagement = GameObject.FindGameObjectWithTag("SceneManager");
         _sceneManagement.GetComponent<SceneManagement>().currentLevelNumer = SceneManager.GetActiveScene().buildIndex;
         _sceneManagement.GetComponent<SceneManagement>().LoadNextLevel();
