@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 6787962762888079983}
   - component: {fileID: 8170261063286277162}
   - component: {fileID: 1285680348443327555}
-  - component: {fileID: 5585602261914294271}
+  - component: {fileID: 3265619164198022425}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -490,7 +490,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 2132696
-  extraJumps: 5
+  extraJumps: 2
+  gravityUp: 0
 --- !u!114 &964497249592846204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,7 +720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mirror: {fileID: 0}
---- !u!114 &5585602261914294271
+--- !u!114 &3265619164198022425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -728,239 +729,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 964497249592846192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: c0f448de77df7d94b8a7e3e38062a319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 648fbec3396f0db42afb17e6a869cc10, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 964497249592846196}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f2b8dbbc-0c6b-4df8-8c75-91dbe2842d53
-    m_ActionName: PlayerMovementActionMap/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 964497249592846196}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: Move
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 964497249592846196}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: ClimbLadder
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f7f2120f-222e-438a-895d-6419003da678
-    m_ActionName: PlayerMovementActionMap/New action
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2698485406755921498, guid: c606c003d2ba7d349a168c06fbae904f, type: 3}
-        m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
-        m_MethodName: ReloadScene
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 15819d3b-d512-4c9e-97e4-c086b96a736f
-    m_ActionName: PlayerMovementActionMap/New action
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2698485406755921498, guid: c606c003d2ba7d349a168c06fbae904f, type: 3}
-        m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
-        m_MethodName: PauseGame
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 9dd2e051-e199-43ab-8bd8-283b549d3a72
-    m_ActionName: PlayerMovementActionMap/PausingGame[/Keyboard/escape,/Keyboard/p]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 964497249592846196}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: GoThroughPlatform
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 1cbbeddd-ecbd-48ba-b922-c731719b2d93
-    m_ActionName: PlayerMovementActionMap/GoingThroughPlatform[/Keyboard/s,/Keyboard/downArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 964497249592846085}
-        m_TargetAssemblyTypeName: Arm, Assembly-CSharp
-        m_MethodName: GetInputForCube
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: fd67e258-03c4-4494-a7be-2a67e1630db6
-    m_ActionName: PlayerMovementActionMap/New action
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1484434278949604929}
-        m_TargetAssemblyTypeName: Rotate, Assembly-CSharp
-        m_MethodName: RotateArm
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1484434278668224405}
-        m_TargetAssemblyTypeName: Rotate, Assembly-CSharp
-        m_MethodName: RotateArm
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 058a0378-7de3-4c7f-b784-e75d9aeef309
-    m_ActionName: PlayerMovementActionMap/Rotating[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 964497249592846201}
-        m_TargetAssemblyTypeName: ItemsManager, Assembly-CSharp
-        m_MethodName: UsePotion
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: bcbbbdd1-ed58-476f-8eb3-d995304ebc20
-    m_ActionName: PlayerMovementActionMap/Potions[/Keyboard/h]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6787962762888079983}
-        m_TargetAssemblyTypeName: TurnOnGenerator, Assembly-CSharp
-        m_MethodName: GetInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8170261063286277162}
-        m_TargetAssemblyTypeName: TurnPortalOn, Assembly-CSharp
-        m_MethodName: GetInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ac4c6b01-86a4-4cc7-bc9b-ac25fc0d07be
-    m_ActionName: PlayerMovementActionMap/Interactions[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1285680348443327555}
-        m_TargetAssemblyTypeName: PlayerRotateMirror, Assembly-CSharp
-        m_MethodName: GetInputLeft
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5c40ca62-1b21-4d1e-b324-5a49f69f5bfa
-    m_ActionName: PlayerMovementActionMap/RotatingMirror[/Keyboard/q,/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1285680348443327555}
-        m_TargetAssemblyTypeName: PlayerRotateMirror, Assembly-CSharp
-        m_MethodName: GetInputRight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 0d3e4bab-00fa-4bef-b7cf-b0ea12862092
-    m_ActionName: PlayerMovementActionMap/RotatingMirrorLeft1[/Keyboard/q]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerMovementActionMap
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1484434278416372327
 GameObject:
   m_ObjectHideFlags: 0

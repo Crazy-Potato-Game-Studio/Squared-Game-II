@@ -25,7 +25,7 @@ public class MirrorRotate : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(canRotate){
             if(rotateLeft){
@@ -35,6 +35,5 @@ public class MirrorRotate : MonoBehaviour
                 mirror.transform.Rotate(0, 0, -20f * Time.deltaTime);
             }
         }
-
     }
 }

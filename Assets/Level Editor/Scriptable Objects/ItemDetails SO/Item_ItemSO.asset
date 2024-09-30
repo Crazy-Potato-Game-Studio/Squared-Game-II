@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0b77305cb082e4f8122e6e3526d183, type: 3}
+  m_Name: Item_ItemSO
+  m_EditorClassIdentifier: 
+  items:
+  - name: Arrow
+    id: 0
+    uiSprite: {fileID: 7612248872184694477, guid: a99b8e69a1611844e98b2395efdd0a2a, type: 3}
+    editorPrefab: {fileID: 8074432441794119285, guid: 45692a7546692fb45b312abd4b719960, type: 3}
+    gamePrefab: {fileID: 397587817886829463, guid: ea60d531008c4c34d934824ccccd852d, type: 3}
+    tile: {fileID: 0}
+    validationType: 6
+    objectOffset: {x: 0.5, y: 0.5}
+    gridDimension: {x: 1, y: 1}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 1
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      leftPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      RightPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Heart
+    id: 1
+    uiSprite: {fileID: 21300000, guid: 431972712a2cf164c8f43dfeac176e62, type: 3}
+    editorPrefab: {fileID: 2494420575538887021, guid: eb886e5190a931d4bb3bb4385e9d5054, type: 3}
+    gamePrefab: {fileID: 3710692091689001022, guid: 4d14450ae6a641546ad5c874972ef365, type: 3}
+    tile: {fileID: 0}
+    validationType: 6
+    objectOffset: {x: 0.5, y: 0.7}
+    gridDimension: {x: 1, y: 1}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 1
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      leftPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      RightPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Health Potion
+    id: 2
+    uiSprite: {fileID: 1185527514606905908, guid: c5c2be7c721fbf943aab17ee975a669d, type: 3}
+    editorPrefab: {fileID: 1174705289992098042, guid: df8f08228cbb9054db4460dd939e0b03, type: 3}
+    gamePrefab: {fileID: 2109133760227713409, guid: 65c47a6d05c6ef54f8e62cbcfff7ab42, type: 3}
+    tile: {fileID: 0}
+    validationType: 6
+    objectOffset: {x: 0.5, y: 0.6}
+    gridDimension: {x: 1, y: 1}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 1
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      leftPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      RightPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Power
+    id: 3
+    uiSprite: {fileID: 21300000, guid: 35977c047f8d3ea4aac6aac96caeceb5, type: 3}
+    editorPrefab: {fileID: 1855031885354720522, guid: 766daf6b23e58aa4ca3ea0f11a229c8a, type: 3}
+    gamePrefab: {fileID: 8222510344459008664, guid: fc855a2e803153549be4d742aed79082, type: 3}
+    tile: {fileID: 0}
+    validationType: 6
+    objectOffset: {x: 0.5, y: 0.5}
+    gridDimension: {x: 1, y: 1}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 1
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      leftPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      RightPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Cube
+    id: 4
+    uiSprite: {fileID: 21300000, guid: 31c477f3a7726614ebfed12b49577eeb, type: 3}
+    editorPrefab: {fileID: 520592216302829801, guid: 4b26cbb3472419b46bf5feb91c603d33, type: 3}
+    gamePrefab: {fileID: 4492946263009504804, guid: c1eaf74dc428c014d9195b9b5041173c, type: 3}
+    tile: {fileID: 0}
+    validationType: 6
+    objectOffset: {x: 0.5, y: 0.3}
+    gridDimension: {x: 1, y: 1}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 1
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      leftPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      RightPos: {x: 0, y: 0}
+    includeInGame: 1

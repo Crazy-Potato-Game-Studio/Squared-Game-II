@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0b77305cb082e4f8122e6e3526d183, type: 3}
+  m_Name: Decoration_ItemsSO
+  m_EditorClassIdentifier: 
+  items:
+  - name: Torch
+    id: 0
+    uiSprite: {fileID: 21300000, guid: 68a674562b8aad74fa462e9acc9b125e, type: 3}
+    editorPrefab: {fileID: 8066008929207024507, guid: 9f9e78c43a219d246aa95841e10f1dab, type: 3}
+    gamePrefab: {fileID: 8066008929207024507, guid: 9f9e78c43a219d246aa95841e10f1dab, type: 3}
+    tile: {fileID: 0}
+    validationType: 3
+    objectOffset: {x: 0.5, y: 0.5}
+    gridDimension: {x: 1, y: 2}
+    description: 
+    cursorType: 1
+    extra:
+      maxAllowedItem: 0
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Blue Torch
+    id: 1
+    uiSprite: {fileID: 21300000, guid: b23ff5b1e901b3a479594c0c4857996d, type: 3}
+    editorPrefab: {fileID: 3458091286106475650, guid: 34254a782f0dcf64689fc11437d8481c, type: 3}
+    gamePrefab: {fileID: 3458091286106475650, guid: 34254a782f0dcf64689fc11437d8481c, type: 3}
+    tile: {fileID: 0}
+    validationType: 3
+    objectOffset: {x: 0.5, y: 0.5}
+    gridDimension: {x: 1, y: 2}
+    description: 
+    cursorType: 1
+    extra:
+      maxAllowedItem: 0
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Ceiling Light
+    id: 2
+    uiSprite: {fileID: 21300000, guid: cfad8ba18fb554d44af8b6e673547589, type: 3}
+    editorPrefab: {fileID: 4540116849376061461, guid: 2332de6d7803e1f46a5f559458b0ab81, type: 3}
+    gamePrefab: {fileID: 4540116849376061461, guid: 2332de6d7803e1f46a5f559458b0ab81, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0.5, y: 0.62}
+    gridDimension: {x: 1, y: 1}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Blue Banner
+    id: 3
+    uiSprite: {fileID: -3456263976494102502, guid: 4ce1df44dfb48a84090863579fa74c35, type: 3}
+    editorPrefab: {fileID: 0}
+    gamePrefab: {fileID: 0}
+    tile: {fileID: 0}
+    validationType: 3
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 1, y: 3}
+    description: 
+    cursorType: 1
+    extra:
+      maxAllowedItem: 0
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Green Banner
+    id: 4
+    uiSprite: {fileID: 3044776066150175614, guid: 4ce1df44dfb48a84090863579fa74c35, type: 3}
+    editorPrefab: {fileID: 0}
+    gamePrefab: {fileID: 0}
+    tile: {fileID: 0}
+    validationType: 3
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 1, y: 3}
+    description: 
+    cursorType: 1
+    extra:
+      maxAllowedItem: 0
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Stone Pillar
+    id: 5
+    uiSprite: {fileID: -4170264615941117307, guid: 4ce1df44dfb48a84090863579fa74c35, type: 3}
+    editorPrefab: {fileID: 0}
+    gamePrefab: {fileID: 0}
+    tile: {fileID: 0}
+    validationType: 3
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 1, y: 3}
+    description: 
+    cursorType: 1
+    extra:
+      maxAllowedItem: 0
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1

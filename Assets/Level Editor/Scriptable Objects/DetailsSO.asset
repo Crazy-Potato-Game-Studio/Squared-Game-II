@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 401bf8746c2fe504a8a220fb6e946fa5, type: 3}
+  m_Name: DetailsSO
+  m_EditorClassIdentifier: 
+  properties:
+  - name: 
+    id: 0
+    tiles:
+    - {fileID: 11400000, guid: 91b2504e9e1ebd047a61e3a5496e545e, type: 2}
+    - {fileID: 11400000, guid: afe779ed2e3517d428af4f7a0a8c9fd2, type: 2}
+    - {fileID: 11400000, guid: c9afa1699259d7542a4aaed683f1dd5a, type: 2}
+    - {fileID: 11400000, guid: f810603e164e3e745a1fa522b028e8bb, type: 2}
+    - {fileID: 11400000, guid: bae291c7e66dc1c489e547504f26aaf5, type: 2}
+    - {fileID: 11400000, guid: b226a7321bba8ab49a8190c87fb79cb0, type: 2}
+    - {fileID: 11400000, guid: 600a187c316300f4eb20784dc42aa9ad, type: 2}
+    - {fileID: 11400000, guid: 2134f970f25aaa04788a583d6b40ce01, type: 2}
+    groundCheckDirection:
+    - {x: 0, y: -1}
+    zRotation: []
+  - name: 
+    id: 1
+    tiles:
+    - {fileID: 11400000, guid: 489a9549e89dbe340b44abca1bc284bc, type: 2}
+    groundCheckDirection:
+    - {x: 1, y: 0}
+    - {x: -1, y: 0}
+    zRotation:
+    - 0
+    - 180
+  - name: 
+    id: 2
+    tiles:
+    - {fileID: 11400000, guid: 2c0a841111f051447bd9ecd753a8ec58, type: 2}
+    - {fileID: 11400000, guid: f0714c291b713c648b722aa1562ef21c, type: 2}
+    - {fileID: 11400000, guid: c779f0340faa4f745a0977a28d7fb35f, type: 2}
+    - {fileID: 11400000, guid: 6bb9ac6f39d0d434a9ed12398a722ddb, type: 2}
+    - {fileID: 11400000, guid: 278c1b86db8a40d4a8a8d7cb23239efb, type: 2}
+    - {fileID: 11400000, guid: 795f9c0b85b3056428a8eac797874c36, type: 2}
+    - {fileID: 11400000, guid: 929e7905d4f634a41a3242dda3c655da, type: 2}
+    groundCheckDirection: []
+    zRotation: []
+  - name: 
+    id: 3
+    tiles:
+    - {fileID: 11400000, guid: 7214213591607bb4ba30319f3d3f9257, type: 2}
+    - {fileID: 11400000, guid: 22238486c5dc261439ac4c723bd8da17, type: 2}
+    - {fileID: 11400000, guid: 0b5d33607893e6d44a617b9581152941, type: 2}
+    - {fileID: 11400000, guid: 9cf94da597aa9224ab63f765201d7ea6, type: 2}
+    - {fileID: 11400000, guid: 69aa3ce51be96db479982bdbddd507b0, type: 2}
+    - {fileID: 11400000, guid: bd22bcad82be5a14690a548b71a25e21, type: 2}
+    - {fileID: 11400000, guid: a9763bf7887c119499ab0fabb51a1964, type: 2}
+    - {fileID: 11400000, guid: aba7de184babb524e930ef3ece87be87, type: 2}
+    groundCheckDirection: []
+    zRotation: []
+  - name: 
+    id: 4
+    tiles:
+    - {fileID: 11400000, guid: 7cea6eb630263d640ae4a01d6d7c2093, type: 2}
+    - {fileID: 11400000, guid: da871a947052abb4386616eb50fd7903, type: 2}
+    - {fileID: 11400000, guid: 933bf5326b3092542ba2edb3b4b075b1, type: 2}
+    - {fileID: 11400000, guid: 7d8b21e535764b3408ddd1660f6c725b, type: 2}
+    - {fileID: 11400000, guid: 76828e99568451240984f7309b8a73f8, type: 2}
+    - {fileID: 11400000, guid: 47d8ff78d23667146bb9c7b104050fbb, type: 2}
+    - {fileID: 11400000, guid: 6493af0068e0d144f97278691ad68c44, type: 2}
+    - {fileID: 11400000, guid: 16b5a8be40cf0a04883444ccd96001fd, type: 2}
+    - {fileID: 11400000, guid: dae4b7bbec94ec74f8c3c42281d0abf3, type: 2}
+    - {fileID: 11400000, guid: 8be688ef34ef43e448528f06f87e3bbc, type: 2}
+    groundCheckDirection: []
+    zRotation: []
+  - name: 
+    id: 5
+    tiles:
+    - {fileID: 11400000, guid: e80ea151141d0cc458a52862316a14ba, type: 2}
+    - {fileID: 11400000, guid: 941dafc58f737a24a8ef10b18e03c02b, type: 2}
+    - {fileID: 11400000, guid: 72ee1e8682292644398d7f96c47e0846, type: 2}
+    - {fileID: 11400000, guid: a41876827a15be3428d7598ab638a343, type: 2}
+    groundCheckDirection: []
+    zRotation: []

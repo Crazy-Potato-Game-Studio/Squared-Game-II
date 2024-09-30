@@ -14,12 +14,17 @@ public class ItemsManager : MonoBehaviour
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip pickupSound;
     [SerializeField] private AudioClip powerPickupSound;
+    private PlayerInputActions playerInputActions;
 
     private void Awake() {
         arrowsText = GameObject.FindGameObjectWithTag("ArrowsUI").GetComponentInChildren<TextMeshProUGUI>();
         potionsText = GameObject.FindGameObjectWithTag("PotionsUI").GetComponentInChildren<TextMeshProUGUI>();
         UpdatePotionsCount();
         UpdateArrowsCount();
+
+        playerInputActions = new PlayerInputActions();
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.Potions.performed += UsePotion;
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
@@ -90,4 +95,9 @@ public class ItemsManager : MonoBehaviour
         arrowsText.text = arrowCount.ToString();
     }
 
+    private void OnDestroy() {
+        playerInputActions.Player.Disable();
+        playerInputActions.Player.Potions.performed -= UsePotion;
+        playerInputActions = null;
+    }
 }

@@ -1,0 +1,249 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0b77305cb082e4f8122e6e3526d183, type: 3}
+  m_Name: Floor_ItemsSO
+  m_EditorClassIdentifier: 
+  items:
+  - name: Grass Floor
+    id: 0
+    uiSprite: {fileID: -4384907059832092252, guid: 26723c9aed3fd684fb35e98d27e77b38, type: 3}
+    prefab: {fileID: 0}
+    validationType: 1
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 0, y: 0}
+    description: 
+    cursorType: 0
+    extra:
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Dirt Flood
+    id: 1
+    uiSprite: {fileID: -1639396431209410578, guid: 26723c9aed3fd684fb35e98d27e77b38, type: 3}
+    prefab: {fileID: 0}
+    validationType: 1
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 0, y: 0}
+    description: 
+    cursorType: 0
+    extra:
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Stone Floor
+    id: 2
+    uiSprite: {fileID: 7163804016323663973, guid: 26723c9aed3fd684fb35e98d27e77b38, type: 3}
+    prefab: {fileID: 0}
+    validationType: 1
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 0, y: 0}
+    description: 
+    cursorType: 0
+    extra:
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Mossy Stone Floor
+    id: 3
+    uiSprite: {fileID: 7163804016323663973, guid: 26723c9aed3fd684fb35e98d27e77b38, type: 3}
+    prefab: {fileID: 0}
+    validationType: 1
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 0, y: 0}
+    description: 
+    cursorType: 0
+    extra:
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Smooth Stone Floor
+    id: 4
+    uiSprite: {fileID: 8953696991211449808, guid: 26723c9aed3fd684fb35e98d27e77b38, type: 3}
+    prefab: {fileID: 0}
+    validationType: 1
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 0, y: 0}
+    description: 
+    cursorType: 0
+    extra:
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Snow Floor
+    id: 5
+    uiSprite: {fileID: -3128656795525430536, guid: cd966075e2ef09b40b76ca8171db311a, type: 3}
+    prefab: {fileID: 0}
+    validationType: 1
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 0, y: 0}
+    description: 
+    cursorType: 0
+    extra:
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Chiseled In Stone Floor
+    id: 6
+    uiSprite: {fileID: 3750799137488512946, guid: 4ce1df44dfb48a84090863579fa74c35, type: 3}
+    prefab: {fileID: 0}
+    validationType: 1
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 0, y: 0}
+    description: 
+    cursorType: 0
+    extra:
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Chiseled Out Stone Floor
+    id: 7
+    uiSprite: {fileID: 5633602653001569448, guid: 4ce1df44dfb48a84090863579fa74c35, type: 3}
+    prefab: {fileID: 0}
+    validationType: 1
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 0, y: 0}
+    description: 
+    cursorType: 0
+    extra:
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Curved Stone Floor
+    id: 8
+    uiSprite: {fileID: 9100324704264439568, guid: 4ce1df44dfb48a84090863579fa74c35, type: 3}
+    prefab: {fileID: 0}
+    validationType: 1
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 0, y: 0}
+    description: 
+    cursorType: 0
+    extra:
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Heavy Stone Floor
+    id: 9
+    uiSprite: {fileID: -2871491307394144821, guid: 4ce1df44dfb48a84090863579fa74c35, type: 3}
+    prefab: {fileID: 0}
+    validationType: 1
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 0, y: 0}
+    description: 
+    cursorType: 0
+    extra:
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Brick Stone Floor
+    id: 10
+    uiSprite: {fileID: 4798063614345210753, guid: 4ce1df44dfb48a84090863579fa74c35, type: 3}
+    prefab: {fileID: 0}
+    validationType: 1
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 0, y: 0}
+    description: 
+    cursorType: 0
+    extra:
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Wooden Platform
+    id: 11
+    uiSprite: {fileID: 3655379367196637558, guid: 4ce1df44dfb48a84090863579fa74c35, type: 3}
+    prefab: {fileID: 0}
+    validationType: 2
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 0, y: 0}
+    description: 
+    cursorType: 2
+    extra:
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Stone Platform
+    id: 12
+    uiSprite: {fileID: 866545026679359191, guid: ad96dd14f0eb92e46a8c150e70765661, type: 3}
+    prefab: {fileID: 0}
+    validationType: 2
+    objectOffset: {x: 0, y: 0}
+    gridDimension: {x: 0, y: 0}
+    description: 
+    cursorType: 2
+    extra:
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 0
+      RightPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      leftPos: {x: 0, y: 0}
+    includeInGame: 1

@@ -11,9 +11,14 @@ public class SceneManagement : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     public string musicName;
     public int currentLevelNumer;
+    PlayerInputActions playerInputActions;
 
     private void Awake() {
         DontDestroyOnLoad(gameObject);
+        playerInputActions = new PlayerInputActions();
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.ReloadScene.performed += ReloadScene;
+        playerInputActions.Player.InGameMenu.performed += PauseGame;
     }
 
     public void LoadLevel(int sceneNumber){
@@ -21,15 +26,18 @@ public class SceneManagement : MonoBehaviour
     }
 
     public void PauseGame(InputAction.CallbackContext context){
+        
         if(context.performed){
             if(SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1){
                 inGameMenu = GameObject.FindGameObjectWithTag("InGameMenu");
-                if(Time.timeScale == 1){
-                    inGameMenu.GetComponent<InGameMenu>().ShowInGameMenu();
-                    Time.timeScale = 0;
-                }else{         
-                    Time.timeScale = 1;
+                if(Time.timeScale == 0){
                     inGameMenu.GetComponent<InGameMenu>().HideInGameMenu();
+                    Time.timeScale = 1;
+                    Debug.Log("Hide UI");
+                }else{         
+                    Time.timeScale = 0;
+                    inGameMenu.GetComponent<InGameMenu>().ShowInGameMenu();
+                    Debug.Log("Show UI");
                 }
             }
         }
@@ -95,9 +103,11 @@ public class SceneManagement : MonoBehaviour
     }
 
     public void Exit(){
+        SteamClient.Shutdown();
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else
+            SteamClient.Shutdown();
             Application.Quit();
         #endif
     }

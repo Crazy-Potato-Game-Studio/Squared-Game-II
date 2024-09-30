@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad330007cb03f449abbfc7f40d6aaed, type: 3}
+  m_Name: Enemy SO
+  m_EditorClassIdentifier: 
+  enemyDetails:
+  - name: Green Slime
+    id: 0
+    enemyType: 0
+    defaultDropItem1Id: 0
+    defaultDropItem2Id: 1
+    min: 0
+    max: 3
+    fliped: 0
+  - name: Winter Slime
+    id: 2
+    enemyType: 0
+    defaultDropItem1Id: 0
+    defaultDropItem2Id: 1
+    min: 1
+    max: 4
+    fliped: 0
+  - name: Blue Slime
+    id: 1
+    enemyType: 0
+    defaultDropItem1Id: 0
+    defaultDropItem2Id: 1
+    min: 2
+    max: 6
+    fliped: 0
+  - name: Bat
+    id: 3
+    enemyType: 1
+    defaultDropItem1Id: 0
+    defaultDropItem2Id: 1
+    min: 0
+    max: 1
+    fliped: 0
+  - name: Eye
+    id: 4
+    enemyType: 1
+    defaultDropItem1Id: 0
+    defaultDropItem2Id: 1
+    min: 1
+    max: 3
+    fliped: 0
+  - name: Big Eye
+    id: 5
+    enemyType: 1
+    defaultDropItem1Id: 0
+    defaultDropItem2Id: 1
+    min: 2
+    max: 5
+    fliped: 0
+  - name: Dionaea Plant
+    id: 6
+    enemyType: 0
+    defaultDropItem1Id: 0
+    defaultDropItem2Id: 1
+    min: 1
+    max: 3
+    fliped: 0
+  - name: Snow Man
+    id: 7
+    enemyType: 0
+    defaultDropItem1Id: 0
+    defaultDropItem2Id: 1
+    min: 0
+    max: 0
+    fliped: 0
+  - name: SLIME KING
+    id: 8
+    enemyType: 0
+    defaultDropItem1Id: 0
+    defaultDropItem2Id: 0
+    min: 0
+    max: 0
+    fliped: 0
+  - name: SLIME QUEEN
+    id: 9
+    enemyType: 0
+    defaultDropItem1Id: 0
+    defaultDropItem2Id: 0
+    min: 0
+    max: 0
+    fliped: 0
+  - name: TITAN
+    id: 10
+    enemyType: 0
+    defaultDropItem1Id: 0
+    defaultDropItem2Id: 0
+    min: 0
+    max: 0
+    fliped: 0
+  - name: THE SEEKER
+    id: 11
+    enemyType: 0
+    defaultDropItem1Id: 0
+    defaultDropItem2Id: 0
+    min: 0
+    max: 0
+    fliped: 0

@@ -15,9 +15,14 @@ public class Arm : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip cubePickingSound;
     [SerializeField] private AudioClip cubeThrowingSound;
+    PlayerInputActions playerInputActions;
 
     private void Awake() {
         audioSource = GetComponent<AudioSource>();
+
+        playerInputActions = new PlayerInputActions();
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.Cube.performed += GetInputForCube;
     }
 
     public void GetInputForCube(InputAction.CallbackContext context){
@@ -43,5 +48,11 @@ public class Arm : MonoBehaviour
         cubeGFX.SetActive(false);
         bow.SetActive(true);
         audioSource.PlayOneShot(cubeThrowingSound);
+    }
+
+    private void OnDestroy() {
+        playerInputActions.Player.Cube.performed -= GetInputForCube;
+        playerInputActions.Player.Disable();
+        playerInputActions = null;
     }
 }
