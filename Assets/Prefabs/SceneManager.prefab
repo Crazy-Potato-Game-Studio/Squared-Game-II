@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 212217801229464910}
   - component: {fileID: 212217801229464945}
   - component: {fileID: 2698485406755921498}
+  - component: {fileID: 6364390415487587382}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: SceneManager
@@ -144,3 +145,15 @@ MonoBehaviour:
   audioSource: {fileID: 212217801229464945}
   musicName: 
   currentLevelNumer: 0
+--- !u!114 &6364390415487587382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212217801229464908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f448de77df7d94b8a7e3e38062a319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

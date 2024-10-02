@@ -15,7 +15,10 @@ public class Lever : MonoBehaviour
     [SerializeField] private AudioSource source;
     private GameObject player;
 
+    private PlayerInputActions playerInputActions;
+
     private bool playerInRange;
+    private bool keyPressed = false;
 
     private void Start() {
         if(isOn){
@@ -23,6 +26,9 @@ public class Lever : MonoBehaviour
         }
 
         leverSprite = GetComponent<SpriteRenderer>();
+
+        playerInputActions = new PlayerInputActions();
+        playerInputActions.Player.Enable();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -39,7 +45,8 @@ public class Lever : MonoBehaviour
     }
 
     private void Update() {
-        if(playerInRange && Input.GetKeyDown(KeyCode.E)){
+        if(playerInRange && playerInputActions.Player.Interactions.ReadValue<float>() == 1 && !keyPressed){
+            keyPressed = true;
             if(!isOn){
                 ChangeGravityDir();
                 isOn = true;
@@ -50,6 +57,10 @@ public class Lever : MonoBehaviour
                 SetSprite(false);
             }
             source.PlayOneShot(clip);
+        }
+
+        if(playerInputActions.Player.Interactions.ReadValue<float>() == 0){
+            keyPressed = false;
         }
 
         if(Physics2D.gravity.y < 0){
@@ -78,6 +89,11 @@ public class Lever : MonoBehaviour
         }else{
             leverSprite.sprite = leverOff;
         }
+    }
+
+        private void OnDestroy() {
+        playerInputActions.Player.Disable();
+        playerInputActions = null;
     }
 
 }

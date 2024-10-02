@@ -116,6 +116,24 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interactions"",
+                    ""type"": ""Value"",
+                    ""id"": ""727b6b48-d567-4b80-91b6-014ac08e6753"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RotateArmMouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""8e3bdee7-1e86-4b35-96a7-05adffbe28bf"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -514,6 +532,39 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""RotateArm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86cd152f-c2f4-43b8-8211-6e47cb1ac661"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Interactions"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6242f201-a4e4-4cf5-96ac-0385903851bd"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Interactions"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e190b335-43d0-4627-91a4-3dd889baafd4"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""RotateArmMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -522,12 +573,29 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         {
             ""name"": ""Gamepad"",
             ""bindingGroup"": ""Gamepad"",
-            ""devices"": []
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         },
         {
             ""name"": ""KeyboardMouse"",
             ""bindingGroup"": ""KeyboardMouse"",
-            ""devices"": []
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
@@ -543,6 +611,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_MirrorLeft = m_Player.FindAction("MirrorLeft", throwIfNotFound: true);
         m_Player_MirrorRight = m_Player.FindAction("MirrorRight", throwIfNotFound: true);
         m_Player_RotateArm = m_Player.FindAction("RotateArm", throwIfNotFound: true);
+        m_Player_Interactions = m_Player.FindAction("Interactions", throwIfNotFound: true);
+        m_Player_RotateArmMouse = m_Player.FindAction("RotateArmMouse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -612,6 +682,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MirrorLeft;
     private readonly InputAction m_Player_MirrorRight;
     private readonly InputAction m_Player_RotateArm;
+    private readonly InputAction m_Player_Interactions;
+    private readonly InputAction m_Player_RotateArmMouse;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -626,6 +698,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @MirrorLeft => m_Wrapper.m_Player_MirrorLeft;
         public InputAction @MirrorRight => m_Wrapper.m_Player_MirrorRight;
         public InputAction @RotateArm => m_Wrapper.m_Player_RotateArm;
+        public InputAction @Interactions => m_Wrapper.m_Player_Interactions;
+        public InputAction @RotateArmMouse => m_Wrapper.m_Player_RotateArmMouse;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -665,6 +739,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @RotateArm.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateArm;
                 @RotateArm.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateArm;
                 @RotateArm.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateArm;
+                @Interactions.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractions;
+                @Interactions.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractions;
+                @Interactions.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractions;
+                @RotateArmMouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateArmMouse;
+                @RotateArmMouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateArmMouse;
+                @RotateArmMouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateArmMouse;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -699,6 +779,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @RotateArm.started += instance.OnRotateArm;
                 @RotateArm.performed += instance.OnRotateArm;
                 @RotateArm.canceled += instance.OnRotateArm;
+                @Interactions.started += instance.OnInteractions;
+                @Interactions.performed += instance.OnInteractions;
+                @Interactions.canceled += instance.OnInteractions;
+                @RotateArmMouse.started += instance.OnRotateArmMouse;
+                @RotateArmMouse.performed += instance.OnRotateArmMouse;
+                @RotateArmMouse.canceled += instance.OnRotateArmMouse;
             }
         }
     }
@@ -733,5 +819,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnMirrorLeft(InputAction.CallbackContext context);
         void OnMirrorRight(InputAction.CallbackContext context);
         void OnRotateArm(InputAction.CallbackContext context);
+        void OnInteractions(InputAction.CallbackContext context);
+        void OnRotateArmMouse(InputAction.CallbackContext context);
     }
 }

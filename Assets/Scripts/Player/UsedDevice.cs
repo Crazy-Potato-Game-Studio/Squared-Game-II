@@ -5,10 +5,16 @@ using UnityEngine.InputSystem;
 
 public class UsedDevice : MonoBehaviour
 {
+    public static bool usingGamepad;
 
     private void Update() {
         if(Gamepad.current != null){
-           // Debug.Log("Gamepad connected");
+            usingGamepad = true;
+            Cursor.visible = false;
+        }else{
+            usingGamepad = false;
+            Cursor.visible = true;
         }
     }
+
 }

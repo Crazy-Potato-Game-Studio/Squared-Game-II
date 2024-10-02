@@ -16,8 +16,14 @@ public class Rotate : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        Vector2 direction = playerInputActions.Player.RotateArm.ReadValue<Vector2>().normalized;
-        Debug.Log(playerInputActions.Player.RotateArm.ReadValue<Vector2>());
+        Vector2 direction = Vector2.right;
+        if(UsedDevice.usingGamepad){
+            direction = playerInputActions.Player.RotateArm.ReadValue<Vector2>().normalized;
+        }else{
+            Vector2 mousePosition = cam.ScreenToWorldPoint(playerInputActions.Player.RotateArmMouse.ReadValue<Vector2>());
+            direction = mousePosition - new Vector2(transform.position.x, transform.position.y);
+        }
+        Debug.Log(direction);
         if(direction != Vector2.zero){
             lastDirection = direction;
             transform.right = direction;
@@ -25,20 +31,4 @@ public class Rotate : MonoBehaviour
             transform.right = lastDirection;
         }
     }
-
-    public void RotateArm(InputAction.CallbackContext context){
-        // Vector2 bowPosition = transform.position;
-        //if(cam){
-            // if(mouse != null){
-            //     Vector2 mousePosition = cam.ScreenToWorldPoint(context.ReadValue<Vector2>());
-            //     Vector2 direction = mousePosition - new Vector2(transform.position.x, transform.position.y);
-            //     transform.right = direction;
-            // }
-        //}        
-    }
-
-    public void RotateWithMouse(){
-        
-    }
-
 }
