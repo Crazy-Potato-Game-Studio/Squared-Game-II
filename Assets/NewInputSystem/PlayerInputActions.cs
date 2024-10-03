@@ -134,6 +134,24 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MenuSelectionDown"",
+                    ""type"": ""Value"",
+                    ""id"": ""d8c25fbd-ffc1-4131-a651-4871a6152dd3"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MenuSelectionUp"",
+                    ""type"": ""Value"",
+                    ""id"": ""4435c9d1-18ca-4712-9d51-0fe0d777a7be"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -565,6 +583,72 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""RotateArmMouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d0aab4c-246a-461f-8b46-57efcc8d7ad1"",
+                    ""path"": ""<Gamepad>/leftStick/y"",
+                    ""interactions"": """",
+                    ""processors"": ""AxisDeadzone(min=0.4,max=1)"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MenuSelectionDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d9e7b9a-ef36-4007-aa07-ed6ee70cad61"",
+                    ""path"": ""<Gamepad>/dpad/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MenuSelectionDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e2b3dfe4-aae3-4871-8a7f-652d253b0616"",
+                    ""path"": ""<Gamepad>/rightStick/y"",
+                    ""interactions"": """",
+                    ""processors"": ""AxisDeadzone(min=0.4,max=1)"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MenuSelectionDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44aee7fb-8e1b-462d-8813-18e72a7266f8"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MenuSelectionUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70418dfd-420a-4cd1-82b6-3e57c62cb6fc"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MenuSelectionUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce08aeaa-10c5-4933-9114-d74ca47c5ec3"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MenuSelectionUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -613,6 +697,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_RotateArm = m_Player.FindAction("RotateArm", throwIfNotFound: true);
         m_Player_Interactions = m_Player.FindAction("Interactions", throwIfNotFound: true);
         m_Player_RotateArmMouse = m_Player.FindAction("RotateArmMouse", throwIfNotFound: true);
+        m_Player_MenuSelectionDown = m_Player.FindAction("MenuSelectionDown", throwIfNotFound: true);
+        m_Player_MenuSelectionUp = m_Player.FindAction("MenuSelectionUp", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -684,6 +770,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RotateArm;
     private readonly InputAction m_Player_Interactions;
     private readonly InputAction m_Player_RotateArmMouse;
+    private readonly InputAction m_Player_MenuSelectionDown;
+    private readonly InputAction m_Player_MenuSelectionUp;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -700,6 +788,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @RotateArm => m_Wrapper.m_Player_RotateArm;
         public InputAction @Interactions => m_Wrapper.m_Player_Interactions;
         public InputAction @RotateArmMouse => m_Wrapper.m_Player_RotateArmMouse;
+        public InputAction @MenuSelectionDown => m_Wrapper.m_Player_MenuSelectionDown;
+        public InputAction @MenuSelectionUp => m_Wrapper.m_Player_MenuSelectionUp;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -745,6 +835,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @RotateArmMouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateArmMouse;
                 @RotateArmMouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateArmMouse;
                 @RotateArmMouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateArmMouse;
+                @MenuSelectionDown.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionDown;
+                @MenuSelectionDown.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionDown;
+                @MenuSelectionDown.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionDown;
+                @MenuSelectionUp.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionUp;
+                @MenuSelectionUp.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionUp;
+                @MenuSelectionUp.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionUp;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -785,6 +881,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @RotateArmMouse.started += instance.OnRotateArmMouse;
                 @RotateArmMouse.performed += instance.OnRotateArmMouse;
                 @RotateArmMouse.canceled += instance.OnRotateArmMouse;
+                @MenuSelectionDown.started += instance.OnMenuSelectionDown;
+                @MenuSelectionDown.performed += instance.OnMenuSelectionDown;
+                @MenuSelectionDown.canceled += instance.OnMenuSelectionDown;
+                @MenuSelectionUp.started += instance.OnMenuSelectionUp;
+                @MenuSelectionUp.performed += instance.OnMenuSelectionUp;
+                @MenuSelectionUp.canceled += instance.OnMenuSelectionUp;
             }
         }
     }
@@ -821,5 +923,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnRotateArm(InputAction.CallbackContext context);
         void OnInteractions(InputAction.CallbackContext context);
         void OnRotateArmMouse(InputAction.CallbackContext context);
+        void OnMenuSelectionDown(InputAction.CallbackContext context);
+        void OnMenuSelectionUp(InputAction.CallbackContext context);
     }
 }

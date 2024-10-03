@@ -12,8 +12,10 @@ public class Line : MonoBehaviour
     int elementsAmount;
 
     private void OnMouseEnter() {
-        lineRenderer.enabled = true;
-        light2D.enabled = true;
+        if(!UsedDevice.usingGamepad){
+            lineRenderer.enabled = true;
+            light2D.enabled = true;
+        }
     }
 
     private void OnMouseExit() {

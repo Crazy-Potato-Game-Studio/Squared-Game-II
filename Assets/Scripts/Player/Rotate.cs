@@ -23,7 +23,6 @@ public class Rotate : MonoBehaviour
             Vector2 mousePosition = cam.ScreenToWorldPoint(playerInputActions.Player.RotateArmMouse.ReadValue<Vector2>());
             direction = mousePosition - new Vector2(transform.position.x, transform.position.y);
         }
-        Debug.Log(direction);
         if(direction != Vector2.zero){
             lastDirection = direction;
             transform.right = direction;
