@@ -53,6 +53,14 @@ public class SceneManagement : MonoBehaviour
        }    
     }
 
+    public void ReloadSceneButton(){
+        if(SceneManager.GetActiveScene().buildIndex > 5){
+            SetTimeScaleToOne();
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(sceneIndex);
+        }
+    }
+
     public void LoadNextLevel(){
         switch (NameOfSceneByBuildIndex(currentLevelNumer + 1))
         {

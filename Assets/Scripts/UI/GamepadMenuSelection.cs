@@ -23,12 +23,15 @@ public class GamepadMenuSelection : MonoBehaviour
                     buttons[i] = buttons[0];
                 }
             }
-            if(buttons[i].GetComponent<Button>().enabled == false){
-                numberOfInactiveButtons++;
-                buttons[i] = buttons[i + 1];
-                buttons[i + 1] = null;
+            if(!buttons[i].GetComponent<Slider>()){
+                if(buttons[i].GetComponent<Button>().enabled == false){
+                    numberOfInactiveButtons++;
+                    buttons[i] = buttons[i + 1];
+                    buttons[i + 1] = null;
+                }
             }
         }
+        buttonNum = buttons.Length - 1 - numberOfInactiveButtons;
     }
 
     private void Update() {
@@ -36,22 +39,27 @@ public class GamepadMenuSelection : MonoBehaviour
            if(playerInputActions.Player.MenuSelectionDown.ReadValue<float>() <= 0){
                 if(buttonNum == buttons.Length - 1 - numberOfInactiveButtons){
                     buttons[buttonNum].GetComponent<ButtonSelect>().arrow.SetActive(false);
+                    buttons[buttonNum].GetComponent<ButtonSelect>().isSelected = false;
                     buttonNum = 0;
                 }else{
                     buttons[buttonNum].GetComponent<ButtonSelect>().arrow.SetActive(false);
+                    buttons[buttonNum].GetComponent<ButtonSelect>().isSelected = false;
                     buttonNum += 1;
                 }
            }else{
                 if(buttonNum == 0){
                     buttons[buttonNum].GetComponent<ButtonSelect>().arrow.SetActive(false);
+                    buttons[buttonNum].GetComponent<ButtonSelect>().isSelected = false;
                     buttonNum = buttons.Length - 1 - numberOfInactiveButtons;
                 }else{
                     buttons[buttonNum].GetComponent<ButtonSelect>().arrow.SetActive(false);
+                    buttons[buttonNum].GetComponent<ButtonSelect>().isSelected = false;
                     buttonNum -= 1;
                 }
             }
 
             buttons[buttonNum].GetComponent<ButtonSelect>().arrow.SetActive(true);
+            buttons[buttonNum].GetComponent<ButtonSelect>().isSelected = true;
             buttons[buttonNum].GetComponent<ButtonSelect>().source.PlayOneShot(buttons[buttonNum].GetComponent<ButtonSelect>().clip);
             StartCoroutine(Timer());
         }else if(playerInputActions.Player.MenuSelectionDown.ReadValue<float>() == 0){

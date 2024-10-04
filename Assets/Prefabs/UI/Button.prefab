@@ -410,6 +410,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!82 &6777220578013060475
 AudioSource:
   m_ObjectHideFlags: 0
@@ -521,3 +525,4 @@ MonoBehaviour:
   arrow: {fileID: 2355629677142781941}
   source: {fileID: 6777220578013060475}
   clip: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
+  isSelected: 0

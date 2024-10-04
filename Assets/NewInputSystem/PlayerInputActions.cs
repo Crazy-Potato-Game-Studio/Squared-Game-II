@@ -152,6 +152,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UseSelectedButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""577a15a5-01f8-4659-960a-86bfc4310151"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -649,6 +658,50 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""MenuSelectionUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02cd6ffe-cd43-4bc1-8235-9b31311fbf43"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UseSelectedButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35ecef3f-f4ca-460b-8638-29a831cd4cdb"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UseSelectedButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""998eb398-1f24-45f8-8e7b-3b62db22a4a4"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UseSelectedButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7bb776ee-dc56-44fa-ae5e-e77e64100eba"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UseSelectedButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -699,6 +752,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_RotateArmMouse = m_Player.FindAction("RotateArmMouse", throwIfNotFound: true);
         m_Player_MenuSelectionDown = m_Player.FindAction("MenuSelectionDown", throwIfNotFound: true);
         m_Player_MenuSelectionUp = m_Player.FindAction("MenuSelectionUp", throwIfNotFound: true);
+        m_Player_UseSelectedButton = m_Player.FindAction("UseSelectedButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -772,6 +826,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RotateArmMouse;
     private readonly InputAction m_Player_MenuSelectionDown;
     private readonly InputAction m_Player_MenuSelectionUp;
+    private readonly InputAction m_Player_UseSelectedButton;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -790,6 +845,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @RotateArmMouse => m_Wrapper.m_Player_RotateArmMouse;
         public InputAction @MenuSelectionDown => m_Wrapper.m_Player_MenuSelectionDown;
         public InputAction @MenuSelectionUp => m_Wrapper.m_Player_MenuSelectionUp;
+        public InputAction @UseSelectedButton => m_Wrapper.m_Player_UseSelectedButton;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -841,6 +897,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @MenuSelectionUp.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionUp;
                 @MenuSelectionUp.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionUp;
                 @MenuSelectionUp.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionUp;
+                @UseSelectedButton.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseSelectedButton;
+                @UseSelectedButton.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseSelectedButton;
+                @UseSelectedButton.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseSelectedButton;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -887,6 +946,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @MenuSelectionUp.started += instance.OnMenuSelectionUp;
                 @MenuSelectionUp.performed += instance.OnMenuSelectionUp;
                 @MenuSelectionUp.canceled += instance.OnMenuSelectionUp;
+                @UseSelectedButton.started += instance.OnUseSelectedButton;
+                @UseSelectedButton.performed += instance.OnUseSelectedButton;
+                @UseSelectedButton.canceled += instance.OnUseSelectedButton;
             }
         }
     }
@@ -925,5 +987,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnRotateArmMouse(InputAction.CallbackContext context);
         void OnMenuSelectionDown(InputAction.CallbackContext context);
         void OnMenuSelectionUp(InputAction.CallbackContext context);
+        void OnUseSelectedButton(InputAction.CallbackContext context);
     }
 }

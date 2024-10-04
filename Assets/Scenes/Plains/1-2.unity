@@ -99791,6 +99791,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 445226085207122387, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      propertyPath: m_text
+      value: TEST
+      objectReference: {fileID: 0}
+    - target: {fileID: 445226085207122387, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      propertyPath: m_fontSize
+      value: 95.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 445226085207122387, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: c3e60bf1dfac005448faf9feb153b2e4, type: 2}
+    - target: {fileID: 445226085207122387, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445226085207122387, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 95.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 445226085207122387, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5091551437216329321, guid: c3e60bf1dfac005448faf9feb153b2e4, type: 2}
+    - target: {fileID: 1026552695466480288, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 816.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1026552695466480288, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1162.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6085197328424444400, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8655226633895239580, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -99912,6 +99948,15 @@ PrefabInstance:
       addedObject: {fileID: 558984382}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8655226634710755917, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1976538050342832114, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1997303973915153226, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8125184029112387469, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
@@ -100516,6 +100561,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8655226634710755917, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1976538050342832114, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1997303973915153226, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8125184029112387469, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
 --- !u!1 &1935396187
 GameObject:
@@ -100762,6 +100816,18 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1799383821}
+    - target: {fileID: 8430750504851411251, guid: 86755d96b73d91d4e912898d52c80724, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430750504851411251, guid: 86755d96b73d91d4e912898d52c80724, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430750504851411251, guid: 86755d96b73d91d4e912898d52c80724, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8441384211596751429, guid: 86755d96b73d91d4e912898d52c80724, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
