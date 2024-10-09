@@ -10,16 +10,9 @@ public class FinalScene : MonoBehaviour
     float fadeAmount;
     [SerializeField] private GameObject theEnd;
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "Player"){
-            sprite = GameObject.FindGameObjectWithTag("Finish").GetComponent<SpriteRenderer>();
-            changeTransparency = true;
-        }
-    }
-
     private void Update() {
         if(changeTransparency){
-            fadeAmount += Time.deltaTime / 10;
+            fadeAmount += Time.deltaTime / 70;
             Debug.Log(fadeAmount);
             sprite.color = new Color(0,0,0,fadeAmount);
         }
@@ -28,6 +21,11 @@ public class FinalScene : MonoBehaviour
             theEnd.SetActive(true);
             StartCoroutine(LoadMenu());
         }
+    }
+
+    public void StartFading(){
+        sprite = GameObject.FindGameObjectWithTag("Finish").GetComponent<SpriteRenderer>();
+        changeTransparency = true;
     }
 
     IEnumerator LoadMenu(){

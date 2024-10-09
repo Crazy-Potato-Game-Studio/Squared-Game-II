@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
 
 public class PowerGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject powerAnim;
     [SerializeField] private AudioClip turningOnSound;
     [SerializeField] private AudioSource source;
-    [SerializeField] private GameObject hint;
+    [SerializeField] private GameObject PcHint;
+    [SerializeField] private GameObject playStationHint;
+    [SerializeField] private GameObject XboxHint;
     public bool generatorOn;
     private GameObject player;
 
@@ -21,7 +24,15 @@ public class PowerGenerator : MonoBehaviour
         if(other.gameObject.tag == "Player"){
             player = other.gameObject;
             if(!generatorOn){
-                hint.SetActive(true);
+                if(UsedDevice.usingGamepad){
+                    if(Gamepad.current is DualShockGamepad){
+                        playStationHint.SetActive(true);
+                    }else{
+                        XboxHint.SetActive(true);
+                    }
+                }else{
+                    PcHint.SetActive(true);
+                }
             }
             player.GetComponent<TurnOnGenerator>().playerInRange = true;
         }
@@ -29,14 +40,18 @@ public class PowerGenerator : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.tag == "Player"){
-            hint.SetActive(false);
+            PcHint.SetActive(false);
+            playStationHint.SetActive(false);
+            XboxHint.SetActive(false);
             player.GetComponent<TurnOnGenerator>().playerInRange = false;
         }
     }
 
     public void GeneratorOn(){
         generatorOn = true;
-        hint.SetActive(false);
+        PcHint.SetActive(false);
+        playStationHint.SetActive(false);
+        XboxHint.SetActive(false);
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHasPower>().PlayerLeftPower();
         powerAnim.SetActive(true);
         SetLamps(true);

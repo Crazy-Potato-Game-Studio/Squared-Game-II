@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class Portal : MonoBehaviour
@@ -16,8 +17,13 @@ public class Portal : MonoBehaviour
     [SerializeField] private GameObject portalParticles;
     private AudioSource source;
     [SerializeField] private GameObject arrow;
+    private PlayerInputActions playerInputActions;
+    private bool keyPressed;
     
     private void Awake() {
+
+        playerInputActions = new PlayerInputActions();
+        playerInputActions.Player.Enable();
 
         if(isOn){
             TurnOn();
@@ -55,15 +61,20 @@ public class Portal : MonoBehaviour
 
     private void Update() {
         if(isOn && destinationPortal.GetComponent<Portal>().isOn){
-            if(playerInRange && player.GetComponent<TurnPortalOn>().playerPressedE && !player.GetComponent<TurnPortalOn>().playerHasTeleported){
+            if(playerInRange && playerInputActions.Player.Interactions.ReadValue<float>() == 1 && !keyPressed){
+                keyPressed = true;
+                destinationPortal.GetComponent<Portal>().keyPressed = true;
                 TeleportPlayer();
-                player.GetComponent<TurnPortalOn>().playerHasTeleported = true;
             }
             arrow.SetActive(true);
         }else{
             arrow.SetActive(false);
         }
 
+        if(playerInputActions.Player.Interactions.ReadValue<float>() == 0){
+            keyPressed = false;
+            destinationPortal.GetComponent<Portal>().keyPressed = false;
+        }
     }
 
     public void TurnOn(){

@@ -25,7 +25,7 @@ public class TurnOnGenerator : MonoBehaviour
     private void OnDestroy() {
         playerInputActions.Player.Interactions.performed -= TurnGenerator;
         playerInputActions.Player.Disable();
-        playerInputActions = null;
+        playerInputActions.Disable();
     }
 
 }

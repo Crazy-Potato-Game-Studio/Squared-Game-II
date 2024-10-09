@@ -145,18 +145,27 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""MenuSelectionUp"",
-                    ""type"": ""Value"",
-                    ""id"": ""4435c9d1-18ca-4712-9d51-0fe0d777a7be"",
+                    ""name"": ""UseSelectedButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""577a15a5-01f8-4659-960a-86bfc4310151"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeVolume"",
+                    ""type"": ""Value"",
+                    ""id"": ""f0dd5cbc-19ab-494c-a528-a86f3d2000e3"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""UseSelectedButton"",
+                    ""name"": ""UnoReverseCard"",
                     ""type"": ""Button"",
-                    ""id"": ""577a15a5-01f8-4659-960a-86bfc4310151"",
+                    ""id"": ""cbc6f824-8ed9-4f1e-add6-6fdcccfa144e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -595,17 +604,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3d0aab4c-246a-461f-8b46-57efcc8d7ad1"",
-                    ""path"": ""<Gamepad>/leftStick/y"",
-                    ""interactions"": """",
-                    ""processors"": ""AxisDeadzone(min=0.4,max=1)"",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""MenuSelectionDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""2d9e7b9a-ef36-4007-aa07-ed6ee70cad61"",
                     ""path"": ""<Gamepad>/dpad/y"",
                     ""interactions"": """",
@@ -628,34 +626,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""44aee7fb-8e1b-462d-8813-18e72a7266f8"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""id"": ""9434e6ee-a8c9-4f06-bb3e-14063359ffd5"",
+                    ""path"": ""<Gamepad>/leftStick/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""MenuSelectionUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""70418dfd-420a-4cd1-82b6-3e57c62cb6fc"",
-                    ""path"": ""<Gamepad>/rightStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""MenuSelectionUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ce08aeaa-10c5-4933-9114-d74ca47c5ec3"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""MenuSelectionUp"",
+                    ""action"": ""MenuSelectionDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -700,6 +676,50 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""UseSelectedButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44aa22d4-2621-4f8d-9b26-9937adfe70e0"",
+                    ""path"": ""<Gamepad>/leftStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ChangeVolume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4daf469f-e2c2-4a37-b852-8a6cde15b0db"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ChangeVolume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7b12acca-0f9a-4d5c-967d-a5529f22566a"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UnoReverseCard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3236ea8a-44d2-433f-8ded-45e546bec310"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UnoReverseCard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -751,8 +771,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Interactions = m_Player.FindAction("Interactions", throwIfNotFound: true);
         m_Player_RotateArmMouse = m_Player.FindAction("RotateArmMouse", throwIfNotFound: true);
         m_Player_MenuSelectionDown = m_Player.FindAction("MenuSelectionDown", throwIfNotFound: true);
-        m_Player_MenuSelectionUp = m_Player.FindAction("MenuSelectionUp", throwIfNotFound: true);
         m_Player_UseSelectedButton = m_Player.FindAction("UseSelectedButton", throwIfNotFound: true);
+        m_Player_ChangeVolume = m_Player.FindAction("ChangeVolume", throwIfNotFound: true);
+        m_Player_UnoReverseCard = m_Player.FindAction("UnoReverseCard", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -825,8 +846,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interactions;
     private readonly InputAction m_Player_RotateArmMouse;
     private readonly InputAction m_Player_MenuSelectionDown;
-    private readonly InputAction m_Player_MenuSelectionUp;
     private readonly InputAction m_Player_UseSelectedButton;
+    private readonly InputAction m_Player_ChangeVolume;
+    private readonly InputAction m_Player_UnoReverseCard;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -844,8 +866,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Interactions => m_Wrapper.m_Player_Interactions;
         public InputAction @RotateArmMouse => m_Wrapper.m_Player_RotateArmMouse;
         public InputAction @MenuSelectionDown => m_Wrapper.m_Player_MenuSelectionDown;
-        public InputAction @MenuSelectionUp => m_Wrapper.m_Player_MenuSelectionUp;
         public InputAction @UseSelectedButton => m_Wrapper.m_Player_UseSelectedButton;
+        public InputAction @ChangeVolume => m_Wrapper.m_Player_ChangeVolume;
+        public InputAction @UnoReverseCard => m_Wrapper.m_Player_UnoReverseCard;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -894,12 +917,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @MenuSelectionDown.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionDown;
                 @MenuSelectionDown.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionDown;
                 @MenuSelectionDown.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionDown;
-                @MenuSelectionUp.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionUp;
-                @MenuSelectionUp.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionUp;
-                @MenuSelectionUp.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuSelectionUp;
                 @UseSelectedButton.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseSelectedButton;
                 @UseSelectedButton.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseSelectedButton;
                 @UseSelectedButton.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseSelectedButton;
+                @ChangeVolume.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeVolume;
+                @ChangeVolume.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeVolume;
+                @ChangeVolume.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeVolume;
+                @UnoReverseCard.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUnoReverseCard;
+                @UnoReverseCard.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUnoReverseCard;
+                @UnoReverseCard.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUnoReverseCard;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -943,12 +969,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @MenuSelectionDown.started += instance.OnMenuSelectionDown;
                 @MenuSelectionDown.performed += instance.OnMenuSelectionDown;
                 @MenuSelectionDown.canceled += instance.OnMenuSelectionDown;
-                @MenuSelectionUp.started += instance.OnMenuSelectionUp;
-                @MenuSelectionUp.performed += instance.OnMenuSelectionUp;
-                @MenuSelectionUp.canceled += instance.OnMenuSelectionUp;
                 @UseSelectedButton.started += instance.OnUseSelectedButton;
                 @UseSelectedButton.performed += instance.OnUseSelectedButton;
                 @UseSelectedButton.canceled += instance.OnUseSelectedButton;
+                @ChangeVolume.started += instance.OnChangeVolume;
+                @ChangeVolume.performed += instance.OnChangeVolume;
+                @ChangeVolume.canceled += instance.OnChangeVolume;
+                @UnoReverseCard.started += instance.OnUnoReverseCard;
+                @UnoReverseCard.performed += instance.OnUnoReverseCard;
+                @UnoReverseCard.canceled += instance.OnUnoReverseCard;
             }
         }
     }
@@ -986,7 +1015,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnInteractions(InputAction.CallbackContext context);
         void OnRotateArmMouse(InputAction.CallbackContext context);
         void OnMenuSelectionDown(InputAction.CallbackContext context);
-        void OnMenuSelectionUp(InputAction.CallbackContext context);
         void OnUseSelectedButton(InputAction.CallbackContext context);
+        void OnChangeVolume(InputAction.CallbackContext context);
+        void OnUnoReverseCard(InputAction.CallbackContext context);
     }
 }

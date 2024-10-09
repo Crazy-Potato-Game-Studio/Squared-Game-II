@@ -182,7 +182,6 @@ GameObject:
   - component: {fileID: 8899827813905551110}
   - component: {fileID: 7839607466304299530}
   - component: {fileID: 6787962762888079983}
-  - component: {fileID: 8170261063286277162}
   - component: {fileID: 1285680348443327555}
   - component: {fileID: 3265619164198022425}
   m_Layer: 13
@@ -489,7 +488,7 @@ MonoBehaviour:
   checkRadius: 0.2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 2132696
+    m_Bits: 6327000
   extraJumps: 2
   gravityUp: 0
 --- !u!114 &964497249592846204
@@ -693,20 +692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInRange: 0
---- !u!114 &8170261063286277162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 964497249592846192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af70e82646ec5c246936cf5815184254, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerPressedE: 0
-  playerHasTeleported: 0
 --- !u!114 &1285680348443327555
 MonoBehaviour:
   m_ObjectHideFlags: 0

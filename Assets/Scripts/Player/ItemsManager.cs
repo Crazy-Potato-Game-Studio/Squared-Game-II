@@ -98,6 +98,6 @@ public class ItemsManager : MonoBehaviour
     private void OnDestroy() {
         playerInputActions.Player.Disable();
         playerInputActions.Player.Potions.performed -= UsePotion;
-        playerInputActions = null;
+        playerInputActions.Disable();
     }
 }

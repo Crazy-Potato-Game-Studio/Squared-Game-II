@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ButtonSelect : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class ButtonSelect : MonoBehaviour
     public bool isSelected;
     private PlayerInputActions playerInputActions;
     [SerializeField] private GameObject menuController;
+    public UnityEvent ButtonUse;
 
     private void Start() {
         arrow.SetActive(false);
@@ -36,7 +38,8 @@ public class ButtonSelect : MonoBehaviour
     public void UseButton(InputAction.CallbackContext context){
         if(isSelected){
             if(GetComponent<Button>() && GetComponent<EventTrigger>()){
-                GetComponent<Button>().Select();
+                isSelected = false;
+                ButtonUse.Invoke();
             }else if(GetComponent<ContinueButton>()){
                 menuController.GetComponent<MenuController>().Continue(); 
             }
@@ -46,6 +49,6 @@ public class ButtonSelect : MonoBehaviour
     private void OnDestroy() {
         playerInputActions.Player.UseSelectedButton.performed -= UseButton;
         playerInputActions.Player.Disable();
-        playerInputActions = null;
+        playerInputActions.Disable();
     }
 }

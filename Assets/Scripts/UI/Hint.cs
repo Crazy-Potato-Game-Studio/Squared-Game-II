@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
 
 public class Hint : MonoBehaviour
 {
     public Transform hintObject;
-    [SerializeField] private GameObject hintGFX;
+    [SerializeField] private GameObject PcHintGFX;
+    [SerializeField] private GameObject playStationHintGFX;
+    [SerializeField] private GameObject xboxHintGFX;
 
     void Update()
     {
@@ -28,16 +32,35 @@ public class Hint : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.tag == "Player" || other.tag == "ResistanceCollider"){
             SetGFX(false);
+            PcHintGFX.SetActive(false);
+            playStationHintGFX.SetActive(false);
+            xboxHintGFX.SetActive(false);
         }
     }
 
     void SetGFX(bool isOn){
         if(hintObject.GetComponent<Portal>()){
             if(hintObject.GetComponent<Portal>().isOn && hintObject.GetComponent<Portal>().destinationPortal.GetComponent<Portal>().isOn){
-                hintGFX.SetActive(isOn);
+                if(UsedDevice.usingGamepad){
+                    if(Gamepad.current is DualShockGamepad){
+                        playStationHintGFX.SetActive(isOn);
+                    }else{
+                        xboxHintGFX.SetActive(isOn);
+                    }
+                }else{
+                    PcHintGFX.SetActive(isOn);
+                }
             }
         }else{
-            hintGFX.SetActive(isOn);
+            if(UsedDevice.usingGamepad){
+                if(Gamepad.current is DualShockGamepad){
+                    playStationHintGFX.SetActive(isOn);
+                }else{
+                    xboxHintGFX.SetActive(isOn);
+                }
+            }else{
+                PcHintGFX.SetActive(isOn);
+            }
         }
 
     }

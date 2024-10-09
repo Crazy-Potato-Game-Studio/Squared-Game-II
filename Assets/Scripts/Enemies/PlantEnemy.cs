@@ -7,9 +7,14 @@ public class PlantEnemy : MonoBehaviour
     private bool playerInRange;
     private BoxCollider2D rangeCollider;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject parent;
+    [SerializeField] private GameObject plantCanvas;
 
     void Awake()
     {
+        if(parent.transform.localScale.x == -1){
+            plantCanvas.transform.localScale = new Vector3(plantCanvas.transform.localScale.x * -1,plantCanvas.transform.localScale.y,plantCanvas.transform.localScale.z);
+        }
         rangeCollider = GetComponent<BoxCollider2D>();
     }
 

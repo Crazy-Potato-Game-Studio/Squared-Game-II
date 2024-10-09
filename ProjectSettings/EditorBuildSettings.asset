@@ -34,9 +34,6 @@ EditorBuildSettings:
     guid: 0591a50f74f77b04692929d2af34b183
   - enabled: 1
     path: Assets/Scenes/Plains/1-4.unity
-    guid: 4300c0028ca611842aff6bd893e37c72
-  - enabled: 1
-    path: Assets/Scenes/Plains/1-4.unity
     guid: 3f846b8cf3d14c34180483a6d9ce4e8d
   - enabled: 1
     path: Assets/Scenes/Plains/1-5.unity
@@ -53,9 +50,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tunnels/2-3.unity
     guid: c62b5f55657b9ea40bcdb3831e24628b
-  - enabled: 1
-    path: Assets/Scenes/Tunnels/2-4.unity
-    guid: e7cabd41362b7794fad7d2d2ea394047
   - enabled: 1
     path: Assets/Scenes/Tunnels/2-4.unity
     guid: 4cd90f0883aa09546a2c8b692c9d0777

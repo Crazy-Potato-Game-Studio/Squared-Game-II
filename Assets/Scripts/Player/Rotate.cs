@@ -30,4 +30,9 @@ public class Rotate : MonoBehaviour
             transform.right = lastDirection;
         }
     }
+
+    private void OnDestroy() {
+        playerInputActions.Player.Disable();
+        playerInputActions.Disable();
+    }
 }

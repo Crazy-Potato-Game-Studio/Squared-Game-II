@@ -123,18 +123,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MenuSelectionUp",
-                    "type": "Value",
-                    "id": "4435c9d1-18ca-4712-9d51-0fe0d777a7be",
+                    "name": "UseSelectedButton",
+                    "type": "Button",
+                    "id": "577a15a5-01f8-4659-960a-86bfc4310151",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeVolume",
+                    "type": "Value",
+                    "id": "f0dd5cbc-19ab-494c-a528-a86f3d2000e3",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "UseSelectedButton",
+                    "name": "UnoReverseCard",
                     "type": "Button",
-                    "id": "577a15a5-01f8-4659-960a-86bfc4310151",
+                    "id": "cbc6f824-8ed9-4f1e-add6-6fdcccfa144e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -573,17 +582,6 @@
                 },
                 {
                     "name": "",
-                    "id": "3d0aab4c-246a-461f-8b46-57efcc8d7ad1",
-                    "path": "<Gamepad>/leftStick/y",
-                    "interactions": "",
-                    "processors": "AxisDeadzone(min=0.4,max=1)",
-                    "groups": "Gamepad",
-                    "action": "MenuSelectionDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "2d9e7b9a-ef36-4007-aa07-ed6ee70cad61",
                     "path": "<Gamepad>/dpad/y",
                     "interactions": "",
@@ -606,34 +604,12 @@
                 },
                 {
                     "name": "",
-                    "id": "44aee7fb-8e1b-462d-8813-18e72a7266f8",
-                    "path": "<Gamepad>/leftStick/up",
+                    "id": "9434e6ee-a8c9-4f06-bb3e-14063359ffd5",
+                    "path": "<Gamepad>/leftStick/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "MenuSelectionUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "70418dfd-420a-4cd1-82b6-3e57c62cb6fc",
-                    "path": "<Gamepad>/rightStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "MenuSelectionUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ce08aeaa-10c5-4933-9114-d74ca47c5ec3",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "MenuSelectionUp",
+                    "action": "MenuSelectionDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -678,6 +654,50 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "UseSelectedButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "44aa22d4-2621-4f8d-9b26-9937adfe70e0",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ChangeVolume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4daf469f-e2c2-4a37-b852-8a6cde15b0db",
+                    "path": "<Gamepad>/rightStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ChangeVolume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7b12acca-0f9a-4d5c-967d-a5529f22566a",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UnoReverseCard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3236ea8a-44d2-433f-8ded-45e546bec310",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "UnoReverseCard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -53,6 +53,6 @@ public class Arm : MonoBehaviour
     private void OnDestroy() {
         playerInputActions.Player.Cube.performed -= GetInputForCube;
         playerInputActions.Player.Disable();
-        playerInputActions = null;
+        playerInputActions.Disable();
     }
 }

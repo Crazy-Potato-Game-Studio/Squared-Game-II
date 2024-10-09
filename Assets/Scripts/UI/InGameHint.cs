@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
 
 public class InGameHint : MonoBehaviour
 {
@@ -15,9 +17,15 @@ public class InGameHint : MonoBehaviour
 
     public void CheckInput(){
         if(UsedDevice.usingGamepad){
-            XboxHint.SetActive(false);
-            PCHint.SetActive(false);
-            playStationHint.SetActive(true);
+            if(Gamepad.current is DualShockGamepad){
+                playStationHint.SetActive(true);
+                XboxHint.SetActive(false);
+                PCHint.SetActive(false);
+            }else{
+                XboxHint.SetActive(true);
+                playStationHint.SetActive(false);
+                PCHint.SetActive(false);
+            }
         }else{
             XboxHint.SetActive(false);
             PCHint.SetActive(true);
