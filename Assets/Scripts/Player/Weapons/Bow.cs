@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Bow : MonoBehaviour
 {
@@ -18,6 +19,24 @@ public class Bow : MonoBehaviour
     public float bowCharge;
     bool canFire;
     bool blockShooting;
+    private PlayerInputActions playerInputActions;
+    private bool isPressing;
+    private bool canPress;
+
+    private void Awake() {
+        playerInputActions = new PlayerInputActions();
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.Shoot.performed += SetOnPerformed;
+        playerInputActions.Player.Shoot.canceled += SetOnCanceled;
+    }
+
+    private void SetOnPerformed(InputAction.CallbackContext context){
+        isPressing = true;
+    }
+
+    private void SetOnCanceled(InputAction.CallbackContext context){
+        isPressing = false;
+    }
 
     private void Update() {
         if(GetComponentInParent<ItemsManager>().arrowCount > 0){
@@ -26,13 +45,15 @@ public class Bow : MonoBehaviour
             canFire = false;
         }
 
-        if((Input.GetMouseButton(0) || Input.GetKey(KeyCode.JoystickButton5)) && canFire && Time.timeScale == 1){
+        if(isPressing && canFire && Time.timeScale == 1){
+            canPress = true;
             if(!blockShooting){
                 ChargeBow();
             }
-        }else if((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.JoystickButton5)) && canFire && Time.timeScale == 1){
+        }else if(canPress && !isPressing && canFire && Time.timeScale == 1){
             if(!blockShooting){
                 Shoot();
+                canPress = false;
             }
             blockShooting = false;
         }else{
@@ -88,5 +109,12 @@ public class Bow : MonoBehaviour
             bowGFX.sprite = bowSprites[0];
             arrowGFX.enabled = false;
         }
+    }
+
+    private void OnDestroy() {
+        playerInputActions.Player.Shoot.performed -= SetOnPerformed;
+        playerInputActions.Player.Shoot.canceled -= SetOnCanceled;
+        playerInputActions.Player.Disable();
+        playerInputActions.Disable();
     }
 }

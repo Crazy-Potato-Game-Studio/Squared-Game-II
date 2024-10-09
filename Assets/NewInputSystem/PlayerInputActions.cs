@@ -170,6 +170,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""072a0509-c00b-4cc0-befb-706441da1652"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -722,6 +731,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""UnoReverseCard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0efaf15b-a39c-482e-83f0-47647777cbc3"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bcba18fd-c64f-4fa0-bd29-da0d18368f11"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -774,6 +805,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_UseSelectedButton = m_Player.FindAction("UseSelectedButton", throwIfNotFound: true);
         m_Player_ChangeVolume = m_Player.FindAction("ChangeVolume", throwIfNotFound: true);
         m_Player_UnoReverseCard = m_Player.FindAction("UnoReverseCard", throwIfNotFound: true);
+        m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -849,6 +881,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_UseSelectedButton;
     private readonly InputAction m_Player_ChangeVolume;
     private readonly InputAction m_Player_UnoReverseCard;
+    private readonly InputAction m_Player_Shoot;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -869,6 +902,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @UseSelectedButton => m_Wrapper.m_Player_UseSelectedButton;
         public InputAction @ChangeVolume => m_Wrapper.m_Player_ChangeVolume;
         public InputAction @UnoReverseCard => m_Wrapper.m_Player_UnoReverseCard;
+        public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -926,6 +960,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @UnoReverseCard.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUnoReverseCard;
                 @UnoReverseCard.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUnoReverseCard;
                 @UnoReverseCard.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUnoReverseCard;
+                @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -978,6 +1015,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @UnoReverseCard.started += instance.OnUnoReverseCard;
                 @UnoReverseCard.performed += instance.OnUnoReverseCard;
                 @UnoReverseCard.canceled += instance.OnUnoReverseCard;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
             }
         }
     }
@@ -1018,5 +1058,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnUseSelectedButton(InputAction.CallbackContext context);
         void OnChangeVolume(InputAction.CallbackContext context);
         void OnUnoReverseCard(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }
