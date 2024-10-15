@@ -37,13 +37,11 @@ namespace LevelBuilder
             FileValidation();
             worldNameField.onValueChanged.AddListener(LevelNameValidation);
             createButton.onClick.AddListener(CreateButtonPress);
-            playButton.onClick.AddListener(PlayButtonPress);
-            deleteButton.onClick.AddListener(DeleteButtonPress);
         }
         private void Start()
         {
             LoadDataFromFile();
-            PupulateLevelsUi();
+            PopulateLevelsUI();
             worldNameField.text = "Level "+ (savedLevels.Count + 1).ToString("00");
             LevelNameValidation(worldNameField.text);
             if (!PlayerPrefs.HasKey("CURRENT_LEVEL")) 
@@ -59,7 +57,7 @@ namespace LevelBuilder
             }
         }
 
-        public void PupulateLevelsUi()
+        public void PopulateLevelsUI()
         {
            foreach (var level in savedLevels)
            {
@@ -78,14 +76,8 @@ namespace LevelBuilder
         public void CreateButtonPress()
         {
             CreateNewLevel();
-            //DeleteLevelsUI();
-            PupulateLevelsUi();
-        }
-        public void PlayButtonPress(){
-            Debug.Log("Player pressed play");
-        }
-         public void DeleteButtonPress(){
-            Debug.Log("Player pressed delete");
+            DeleteLevelsUI();
+            PopulateLevelsUI();
         }
         public void NewLevelCreate()
         {
@@ -99,15 +91,29 @@ namespace LevelBuilder
             LevelDetails levelDetails = savedLevels.Find(x => x.levelName == levelName);
             validationImage.color = Color.white;
             createButton.interactable = true;
-            if (levelDetails != null || levelName == "")
+            if (levelDetails != null || levelName == "" || !NameIsCorrect(levelName))
             {
                 validationImage.color = errorColor;
                 createButton.interactable = false;
+            }
+
+        }
+        public bool NameIsCorrect(string levelName){
+            if(levelName.Contains("<") || levelName.Contains(">") || levelName.Contains(":") || levelName.Contains("\"") || levelName.Contains("/") || levelName.Contains("\\")
+            || levelName.Contains("|") || levelName.Contains("?") || levelName.Contains("*") || levelName.Contains(".") || levelName.Contains(",") || levelName.Contains("COM") || levelName.Contains("LPT")){
+                return false;
+            }else{
+                if(levelName == "CON" || levelName == "PRN" || levelName == "AUX" || levelName == "NUL"){
+                    return false;
+                }else{
+                    return true;
+                }
             }
         }
         public void CreateNewLevel()
         {
             string levelName = worldNameField.text;
+
             LevelDetails levelDetails = new()
             {
                 levelName = levelName,
@@ -116,6 +122,10 @@ namespace LevelBuilder
             };
             savedLevels.Add(levelDetails);
             SaveDataToFile();
+            
+            worldNameField.text = "Level " + (savedLevels.Count+1).ToString("00");
+            LevelNameValidation(worldNameField.text);
+
         }
         public void SaveDataToFile()
         {
@@ -135,6 +145,7 @@ namespace LevelBuilder
                 savedLevels = (List<LevelDetails>)bf.Deserialize(file);
                 file.Close();
             }
+            Debug.Log("Data Loaded");
         }
 
         public void ShowLevelDetails(LevelDetails levelDetails, UiLevelDetails uiLevelDetails)
@@ -153,7 +164,8 @@ namespace LevelBuilder
         }
         public void Play()
         {
-            Debug.Log("Player pressed play");
+            PlayerPrefs.SetString("CURRENT_LEVEL", this.levelDetails.levelName);
+            SceneManager.LoadScene("Scene1_Playable");
         }
         public void Edit()
         {
@@ -169,7 +181,7 @@ namespace LevelBuilder
         }
         public void Upload()
         {
-
+            Debug.Log("Upload to Steam workshop");
         }
 
         public void Delete()
@@ -188,6 +200,8 @@ namespace LevelBuilder
             NewLevelCreate();
             Destroy(selectedLevelDetails.gameObject);
             SaveDataToFile();
+
+            Debug.Log(PlayerPrefs.GetString("CURRENT_LEVEL"));
         }
     }
     [System.Serializable]

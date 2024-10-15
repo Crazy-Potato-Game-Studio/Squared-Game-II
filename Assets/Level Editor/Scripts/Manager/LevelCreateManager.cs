@@ -102,7 +102,7 @@ namespace LevelBuilder
             }
             else
             {
-                popUp.gameObject.SetActive(false);
+//                popUp.gameObject.SetActive(false);
             }
 
 

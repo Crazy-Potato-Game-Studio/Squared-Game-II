@@ -462,7 +462,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ain't this game to easy for you?
+  m_text: Ain't this game too easy for you?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c3e60bf1dfac005448faf9feb153b2e4, type: 2}
   m_sharedMaterial: {fileID: -5091551437216329321, guid: c3e60bf1dfac005448faf9feb153b2e4, type: 2}
@@ -1075,7 +1075,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 611903868091138206, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
       propertyPath: m_text
-      value: Ain't this game to easy for you?
+      value: Ain't this game too easy for you?
       objectReference: {fileID: 0}
     - target: {fileID: 700527955724555287, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
       propertyPath: m_SizeDelta.x
@@ -7494,7 +7494,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ain't this game to easy for you?
+  m_text: Ain't this game too easy for you?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c3e60bf1dfac005448faf9feb153b2e4, type: 2}
   m_sharedMaterial: {fileID: -5091551437216329321, guid: c3e60bf1dfac005448faf9feb153b2e4, type: 2}
@@ -11968,7 +11968,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ain't this game to easy for you?
+  m_text: Ain't this game too easy for you?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c3e60bf1dfac005448faf9feb153b2e4, type: 2}
   m_sharedMaterial: {fileID: -5091551437216329321, guid: c3e60bf1dfac005448faf9feb153b2e4, type: 2}
@@ -13877,7 +13877,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 611903868091138206, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
       propertyPath: m_text
-      value: Ain't this game to easy for you?
+      value: Ain't this game too easy for you?
       objectReference: {fileID: 0}
     - target: {fileID: 700527955724555287, guid: 5c7f9ccab2d3c7b46a065fc1db9959a1, type: 3}
       propertyPath: m_SizeDelta.x
@@ -84594,7 +84594,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ain't this game to easy for you?
+  m_text: Ain't this game too easy for you?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c3e60bf1dfac005448faf9feb153b2e4, type: 2}
   m_sharedMaterial: {fileID: -5091551437216329321, guid: c3e60bf1dfac005448faf9feb153b2e4, type: 2}
