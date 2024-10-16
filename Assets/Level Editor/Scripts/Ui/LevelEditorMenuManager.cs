@@ -41,7 +41,7 @@ namespace LevelBuilder
         private void Start()
         {
             LoadDataFromFile();
-            PopulateLevelsUI();
+            DeleteLevelsUI();
             worldNameField.text = "Level "+ (savedLevels.Count + 1).ToString("00");
             LevelNameValidation(worldNameField.text);
             if (!PlayerPrefs.HasKey("CURRENT_LEVEL")) 

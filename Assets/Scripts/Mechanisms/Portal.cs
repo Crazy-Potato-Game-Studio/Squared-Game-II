@@ -95,6 +95,7 @@ public class Portal : MonoBehaviour
         Instantiate(trailPrefab, player.transform);
         source.Play(0);
         GameObject currentParticles = Instantiate(portalParticles, transform);
+        Debug.Log(currentParticles);
         Destroy(currentParticles, 2f);
         GameObject currentParticles2 = Instantiate(portalParticles, destinationPortal.transform);
         Destroy(currentParticles2, 2f);

@@ -23,7 +23,9 @@ public class SpawnRe : MonoBehaviour
     public void StartGame()
     {
         mainCam.GetComponent<CameraFollow>().player = playerObject.transform;
+        mainCam.GetComponent<CameraFollow>().enabled = true;
         playerObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        Time.timeScale = 1;
     }
 
     private void OnTriggerExit2D(Collider2D collision)

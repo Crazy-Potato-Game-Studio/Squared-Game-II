@@ -45,7 +45,7 @@ public class SceneManagement : MonoBehaviour
 
     public void ReloadScene(InputAction.CallbackContext context){
        if(context.performed){
-            if(SceneManager.GetActiveScene().buildIndex > 5){
+            if(SceneManager.GetActiveScene().buildIndex > 5 && SceneManager.GetActiveScene().buildIndex != 33){
                 SetTimeScaleToOne();
                 int sceneIndex = SceneManager.GetActiveScene().buildIndex;
                 SceneManager.LoadScene(sceneIndex);
@@ -54,7 +54,7 @@ public class SceneManagement : MonoBehaviour
     }
 
     public void ReloadSceneButton(){
-        if(SceneManager.GetActiveScene().buildIndex > 5){
+        if(SceneManager.GetActiveScene().buildIndex > 5 && SceneManager.GetActiveScene().buildIndex != 33){
             SetTimeScaleToOne();
             int sceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(sceneIndex);
