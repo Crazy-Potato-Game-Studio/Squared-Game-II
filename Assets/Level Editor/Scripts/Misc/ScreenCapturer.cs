@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class ScreenCapturer : MonoBehaviour
 {
     public GameObject[] uiToHireDuringScreenShot;
+
     public void SaveToLevelDetails()
     {
         foreach (var ui in uiToHireDuringScreenShot)
@@ -27,6 +28,7 @@ public class ScreenCapturer : MonoBehaviour
         Destroy(screenshot);
         SaveData(newScreenshot);
         EnableUi();
+        Debug.Log("ScreenshotTaken");
     }
     void SaveData(Texture2D newScreenshot)
     {

@@ -24,6 +24,7 @@ namespace LevelBuilder
             if (ItemManager.Singleton.itemDetailsDictionaryList == null) { return; }
             CreateCategoryGameObject();
             CreateUiItems();
+            ShowCategory(0);
         }
 
         void CreateCategoryGameObject()
@@ -49,23 +50,21 @@ namespace LevelBuilder
             }
         }
 
-
-
         public void ShowCategory(int CategoryEnumIndex)
         {
             allCategoryButton.image.color = categoryNormalColor;
             for (int i = 0; i < uiItemCategoryGameObjectList.Count; i++)
             {
-                categpryButtons[i].image.color = (i == CategoryEnumIndex) ? categorySelectedColor : categoryNormalColor;
+                //categpryButtons[i].image.color = (i == CategoryEnumIndex) ? categorySelectedColor : categoryNormalColor;
                 uiItemCategoryGameObjectList[i].SetActive(i == CategoryEnumIndex);
             }
         }
         public void ShowAllItem()
         {
-            allCategoryButton.image.color = categorySelectedColor;
+            //allCategoryButton.image.color = categorySelectedColor;
             for (int i = 0; i < uiItemCategoryGameObjectList.Count; i++)
             {
-                categpryButtons[i].image.color = categoryNormalColor;
+                //categpryButtons[i].image.color = categoryNormalColor;
                 uiItemCategoryGameObjectList[i].SetActive(true);
             }
         }

@@ -17,24 +17,27 @@ public class MenuLoader : MonoBehaviour
     }
 
     public void PauseGameEditor(InputAction.CallbackContext context){
-        
         if(context.performed){
-            if(SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1){
-                if(gamePaused){
-                    inGameMenu.GetComponent<InGameMenu>().HideInGameMenu();
-                    Time.timeScale = 1;
-                    Debug.Log("Hide UI");
-                    gamePaused = false;
-                }else{         
-                    Time.timeScale = 0;
-                    inGameMenu.GetComponent<InGameMenu>().ShowInGameMenu();
-                    Debug.Log("Show UI");
-                    gamePaused = true;
-                }
+            PauseAndResume();
+        }
+    }
+
+    public void PauseGameEditorSaveButton(){
+        PauseAndResume();
+    }
+
+    private void PauseAndResume(){
+        if(SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1){
+            if(gamePaused){
+                inGameMenu.GetComponent<InGameMenu>().HideInGameMenu();
+                Time.timeScale = 1;
+                gamePaused = false;
+            }else{         
+                Time.timeScale = 0;
+                inGameMenu.GetComponent<InGameMenu>().ShowInGameMenu();
+                gamePaused = true;
             }
         }
-
-        Debug.Log(Time.timeScale);
     }
 
     private void OnDestroy() {

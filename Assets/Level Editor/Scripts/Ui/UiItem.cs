@@ -14,6 +14,7 @@ namespace LevelBuilder
         {
             ItemManager.Singleton.SelectItem(itemCategory, itemId);
             UiItemManager.Singleton.ShowSelectedItemInfo();
+            Debug.Log("clicked");
         }
         public void SetUiItem(LevelEditorItem item,ItemCategory category)
         {
