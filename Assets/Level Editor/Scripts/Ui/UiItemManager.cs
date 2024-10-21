@@ -19,12 +19,13 @@ namespace LevelBuilder
         public static UiItemManager Singleton;
         private void Awake() => Singleton = this;
 
+        [SerializeField] private Transform[] categoryElements;
+
         void Start()
         {
             if (ItemManager.Singleton.itemDetailsDictionaryList == null) { return; }
             CreateCategoryGameObject();
             CreateUiItems();
-            ShowCategory(0);
         }
 
         void CreateCategoryGameObject()
@@ -32,10 +33,44 @@ namespace LevelBuilder
             int itemCategoryCount = Enum.GetNames(typeof(ItemCategory)).Length;
             for (int i = 0; i < itemCategoryCount; i++)
             {
-                GameObject categoryObject = Instantiate(itemCategoryUiPrefab, itemsUiParent);
+                GameObject categoryObject = Instantiate(itemCategoryUiPrefab, LookForParent(((ItemCategory)i).ToString()));
+                categoryObject.transform.parent.GetComponent<DropdownElement>().subElementsList = categoryObject;
+                categoryObject.SetActive(false);
                 uiItemCategoryGameObjectList.Add(categoryObject);
                 categoryObject.transform.name = ((ItemCategory)i).ToString();
             }
+        }
+
+        private Transform LookForParent(string category){
+            Transform parent;
+            switch (category)
+            {
+                case "Floor":
+                    parent = categoryElements[0];
+                    break;
+                case "Interactable":
+                    parent = categoryElements[1];
+                    break;
+                case "Items":
+                    parent = categoryElements[2];
+                    break;
+                case "Enemy":
+                    parent = categoryElements[3];
+                    break;
+                case "Foliage":
+                    parent = categoryElements[4];
+                    break;
+                case "Decoration":
+                    parent = categoryElements[5];
+                    break;
+                case "Other":
+                    parent = categoryElements[6];
+                    break;
+                default:
+                    parent = categoryElements[7];
+                    break;
+            }
+            return parent;
         }
 
         void CreateUiItems()
@@ -50,15 +85,6 @@ namespace LevelBuilder
             }
         }
 
-        public void ShowCategory(int CategoryEnumIndex)
-        {
-            allCategoryButton.image.color = categoryNormalColor;
-            for (int i = 0; i < uiItemCategoryGameObjectList.Count; i++)
-            {
-                //categpryButtons[i].image.color = (i == CategoryEnumIndex) ? categorySelectedColor : categoryNormalColor;
-                uiItemCategoryGameObjectList[i].SetActive(i == CategoryEnumIndex);
-            }
-        }
         public void ShowAllItem()
         {
             //allCategoryButton.image.color = categorySelectedColor;
