@@ -33,11 +33,9 @@ public class SceneManagement : MonoBehaviour
                 if(Time.timeScale == 0){
                     inGameMenu.GetComponent<InGameMenu>().HideInGameMenu();
                     Time.timeScale = 1;
-                    Debug.Log("Hide UI");
                 }else{         
                     Time.timeScale = 0;
                     inGameMenu.GetComponent<InGameMenu>().ShowInGameMenu();
-                    Debug.Log("Show UI");
                 }
             }
         }

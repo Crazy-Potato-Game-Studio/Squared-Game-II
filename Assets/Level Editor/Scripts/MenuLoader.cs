@@ -22,10 +22,6 @@ public class MenuLoader : MonoBehaviour
         }
     }
 
-    public void PauseGameEditorSaveButton(){
-        PauseAndResume();
-    }
-
     private void PauseAndResume(){
         if(SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1){
             if(gamePaused){

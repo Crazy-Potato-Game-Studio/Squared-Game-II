@@ -38,7 +38,6 @@ public class DropdownElement : MonoBehaviour
 
     private IEnumerator ChangeCategorySize(){
         yield return new WaitForSeconds(0.05f);
-        Debug.Log(subElementsList.GetComponent<RectTransform>().sizeDelta.y);
         rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, subElementsList.GetComponent<RectTransform>().sizeDelta.y + rectTransform.sizeDelta.y);
         dropdownManager.GetComponent<DropdownManager>().SetElements();
     }

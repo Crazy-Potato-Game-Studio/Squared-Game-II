@@ -67,7 +67,7 @@ namespace LevelBuilder
                     parent = categoryElements[6];
                     break;
                 default:
-                    parent = categoryElements[7];
+                    parent = categoryElements[0];
                     break;
             }
             return parent;
@@ -97,7 +97,7 @@ namespace LevelBuilder
         public void ShowSelectedItemInfo() => uiSelectedItemInfo.ShowItemInfo(ItemManager.Singleton.selectedItem);
         public void ShowHoveredItemDetails(ItemCategory category, int id, bool show)
         {
-
+            
         }
     }
 }

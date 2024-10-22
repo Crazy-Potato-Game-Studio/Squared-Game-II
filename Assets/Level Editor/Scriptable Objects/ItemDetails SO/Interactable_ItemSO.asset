@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Interactable_ItemSO
   m_EditorClassIdentifier: 
   items:
-  - name: Ceiling Light
+  - name: Lamp
     id: 0
     uiSprite: {fileID: 21300000, guid: cfad8ba18fb554d44af8b6e673547589, type: 3}
     editorPrefab: {fileID: 4540116849376061461, guid: 2332de6d7803e1f46a5f559458b0ab81, type: 3}
@@ -34,7 +34,7 @@ MonoBehaviour:
       upPos: {x: 0, y: 0}
       RightPos: {x: 0, y: 0}
     includeInGame: 1
-  - name: Door
+  - name: 1x1 Door
     id: 1
     uiSprite: {fileID: 21300000, guid: 764466bd9b823024fad36ad8c78706f3, type: 3}
     editorPrefab: {fileID: 8918236665436084295, guid: 9c1aa8dbf5e132342805ad9e1cd3b8fe, type: 3}
@@ -55,7 +55,7 @@ MonoBehaviour:
       upPos: {x: 0.5, y: 0.5}
       RightPos: {x: 0.5, y: 0.5}
     includeInGame: 1
-  - name: Large Door
+  - name: 1x2 Door
     id: 2
     uiSprite: {fileID: 21300000, guid: c499272a9550fec4ca396aaef20c765c, type: 3}
     editorPrefab: {fileID: 7399790721287029877, guid: c9fe7c8b3f38b2f498121e0d742da699, type: 3}
@@ -475,7 +475,7 @@ MonoBehaviour:
       upPos: {x: 0, y: 0.94}
       RightPos: {x: 0.94, y: 0}
     includeInGame: 1
-  - name: Rotating Mirror
+  - name: Mirror
     id: 22
     uiSprite: {fileID: 21300000, guid: f80477ad7d113d14f80b5b60b4f2fb0d, type: 3}
     editorPrefab: {fileID: 2906320820798765157, guid: 7978044806f76f645bdf343d21dcf6f5, type: 3}

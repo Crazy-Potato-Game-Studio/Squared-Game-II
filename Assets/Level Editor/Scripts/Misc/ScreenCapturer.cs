@@ -28,7 +28,6 @@ public class ScreenCapturer : MonoBehaviour
         Destroy(screenshot);
         SaveData(newScreenshot);
         EnableUi();
-        Debug.Log("ScreenshotTaken");
     }
     void SaveData(Texture2D newScreenshot)
     {

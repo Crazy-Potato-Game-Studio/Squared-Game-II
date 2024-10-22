@@ -81,11 +81,9 @@ namespace LevelBuilder
                 BinaryFormatter bf = new();
                 PlayableLevelData playableLevelData = (PlayableLevelData)bf.Deserialize(file);
                 file.Close();
-                Debug.Log("Działa");
                 return playableLevelData;
 
             }
-            Debug.Log("Nie działa");
             return null;
 
         }

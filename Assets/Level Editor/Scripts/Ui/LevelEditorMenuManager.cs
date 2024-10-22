@@ -145,7 +145,6 @@ namespace LevelBuilder
                 savedLevels = (List<LevelDetails>)bf.Deserialize(file);
                 file.Close();
             }
-            Debug.Log("Data Loaded");
         }
 
         public void ShowLevelDetails(LevelDetails levelDetails, UiLevelDetails uiLevelDetails)

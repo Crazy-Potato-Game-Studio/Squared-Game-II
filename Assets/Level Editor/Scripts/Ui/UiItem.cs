@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 namespace LevelBuilder
 {
@@ -8,6 +9,7 @@ namespace LevelBuilder
     {
         [SerializeField] public Image uiImage;
         [SerializeField] public Image borderImage;
+        [SerializeField] public TextMeshProUGUI UItext;
         public int itemId { get; private set; }
         public ItemCategory itemCategory { get; private set; }
         public void OnPointerClick(PointerEventData eventData)
@@ -20,6 +22,7 @@ namespace LevelBuilder
             itemId = item.id;
             uiImage.sprite = item.uiSprite;
             itemCategory = category;
+            UItext.text = item.name;
         }
         public void OnPointerEnter(PointerEventData eventData)
         {
