@@ -89,7 +89,7 @@ namespace LevelBuilder
         public void LevelNameValidation(string levelName)
         {
             LevelDetails levelDetails = savedLevels.Find(x => x.levelName == levelName);
-            validationImage.color = Color.white;
+            validationImage.color = new Color(0.25f, 0.25f, 0.25f);
             createButton.interactable = true;
             if (levelDetails != null || levelName == "" || !NameIsCorrect(levelName))
             {

@@ -13,491 +13,8 @@ MonoBehaviour:
   m_Name: Interactable_ItemSO
   m_EditorClassIdentifier: 
   items:
-  - name: Lamp
-    id: 0
-    uiSprite: {fileID: 21300000, guid: cfad8ba18fb554d44af8b6e673547589, type: 3}
-    editorPrefab: {fileID: 4540116849376061461, guid: 2332de6d7803e1f46a5f559458b0ab81, type: 3}
-    gamePrefab: {fileID: 4540116849376061461, guid: 2332de6d7803e1f46a5f559458b0ab81, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0.5, y: 0.62}
-    gridDimension: {x: 1, y: 1}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 1
-      standingBlock: 2
-      changeable: 0
-      propertyType: 0
-      leftPos: {x: 0, y: 0}
-      upPos: {x: 0, y: 0}
-      RightPos: {x: 0, y: 0}
-    includeInGame: 1
-  - name: 1x1 Door
-    id: 1
-    uiSprite: {fileID: 21300000, guid: 764466bd9b823024fad36ad8c78706f3, type: 3}
-    editorPrefab: {fileID: 8918236665436084295, guid: 9c1aa8dbf5e132342805ad9e1cd3b8fe, type: 3}
-    gamePrefab: {fileID: 801064767946952782, guid: e100b8016a239764cb8d40c805363e88, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0.5, y: 0.5}
-    gridDimension: {x: 1, y: 1}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 2
-      standingBlock: 0
-      changeable: 1
-      propertyType: 1
-      leftPos: {x: 0.5, y: 0.5}
-      upPos: {x: 0.5, y: 0.5}
-      RightPos: {x: 0.5, y: 0.5}
-    includeInGame: 1
-  - name: 1x2 Door
-    id: 2
-    uiSprite: {fileID: 21300000, guid: c499272a9550fec4ca396aaef20c765c, type: 3}
-    editorPrefab: {fileID: 7399790721287029877, guid: c9fe7c8b3f38b2f498121e0d742da699, type: 3}
-    gamePrefab: {fileID: 5324149455395707983, guid: 0c8c0f4a42db57e43ae3f4cc128190db, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0.5, y: 0.51}
-    gridDimension: {x: 1, y: 2}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 2
-      standingBlock: 0
-      changeable: 1
-      propertyType: 1
-      leftPos: {x: 0.5, y: 0.51}
-      upPos: {x: 0.5, y: 0.51}
-      RightPos: {x: 0.5, y: 0.51}
-    includeInGame: 1
-  - name: Pressure Plate
-    id: 3
-    uiSprite: {fileID: 21300000, guid: 851c91e23c5929d47bce24fcdcb90e54, type: 3}
-    editorPrefab: {fileID: 3781334231383585273, guid: 7bc9297fd92f58342aa143416f307549, type: 3}
-    gamePrefab: {fileID: 8347049534917771893, guid: 068a19f4bb02c804bb54f00104ef68f9, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0, y: 0.25}
-    gridDimension: {x: 2, y: 1}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 1
-      standingBlock: 0
-      changeable: 0
-      propertyType: 2
-      leftPos: {x: 0, y: 0}
-      upPos: {x: 0, y: 0}
-      RightPos: {x: 0, y: 0}
-    includeInGame: 1
-  - name: Lever
-    id: 4
-    uiSprite: {fileID: -258920163012198913, guid: 38ad8231a5f0ee74ab1ab526cf371fe1, type: 3}
-    editorPrefab: {fileID: 3780841813621064072, guid: f9e3fce45a8b6094e8cf1fb869ce44cd, type: 3}
-    gamePrefab: {fileID: 5454473882410121259, guid: 332f1ffa181eacf4390a51a9abfc089c, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0.5, y: 0.375}
-    gridDimension: {x: 1, y: 1}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 1
-      standingBlock: 0
-      changeable: 1
-      propertyType: 2
-      leftPos: {x: 0.375, y: 0.5}
-      upPos: {x: 0.5, y: 0.625}
-      RightPos: {x: 0.625, y: 0.5}
-    includeInGame: 1
-  - name: Red Door
-    id: 5
-    uiSprite: {fileID: 21300000, guid: 9224040923a9fe046a91d355add66eef, type: 3}
-    editorPrefab: {fileID: 5439062978202266683, guid: 1810e6eb92fb7c641a883969819a82af, type: 3}
-    gamePrefab: {fileID: 8353035985344963141, guid: cb2b43867e989944ea7fe88eae061398, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0.5, y: 1}
-    gridDimension: {x: 1, y: 2}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 2
-      standingBlock: 0
-      changeable: 1
-      propertyType: 0
-      leftPos: {x: 1, y: 0.5}
-      upPos: {x: 0.5, y: 0}
-      RightPos: {x: 0, y: 0.5}
-    includeInGame: 1
-  - name: Blue Door
-    id: 6
-    uiSprite: {fileID: 21300000, guid: 5cc2fed7daf2f424699da70f8ed65c2a, type: 3}
-    editorPrefab: {fileID: 8030588596230248389, guid: 945f31d32aaf8524c999c1a8b11fc5a7, type: 3}
-    gamePrefab: {fileID: 2854833969461468712, guid: 18aa9453af8172344a0fc5bcde84f8a0, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0.5, y: 1}
-    gridDimension: {x: 1, y: 2}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 2
-      standingBlock: 0
-      changeable: 1
-      propertyType: 0
-      leftPos: {x: 1, y: 0.5}
-      upPos: {x: 0.5, y: 0}
-      RightPos: {x: 0, y: 0.5}
-    includeInGame: 1
-  - name: Green Door
-    id: 7
-    uiSprite: {fileID: 21300000, guid: 5ddaadd8d1aad284e9a5e384cd4939ea, type: 3}
-    editorPrefab: {fileID: 3732786826680762668, guid: aa04a9659ea6a504eb2f2c1a2e5e93b3, type: 3}
-    gamePrefab: {fileID: 6517769539419978137, guid: 1fc7a16a7d0a46e458ed5b45de89bd41, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0.5, y: 1}
-    gridDimension: {x: 1, y: 2}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 2
-      standingBlock: 0
-      changeable: 1
-      propertyType: 0
-      leftPos: {x: 1, y: 0.5}
-      upPos: {x: 0.5, y: 0}
-      RightPos: {x: 0, y: 0.5}
-    includeInGame: 1
-  - name: Yellow Door
-    id: 8
-    uiSprite: {fileID: 21300000, guid: 0b4b8f42296391f4fa9d9e13f4105c1e, type: 3}
-    editorPrefab: {fileID: 6124365474917600249, guid: 678a56bba18137c48bfb49cd84c1257b, type: 3}
-    gamePrefab: {fileID: 2828558671806166274, guid: 39ccb892802bdfd47bd5c59f3f30ee7c, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0.5, y: 1}
-    gridDimension: {x: 1, y: 2}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 2
-      standingBlock: 0
-      changeable: 1
-      propertyType: 0
-      leftPos: {x: 1, y: 0.5}
-      upPos: {x: 0.5, y: 0}
-      RightPos: {x: 0, y: 0.5}
-    includeInGame: 1
-  - name: Red Color Changer
-    id: 9
-    uiSprite: {fileID: 21300000, guid: f97a3891b91620742bd31bd0a56c6632, type: 3}
-    editorPrefab: {fileID: 8233255860469095704, guid: 40d11b308429ed0408258abfe59aa115, type: 3}
-    gamePrefab: {fileID: 3435195661487300427, guid: 742513b9b07d6c94493ffe2b04e1eb00, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0, y: -0.24}
-    gridDimension: {x: 2, y: 2}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 2
-      standingBlock: 0
-      changeable: 1
-      propertyType: 13
-      leftPos: {x: -0.24, y: 0}
-      upPos: {x: 0, y: 1.24}
-      RightPos: {x: 1.24, y: 0}
-    includeInGame: 1
-  - name: Blue Color Changer
-    id: 10
-    uiSprite: {fileID: 21300000, guid: ca9d683ca8853204cbe418d0c0a14c19, type: 3}
-    editorPrefab: {fileID: 2744356921265459358, guid: fe8cd6d58e9c9db4c9d8b82644176ca5, type: 3}
-    gamePrefab: {fileID: 3435195661487300427, guid: ecbe0d04657dd284a9e470563ddcaac4, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0, y: -0.24}
-    gridDimension: {x: 2, y: 2}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 2
-      standingBlock: 0
-      changeable: 1
-      propertyType: 13
-      leftPos: {x: -0.24, y: 0}
-      upPos: {x: 0, y: 1.24}
-      RightPos: {x: 1.24, y: 0}
-    includeInGame: 1
-  - name: Green Color Changer
-    id: 11
-    uiSprite: {fileID: 21300000, guid: b25d63dee2c6858438a4474da0599f24, type: 3}
-    editorPrefab: {fileID: 5885742017818743523, guid: a9316049a4fed244f92c9b716d905d8d, type: 3}
-    gamePrefab: {fileID: 178694253473289680, guid: acd177c6d8c44c34e9852d14592b24b0, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0, y: -0.24}
-    gridDimension: {x: 2, y: 2}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 2
-      standingBlock: 0
-      changeable: 1
-      propertyType: 13
-      leftPos: {x: -0.24, y: 0}
-      upPos: {x: 0, y: 1.24}
-      RightPos: {x: 1.24, y: 0}
-    includeInGame: 1
-  - name: Yellow Color Changer
-    id: 12
-    uiSprite: {fileID: 21300000, guid: 5333d282e4ff7ed4cb13a90d9afcc500, type: 3}
-    editorPrefab: {fileID: 4394419364098574107, guid: 39e8b4a3008a12c499ffe7a525a97a79, type: 3}
-    gamePrefab: {fileID: 53467511284501405, guid: 12690b1bf980a784b86f6aaa26c17fd2, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0, y: -0.24}
-    gridDimension: {x: 2, y: 2}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 2
-      standingBlock: 0
-      changeable: 1
-      propertyType: 13
-      leftPos: {x: -0.24, y: 0}
-      upPos: {x: 0, y: 1.24}
-      RightPos: {x: 1.24, y: 0}
-    includeInGame: 1
-  - name: Red Portal
-    id: 13
-    uiSprite: {fileID: 21300000, guid: d8a56a156fb692e429db4e999d72761e, type: 3}
-    editorPrefab: {fileID: 7854454806616048077, guid: cbc28a39bc9880246a5255091897615e, type: 3}
-    gamePrefab: {fileID: 8352826743756971513, guid: 4ab7298cdb3db3041b6f8ccf3492125c, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0, y: 1.13}
-    gridDimension: {x: 2, y: 3}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 2
-      checkType: 1
-      standingBlock: 0
-      changeable: 0
-      propertyType: 3
-      leftPos: {x: 0, y: 0}
-      upPos: {x: 0, y: 0}
-      RightPos: {x: 0, y: 0}
-    includeInGame: 1
-  - name: Blue Portal
-    id: 14
-    uiSprite: {fileID: 21300000, guid: 739422224603e1648bf375b9c9e4e19b, type: 3}
-    editorPrefab: {fileID: 515993763707045437, guid: 4607ab964834ff54d95b16561bede91d, type: 3}
-    gamePrefab: {fileID: 800345421707473485, guid: 58ec3b040f6892c4f8c13264769a1b24, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0, y: 1.13}
-    gridDimension: {x: 2, y: 3}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 2
-      checkType: 1
-      standingBlock: 0
-      changeable: 0
-      propertyType: 3
-      leftPos: {x: 0, y: 0}
-      upPos: {x: 0, y: 0}
-      RightPos: {x: 0, y: 0}
-    includeInGame: 1
-  - name: Green Portal
-    id: 15
-    uiSprite: {fileID: 21300000, guid: 929d5b4b102afe74384097c59becb6aa, type: 3}
-    editorPrefab: {fileID: 8176505109517525159, guid: 56bc6393d1a0f3549a075e1e8cd869af, type: 3}
-    gamePrefab: {fileID: 6089674372979618550, guid: 27d1d32847a2d4c49945bb2eedc0fecf, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0, y: 1.13}
-    gridDimension: {x: 2, y: 3}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 2
-      checkType: 1
-      standingBlock: 0
-      changeable: 0
-      propertyType: 3
-      leftPos: {x: 0, y: 0}
-      upPos: {x: 0, y: 0}
-      RightPos: {x: 0, y: 0}
-    includeInGame: 1
-  - name: Yellow Portal
-    id: 16
-    uiSprite: {fileID: 21300000, guid: cb098f75473e1e649a1714885f00d9c9, type: 3}
-    editorPrefab: {fileID: 3943435404041358609, guid: 418e523179a0ae543a44afb103c8aa2d, type: 3}
-    gamePrefab: {fileID: 3389906142610684305, guid: e784fec52315cbf43be402e783d2a175, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0, y: 1.13}
-    gridDimension: {x: 2, y: 3}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 2
-      checkType: 1
-      standingBlock: 0
-      changeable: 0
-      propertyType: 3
-      leftPos: {x: 0, y: 0}
-      upPos: {x: 0, y: 0}
-      RightPos: {x: 0, y: 0}
-    includeInGame: 1
-  - name: Laser
-    id: 17
-    uiSprite: {fileID: 21300000, guid: fcd08e0babb3d564d9c7a32d26930e38, type: 3}
-    editorPrefab: {fileID: 1761919578530842583, guid: 9f5bdd9ba49b6ee4cb57668c9a968686, type: 3}
-    gamePrefab: {fileID: 1999144264651030557, guid: fff085a2dd632654d9920e27a8a0521e, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0.5, y: 0.5}
-    gridDimension: {x: 1, y: 2}
-    description: Press [R] to rotate
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 0
-      standingBlock: 1
-      changeable: 1
-      propertyType: 0
-      leftPos: {x: 0.5, y: 0.5}
-      upPos: {x: 0.5, y: 0.5}
-      RightPos: {x: 0.5, y: 0.5}
-    includeInGame: 1
-  - name: One Way Rotation Laser
-    id: 18
-    uiSprite: {fileID: 21300000, guid: fcd08e0babb3d564d9c7a32d26930e38, type: 3}
-    editorPrefab: {fileID: 1761919578530842583, guid: 9f5bdd9ba49b6ee4cb57668c9a968686, type: 3}
-    gamePrefab: {fileID: 1999144264651030557, guid: 4232107d31f5e824c839ec3c9225ffae, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0.5, y: 0.5}
-    gridDimension: {x: 3, y: 3}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 0
-      standingBlock: 0
-      changeable: 0
-      propertyType: 6
-      leftPos: {x: 0.5, y: 0.5}
-      upPos: {x: 0.5, y: 0.5}
-      RightPos: {x: 0.5, y: 0.5}
-    includeInGame: 1
-  - name: Two Way Laser Rotation Laser
-    id: 19
-    uiSprite: {fileID: 21300000, guid: 97fa91419ba79044dbd0fbe28bbf3f97, type: 3}
-    editorPrefab: {fileID: 6654594505753721899, guid: 1824515c77bd2fc4a9048e389f76e930, type: 3}
-    gamePrefab: {fileID: 580687957049387366, guid: e3e48838393bfe148975c55e5b8cf9d6, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0.5, y: 0.5}
-    gridDimension: {x: 3, y: 3}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 0
-      standingBlock: 0
-      changeable: 0
-      propertyType: 6
-      leftPos: {x: 0.5, y: 0.5}
-      upPos: {x: 0.5, y: 0.5}
-      RightPos: {x: 0.5, y: 0.5}
-    includeInGame: 1
-  - name: Four Way Laser Rotation Laser
-    id: 20
-    uiSprite: {fileID: 21300000, guid: a555fbb1be412c349a166bc8b662bea2, type: 3}
-    editorPrefab: {fileID: 8427390169830227222, guid: 3b49378c370807248bd8a13a1bdf53f2, type: 3}
-    gamePrefab: {fileID: 1043999832614598195, guid: 4b1cee2b050596a43ab052753070ad9e, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0.5, y: 0.5}
-    gridDimension: {x: 3, y: 3}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 0
-      standingBlock: 0
-      changeable: 0
-      propertyType: 6
-      leftPos: {x: 0.5, y: 0.5}
-      upPos: {x: 0.5, y: 0.5}
-      RightPos: {x: 0.5, y: 0.5}
-    includeInGame: 1
-  - name: Laser Detector
-    id: 21
-    uiSprite: {fileID: 21300000, guid: 72d67dbf8db35894fb5e6114f89c0e09, type: 3}
-    editorPrefab: {fileID: 557206761114558544, guid: 7b8238c1a4fd25242ac86a8e5056cdd5, type: 3}
-    gamePrefab: {fileID: 3078342714099237544, guid: fe28cee1764eb914eaee5cf7bff04ecb, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0, y: 0.06}
-    gridDimension: {x: 2, y: 1}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 1
-      standingBlock: 0
-      changeable: 1
-      propertyType: 2
-      leftPos: {x: 0.06, y: 0}
-      upPos: {x: 0, y: 0.94}
-      RightPos: {x: 0.94, y: 0}
-    includeInGame: 1
-  - name: Mirror
-    id: 22
-    uiSprite: {fileID: 21300000, guid: f80477ad7d113d14f80b5b60b4f2fb0d, type: 3}
-    editorPrefab: {fileID: 2906320820798765157, guid: 7978044806f76f645bdf343d21dcf6f5, type: 3}
-    gamePrefab: {fileID: 5747474008609950931, guid: 037c1153492db4e43a71c8479653f024, type: 3}
-    tile: {fileID: 0}
-    validationType: 5
-    objectOffset: {x: 0.5, y: 0.5}
-    gridDimension: {x: 2, y: 1}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 0
-      standingBlock: 0
-      changeable: 1
-      propertyType: 6
-      leftPos: {x: 0.5, y: 0.5}
-      upPos: {x: 0.5, y: 5}
-      RightPos: {x: 0.5, y: 0.5}
-    includeInGame: 1
   - name: Spawn
-    id: 23
+    id: 0
     uiSprite: {fileID: 21300000, guid: c23c1798ec166ee4da8eba3a66d1183e, type: 3}
     editorPrefab: {fileID: 8994627321234531987, guid: 782e9da6fdeeac14999249cab914cd19, type: 3}
     gamePrefab: {fileID: 1717788395268010770, guid: 5f1710956be1034439520274d33b2b11, type: 3}
@@ -518,7 +35,7 @@ MonoBehaviour:
       RightPos: {x: 0, y: 0}
     includeInGame: 1
   - name: Exit
-    id: 24
+    id: 1
     uiSprite: {fileID: 21300000, guid: 443c068ed8947e84db580373151bd16a, type: 3}
     editorPrefab: {fileID: 911975595225014181, guid: bedd2c1b3c27e7f4e903981ef611aa12, type: 3}
     gamePrefab: {fileID: 7534745583606859044, guid: f96e4f285e3680449add2b7f40803ef7, type: 3}
@@ -537,4 +54,487 @@ MonoBehaviour:
       leftPos: {x: 0, y: 0}
       upPos: {x: 0, y: 0}
       RightPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Lamp
+    id: 2
+    uiSprite: {fileID: 21300000, guid: cfad8ba18fb554d44af8b6e673547589, type: 3}
+    editorPrefab: {fileID: 4540116849376061461, guid: 2332de6d7803e1f46a5f559458b0ab81, type: 3}
+    gamePrefab: {fileID: 4540116849376061461, guid: 2332de6d7803e1f46a5f559458b0ab81, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0.5, y: 0.62}
+    gridDimension: {x: 1, y: 1}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 1
+      standingBlock: 2
+      changeable: 0
+      propertyType: 0
+      leftPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      RightPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: 1x1 Door
+    id: 3
+    uiSprite: {fileID: 21300000, guid: 764466bd9b823024fad36ad8c78706f3, type: 3}
+    editorPrefab: {fileID: 8918236665436084295, guid: 9c1aa8dbf5e132342805ad9e1cd3b8fe, type: 3}
+    gamePrefab: {fileID: 801064767946952782, guid: e100b8016a239764cb8d40c805363e88, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0.5, y: 0.5}
+    gridDimension: {x: 1, y: 1}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 2
+      standingBlock: 0
+      changeable: 1
+      propertyType: 1
+      leftPos: {x: 0.5, y: 0.5}
+      upPos: {x: 0.5, y: 0.5}
+      RightPos: {x: 0.5, y: 0.5}
+    includeInGame: 1
+  - name: 1x2 Door
+    id: 4
+    uiSprite: {fileID: 21300000, guid: c499272a9550fec4ca396aaef20c765c, type: 3}
+    editorPrefab: {fileID: 7399790721287029877, guid: c9fe7c8b3f38b2f498121e0d742da699, type: 3}
+    gamePrefab: {fileID: 5324149455395707983, guid: 0c8c0f4a42db57e43ae3f4cc128190db, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0.5, y: 0.51}
+    gridDimension: {x: 1, y: 2}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 2
+      standingBlock: 0
+      changeable: 1
+      propertyType: 1
+      leftPos: {x: 0.5, y: 0.51}
+      upPos: {x: 0.5, y: 0.51}
+      RightPos: {x: 0.5, y: 0.51}
+    includeInGame: 1
+  - name: Pressure Plate
+    id: 5
+    uiSprite: {fileID: 21300000, guid: 851c91e23c5929d47bce24fcdcb90e54, type: 3}
+    editorPrefab: {fileID: 3781334231383585273, guid: 7bc9297fd92f58342aa143416f307549, type: 3}
+    gamePrefab: {fileID: 8347049534917771893, guid: 068a19f4bb02c804bb54f00104ef68f9, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0, y: 0.25}
+    gridDimension: {x: 2, y: 1}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 1
+      standingBlock: 0
+      changeable: 0
+      propertyType: 2
+      leftPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      RightPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Lever
+    id: 6
+    uiSprite: {fileID: -258920163012198913, guid: 38ad8231a5f0ee74ab1ab526cf371fe1, type: 3}
+    editorPrefab: {fileID: 3780841813621064072, guid: f9e3fce45a8b6094e8cf1fb869ce44cd, type: 3}
+    gamePrefab: {fileID: 5454473882410121259, guid: 332f1ffa181eacf4390a51a9abfc089c, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0.5, y: 0.375}
+    gridDimension: {x: 1, y: 1}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 1
+      standingBlock: 0
+      changeable: 1
+      propertyType: 2
+      leftPos: {x: 0.375, y: 0.5}
+      upPos: {x: 0.5, y: 0.625}
+      RightPos: {x: 0.625, y: 0.5}
+    includeInGame: 1
+  - name: Red Door
+    id: 7
+    uiSprite: {fileID: 21300000, guid: 9224040923a9fe046a91d355add66eef, type: 3}
+    editorPrefab: {fileID: 5439062978202266683, guid: 1810e6eb92fb7c641a883969819a82af, type: 3}
+    gamePrefab: {fileID: 8353035985344963141, guid: cb2b43867e989944ea7fe88eae061398, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0.5, y: 1}
+    gridDimension: {x: 1, y: 2}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 2
+      standingBlock: 0
+      changeable: 1
+      propertyType: 0
+      leftPos: {x: 1, y: 0.5}
+      upPos: {x: 0.5, y: 0}
+      RightPos: {x: 0, y: 0.5}
+    includeInGame: 1
+  - name: Blue Door
+    id: 8
+    uiSprite: {fileID: 21300000, guid: 5cc2fed7daf2f424699da70f8ed65c2a, type: 3}
+    editorPrefab: {fileID: 8030588596230248389, guid: 945f31d32aaf8524c999c1a8b11fc5a7, type: 3}
+    gamePrefab: {fileID: 2854833969461468712, guid: 18aa9453af8172344a0fc5bcde84f8a0, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0.5, y: 1}
+    gridDimension: {x: 1, y: 2}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 2
+      standingBlock: 0
+      changeable: 1
+      propertyType: 0
+      leftPos: {x: 1, y: 0.5}
+      upPos: {x: 0.5, y: 0}
+      RightPos: {x: 0, y: 0.5}
+    includeInGame: 1
+  - name: Green Door
+    id: 9
+    uiSprite: {fileID: 21300000, guid: 5ddaadd8d1aad284e9a5e384cd4939ea, type: 3}
+    editorPrefab: {fileID: 3732786826680762668, guid: aa04a9659ea6a504eb2f2c1a2e5e93b3, type: 3}
+    gamePrefab: {fileID: 6517769539419978137, guid: 1fc7a16a7d0a46e458ed5b45de89bd41, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0.5, y: 1}
+    gridDimension: {x: 1, y: 2}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 2
+      standingBlock: 0
+      changeable: 1
+      propertyType: 0
+      leftPos: {x: 1, y: 0.5}
+      upPos: {x: 0.5, y: 0}
+      RightPos: {x: 0, y: 0.5}
+    includeInGame: 1
+  - name: Yellow Door
+    id: 10
+    uiSprite: {fileID: 21300000, guid: 0b4b8f42296391f4fa9d9e13f4105c1e, type: 3}
+    editorPrefab: {fileID: 6124365474917600249, guid: 678a56bba18137c48bfb49cd84c1257b, type: 3}
+    gamePrefab: {fileID: 2828558671806166274, guid: 39ccb892802bdfd47bd5c59f3f30ee7c, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0.5, y: 1}
+    gridDimension: {x: 1, y: 2}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 2
+      standingBlock: 0
+      changeable: 1
+      propertyType: 0
+      leftPos: {x: 1, y: 0.5}
+      upPos: {x: 0.5, y: 0}
+      RightPos: {x: 0, y: 0.5}
+    includeInGame: 1
+  - name: Red Color Changer
+    id: 11
+    uiSprite: {fileID: 21300000, guid: f97a3891b91620742bd31bd0a56c6632, type: 3}
+    editorPrefab: {fileID: 8233255860469095704, guid: 40d11b308429ed0408258abfe59aa115, type: 3}
+    gamePrefab: {fileID: 3435195661487300427, guid: 742513b9b07d6c94493ffe2b04e1eb00, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0, y: -0.24}
+    gridDimension: {x: 2, y: 2}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 2
+      standingBlock: 0
+      changeable: 1
+      propertyType: 13
+      leftPos: {x: -0.24, y: 0}
+      upPos: {x: 0, y: 1.24}
+      RightPos: {x: 1.24, y: 0}
+    includeInGame: 1
+  - name: Blue Color Changer
+    id: 12
+    uiSprite: {fileID: 21300000, guid: ca9d683ca8853204cbe418d0c0a14c19, type: 3}
+    editorPrefab: {fileID: 2744356921265459358, guid: fe8cd6d58e9c9db4c9d8b82644176ca5, type: 3}
+    gamePrefab: {fileID: 3435195661487300427, guid: ecbe0d04657dd284a9e470563ddcaac4, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0, y: -0.24}
+    gridDimension: {x: 2, y: 2}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 2
+      standingBlock: 0
+      changeable: 1
+      propertyType: 13
+      leftPos: {x: -0.24, y: 0}
+      upPos: {x: 0, y: 1.24}
+      RightPos: {x: 1.24, y: 0}
+    includeInGame: 1
+  - name: Green Color Changer
+    id: 13
+    uiSprite: {fileID: 21300000, guid: b25d63dee2c6858438a4474da0599f24, type: 3}
+    editorPrefab: {fileID: 5885742017818743523, guid: a9316049a4fed244f92c9b716d905d8d, type: 3}
+    gamePrefab: {fileID: 178694253473289680, guid: acd177c6d8c44c34e9852d14592b24b0, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0, y: -0.24}
+    gridDimension: {x: 2, y: 2}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 2
+      standingBlock: 0
+      changeable: 1
+      propertyType: 13
+      leftPos: {x: -0.24, y: 0}
+      upPos: {x: 0, y: 1.24}
+      RightPos: {x: 1.24, y: 0}
+    includeInGame: 1
+  - name: Yellow Color Changer
+    id: 14
+    uiSprite: {fileID: 21300000, guid: 5333d282e4ff7ed4cb13a90d9afcc500, type: 3}
+    editorPrefab: {fileID: 4394419364098574107, guid: 39e8b4a3008a12c499ffe7a525a97a79, type: 3}
+    gamePrefab: {fileID: 53467511284501405, guid: 12690b1bf980a784b86f6aaa26c17fd2, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0, y: -0.24}
+    gridDimension: {x: 2, y: 2}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 2
+      standingBlock: 0
+      changeable: 1
+      propertyType: 13
+      leftPos: {x: -0.24, y: 0}
+      upPos: {x: 0, y: 1.24}
+      RightPos: {x: 1.24, y: 0}
+    includeInGame: 1
+  - name: Red Portal
+    id: 15
+    uiSprite: {fileID: 21300000, guid: d8a56a156fb692e429db4e999d72761e, type: 3}
+    editorPrefab: {fileID: 7854454806616048077, guid: cbc28a39bc9880246a5255091897615e, type: 3}
+    gamePrefab: {fileID: 8352826743756971513, guid: 4ab7298cdb3db3041b6f8ccf3492125c, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0, y: 1.13}
+    gridDimension: {x: 2, y: 3}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 2
+      checkType: 1
+      standingBlock: 0
+      changeable: 0
+      propertyType: 3
+      leftPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      RightPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Blue Portal
+    id: 16
+    uiSprite: {fileID: 21300000, guid: 739422224603e1648bf375b9c9e4e19b, type: 3}
+    editorPrefab: {fileID: 515993763707045437, guid: 4607ab964834ff54d95b16561bede91d, type: 3}
+    gamePrefab: {fileID: 800345421707473485, guid: 58ec3b040f6892c4f8c13264769a1b24, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0, y: 1.13}
+    gridDimension: {x: 2, y: 3}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 2
+      checkType: 1
+      standingBlock: 0
+      changeable: 0
+      propertyType: 3
+      leftPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      RightPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Green Portal
+    id: 17
+    uiSprite: {fileID: 21300000, guid: 929d5b4b102afe74384097c59becb6aa, type: 3}
+    editorPrefab: {fileID: 8176505109517525159, guid: 56bc6393d1a0f3549a075e1e8cd869af, type: 3}
+    gamePrefab: {fileID: 6089674372979618550, guid: 27d1d32847a2d4c49945bb2eedc0fecf, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0, y: 1.13}
+    gridDimension: {x: 2, y: 3}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 2
+      checkType: 1
+      standingBlock: 0
+      changeable: 0
+      propertyType: 3
+      leftPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      RightPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Yellow Portal
+    id: 18
+    uiSprite: {fileID: 21300000, guid: cb098f75473e1e649a1714885f00d9c9, type: 3}
+    editorPrefab: {fileID: 3943435404041358609, guid: 418e523179a0ae543a44afb103c8aa2d, type: 3}
+    gamePrefab: {fileID: 3389906142610684305, guid: e784fec52315cbf43be402e783d2a175, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0, y: 1.13}
+    gridDimension: {x: 2, y: 3}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 2
+      checkType: 1
+      standingBlock: 0
+      changeable: 0
+      propertyType: 3
+      leftPos: {x: 0, y: 0}
+      upPos: {x: 0, y: 0}
+      RightPos: {x: 0, y: 0}
+    includeInGame: 1
+  - name: Stationary Laser
+    id: 19
+    uiSprite: {fileID: 21300000, guid: fcd08e0babb3d564d9c7a32d26930e38, type: 3}
+    editorPrefab: {fileID: 1761919578530842583, guid: 9f5bdd9ba49b6ee4cb57668c9a968686, type: 3}
+    gamePrefab: {fileID: 1999144264651030557, guid: fff085a2dd632654d9920e27a8a0521e, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0.5, y: 0.5}
+    gridDimension: {x: 1, y: 2}
+    description: Press [R] to rotate
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 0
+      standingBlock: 1
+      changeable: 1
+      propertyType: 0
+      leftPos: {x: 0.5, y: 0.5}
+      upPos: {x: 0.5, y: 0.5}
+      RightPos: {x: 0.5, y: 0.5}
+    includeInGame: 1
+  - name: Rotating One-Way Laser
+    id: 20
+    uiSprite: {fileID: 21300000, guid: fcd08e0babb3d564d9c7a32d26930e38, type: 3}
+    editorPrefab: {fileID: 1761919578530842583, guid: 9f5bdd9ba49b6ee4cb57668c9a968686, type: 3}
+    gamePrefab: {fileID: 1999144264651030557, guid: 4232107d31f5e824c839ec3c9225ffae, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0.5, y: 0.5}
+    gridDimension: {x: 3, y: 3}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 6
+      leftPos: {x: 0.5, y: 0.5}
+      upPos: {x: 0.5, y: 0.5}
+      RightPos: {x: 0.5, y: 0.5}
+    includeInGame: 1
+  - name: Rotating Two-Way Laser
+    id: 21
+    uiSprite: {fileID: 21300000, guid: 97fa91419ba79044dbd0fbe28bbf3f97, type: 3}
+    editorPrefab: {fileID: 6654594505753721899, guid: 1824515c77bd2fc4a9048e389f76e930, type: 3}
+    gamePrefab: {fileID: 580687957049387366, guid: e3e48838393bfe148975c55e5b8cf9d6, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0.5, y: 0.5}
+    gridDimension: {x: 3, y: 3}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 6
+      leftPos: {x: 0.5, y: 0.5}
+      upPos: {x: 0.5, y: 0.5}
+      RightPos: {x: 0.5, y: 0.5}
+    includeInGame: 1
+  - name: Rotating Four-Way Laser
+    id: 22
+    uiSprite: {fileID: 21300000, guid: a555fbb1be412c349a166bc8b662bea2, type: 3}
+    editorPrefab: {fileID: 8427390169830227222, guid: 3b49378c370807248bd8a13a1bdf53f2, type: 3}
+    gamePrefab: {fileID: 1043999832614598195, guid: 4b1cee2b050596a43ab052753070ad9e, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0.5, y: 0.5}
+    gridDimension: {x: 3, y: 3}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 0
+      standingBlock: 0
+      changeable: 0
+      propertyType: 6
+      leftPos: {x: 0.5, y: 0.5}
+      upPos: {x: 0.5, y: 0.5}
+      RightPos: {x: 0.5, y: 0.5}
+    includeInGame: 1
+  - name: Laser Detector
+    id: 23
+    uiSprite: {fileID: 21300000, guid: 72d67dbf8db35894fb5e6114f89c0e09, type: 3}
+    editorPrefab: {fileID: 557206761114558544, guid: 7b8238c1a4fd25242ac86a8e5056cdd5, type: 3}
+    gamePrefab: {fileID: 3078342714099237544, guid: fe28cee1764eb914eaee5cf7bff04ecb, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0, y: 0.06}
+    gridDimension: {x: 2, y: 1}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 1
+      standingBlock: 0
+      changeable: 1
+      propertyType: 2
+      leftPos: {x: 0.06, y: 0}
+      upPos: {x: 0, y: 0.94}
+      RightPos: {x: 0.94, y: 0}
+    includeInGame: 1
+  - name: Mirror
+    id: 24
+    uiSprite: {fileID: 21300000, guid: f80477ad7d113d14f80b5b60b4f2fb0d, type: 3}
+    editorPrefab: {fileID: 2906320820798765157, guid: 7978044806f76f645bdf343d21dcf6f5, type: 3}
+    gamePrefab: {fileID: 5747474008609950931, guid: 037c1153492db4e43a71c8479653f024, type: 3}
+    tile: {fileID: 0}
+    validationType: 5
+    objectOffset: {x: 0.5, y: 0.5}
+    gridDimension: {x: 2, y: 1}
+    description: 
+    cursorType: 0
+    extra:
+      maxAllowedItem: 0
+      checkType: 0
+      standingBlock: 0
+      changeable: 1
+      propertyType: 6
+      leftPos: {x: 0.5, y: 0.5}
+      upPos: {x: 0.5, y: 5}
+      RightPos: {x: 0.5, y: 0.5}
     includeInGame: 1

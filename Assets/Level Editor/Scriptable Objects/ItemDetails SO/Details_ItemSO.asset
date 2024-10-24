@@ -118,7 +118,7 @@ MonoBehaviour:
       upPos: {x: 0, y: 0}
       RightPos: {x: 0, y: 0}
     includeInGame: 1
-  - name: Rroots
+  - name: Icicles
     id: 5
     uiSprite: {fileID: 7716185028866722342, guid: cd966075e2ef09b40b76ca8171db311a, type: 3}
     editorPrefab: {fileID: 0}

@@ -36,7 +36,7 @@ MonoBehaviour:
     includeInGame: 1
   - name: Heart
     id: 1
-    uiSprite: {fileID: 21300000, guid: 431972712a2cf164c8f43dfeac176e62, type: 3}
+    uiSprite: {fileID: 21300000, guid: 2c481037254eaf64cb1cc212e65d342d, type: 3}
     editorPrefab: {fileID: 2494420575538887021, guid: eb886e5190a931d4bb3bb4385e9d5054, type: 3}
     gamePrefab: {fileID: 3710692091689001022, guid: 4d14450ae6a641546ad5c874972ef365, type: 3}
     tile: {fileID: 0}

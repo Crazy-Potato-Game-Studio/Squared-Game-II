@@ -6,11 +6,10 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 namespace LevelBuilder
 {
-    public class UiLevelDetails : MonoBehaviour,IPointerClickHandler,IPointerEnterHandler,IPointerExitHandler
+    public class UiLevelDetails : MonoBehaviour,IPointerClickHandler
     {
         public TextMeshProUGUI levelName;
         public TextMeshProUGUI days;
-        public Image borderImage;
         public LevelDetails levelDetails { get; private set; }
         [HideInInspector] public Sprite levelSprite;
         LevelEditorMenuManager levelEditorMenuManager;
@@ -34,16 +33,6 @@ namespace LevelBuilder
         public void OnPointerClick(PointerEventData eventData)
         {
             levelEditorMenuManager.ShowLevelDetails(levelDetails,this);
-        }
-
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            borderImage.gameObject.SetActive(true);
-        }
-
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            borderImage.gameObject.SetActive(false);
         }
     }
 }

@@ -55,7 +55,7 @@ MonoBehaviour:
       upPos: {x: 0, y: 0}
       RightPos: {x: 0, y: 0}
     includeInGame: 1
-  - name: Spike
+  - name: Spikes
     id: 2
     uiSprite: {fileID: -6735606462096518543, guid: 4ce1df44dfb48a84090863579fa74c35, type: 3}
     editorPrefab: {fileID: 5800782778787392565, guid: 72ed8e0792a31de4d9ce6293f5261cdd, type: 3}

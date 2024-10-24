@@ -19,12 +19,17 @@ public class GetLevelInfo : MonoBehaviour
         hoursText.text = "0 h";
         timeText.text = "0 min";
         LoadAdditionalDataFromFile();
+        ChangeText();
         InvokeRepeating("ChangeTimeValue", 60, 60);
     }
 
     public void ChangeTimeValue(){
         timeSpent += 1;
         SaveAdditionalDataToFile();
+        ChangeText();
+    }
+
+    public void ChangeText(){
         hours = timeSpent/60;
         if(hours != 0){
             hoursText.text = hours.ToString() + " h";
@@ -64,7 +69,6 @@ public class GetLevelInfo : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         AdditionalLevelInfo additionalLevelInfo = (AdditionalLevelInfo) bf.Deserialize(file);
         file.Close();
-
         timeSpent = additionalLevelInfo.timeSpentEditing;
     }
 }

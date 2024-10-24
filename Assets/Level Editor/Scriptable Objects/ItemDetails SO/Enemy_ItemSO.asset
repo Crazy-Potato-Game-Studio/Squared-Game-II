@@ -57,7 +57,7 @@ MonoBehaviour:
     includeInGame: 1
   - name: Blue Slime
     id: 2
-    uiSprite: {fileID: 8598688615099297957, guid: a0c63c158f446f54db19acb8ff6b83e1, type: 3}
+    uiSprite: {fileID: 8598688615099297957, guid: 70682a2bc3a990e4b9859fe4c89a0c96, type: 3}
     editorPrefab: {fileID: 2817349866176509479, guid: 9a509214c5f729041a20288d8e4c4112, type: 3}
     gamePrefab: {fileID: 8508609216244678110, guid: 5be1acbffb44a75418e88da24679d24b, type: 3}
     tile: {fileID: 0}
@@ -78,7 +78,7 @@ MonoBehaviour:
     includeInGame: 1
   - name: Bat
     id: 3
-    uiSprite: {fileID: 4987309567611069813, guid: 501a52012cc24ac429b1669994b5ca10, type: 3}
+    uiSprite: {fileID: 4987309567611069813, guid: edf30ceb8c25f8041815c24d6a22882d, type: 3}
     editorPrefab: {fileID: 2847971690891466885, guid: f42441e2f64471941a8d675d21e7430d, type: 3}
     gamePrefab: {fileID: 1251805759794566951, guid: fbc60278218a17b45b0e02c1e3b2b7d4, type: 3}
     tile: {fileID: 0}
@@ -97,9 +97,9 @@ MonoBehaviour:
       upPos: {x: 0, y: 0}
       RightPos: {x: 0, y: 0}
     includeInGame: 1
-  - name: Eye
+  - name: Flying Eye
     id: 4
-    uiSprite: {fileID: 7348253216994761820, guid: 22d0ba166dea73c42b12dcd760060598, type: 3}
+    uiSprite: {fileID: 7348253216994761820, guid: f4069a437bacfc14694a47fd666e24a9, type: 3}
     editorPrefab: {fileID: 8774829192943670277, guid: 5db9da7cd2f6ffe41b8a7bdbeab45721, type: 3}
     gamePrefab: {fileID: 1264452451473123792, guid: 00595f74329872840befda9ae531ce11, type: 3}
     tile: {fileID: 0}
@@ -118,9 +118,9 @@ MonoBehaviour:
       upPos: {x: 0, y: 0}
       RightPos: {x: 0, y: 0}
     includeInGame: 1
-  - name: Big Eye
+  - name: Big Flying Eye
     id: 5
-    uiSprite: {fileID: 5813851236192948658, guid: f31f9d5cb5a9bda4bbef290ffc051364, type: 3}
+    uiSprite: {fileID: -6476050347846772233, guid: 0b0fc5403fbf05640bf390759232a974, type: 3}
     editorPrefab: {fileID: 7489185367592889494, guid: f5e28a6a3c0e8fe42b740f8bd6397301, type: 3}
     gamePrefab: {fileID: 6845433481708883279, guid: 0891cf09e46ff154aa27c05b597ce186, type: 3}
     tile: {fileID: 0}
@@ -141,7 +141,7 @@ MonoBehaviour:
     includeInGame: 1
   - name: Dionaea Plant
     id: 6
-    uiSprite: {fileID: -5591312681037401397, guid: 8361914f28efc7444b4f94d448e0c7ea, type: 3}
+    uiSprite: {fileID: -3797417976832381115, guid: 08f247879ccac614c9a1f990c7cea9f3, type: 3}
     editorPrefab: {fileID: 6416287599083332486, guid: 69fabdfb7865aaf469cec8ded7f66b6a, type: 3}
     gamePrefab: {fileID: 31852253005200995, guid: bc3fc0077637b0a46ac64142a0fea750, type: 3}
     tile: {fileID: 0}
@@ -160,9 +160,9 @@ MonoBehaviour:
       upPos: {x: 0, y: 0}
       RightPos: {x: 0, y: 0}
     includeInGame: 1
-  - name: Snow Man
+  - name: Snowman
     id: 7
-    uiSprite: {fileID: 21300000, guid: 986c11aea3c79b544845af6c829e352e, type: 3}
+    uiSprite: {fileID: 21300000, guid: 7368625f6df10234296a4a4ae4eef67c, type: 3}
     editorPrefab: {fileID: 7029447672181698347, guid: 36391f0862da22f47b651760e6be2b6b, type: 3}
     gamePrefab: {fileID: 3525620857847904370, guid: 413ec65aad64ddd46b3fed589d11bdac, type: 3}
     tile: {fileID: 0}
