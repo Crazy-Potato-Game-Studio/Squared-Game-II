@@ -39,6 +39,7 @@ TagManager:
   - UnoReverseCard
   - Generator
   - Lever
+  - LevelCreateManager
   layers:
   - Default
   - TransparentFX

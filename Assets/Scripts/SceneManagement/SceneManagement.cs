@@ -28,7 +28,7 @@ public class SceneManagement : MonoBehaviour
     public void PauseGame(InputAction.CallbackContext context){
         
         if(context.performed){
-            if(SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1){
+            if(SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1 && SceneManager.GetActiveScene().buildIndex != 33){
                 inGameMenu = GameObject.FindGameObjectWithTag("InGameMenu");
                 if(Time.timeScale == 0){
                     inGameMenu.GetComponent<InGameMenu>().HideInGameMenu();
@@ -132,5 +132,13 @@ public class SceneManagement : MonoBehaviour
 
     private void OnApplicationQuit() {
         SteamClient.Shutdown();
+    }
+
+    private void OnDisable() {
+        playerInputActions.Player.ReloadScene.performed -= ReloadScene;
+        playerInputActions.Player.InGameMenu.performed -= PauseGame;
+        playerInputActions.Player.Disable();
+        playerInputActions.Disable();
+
     }
 }

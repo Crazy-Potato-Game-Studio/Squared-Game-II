@@ -419,6 +419,7 @@ GameObject:
   - component: {fileID: 55006165}
   - component: {fileID: 55006164}
   - component: {fileID: 55006166}
+  - component: {fileID: 55006168}
   - component: {fileID: 55006167}
   m_Layer: 5
   m_Name: SteamButton
@@ -501,7 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -544,7 +545,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 127cc98831fa1a84dbed4bcd9a70530b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -628,6 +629,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &55006168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55006162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 55006167}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &66153932
 GameObject:
   m_ObjectHideFlags: 0
@@ -5112,7 +5142,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 127cc98831fa1a84dbed4bcd9a70530b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.233
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7323,6 +7353,7 @@ GameObject:
   - component: {fileID: 721878633}
   - component: {fileID: 721878634}
   - component: {fileID: 721878635}
+  - component: {fileID: 721878637}
   - component: {fileID: 721878636}
   m_Layer: 5
   m_Name: SaveButton
@@ -7367,7 +7398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -7378,7 +7409,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.43529415, g: 0.43529415, b: 0.43529415, a: 1}
+    m_SelectedColor: {r: 0.9568628, g: 0.9568628, b: 0.9568628, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 2
     m_FadeDuration: 0.1
@@ -7448,7 +7479,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 127cc98831fa1a84dbed4bcd9a70530b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7532,6 +7563,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &721878637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721878632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 721878636}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &756345713
 GameObject:
   m_ObjectHideFlags: 0
@@ -13061,7 +13121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -13072,7 +13132,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.43529415, g: 0.43529415, b: 0.43529415, a: 1}
+    m_SelectedColor: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 2
     m_FadeDuration: 0.1
@@ -13128,7 +13188,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates: []
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1604116520}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!82 &1604116520
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13141,7 +13217,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 127cc98831fa1a84dbed4bcd9a70530b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -13400,6 +13476,7 @@ GameObject:
   - component: {fileID: 1670537156}
   - component: {fileID: 1670537159}
   - component: {fileID: 1670537160}
+  - component: {fileID: 1670537161}
   m_Layer: 0
   m_Name: Camera_Edit
   m_TagString: MainCamera
@@ -13533,6 +13610,21 @@ MonoBehaviour:
   zoomStep: 0.5
   minZoom: 7
   maxZoom: 50
+--- !u!114 &1670537161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670537155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f3d5acb288b0845a861ddae0bf330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 7cc059dfbc9356f488657025d92161b0, type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!114 &1673613373 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4240375992640656235, guid: 7376b0a9907173647894122ffe955901, type: 3}

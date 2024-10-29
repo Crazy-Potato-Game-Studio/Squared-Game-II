@@ -225,6 +225,8 @@ GameObject:
   - component: {fileID: 948986051954237294}
   - component: {fileID: 1427713230341522194}
   - component: {fileID: 653615811103572349}
+  - component: {fileID: 1431669032381037331}
+  - component: {fileID: 6047823153536372150}
   m_Layer: 5
   m_Name: SteamButton
   m_TagString: Untagged
@@ -306,7 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -336,7 +338,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7017171242785803120}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6047823153536372150}
+        m_TargetAssemblyTypeName: LevelCreateMenuButton, Assembly-CSharp
+        m_MethodName: Upload
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &653615811103572349
 AudioSource:
   m_ObjectHideFlags: 0
@@ -349,7 +363,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 127cc98831fa1a84dbed4bcd9a70530b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -433,6 +447,47 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1431669032381037331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445150377021759562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 653615811103572349}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &6047823153536372150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445150377021759562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92408e7be54c544da584f9513206d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1474479201420235448
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,6 +500,8 @@ GameObject:
   - component: {fileID: 6650447399285679247}
   - component: {fileID: 4179417479349283683}
   - component: {fileID: 6158441148017035301}
+  - component: {fileID: 2131743004839557043}
+  - component: {fileID: 2514687246216469702}
   m_Layer: 5
   m_Name: EditorButton
   m_TagString: Untagged
@@ -488,7 +545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -519,21 +576,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelBuilder.UiMenuManager, Assembly-CSharp
-        m_MethodName: Save
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 1de7538e396f3844396d3521fcc47190, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4179417479349283683}
-        m_TargetAssemblyTypeName: LevelSaved, Assembly-CSharp
-        m_MethodName: ShowSavedLevelPopUp
+      - m_Target: {fileID: 2514687246216469702}
+        m_TargetAssemblyTypeName: LevelCreateMenuButton, Assembly-CSharp
+        m_MethodName: Edit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -569,7 +614,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 127cc98831fa1a84dbed4bcd9a70530b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -653,6 +698,47 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2131743004839557043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474479201420235448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6158441148017035301}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &2514687246216469702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474479201420235448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92408e7be54c544da584f9513206d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2708381832944722406
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,6 +1531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: {fileID: 5857891241730786882}
   days: {fileID: 6622362125054436017}
+  playButton: {fileID: 5099205012775092062}
   levelSprite: {fileID: 0}
 --- !u!1 &6127749385728076997
 GameObject:
@@ -1823,6 +1910,7 @@ GameObject:
   - component: {fileID: 5099205012775092062}
   - component: {fileID: 2708705020431483356}
   - component: {fileID: 441244609567154544}
+  - component: {fileID: 870504333305227469}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -1874,7 +1962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1905,21 +1993,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelBuilder.UiMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 870504333305227469}
+        m_TargetAssemblyTypeName: LevelCreateMenuButton, Assembly-CSharp
         m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 1de7538e396f3844396d3521fcc47190, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ScreenCapturer, Assembly-CSharp
-        m_MethodName: SaveToLevelDetails
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1941,7 +2017,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates: []
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 441244609567154544}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!82 &441244609567154544
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1954,7 +2046,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 127cc98831fa1a84dbed4bcd9a70530b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2038,6 +2130,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &870504333305227469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7548760451932930429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92408e7be54c544da584f9513206d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7764300917378799113
 GameObject:
   m_ObjectHideFlags: 0

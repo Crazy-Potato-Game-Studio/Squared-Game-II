@@ -150,16 +150,11 @@ namespace LevelBuilder
         public void ShowLevelDetails(LevelDetails levelDetails, UiLevelDetails uiLevelDetails)
         {
             selectedLevelDetails = uiLevelDetails;
-            levelCreateUi.SetActive(false);
-            levelDetailsUi.SetActive(true);
+            //levelCreateUi.SetActive(false);
+            //levelDetailsUi.SetActive(true);
             this.levelDetails = levelDetails;
             levelName.text = this.levelDetails.levelName;
             levelImage.sprite = uiLevelDetails.levelSprite;
-        }
-
-        public void QuickLoad()
-        {
-            if (PlayerPrefs.HasKey("CURRENT_LEVEL")) { SceneManager.LoadScene("Scene0_CreateScene"); }
         }
         public void Play()
         {

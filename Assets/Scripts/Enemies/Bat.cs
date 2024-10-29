@@ -12,7 +12,9 @@ public class Bat : MonoBehaviour
     private float distance;
 
     private void Awake() {
-        GetComponent<AIDestinationSetter>().target = returnPoint;
+        if(returnPoint){
+            GetComponent<AIDestinationSetter>().target = returnPoint;
+        }
     }
 
     void Update(){
@@ -23,9 +25,11 @@ public class Bat : MonoBehaviour
 
             if(distance < 13f){
                 GetComponent<AIDestinationSetter>().target = player.transform;
+                Debug.Log(GetComponent<AIDestinationSetter>().target);
             }else if(distance > 13f ){
-                GetComponent<AIDestinationSetter>().target = returnPoint;
+                //GetComponent<AIDestinationSetter>().target = returnPoint;
             }
+            Debug.Log(distance);
         }
         
         if(aiPath.desiredVelocity.x >= 0.01f){

@@ -36,7 +36,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251805759794566951}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.56124, y: -0.70326376, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -399,6 +399,9 @@ MonoBehaviour:
   heart: {fileID: 3710692091689001022, guid: 4d14450ae6a641546ad5c874972ef365, type: 3}
   arrow: {fileID: 397587817886829463, guid: ea60d531008c4c34d934824ccccd852d, type: 3}
   isBoss: 0
+  plainsSoundtrack: {fileID: 0}
+  winterSoundtrack: {fileID: 0}
+  tunnelsSoundtrack: {fileID: 0}
 --- !u!114 &1251805759794566956
 MonoBehaviour:
   m_ObjectHideFlags: 0
