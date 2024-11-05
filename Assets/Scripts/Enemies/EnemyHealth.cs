@@ -59,19 +59,29 @@ public class EnemyHealth : MonoBehaviour
         if(GetComponent<SlimeKing>() && name == "SlimeKing"){
             GetComponent<SlimeKing>().OpenTheDoors();
             GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManagement>().PlayMusic(plainsSoundtrack);
+            GameObject SteamAchievementsManager = GameObject.FindGameObjectWithTag("MainCamera");
+            SteamAchievementsManager.GetComponent<SteamAchievementsManager>().UnlockAchievement("king_ach");
         }
 
         if(GetComponent<SlimeKing>() && name == "SlimeQueen"){
             GetComponent<SlimeKing>().OpenTheDoors();
             GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManagement>().PlayMusic(winterSoundtrack);
+            GameObject SteamAchievementsManager = GameObject.FindGameObjectWithTag("MainCamera");
+            SteamAchievementsManager.GetComponent<SteamAchievementsManager>().UnlockAchievement("queen_ach");
         }
 
         if(GetComponent<TheSeekerBoss>()){
             GetComponent<TheSeekerBoss>().OpenTheDoors();
             GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManagement>().PlayMusic(tunnelsSoundtrack);
+            GameObject SteamAchievementsManager = GameObject.FindGameObjectWithTag("MainCamera");
+            SteamAchievementsManager.GetComponent<SteamAchievementsManager>().UnlockAchievement("eyes_ach");
         }
         SpawnDeathParticles();
         SpawnItems();
+        if(GetComponent<GreenSlime>()){
+            GameObject SteamAchievementsManager = GameObject.FindGameObjectWithTag("MainCamera");
+            SteamAchievementsManager.GetComponent<SteamAchievementsManager>().UnlockAchievement("slime_ach");
+        }
         Destroy(gameObject);
     }
 

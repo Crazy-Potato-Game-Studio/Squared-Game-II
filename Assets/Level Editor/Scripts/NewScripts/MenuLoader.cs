@@ -14,6 +14,7 @@ public class MenuLoader : MonoBehaviour
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
         playerInputActions.Player.InGameMenu.performed += PauseGameEditor;
+        playerInputActions.Player.ReloadScene.performed += CallRestartLevel;
     }
 
     public void PauseGameEditor(InputAction.CallbackContext context){
@@ -34,6 +35,16 @@ public class MenuLoader : MonoBehaviour
                 gamePaused = true;
             }
         }
+    }
+
+    public void CallRestartLevel(InputAction.CallbackContext context){
+        if(context.performed){
+            RestartLevel();
+        }
+    }
+
+    private void RestartLevel(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnDestroy() {

@@ -113,7 +113,6 @@ public class TheSeekerBoss : MonoBehaviour
             }
             Rigidbody2D rb = currentBullet.GetComponent<Rigidbody2D>();
             rb.AddForce(currentBullet.transform.right * 1.5f, ForceMode2D.Impulse);
-            Debug.Log("shoot");
         }  
     }
 

@@ -7,6 +7,7 @@ public class Bat : MonoBehaviour
 {
     [SerializeField] private AIPath aiPath;
     [SerializeField] private Transform returnPoint;
+    [SerializeField] private GameObject returnPointPrefab;
     [SerializeField] private GameObject enemyCanvas;
     private GameObject player;
     private float distance;
@@ -14,6 +15,10 @@ public class Bat : MonoBehaviour
     private void Awake() {
         if(returnPoint){
             GetComponent<AIDestinationSetter>().target = returnPoint;
+        }else{
+            GameObject newReturnPoint = Instantiate(returnPointPrefab, transform);
+            newReturnPoint.transform.parent = null;
+            returnPoint = newReturnPoint.transform;
         }
     }
 
@@ -25,11 +30,9 @@ public class Bat : MonoBehaviour
 
             if(distance < 13f){
                 GetComponent<AIDestinationSetter>().target = player.transform;
-                Debug.Log(GetComponent<AIDestinationSetter>().target);
             }else if(distance > 13f ){
-                //GetComponent<AIDestinationSetter>().target = returnPoint;
+                GetComponent<AIDestinationSetter>().target = returnPoint;
             }
-            Debug.Log(distance);
         }
         
         if(aiPath.desiredVelocity.x >= 0.01f){

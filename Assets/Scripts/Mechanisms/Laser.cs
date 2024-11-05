@@ -60,9 +60,7 @@ public class Laser : MonoBehaviour
             }else{
                 lineRenderer.positionCount += 1;
                 lineRenderer.SetPosition(lineRenderer.positionCount - 1, ray.origin + ray.direction * remainingLength);
-
             }
-
         }
 
         if(hit.collider.tag == "LaserDetector" && !hitDetector){
@@ -77,8 +75,6 @@ public class Laser : MonoBehaviour
             laserDetector.GetComponent<LaserDetector>().TurnObjects();
         }
         
-
-
         DealDamage(hit);
     }
 
@@ -89,6 +85,8 @@ public class Laser : MonoBehaviour
             }else{
                 hit.collider.gameObject.GetComponent<HealthManager>().LoseHealth(100f, 0f);
             }
+            GameObject SteamAchievementsManager = GameObject.FindGameObjectWithTag("MainCamera");
+            SteamAchievementsManager.GetComponent<SteamAchievementsManager>().UnlockAchievement("laser_ach");
         }
     }
 

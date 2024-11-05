@@ -582,7 +582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.5
+  radius: 1
   height: 2
   canMove: 1
   maxSpeed: 2
@@ -651,6 +651,9 @@ MonoBehaviour:
   heart: {fileID: 3710692091689001022, guid: 4d14450ae6a641546ad5c874972ef365, type: 3}
   arrow: {fileID: 397587817886829463, guid: ea60d531008c4c34d934824ccccd852d, type: 3}
   isBoss: 0
+  plainsSoundtrack: {fileID: 0}
+  winterSoundtrack: {fileID: 0}
+  tunnelsSoundtrack: {fileID: 0}
 --- !u!114 &6845433481708883268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,6 +695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiPath: {fileID: 6845433481708883265}
   returnPoint: {fileID: 0}
+  returnPointPrefab: {fileID: 282653879831408591, guid: a095265317d3a8246943f21089db5021, type: 3}
   enemyCanvas: {fileID: 6146861888146529519}
   canShootDistance: 10
   acidBullet: {fileID: 9105465000787928195, guid: 304d66a62e94f754a9a7e531edda38d0, type: 3}

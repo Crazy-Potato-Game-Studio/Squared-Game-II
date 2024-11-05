@@ -40,9 +40,14 @@ public class Exit : MonoBehaviour
         if(Physics2D.gravity.y > 0){
             Physics2D.gravity *= -1;
         }
-        GameObject _sceneManagement = GameObject.FindGameObjectWithTag("SceneManager");
-        _sceneManagement.GetComponent<SceneManagement>().currentLevelNumer = SceneManager.GetActiveScene().buildIndex;
-        _sceneManagement.GetComponent<SceneManagement>().LoadNextLevel();
+
+        if(!GetComponent<LoadLevelEditor>()){
+            GameObject _sceneManagement = GameObject.FindGameObjectWithTag("SceneManager");
+            _sceneManagement.GetComponent<SceneManagement>().currentLevelNumer = SceneManager.GetActiveScene().buildIndex;
+            _sceneManagement.GetComponent<SceneManagement>().LoadNextLevel();
+        }else{
+            GetComponent<LoadLevelEditor>().LoadEditor();
+        }
     }
 
     IEnumerator HidePlayer(){

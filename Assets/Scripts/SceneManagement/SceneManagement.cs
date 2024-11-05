@@ -109,7 +109,8 @@ public class SceneManagement : MonoBehaviour
     }
 
     public void Exit(){
-        SteamClient.Shutdown();
+        SteamClient.Shutdown(); 
+        SteamInit.steamConnection = false;
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else

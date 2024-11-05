@@ -37,6 +37,9 @@ public class ColorChangerScript : MonoBehaviour
             }
             
             source.PlayOneShot(clip);
+
+            GameObject SteamAchievementsManager = GameObject.FindGameObjectWithTag("MainCamera");
+            SteamAchievementsManager.GetComponent<SteamAchievementsManager>().UnlockAchievement("blue_ach");
         }
     }
 

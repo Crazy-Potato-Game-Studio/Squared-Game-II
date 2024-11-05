@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Steamworks;
 
 public class MenuController : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class MenuController : MonoBehaviour
     }
 
     public void Exit(){
+        SteamClient.Shutdown(); 
+        SteamInit.steamConnection = false;
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else

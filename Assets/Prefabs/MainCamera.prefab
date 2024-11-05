@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 4751943242067425864}
   - component: {fileID: 4751943242067425868}
   - component: {fileID: 4751943242067425870}
+  - component: {fileID: 8741167333448697411}
+  - component: {fileID: 6581813364709672483}
   m_Layer: 10
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -253,4 +255,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6f5159e3fdbf74ba82a3b1a8c7d296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   smoothSpeed: 0.2
+--- !u!114 &8741167333448697411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751943242067425863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ae2939eacc4a254f9774258218084a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6581813364709672483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751943242067425863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ac38c7794cace4081d691675bef25f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

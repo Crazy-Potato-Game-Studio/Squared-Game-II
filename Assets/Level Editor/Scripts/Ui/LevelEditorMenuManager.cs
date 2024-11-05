@@ -185,11 +185,6 @@ namespace LevelBuilder
                 File.Delete(Application.persistentDataPath + "/Level Editor/Levels/" + selectedLevelDetails.levelDetails.levelName + ".dat");
             }
             if (PlayerPrefs.GetString("CURRENT_LEVEL") == selectedLevelDetails.levelDetails.levelName) { PlayerPrefs.DeleteKey("CURRENT_LEVEL"); }
-            if (!PlayerPrefs.HasKey("CURRENT_LEVEL"))
-            {
-                quickLoadButton.interactable = false;
-                quickLoadBorderImage.enabled = false;
-            }
             savedLevels.Remove(selectedLevelDetails.levelDetails);
             NewLevelCreate();
             Destroy(selectedLevelDetails.gameObject);

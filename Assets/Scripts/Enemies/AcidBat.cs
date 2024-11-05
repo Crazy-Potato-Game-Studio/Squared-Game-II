@@ -8,6 +8,7 @@ public class AcidBat : MonoBehaviour
 {
     [SerializeField] private AIPath aiPath;
     [SerializeField] private Transform returnPoint;
+    [SerializeField] private GameObject returnPointPrefab;
     [SerializeField] private GameObject enemyCanvas;
     private GameObject player;
     private float distance;
@@ -17,7 +18,13 @@ public class AcidBat : MonoBehaviour
     [SerializeField] private LayerMask seeLayers;
 
     private void Awake() {
-        GetComponent<AIDestinationSetter>().target = returnPoint;
+        if(returnPoint){
+            GetComponent<AIDestinationSetter>().target = returnPoint;
+        }else{
+            GameObject newReturnPoint = Instantiate(returnPointPrefab, transform);
+            newReturnPoint.transform.parent = null;
+            returnPoint = newReturnPoint.transform;
+        }
         GetComponent<AIPath>().endReachedDistance = canShootDistance;
         InvokeRepeating("Shoot", 0, 0.05f);
     }

@@ -25,6 +25,8 @@ public class UnoReverseCard : MonoBehaviour
         GameObject unoCard = GameObject.FindGameObjectWithTag("UnoReverse");
         unoCard.GetComponent<Image>().enabled = true;
         unoCard.transform.GetChild(0).GetComponent<Image>().enabled = true;
+        GameObject SteamAchievementsManager = GameObject.FindGameObjectWithTag("MainCamera");
+        SteamAchievementsManager.GetComponent<SteamAchievementsManager>().UnlockAchievement("reverse_ach");
     }
 
     private void PlayerPressedButton(InputAction.CallbackContext context){

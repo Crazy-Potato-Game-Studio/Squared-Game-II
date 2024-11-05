@@ -29,6 +29,8 @@ public class FinalScene : MonoBehaviour
     }
 
     IEnumerator LoadMenu(){
+        GameObject SteamAchievementsManager = GameObject.FindGameObjectWithTag("MainCamera");
+        SteamAchievementsManager.GetComponent<SteamAchievementsManager>().UnlockAchievement("finish_ach");
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(1);
     }

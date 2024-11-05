@@ -15,7 +15,7 @@ MonoBehaviour:
   items:
   - name: Spawn
     id: 0
-    uiSprite: {fileID: 21300000, guid: c23c1798ec166ee4da8eba3a66d1183e, type: 3}
+    uiSprite: {fileID: 21300000, guid: a6561f2857995a542817e116c526ab61, type: 3}
     editorPrefab: {fileID: 8994627321234531987, guid: 782e9da6fdeeac14999249cab914cd19, type: 3}
     gamePrefab: {fileID: 1717788395268010770, guid: 5f1710956be1034439520274d33b2b11, type: 3}
     tile: {fileID: 0}

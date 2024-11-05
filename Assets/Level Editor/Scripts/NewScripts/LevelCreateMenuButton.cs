@@ -14,19 +14,23 @@ public class LevelCreateMenuButton : MonoBehaviour
 
     public void Play()
     {   
-        Debug.Log(PlayerPrefs.GetString("CURRENT_LEVEL"));
         LevelCreateManager.GetComponent<LevelEditorMenuManager>().Play();
     }
 
     public void Edit()
     {
-        Debug.Log(PlayerPrefs.GetString("CURRENT_LEVEL"));
         LevelCreateManager.GetComponent<LevelEditorMenuManager>().Edit();
+        GameObject SteamAchievementsManager = GameObject.FindGameObjectWithTag("MainCamera");
+        SteamAchievementsManager.GetComponent<SteamAchievementsManager>().UnlockAchievement("editor_ach");
     }
 
     public void Upload()
     {
         LevelCreateManager.GetComponent<LevelEditorMenuManager>().Upload();
+    }
+
+    public void Delete(){
+        LevelCreateManager.GetComponent<LevelEditorMenuManager>().Delete();
     }
 
 }

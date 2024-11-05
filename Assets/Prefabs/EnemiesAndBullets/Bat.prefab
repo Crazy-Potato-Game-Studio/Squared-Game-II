@@ -372,6 +372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiPath: {fileID: 1251805759794566953}
   returnPoint: {fileID: 0}
+  returnPointPrefab: {fileID: 282653879831408591, guid: a095265317d3a8246943f21089db5021, type: 3}
   enemyCanvas: {fileID: 1940657396361283207}
 --- !u!114 &1251805759794566957
 MonoBehaviour:

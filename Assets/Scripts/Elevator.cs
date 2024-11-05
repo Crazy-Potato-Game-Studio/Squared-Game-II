@@ -40,7 +40,13 @@ public class Elevator : MonoBehaviour
             Destroy(cam.GetComponent<CameraFollow>());
             Destroy(player.GetComponent<PlayerMovement>());
             theEnd.GetComponent<FinalScene>().StartFading();
+            GameObject SteamAchievementsManager = GameObject.FindGameObjectWithTag("MainCamera");
+            SteamAchievementsManager.GetComponent<SteamAchievementsManager>().UnlockAchievement("finish_ach");
+            if(SpeedrunTimer.timer <= 900){
+                SteamAchievementsManager.GetComponent<SteamAchievementsManager>().UnlockAchievement("speedrun_ach");
+            }
         }  
+
     }
 
     private void FixedUpdate() {

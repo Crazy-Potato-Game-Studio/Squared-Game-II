@@ -27,7 +27,6 @@ public class GreenSlime : MonoBehaviour
         if(mustPatrol){
             Patrol();
         }
-
     }
 
     private void FixedUpdate() {

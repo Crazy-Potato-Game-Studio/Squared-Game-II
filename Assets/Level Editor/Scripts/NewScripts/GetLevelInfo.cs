@@ -62,7 +62,6 @@ public class GetLevelInfo : MonoBehaviour
         if(File.Exists(destination)){
             file = File.OpenRead(destination);
         }else{
-            Debug.Log("File not found");
             return;
         }
 
