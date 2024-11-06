@@ -18,7 +18,6 @@ public class SpeedrunTimer : MonoBehaviour
 
     public void UpdateTimer(){
         timer++;
-        Debug.Log(timer);
     } 
 
     public void ResetTimer(){

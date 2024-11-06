@@ -31,6 +31,7 @@ public class SteamInit : MonoBehaviour
             GetComponent<SteamAchievementsManager>().ClearAchievement("reverse_ach");
             GetComponent<SteamAchievementsManager>().ClearAchievement("laser_ach");
             GetComponent<SteamAchievementsManager>().ClearAchievement("speedrun_ach");
+            GetComponent<SteamAchievementsManager>().ClearAchievement("editor_ach");
         #endif
     }
 
