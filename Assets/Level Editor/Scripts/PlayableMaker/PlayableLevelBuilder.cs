@@ -8,7 +8,7 @@ namespace LevelBuilder
     public class PlayableLevelBuilder : MonoBehaviour
     {
         public GameObject playerObject;
-        public int[] triggerIds;
+        public List<int> triggerIds;
         [Header("Tilemaps")]
         public Tilemap floorTileMap;
         public Tilemap platformTilemap;
@@ -161,15 +161,49 @@ namespace LevelBuilder
         }
         public void BuildInteractable(PlayableLevelData playableLevelData)
         {
+            Dictionary<string, GameObject> interactableObjects = new();
+            List<ObjectProperty> triggers = new();
             foreach (var interactable in playableLevelData.InteractableData)
             {
                 LevelEditorItem item = interactableItemSO.items[interactable.id];
                 ItemStateDetails stateDetails = item.states[interactable.state];
                 if(interactable.id ==0 ||  interactable.id == 1) { continue; }//ignore spawn and exit since already been Instantiated
-                Instantiate(item.gamePrefab,
+                GameObject interactableObject = Instantiate(item.gamePrefab,
                         new(interactable.pos.x + stateDetails.position.x,
                         interactable.pos.y + stateDetails.position.y),
                         Quaternion.Euler(0f, 0f, stateDetails.rotation));
+                if (triggerIds.Contains(interactable.id))
+                {
+                    triggers.Add(interactable);
+                }
+                interactableObjects.Add(TileHandler.GetTileKey(interactable.pos.x, interactable.pos.y),interactableObject);
+            }
+
+            foreach (var trigger in triggers)
+            {
+                if (trigger.stringValues.TryGetValue(Settings.LinkedObjectKey, out var linkedInteractableKey))
+                {
+                    if (interactableObjects.TryGetValue(linkedInteractableKey, out var interactableObject))
+                    {
+                        if (interactableObjects.TryGetValue(TileHandler.GetTileKey(trigger.pos.x, trigger.pos.y), out var triggerObject))
+                        {
+                            GameObject LinkedObject = new();
+                            LinkedObject.name = "===LinkedObject===";
+                            triggerObject.transform.SetParent(LinkedObject.transform, true);
+                            interactableObject.transform.SetParent(LinkedObject.transform, true);
+                            
+                            
+                            if (triggerObject.TryGetComponent<PressurePlate>(out PressurePlate pressurePlate))
+                            {
+                                pressurePlate.obejctsToTurnOn.Add(interactableObject);
+                            }
+                            else if (triggerObject.TryGetComponent<LaserDetector>(out LaserDetector laserDetector))
+                            {
+                                laserDetector.obejctsToTurnOn.Add(interactableObject);
+                            }
+                        }
+                    }
+                }
             }
         }
     }

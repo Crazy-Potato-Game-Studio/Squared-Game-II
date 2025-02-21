@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 964497249414007863}
-  triggerIds: 
+  triggerIds: 050000000600000017000000
   floorTileMap: {fileID: 1588819908}
   platformTilemap: {fileID: 752977572}
   climbableTileMap: {fileID: 765857824}
@@ -5120,7 +5120,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 14.770833
+  orthographic size: 12.916667
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
