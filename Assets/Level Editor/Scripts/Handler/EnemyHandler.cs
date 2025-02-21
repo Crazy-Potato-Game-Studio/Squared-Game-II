@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace LevelBuilder
@@ -6,114 +5,90 @@ namespace LevelBuilder
     [DisallowMultipleComponent]
     public class EnemyHandler : MonoBehaviour, ISaveLoad
     {
-        public Dictionary<string, ObjectProperty> enemyPropertyDictionary = new();
-        Dictionary<string, GameObject> enemyObjectDictionary = new();
-        List<string> enemySpawnTileKey = new();
+        public Dictionary<string, ObjectProperty> enemyDictionary = new();
+        Dictionary<string, GameObject> enemyObjects = new();
+        public List<string> enemyTiles = new();
         GameObject cursorObject;
-        private string uniqueId = "Enemy";
+        private string uniqueId = SaveLoadManager.SaveEnemy;
         public string UniqueSaveID { get => uniqueId; set => uniqueId = value; }
         int state;
         public void OnEnable()
         {
-            LevelCreateManager.ItemSelectEvent += ChangeState;
-            LevelCreateManager.OverUiEvent += OverUi;
-            SaveLoadManager.Singleton.saveLoadList.Add(this);
+            LevelCreateManager.ItemSelectEvent += OnItemSelect;
+            LevelCreateManager.OverUiEvent += CursorOverUI;
         }
-        void ChangeState(LevelEditorItem item)
+        void OnItemSelect(LevelEditorItem selectedItem)
         {
             if (cursorObject != null) { Destroy(cursorObject); }
-            if(item == null || item.validationType!= ValidationType.Enemy) { return; }
-            if (item.extra.standingBlock == Extra.DefaultStandingBlock.Right)
-            {
-                state = 1;
-            }
-            else
-            {
-                state = -1;
-            }
-            cursorObject = Instantiate(item.editorPrefab);
-            cursorObject.transform.localScale = new(state, 1, 1);
+            if (selectedItem == null) { return; }
+            if (selectedItem.validationType != ValidationType.Enemy) { return; }
+            state = 0;
 
+            if (selectedItem.editorPrefab == null) { return; }
+            cursorObject = Instantiate(selectedItem.editorPrefab,
+                new Vector3(0,0,-20), 
+                Quaternion.Euler(0f, selectedItem.states[state].rotation, 0f),
+                LevelCreateManager.Singleton.cursorObjectParent);
+            cursorObject.transform.name = "====="+cursorObject.transform.name;
         }
-        void OverUi()
+        private void CursorOverUI()
         {
             if (cursorObject != null)
             {
                 cursorObject.transform.position = new(cursorObject.transform.position.x, cursorObject.transform.position.y, -20);
             }
         }
-        public void OpenProperty(PropertyObject propertyObject)
+        public bool ValidationCheckForEnemy(LevelEditorItem selectedItem, Vector2Int gridPos)
         {
+            ItemStateDetails stateDetails = selectedItem.states[state];
+            GridCursor.Singleton.SetCursor(gridPos, stateDetails.dimension, stateDetails.cursorType);
 
-        }
-        public bool ValidationCheckForEnemy(LevelEditorItem selectedItem, Vector3Int gridPos)
-        {
-            GridCursor.Singleton.DisplayMultiGridCursor(gridPos, selectedItem.gridDimension);
-            if (cursorObject != null)
+            if (Input.GetKeyDown(KeyCode.R) && selectedItem.states.Length > 1)
             {
-                cursorObject.transform.position = new(LevelCreateManager.Singleton.gridPos.x + GetOffset(selectedItem,state).x, LevelCreateManager.Singleton.gridPos.y + GetOffset(selectedItem, state).y, 0);
+                state++;
+                state = state == selectedItem.states.Length ? 0 : state;
             }
-            if (selectedItem.extra.changeable)
+            if (cursorObject)
             {
-                if (Input.GetKeyDown(KeyCode.R))
-                {
-                    state = (state == 1)? -1 : 1;
-                    cursorObject.transform.localScale = new(state, 1, 1);
-                }
+                cursorObject.transform.position = new(gridPos.x + stateDetails.position.x, gridPos.y + stateDetails.position.y,0);
+                cursorObject.transform.rotation = Quaternion.Euler(0f, stateDetails.rotation, 0f);
             }
-            if (!TileValidation(gridPos,selectedItem) && enemyPropertyDictionary.ContainsKey(LevelCreateManager.GetTileKey(gridPos)))
+
+            if (enemyDictionary.TryGetValue(TileHandler.GetTileKey(gridPos),out var enemyProperty))
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    DestroyEnemy(LevelCreateManager.GetTileKey(gridPos));
+                    DestroyEnemy(enemyProperty);
                 }
                 return false;
             }
-            else if (TileValidation(gridPos, selectedItem))
+            Vector2Int startPos = GetBottomLeftPos(new(gridPos.x, gridPos.y), stateDetails);
+            if (TileValidation(startPos, stateDetails))
             {
-                if (selectedItem.extra.checkType == GroundValidationType.GroundCheck && GroundValidation(gridPos, selectedItem))
+                bool hasGround = selectedItem.states[state].supportType == SupportType.None 
+                    || GroundValidation(startPos, stateDetails);
+                if (Input.GetMouseButtonDown(0) && hasGround)
                 {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        ObjectProperty objectProperty = CreateObjectProperty(selectedItem,gridPos,ItemCategory.Enemy);
-                        PlaceEnemy(objectProperty);
-                    }
-                    return true;
+                    ObjectProperty objectProperty = CreateObjectProperty(selectedItem, gridPos, ItemCategory.Enemy);
+                    PlaceEnemy(objectProperty);
                 }
-                else if (selectedItem.extra.checkType == GroundValidationType.None)
-                {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        ObjectProperty objectProperty = CreateObjectProperty(selectedItem, gridPos, ItemCategory.Enemy);
-                        PlaceEnemy(objectProperty);
-                    }
-                    return true;
-                }
+                return hasGround;
             }
             return false;
         }
-        Vector2 GetOffset(LevelEditorItem item, int state)
+        
+        bool TileValidation(Vector2Int startPos, ItemStateDetails stateDetails)
         {
-            if (state == -1)
+            for (int x = startPos.x; x < startPos.x + stateDetails.dimension.x; x++)
             {
-                return new(item.extra.leftPos.x, item.extra.leftPos.y);
-            }
-            else
-            {
-                return new(item.objectOffset.x, item.objectOffset.y);
-            }
-        }
-        bool TileValidation(Vector3Int startPos,LevelEditorItem selectedItem)
-        {
-            for (int x = startPos.x; x < startPos.x + selectedItem.gridDimension.x; x++)
-            {
-                for (int y = startPos.y; y < startPos.y + selectedItem.gridDimension.y; y++)
+                for (int y = startPos.y; y < startPos.y + stateDetails.dimension.y; y++)
                 {
                     string tileKey = LevelCreateManager.GetTileKey(x, y);
                     if (LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(tileKey) ||
-                       LevelCreateManager.Singleton.PlatformHandler.childDictionary.ContainsKey(tileKey) ||
+                       LevelCreateManager.Singleton.PlatformHandler.tileDictionary.ContainsKey(tileKey) ||
                        LevelCreateManager.Singleton.ClimbableHandler.climbableDictionary.ContainsKey(tileKey) ||
-                       enemySpawnTileKey.Contains(tileKey))
+                       LevelCreateManager.Singleton.InteractableHandler.interactableDictionary.ContainsKey(tileKey) ||
+                       enemyTiles.Contains(tileKey))
                     {
                         return false;
                     }
@@ -122,11 +97,11 @@ namespace LevelBuilder
             return true;
         }
 
-        bool GroundValidation(Vector3Int gridPos, LevelEditorItem selectedItem)
+        bool GroundValidation(Vector2Int startPos, ItemStateDetails stateDetails)
         {
-            for (int x = gridPos.x; x < gridPos.x + selectedItem.gridDimension.x; x++)
+            for (int x = startPos.x; x < startPos.x + stateDetails.dimension.x; x++)
             {
-                if (!LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(LevelCreateManager.GetTileKey(x, gridPos.y - 1)))
+                if (!LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(LevelCreateManager.GetTileKey(x, startPos.y - 1)))
                 {
                     return false;
                 }
@@ -134,74 +109,108 @@ namespace LevelBuilder
             return true;
         }
 
-        public ObjectProperty CreateObjectProperty(LevelEditorItem selectedItem, Vector3Int gridPos,ItemCategory category)
+        public ObjectProperty CreateObjectProperty(LevelEditorItem selectedItem, Vector2Int gridPos,ItemCategory category)
         {
             ObjectProperty objectProperty = new()
             {
                 id = selectedItem.id,
-                category = category,
-                position = new(gridPos.x, gridPos.y),
+                pos = new(gridPos.x, gridPos.y),
                 state = state,
-                valueStrings = new(),
-                valueFloats = new()
             };
             return objectProperty;
         }
 
         public void PlaceEnemy(ObjectProperty enemyProperty)
         {
-            LevelEditorItem selectedItem = ItemManager.Singleton.GetItemDetails(enemyProperty.id,ItemCategory.Enemy);
-            GameObject enemyObject = Instantiate(selectedItem.editorPrefab, new(enemyProperty.position.x+ GetOffset(selectedItem, enemyProperty.state).x, enemyProperty.position.y+ GetOffset(selectedItem, enemyProperty.state).y), Quaternion.identity);
-            enemyObject.transform.localScale = new(enemyProperty.state, 1, 1);
-            string parentKey = LevelCreateManager.GetTileKey(enemyProperty.position.x, enemyProperty.position.y);
-            enemyObjectDictionary.Add(parentKey, enemyObject);
-
-            Vector2Int startPos = new(enemyProperty.position.x, enemyProperty.position.y);
-            for (int x = startPos.x; x < startPos.x + selectedItem.gridDimension.x; x++)
-            {
-                for (int y = startPos.y; y < startPos.y + selectedItem.gridDimension.y; y++)
-                {
-                    string tileKey = LevelCreateManager.GetTileKey(x, y);
-                    enemySpawnTileKey.Add(tileKey);
-                }
-            }
-            enemyPropertyDictionary.Add(LevelCreateManager.GetTileKey(startPos.x,startPos.y), enemyProperty);
-        }
-        
-
-        public void DestroyEnemy(string parentKey)
-        {
-            enemyPropertyDictionary.TryGetValue(parentKey, out var enemyProperty);
-            Vector2Int startPos = new(enemyProperty.position.x, enemyProperty.position.y);
             LevelEditorItem selectedItem = ItemManager.Singleton.GetItemDetails(enemyProperty.id, ItemCategory.Enemy);
-            for (int x = startPos.x; x < startPos.x + selectedItem.gridDimension.x; x++)
+            ItemStateDetails stateDetails = selectedItem.states[enemyProperty.state];
+
+            Vector2 enemyPosition = new Vector2(enemyProperty.pos.x, enemyProperty.pos.y) + stateDetails.position;
+            GameObject enemyObject = Instantiate(selectedItem.editorPrefab, enemyPosition, Quaternion.Euler(0f, stateDetails.rotation, 0f), LevelCreateManager.Singleton.transform);
+
+            string enemyKey = TileHandler.GetTileKey(enemyProperty.pos.x, enemyProperty.pos.y);
+            enemyObjects.Add(enemyKey, enemyObject);
+            enemyDictionary.Add(enemyKey, enemyProperty);
+
+            Vector2Int startPos = GetBottomLeftPos(new(enemyProperty.pos.x, enemyProperty.pos.y),stateDetails);
+            for (int x = startPos.x; x < startPos.x + stateDetails.dimension.x; x++)
             {
-                for (int y = startPos.y; y < startPos.y + selectedItem.gridDimension.y; y++)
+                for (int y = startPos.y; y < startPos.y + stateDetails.dimension.y; y++)
                 {
                     string tileKey = LevelCreateManager.GetTileKey(x, y);
-                    enemySpawnTileKey.Remove(tileKey);
+                    enemyTiles.Add(tileKey);
                 }
             }
-            enemyPropertyDictionary.Remove(parentKey);
-            if (enemyObjectDictionary.TryGetValue(parentKey,out var Obj))
+        }
+
+
+        public void DestroyEnemy(ObjectProperty enemyProperty)
+        {
+            string enemyKey = TileHandler.GetTileKey(enemyProperty.pos.x, enemyProperty.pos.y);
+            LevelEditorItem selectedItem = ItemManager.Singleton.GetItemDetails(enemyProperty.id, ItemCategory.Enemy);
+            ItemStateDetails stateDetails = selectedItem.states[state];
+
+            enemyDictionary.Remove(enemyKey);
+            if (enemyObjects.TryGetValue(enemyKey, out var Obj))
             {
                 Destroy(Obj);
-                enemyObjectDictionary.Remove(parentKey);
+                enemyObjects.Remove(enemyKey);
+            }
+
+
+            Vector2Int startPos = GetBottomLeftPos(new(enemyProperty.pos.x, enemyProperty.pos.y), stateDetails);
+            for (int x = startPos.x; x < startPos.x + stateDetails.dimension.x; x++)
+            {
+                for (int y = startPos.y; y < startPos.y + stateDetails.dimension.y; y++)
+                {
+                    string tileKey = LevelCreateManager.GetTileKey(x, y);
+                    enemyTiles.Remove(tileKey);
+                }
             }
         }
-        public LevelSave Save()
+        Vector2Int GetBottomLeftPos(Vector2Int gridPos, ItemStateDetails stateDetails)
         {
-            LevelSave levelSave = new()
+            Vector2Int tileDimensionBottomLeftPos = new();
+            if (stateDetails.alignment == ObjectAlignment.Bottom)
+            {
+                tileDimensionBottomLeftPos.x = gridPos.x - (int)stateDetails.dimension.x / 2;
+                tileDimensionBottomLeftPos.y = gridPos.y;
+            }
+            else if (stateDetails.alignment == ObjectAlignment.Top)
+            {
+                tileDimensionBottomLeftPos.x = gridPos.x - (int)stateDetails.dimension.x / 2;
+                tileDimensionBottomLeftPos.y = gridPos.y - stateDetails.dimension.y + 1;
+            }
+            else if (stateDetails.alignment == ObjectAlignment.Left)
+            {
+                tileDimensionBottomLeftPos.x = gridPos.x;
+                tileDimensionBottomLeftPos.y = gridPos.y - (int)stateDetails.dimension.y / 2;
+            }
+            else if (stateDetails.alignment == ObjectAlignment.Right)
+            {
+                tileDimensionBottomLeftPos.x = gridPos.x - stateDetails.dimension.x + 1;
+                tileDimensionBottomLeftPos.y = gridPos.y - (int)stateDetails.dimension.y / 2;
+            }
+            else
+            {
+                tileDimensionBottomLeftPos.x = gridPos.x - (int)stateDetails.dimension.x / 2;
+                tileDimensionBottomLeftPos.y = gridPos.y - (int)stateDetails.dimension.y / 2;
+            }
+            return tileDimensionBottomLeftPos;
+        }
+        public LevelData Save()
+        {
+            LevelData levelSave = new()
             {
                 EnemyDictionary = new()
             };
-            levelSave.EnemyDictionary = enemyPropertyDictionary;
+            levelSave.EnemyDictionary = enemyDictionary;
             return levelSave;
         }
 
-        public void Load(LevelSave levelSave)
+        public void Load(LevelData levelSave)
         {
-            if(levelSave == null || levelSave.EnemyDictionary == null) { return; }
+            if (levelSave == null || levelSave.EnemyDictionary == null) { return; }
             foreach (var item in levelSave.EnemyDictionary.Values)
             {
                 PlaceEnemy(item);

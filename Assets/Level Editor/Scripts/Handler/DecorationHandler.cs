@@ -7,110 +7,162 @@ namespace LevelBuilder
     {
         public Tilemap decorationTileMap;
         public DecorationSO decorationSO;
-        public Dictionary<string,string> decorationChildDictionary = new();
+        public Dictionary<string,string> occupiedTiles = new();
         Dictionary<string,GameObject> decorationGameObjectDictionary = new();
-        public Dictionary<string, DecorationProperty> decorationParentDictionary = new();
+        public Dictionary<string, DecorationProperty> decorationDictionary = new();
         public string UniqueSaveID { get => uniqueId; set => uniqueId = value; }
-        private string uniqueId = "Decoration";
-        public void OnEnable()
+        private string uniqueId = SaveLoadManager.SaveDecoration;
+        GameObject cursorObject;
+        private void OnEnable()
         {
-            SaveLoadManager.Singleton.saveLoadList.Add(this);
+            LevelCreateManager.OverUiEvent += CursorOverUI;
+            LevelCreateManager.ItemSelectEvent += OnItemSelect;
         }
-        public bool ValidationCheckForDecoration(LevelEditorItem selectedItem, Vector3Int gridPos)
+        void OnItemSelect(LevelEditorItem selectedItem)
         {
-            Vector3Int startPos = new(gridPos.x, gridPos.y - (Mathf.FloorToInt(selectedItem.gridDimension.y / 2)));
-            GridCursor.Singleton.DisplayMultiGridCursor(startPos, selectedItem.gridDimension);
-            for (int i = startPos.y; i < startPos.y+ selectedItem.gridDimension.y; i++)
+            if (cursorObject != null) { Destroy(cursorObject); }
+            if (selectedItem == null) { return; }
+            if (selectedItem.validationType != ValidationType.Decoration) { return; }
+            if (selectedItem.editorPrefab == null) { return; }
+            cursorObject = Instantiate(selectedItem.editorPrefab, 
+                new Vector3(0, 0, -20), Quaternion.identity,
+                LevelCreateManager.Singleton.cursorObjectParent);
+            cursorObject.transform.name = "====="+cursorObject.transform.name;
+        }
+        private void CursorOverUI()
+        {
+            if (cursorObject != null)
             {
-                string tileKey = LevelCreateManager.GetTileKey(gridPos.x,i);
-                if(LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(tileKey)||
-                   LevelCreateManager.Singleton.PlatformHandler.childDictionary.ContainsKey(tileKey)||
-                   LevelCreateManager.Singleton.ClimbableHandler.climbableDictionary.ContainsKey(tileKey) || decorationChildDictionary.ContainsKey(tileKey))
+                cursorObject.transform.position = new(cursorObject.transform.position.x, cursorObject.transform.position.y, -20);
+            }
+        }
+        public bool ValidationCheckForDecoration(LevelEditorItem selectedItem, Vector2Int gridPos)
+        {
+            ItemStateDetails defaultState = selectedItem.states[0];
+            Vector2Int startPos = new(gridPos.x, gridPos.y - (Mathf.FloorToInt(defaultState.dimension.y / 2)));
+            GridCursor.Singleton.SetCursor(gridPos, defaultState.dimension,defaultState.cursorType);
+            string decoKey = LevelCreateManager.GetTileKey(gridPos.x, gridPos.y);
+            if (cursorObject)
+            {
+                cursorObject.transform.position = new(gridPos.x + defaultState.position.x, gridPos.y + defaultState.position.y,0);
+                cursorObject.transform.rotation = Quaternion.Euler(0f, 0f, defaultState.rotation);
+            }
+            if (decorationDictionary.TryGetValue(decoKey, out var decorationParentProperty))
+            {
+                if (Input.GetMouseButtonDown(0))
                 {
-                    if (Input.GetMouseButtonDown(0) && decorationChildDictionary.TryGetValue(LevelCreateManager.GetTileKey(gridPos), out string parentKey))
-                    {
-                        decorationParentDictionary.TryGetValue(parentKey, out var decorationParentProperty);
-                        DestroyDecoration(decorationParentProperty);
-                    }
+                    DestroyDecoration(decorationParentProperty);
+                }
+                return false;
+            }
+
+            for (int y = startPos.y; y < startPos.y+ defaultState.dimension.y; y++)
+            {
+                string tileKey = LevelCreateManager.GetTileKey(gridPos.x,y);
+                if (!IsTileEmpty(tileKey))
+                {
                     return false;
                 }
-                if (selectedItem.id == decorationSO.details[5].id && !LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(LevelCreateManager.GetTileKey(gridPos.x, gridPos.y - 2)))
+                if (defaultState.supportType == SupportType.Down && !LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(LevelCreateManager.GetTileKey(gridPos.x, gridPos.y - 2)))
                 {
                     return false;
                 }
-                if (selectedItem.id == decorationSO.details[2].id && !LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(LevelCreateManager.GetTileKey(gridPos.x, gridPos.y +1)))
+                if (defaultState.supportType == SupportType.Up && !LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(LevelCreateManager.GetTileKey(gridPos.x, gridPos.y +1)))
                 {
                     return false;
                 }
             }
-            if(Input.GetMouseButtonDown(0))
+
+            if (Input.GetMouseButtonDown(0))
             {
-                CreateDecoration(selectedItem, startPos);
+                CreateDecoration(selectedItem, gridPos);
             }
             return true;
         }
-        void CreateDecoration(LevelEditorItem selectedItem,Vector3Int startPos)
+        private bool IsTileEmpty(string tileKey)
+        {
+            return !occupiedTiles.ContainsKey(tileKey) &&
+                   !LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(tileKey) &&
+                   !LevelCreateManager.Singleton.PlatformHandler.tileDictionary.ContainsKey(tileKey) &&
+                   !LevelCreateManager.Singleton.ClimbableHandler.climbableDictionary.ContainsKey(tileKey);
+        }
+        void CreateDecoration(LevelEditorItem selectedItem,Vector2Int gridPos)
         {
             DecorationProperty newParentDetails = new()
             {
                 itemId = selectedItem.id,
-                startPos = new(startPos.x, startPos.y)
+                pos = new(gridPos.x, gridPos.y)
             };
             PlaceDecoration(newParentDetails);
         }
         void PlaceDecoration(DecorationProperty parentDetails)
         {
             LevelEditorItem item = ItemManager.Singleton.GetItemDetails(parentDetails.itemId, ItemCategory.Decoration);
-            string newParentID = LevelCreateManager.GetTileKey(parentDetails.startPos.x, parentDetails.startPos.y);
-            decorationParentDictionary.Add(newParentID, parentDetails);
-            for (int i = parentDetails.startPos.y, tileIndex = 0; i < parentDetails.startPos.y + item.gridDimension.y; i++, tileIndex++)
-            {
-                string newChildID = LevelCreateManager.GetTileKey(parentDetails.startPos.x, i);
-                decorationChildDictionary.Add(newChildID, newParentID);
-            }
-            Tile[] tiles = decorationSO.details[parentDetails.itemId].tiles;
-            GameObject decoObjToSpawn = decorationSO.details[parentDetails.itemId].prefab;
+            ItemStateDetails defaultState = item.states[0];
 
-            for (int i = parentDetails.startPos.y, tileIndex = 0; i < parentDetails.startPos.y + item.gridDimension.y; i++, tileIndex++)
+            string newParentID = LevelCreateManager.GetTileKey(parentDetails.pos.x, parentDetails.pos.y);
+            decorationDictionary.Add(newParentID, parentDetails);
+
+
+            Vector2Int startPos = new(parentDetails.pos.x, parentDetails.pos.y - (Mathf.FloorToInt(defaultState.dimension.y / 2)));
+            for (int y = startPos.y, tileIndex = 0; y < startPos.y + defaultState.dimension.y; y++, tileIndex++)
             {
-                if(tiles == null || tiles.Length <=0) { continue; }
-                decorationTileMap.SetTile(new(parentDetails.startPos.x, i), tiles[tileIndex]);
+                string newChildID = LevelCreateManager.GetTileKey(startPos.x, y);
+                occupiedTiles.Add(newChildID, newParentID);
             }
+
+
+            Tile[] decoTiles = decorationSO.details[parentDetails.itemId].tiles;
+            for (int y = startPos.y, tileIndex = 0; y < startPos.y + defaultState.dimension.y; y++, tileIndex++)
+            {
+                if(decoTiles == null || decoTiles.Length <=0) { continue; }
+                decorationTileMap.SetTile(new(startPos.x, y), decoTiles[tileIndex]);
+            }
+
+
+            GameObject decoObjToSpawn = decorationSO.details[parentDetails.itemId].prefab;
             if (decoObjToSpawn)
             {
-                GameObject decoObj = Instantiate(item.editorPrefab, new(parentDetails.startPos.x + item.objectOffset.x, parentDetails.startPos.y + item.objectOffset.y), Quaternion.identity);
-                decorationGameObjectDictionary.Add(LevelCreateManager.GetTileKey(parentDetails.startPos.x, parentDetails.startPos.y), decoObj);
+                GameObject decoObj = Instantiate(item.editorPrefab,
+                    new(parentDetails.pos.x + defaultState.position.x,
+                    parentDetails.pos.y + defaultState.position.y), 
+                    Quaternion.Euler(0,0,defaultState.rotation), 
+                    LevelCreateManager.Singleton.transform);
+                decorationGameObjectDictionary.Add(newParentID, decoObj);
             }
         }
         void DestroyDecoration(DecorationProperty decoProperty)
         {
             LevelEditorItem item = ItemManager.Singleton.GetItemDetails(decoProperty.itemId, ItemCategory.Decoration);
-            string newParentID = LevelCreateManager.GetTileKey(decoProperty.startPos.x, decoProperty.startPos.y);
-            decorationParentDictionary.Remove(newParentID);
+            ItemStateDetails defaultState = item.states[0];
+            string newParentID = LevelCreateManager.GetTileKey(decoProperty.pos.x, decoProperty.pos.y);
+            decorationDictionary.Remove(newParentID);
 
-            for (int i = decoProperty.startPos.y, tileIndex = 0; i < decoProperty.startPos.y + item.gridDimension.y; i++, tileIndex++)
+            Vector2Int startPos = new(decoProperty.pos.x, decoProperty.pos.y - (Mathf.FloorToInt(defaultState.dimension.y / 2)));
+            
+            for (int y = startPos.y; y < startPos.y + defaultState.dimension.y; y++)
             {
-                string newChildID = LevelCreateManager.GetTileKey(decoProperty.startPos.x, i);
-                decorationChildDictionary.Remove(newChildID);
-                decorationTileMap.SetTile(new(decoProperty.startPos.x, i), null);
+                decorationTileMap.SetTile(new(startPos.x, y), null);
+                string newChildID = LevelCreateManager.GetTileKey(startPos.x, y);
+                occupiedTiles.Remove(newChildID);
             }
-            if (decorationSO.details[decoProperty.itemId].prefab)
+
+            if (decorationGameObjectDictionary.TryGetValue(newParentID, out var decoObj))
             {
-                decorationGameObjectDictionary.TryGetValue(newParentID, out var decoObj);
                 Destroy(decoObj);
                 decorationGameObjectDictionary.Remove(newParentID);
             }
         }
 
-        public LevelSave Save()
+        public LevelData Save()
         {
-            return new() { DecorationDictionary = decorationParentDictionary };
+            return new() { DecorationDictionary = decorationDictionary };
         }
 
-        public void Load(LevelSave mapSave)
+        public void Load(LevelData mapSave)
         {
-            decorationParentDictionary = new();
-            decorationChildDictionary = new();
+            decorationDictionary = new();
+            occupiedTiles = new();
             decorationTileMap.ClearAllTiles();
             foreach (var item in mapSave.DecorationDictionary.Values)
             {
@@ -120,10 +172,11 @@ namespace LevelBuilder
     }
 
     [System.Serializable]
-    public struct DecorationProperty
+    public class DecorationProperty
     {
         public int itemId;
-        public Vector2IntSerializable startPos;
+        public int state;
+        public Vector2IntSerializable pos;
     }
 }
 

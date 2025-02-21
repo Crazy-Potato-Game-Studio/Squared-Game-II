@@ -5,10 +5,9 @@ using UnityEngine;
 public class UiDoorPopUp : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    public GameObject canvasObject;
     public void ShowDoorName(string name)
     {
-        canvasObject.SetActive(true);
+        gameObject.SetActive(true);
         text.text = name;
     }
 }

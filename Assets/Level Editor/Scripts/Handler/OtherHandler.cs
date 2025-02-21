@@ -11,23 +11,16 @@ namespace LevelBuilder
         public Tilemap spikeTileMap;
         int state;
         GameObject cursorObject;
-        public Dictionary<string, StateTileProperty> spikeDictionary = new();
-        public Dictionary<string, TileProperty> trampolinDictionary = new();
-        public Dictionary<string, GameObject> trampolineObjects = new();
-        public List<string> trampolineChilds = new();
-
-        private string uniqueId = "Other";
+        public Dictionary<string, ObjectProperty> otherDictionary = new();
+        public Dictionary<string, GameObject> otherObjects = new();
+        public Dictionary<string, string> occupiedTiles = new();
+        private string uniqueId = SaveLoadManager.SaveOther;
         public string UniqueSaveID { get => uniqueId; set => uniqueId = value; }
 
         private void OnEnable()
         {
-            if (SaveLoadManager.Singleton != null) { SaveLoadManager.Singleton.saveLoadList.Add(this); }
             LevelCreateManager.ItemSelectEvent += OnItemSelect;
             LevelCreateManager.OverUiEvent += OverUi;
-        }
-        private void Start()
-        {
-            if (!SaveLoadManager.Singleton.saveLoadList.Contains(this)) { SaveLoadManager.Singleton.saveLoadList.Add(this); }
         }
         void OverUi()
         {
@@ -40,237 +33,171 @@ namespace LevelBuilder
         {
             if(cursorObject != null) { Destroy(cursorObject); }
             if(item == null || item.validationType != ValidationType.Other) { return; }
-            state = (int)item.extra.standingBlock;
-            cursorObject = Instantiate(item.editorPrefab);
+            state = 0;
+            if (item.editorPrefab != null)
+            {
+                cursorObject = Instantiate(item.editorPrefab, LevelCreateManager.Singleton.cursorObjectParent);
+                cursorObject.transform.position = new(cursorObject.transform.position.x, cursorObject.transform.position.y, -20);
+                cursorObject.transform.rotation = Quaternion.Euler(0, 0, item.states[state].rotation);
+            }
         }
 
-        public bool ValidationCheckForOthers(LevelEditorItem selectedItem, Vector3Int gridPos)
+        public bool ValidationCheckForOthers(LevelEditorItem selectedItem, Vector2Int gridPos)
         {
-            if(selectedItem.id == 2)
-            {
-                return SpikeValidation(selectedItem,gridPos);
-            }
-            else if(selectedItem.id == 3)
-            {
-                return TrampolineValidation(selectedItem,gridPos);
-            }
-            return false;
-        }
-
-        private bool SpikeValidation(LevelEditorItem selectedItem, Vector3Int gridPos)
-        {
-            Vector2Int groundValidationPos = new();
-            string tileKey = TileHandler.GetTileKey(gridPos.x, gridPos.y);
-            if(Input.GetKeyDown(KeyCode.R))
+            ItemStateDetails stateDetails = selectedItem.states[state];
+            GridCursor.Singleton.SetCursor(gridPos, stateDetails.dimension,stateDetails.cursorType);
+            if (Input.GetKeyDown(KeyCode.R) && selectedItem.states.Length >1)
             {
                 state++;
-                if(state > 3) state = 0;
-                float rotationZ = 0;
-                if (state == 0)
-                {
-                    rotationZ = 0;
-                }
-                else if (state == 1)
-                {
-                    rotationZ = -90;
-                }
-                else if (state == 2)
-                {
-                    rotationZ = -180;
-                }
-                else if (state == 3)
-                {
-                    rotationZ = 90;
-                }
-                cursorObject.transform.rotation = Quaternion.Euler(0, 0, rotationZ);
+                if (state == selectedItem.states.Length) state = 0;
             }
-
-            if (state == 0)
-            {
-                groundValidationPos = new(gridPos.x, gridPos.y - 1);
-            }
-            else if (state == 1)
-            {
-                groundValidationPos = new(gridPos.x - 1, gridPos.y);
-            }
-            else if (state == 2)
-            {
-                groundValidationPos = new(gridPos.x, gridPos.y + 1);
-            }
-            else if (state == 3)
-            {
-                groundValidationPos = new(gridPos.x + 1, gridPos.y);
-            }
-
-
             if (cursorObject != null)
             {
-                cursorObject.transform.position = new(gridPos.x+selectedItem.objectOffset.x,gridPos.y+selectedItem.objectOffset.y);
+                cursorObject.transform.position = new(gridPos.x + stateDetails.position.x, gridPos.y + stateDetails.position.y,0);
+                cursorObject.transform.rotation = Quaternion.Euler(0, 0, stateDetails.rotation);
             }
-            if (spikeDictionary.ContainsKey(tileKey))
+
+            string tileKey = TileHandler.GetTileKey(gridPos.x, gridPos.y);
+            if (otherDictionary.ContainsKey(tileKey))
             {
-                if (Input.GetMouseButtonDown(0))
+                if(Input.GetMouseButtonDown(0))
                 {
-                    spikeTileMap.SetTile(gridPos, null);
-                    spikeDictionary.Remove(tileKey);
+                    DestroyOther(stateDetails, gridPos);
                 }
                 return false;
             }
-
-            if (!LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(tileKey) &&
-                LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(TileHandler.GetTileKey(groundValidationPos.x, groundValidationPos.y))&&
-                !spikeDictionary.ContainsKey(tileKey) &&
-                !trampolineChilds.Contains(tileKey) &&
-                !LevelCreateManager.Singleton.InteractableHandler.childDictionary.ContainsKey(tileKey))
+            if (TileEmpty(stateDetails,gridPos) && HasSupport(stateDetails, gridPos))
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    StateTileProperty spikeTileProperty = new()
-                    {
-                        Id = selectedItem.id,
-                        state = state,
-                        position = new(gridPos.x, gridPos.y),
-                    };
-                    PlaceSpike(spikeTileProperty, selectedItem);
+                    ObjectProperty otherProperty = new(selectedItem.id, state, new(gridPos.x, gridPos.y));
+                    PlaceOther(otherProperty);
                 }
                 return true;
             }
             return false;
         }
-
-        public void PlaceSpike(StateTileProperty spikeTileProperty,LevelEditorItem item)
+        private void PlaceOther(ObjectProperty otherProperty)
         {
-            spikeTileMap.SetTile(new(spikeTileProperty.position.x, spikeTileProperty.position.y, 0), item.tile);
-            spikeDictionary.Add(TileHandler.GetTileKey(spikeTileProperty.position.x, spikeTileProperty.position.y), spikeTileProperty);
-            float rotationZ = 0;
-            if (spikeTileProperty.state == 0)
+            LevelEditorItem item = ItemManager.Singleton.GetItemDetails(otherProperty.id, ItemCategory.Other);
+            ItemStateDetails stateDetails = item.states[otherProperty.state];
+            string otherKey = TileHandler.GetTileKey(otherProperty.pos.x,otherProperty.pos.y);
+            otherDictionary.Add(otherKey, otherProperty);
+            for (int x = 0; x < stateDetails.dimension.x; x++)
             {
-                rotationZ = 0;
+                string tilekey = TileHandler.GetTileKey(x + otherProperty.pos.x, otherProperty.pos.y);
+                occupiedTiles.Add(tilekey,otherKey);
             }
-            else if (spikeTileProperty.state == 1)
+
+            if (item.id == 2)//spike id
             {
-                rotationZ = -90;
+                spikeTileMap.SetTile(new(otherProperty.pos.x, otherProperty.pos.y, 0), stateDetails.tile);
+                Quaternion rotation = Quaternion.Euler(0, 0, stateDetails.rotation);
+                Matrix4x4 matrix = Matrix4x4.Rotate(rotation);
+                spikeTileMap.SetTransformMatrix(new(otherProperty.pos.x, otherProperty.pos.y, 0), matrix);
             }
-            else if (spikeTileProperty.state == 2)
+
+            if(item.id == 3)//trampoline
             {
-                rotationZ = -180;
+                GameObject trampoline = Instantiate(item.editorPrefab,
+                    new(otherProperty.pos.x + stateDetails.position.x, otherProperty.pos.y + stateDetails.position.y),
+                    Quaternion.identity);
+                otherObjects.Add(otherKey, trampoline);
             }
-            else if (spikeTileProperty.state == 3)
-            {
-                rotationZ = 90;
-            }
-            Quaternion rotation = Quaternion.Euler(0, 0, rotationZ);
-            Matrix4x4 matrix = Matrix4x4.Rotate(rotation);
-            spikeTileMap.SetTransformMatrix(new(spikeTileProperty.position.x, spikeTileProperty.position.y, 0), matrix);
+            
         }
-
-        bool TrampolineValidation(LevelEditorItem selectedItem, Vector3Int gridPos)
+        private void DestroyOther(ItemStateDetails stateDetails,Vector2Int gridPos)
         {
-            if(cursorObject != null)
+            string otherKey = TileHandler.GetTileKey(gridPos);
+            for (int x = 0; x < stateDetails.dimension.x; x++)
             {
-                cursorObject.transform.position = new(gridPos.x + selectedItem.objectOffset.x, gridPos.y + selectedItem.objectOffset.y);
+                string tilekey = TileHandler.GetTileKey(x + gridPos.x, gridPos.y);
+                occupiedTiles.Remove(tilekey);
             }
-            GridCursor.Singleton.DisplayMultiGridCursor(gridPos, new(2, 1));
-            string tileKey = TileHandler.GetTileKey(gridPos.x, gridPos.y);
-            if(trampolinDictionary.ContainsKey(tileKey))
+            if (otherObjects.TryGetValue(otherKey, out var otherObject))
             {
-                if(Input.GetMouseButtonDown(0))
-                {
-                    DestroyTrampoline(gridPos);
-                }
-                return false;
+                Destroy(otherObject);
+                otherObjects.Remove(otherKey);
             }
-
-            for (int i = gridPos.x; i < gridPos.x+2; i++)
+            otherDictionary.Remove(otherKey);
+            spikeTileMap.SetTile(new(gridPos.x, gridPos.y), null);
+        }
+        private bool TileEmpty(ItemStateDetails stateDetails, Vector2Int gridPos)
+        {
+            for (int x = 0; x < stateDetails.dimension.x; x++)
             {
-                string tileKeyi = TileHandler.GetTileKey(i, gridPos.y);
-                if (LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(tileKeyi) ||
-                LevelCreateManager.Singleton.InteractableHandler.childDictionary.ContainsKey(tileKeyi) ||
-                spikeDictionary.ContainsKey(tileKeyi) || 
-                trampolineChilds.Contains(tileKeyi) ||
-                !LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(TileHandler.GetTileKey(i,gridPos.y-1)))
+                string tileKey = TileHandler.GetTileKey(x + gridPos.x, gridPos.y);
+                if (occupiedTiles.ContainsKey(tileKey) ||
+                LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(tileKey) ||
+                LevelCreateManager.Singleton.PlatformHandler.tileDictionary.ContainsKey(tileKey) ||
+                LevelCreateManager.Singleton.InteractableHandler.occupiedTileDictionary.ContainsKey(tileKey) ||
+                LevelCreateManager.Singleton.EnemyHandler.enemyTiles.Contains(tileKey) ||
+                LevelCreateManager.Singleton.ItemHandler.itemDictionary.ContainsKey(tileKey))
                 {
                     return false;
                 }
             }
-
-            if (Input.GetMouseButtonDown(0))
+            return true;
+        }
+        private bool HasSupport(ItemStateDetails stateDetails,Vector2Int gridPos)
+        {
+            List<Vector2Int> supportTiles = new();
+            if (stateDetails.supportType.HasFlag(SupportType.Down))
             {
-                TileProperty tileProperty = new(selectedItem.id,gridPos.x,gridPos.y);
-                PlaceTrampoline(tileProperty);
+                for (int x = 0; x < stateDetails.dimension.x; x++)
+                {
+                    supportTiles.Add(new(gridPos.x + x, gridPos.y - 1));
+                }
+            }
+            if (stateDetails.supportType.HasFlag(SupportType.Up))
+            {
+                int yPos = gridPos.y + stateDetails.dimension.y;
+                for (int x = 0; x < stateDetails.dimension.x; x++)
+                {
+                    supportTiles.Add(new(gridPos.x + x, yPos));
+                }
+            }
+            if (stateDetails.supportType.HasFlag(SupportType.Left))
+            {
+                for (int y = 0; y < stateDetails.dimension.y; y++)
+                {
+                    supportTiles.Add(new(gridPos.x - 1, gridPos.y + y));
+                }
+            }
+            if (stateDetails.supportType.HasFlag(SupportType.Right))
+            {
+                int xPos = gridPos.x + stateDetails.dimension.x;
+                for (int y = 0; y < stateDetails.dimension.y; y++)
+                {
+                    supportTiles.Add(new(xPos, gridPos.y + y));
+                }
+            }
+
+            foreach (var supportTile in supportTiles)
+            {
+                string tileKey = TileHandler.GetTileKey(supportTile);
+                if (!LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(tileKey))
+                {
+                    return false;
+                }
             }
             return true;
         }
-        void PlaceTrampoline(TileProperty tileProperty)
+        
+        public LevelData Save()
         {
-            LevelEditorItem item = ItemManager.Singleton.GetItemDetails(tileProperty.id, ItemCategory.Other);
-            GameObject trampoline = Instantiate(item.editorPrefab, new(tileProperty.position.x + item.objectOffset.x, tileProperty.position.y + item.objectOffset.y), Quaternion.identity);
-            trampolineObjects.Add(TileHandler.GetTileKey(tileProperty.position.x, tileProperty.position.y), trampoline);
-            trampolinDictionary.Add(TileHandler.GetTileKey(tileProperty.position.x, tileProperty.position.y), tileProperty);
-            for (int i = tileProperty.position.x; i < tileProperty.position.x + 2; i++)
-            {
-                string tileKeyi = TileHandler.GetTileKey(i, tileProperty.position.y);
-                trampolineChilds.Add(tileKeyi);
-            }
-        }
-        void DestroyTrampoline(Vector3Int gridPos)
-        {
-            string tileKey = TileHandler.GetTileKey(gridPos.x, gridPos.y);
-            trampolinDictionary.Remove(tileKey);
-            for (int i = gridPos.x; i < gridPos.x + 2; i++)
-            {
-                string tileKeyi = TileHandler.GetTileKey(i, gridPos.y);
-                trampolineChilds.Remove(tileKeyi);
-            }
-            if (trampolineObjects.ContainsKey(tileKey))
-            {
-                Destroy(trampolineObjects[tileKey]);
-                trampolineObjects.Remove(tileKey);
-            }
-        }
-        public LevelSave Save()
-        {
-            LevelSave levelSave = new();
-            OtherProperty otherProperty = new();
-
-            otherProperty.spikeTileProperty = new();
-            otherProperty.tramploingProperty = new();
-            foreach (var item in spikeDictionary.Values)
-            {
-                otherProperty.spikeTileProperty.Add(item);
-            }
-            foreach (var item in trampolinDictionary.Values)
-            {
-                otherProperty.tramploingProperty.Add(item);
-            }
-            levelSave.OtherProperty = otherProperty;
+            LevelData levelSave = new();
+            levelSave.OtherDictionary = otherDictionary;
             return levelSave;
         }
 
-        public void Load(LevelSave mapSave)
+        public void Load(LevelData mapSave)
         {
-            foreach (var spike in mapSave.OtherProperty.spikeTileProperty)
+            if(mapSave ==null || mapSave.OtherDictionary == null) { return; }
+            foreach (var other in mapSave.OtherDictionary.Values)
             {
-                LevelEditorItem item = ItemManager.Singleton.GetItemDetails(spike.Id, ItemCategory.Other);
-                PlaceSpike(spike, item);
-            }
-            foreach (var trampoline in mapSave.OtherProperty.tramploingProperty)
-            {
-                PlaceTrampoline(trampoline);
+                PlaceOther(other);
             }
         }
-    }
-    [System.Serializable]
-    public class StateTileProperty
-    {
-        public int Id;
-        public int state;
-        public Vector2IntSerializable position;
-    }
-    [System.Serializable]
-    public class OtherProperty
-    {
-        public List<StateTileProperty> spikeTileProperty;
-        public List<TileProperty> tramploingProperty;
     }
 }

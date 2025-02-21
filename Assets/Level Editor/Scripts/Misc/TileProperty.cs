@@ -3,10 +3,10 @@ public class TileProperty
 {
     public int id;
     public Vector2IntSerializable position;
-    public TileProperty(int id, int poxitionX,int positionY)
+    public TileProperty(int id, Vector2IntSerializable position)
     {
         this.id = id;
-        position = new(poxitionX,positionY);
+        this.position = new(position.x, position.y);
     }
 }
 [System.Serializable]

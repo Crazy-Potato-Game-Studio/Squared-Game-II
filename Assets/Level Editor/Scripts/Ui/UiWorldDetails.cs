@@ -6,39 +6,44 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 namespace LevelBuilder
 {
-    public class UiLevelDetails : MonoBehaviour, IPointerEnterHandler
+    public class UiLevelDetails : MonoBehaviour
     {
+        public Image levelImage;
         public TextMeshProUGUI levelName;
-        public TextMeshProUGUI days;
-        public LevelDetails levelDetails { get; private set; }
+        public TextMeshProUGUI dateAccessed;
         public Button playButton;
         public Button editButton;
+        public Button deleteButton;
         public Button uploadButton;
-        [HideInInspector] public Sprite levelSprite;
-        LevelEditorMenuManager levelEditorMenuManager;
-
-        public void SetLevelDetails(LevelDetails levelDetails, LevelEditorMenuManager levelEditorMenuManager)
+        private SaveData saveData;
+        private LevelEditorMenuManager levelEditor;
+        public void SetLevelInfo(SaveData saveData, LevelEditorMenuManager levelEditor)
         {
-            this.levelEditorMenuManager = levelEditorMenuManager;
-            this.levelDetails = levelDetails;
-            levelName.text = this.levelDetails.levelName;
-            days.text = this.levelDetails.lastEditedDay.ToString() + " Days Ago";
+            this.saveData = saveData;
+            this.levelEditor = levelEditor;
+            levelName.text = saveData.saveInfo.saveDataFileName;
+            dateAccessed.text = "Last Edit: "+saveData.saveInfo.dateAccessed;
+            levelImage.sprite = SaveLoadManager.Singleton.GetThumbnailSprite(saveData.saveInfo.thumbnail);
+            
+            editButton.onClick.AddListener(() => {
+                levelEditor.EditLevel(saveData);
+            });
 
-            Debug.Log(levelDetails.screenShotData);
-            Texture2D texture = new Texture2D(2, 2);
-            texture.LoadImage(levelDetails.screenShotData.data); // Automatically resizes the texture
-            //Texture2D screenShotTexture = new(levelDetails.screenShotData.width, levelDetails.screenShotData.height, TextureFormat.RGBA32, false);
-            //screenShotTexture.LoadRawTextureData(levelDetails.screenShotData.data);
-            //screenShotTexture.Apply();
-            texture.Apply();
-            levelSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            playButton.onClick.AddListener(() =>
+            {
+                levelEditor.PlayLevel(saveData);
+            });
+
+            deleteButton.onClick.AddListener(() =>
+            {
+                levelEditor.DeleteSave(saveData);
+                Destroy(gameObject);
+            });
+            uploadButton.onClick.AddListener(() =>
+            {
+                levelEditor.UploadToSteam(saveData);
+            });
         }
-
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            levelEditorMenuManager.ShowLevelDetails(levelDetails,this);
-        }
-
     }
 }
 

@@ -6,9 +6,10 @@ namespace LevelBuilder
 {
     public static class TileHandler
     {
-        public static void ConnectFloorTile(FloorSO floorTileDetailsSo,Tilemap floorTileMap,Dictionary<string, FloorProperty> floorDictionary,int tileId, Vector3Int tileSetPos)
+        public static void ConnectFloorTile(FloorSO floorTileDetailsSo,Tilemap floorTileMap,Dictionary<string, TileProperty> floorDictionary,int tileId, Vector2Int gridPos)
         {
             Tile tile;
+            Vector3Int tileSetPos = new(gridPos.x, gridPos.y);
             if (!floorDictionary.ContainsKey(GetTileKey(tileSetPos.x, tileSetPos.y)))
             {
                 tile = null;
@@ -22,31 +23,31 @@ namespace LevelBuilder
             floorTileMap.SetTile(new Vector3Int(tileSetPos.x, tileSetPos.y, 0), tile);
 
             string rightTileKey = GetTileKey(tileSetPos.x + 1, tileSetPos.y);
-            if (floorDictionary.TryGetValue(rightTileKey, out FloorProperty rightTileId))
+            if (floorDictionary.TryGetValue(rightTileKey, out TileProperty rightTileId))
             {
                 Tile rightTile = SelectFloorTile(floorTileDetailsSo,floorDictionary, new Vector3Int(tileSetPos.x + 1, tileSetPos.y), rightTileId.id);
                 floorTileMap.SetTile(new Vector3Int(tileSetPos.x + 1, tileSetPos.y, 0), rightTile);
             }
             string leftTileKey = GetTileKey(tileSetPos.x - 1, tileSetPos.y);
-            if (floorDictionary.TryGetValue(leftTileKey, out FloorProperty leftTileId))
+            if (floorDictionary.TryGetValue(leftTileKey, out TileProperty leftTileId))
             {
                 Tile leftTile = SelectFloorTile(floorTileDetailsSo, floorDictionary,new Vector3Int(tileSetPos.x - 1, tileSetPos.y), leftTileId.id);
                 floorTileMap.SetTile(new Vector3Int(tileSetPos.x - 1, tileSetPos.y, 0), leftTile);
             }
             string upTileKey = GetTileKey(tileSetPos.x, tileSetPos.y + 1);
-            if (floorDictionary.TryGetValue(upTileKey, out FloorProperty upTileId))
+            if (floorDictionary.TryGetValue(upTileKey, out TileProperty upTileId))
             {
                 Tile upTile = SelectFloorTile(floorTileDetailsSo, floorDictionary, new Vector3Int(tileSetPos.x, tileSetPos.y + 1), upTileId.id);
                 floorTileMap.SetTile(new Vector3Int(tileSetPos.x, tileSetPos.y + 1, 0), upTile);
             }
             string downTileKey = GetTileKey(tileSetPos.x, tileSetPos.y - 1);
-            if (floorDictionary.TryGetValue(downTileKey, out FloorProperty downTileId))
+            if (floorDictionary.TryGetValue(downTileKey, out TileProperty downTileId))
             {
                 Tile downTile = SelectFloorTile(floorTileDetailsSo, floorDictionary, new Vector3Int(tileSetPos.x, tileSetPos.y - 1), downTileId.id);
                 floorTileMap.SetTile(new Vector3Int(tileSetPos.x, tileSetPos.y - 1, 0), downTile);
             }
         }
-        private static Tile SelectFloorTile(FloorSO floorTileDetailsSo, Dictionary<string, FloorProperty> floorDictionary,Vector3Int gridPos, int ruleTileIndex)
+        private static Tile SelectFloorTile(FloorSO floorTileDetailsSo, Dictionary<string, TileProperty> floorDictionary,Vector3Int gridPos, int ruleTileIndex)
         {
             if (!floorTileDetailsSo.floorTileDetails[ruleTileIndex].ruleTile) { return floorTileDetailsSo.floorTileDetails[ruleTileIndex].tiles[0]; }
             bool hasUpTile = floorDictionary.ContainsKey(GetTileKey(gridPos.x, gridPos.y + 1));
@@ -120,7 +121,7 @@ namespace LevelBuilder
             }
             return null;
         }
-        public static void ConnectPlatformTile(int id, Vector3Int currentTilePos, Dictionary<string, FloorProperty> floorDictionary, Tilemap platformTileMap,PlatformSO platformDetails)
+        public static void ConnectPlatformTile(int id, Vector3Int currentTilePos, Dictionary<string, TileProperty> floorDictionary, Tilemap platformTileMap,PlatformSO platformDetails)
         {
             Tile tile = platformDetails.properties[id - 11].tiles[1];
             if (floorDictionary.ContainsKey(GetTileKey(currentTilePos.x - 1, currentTilePos.y)))
@@ -143,5 +144,6 @@ namespace LevelBuilder
             platformTileMap.SetTile(currentTilePos, tile);
         }
         public static string GetTileKey(int x, int y) => "X" + x + "Y" + y;
+        public static string GetTileKey(Vector2Int pos) => "X" + pos.x + "Y" + pos.y;
     }
 }

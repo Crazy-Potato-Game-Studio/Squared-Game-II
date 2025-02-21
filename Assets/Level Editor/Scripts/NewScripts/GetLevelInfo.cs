@@ -23,12 +23,6 @@ public class GetLevelInfo : MonoBehaviour
         InvokeRepeating("ChangeTimeValue", 60, 60);
     }
 
-    public void ChangeTimeValue(){
-        timeSpent += 1;
-        SaveAdditionalDataToFile();
-        ChangeText();
-    }
-
     public void ChangeText(){
         hours = timeSpent/60;
         if(hours != 0){
@@ -37,22 +31,6 @@ public class GetLevelInfo : MonoBehaviour
             hoursText.text = "0 h";
         }
         timeText.text = timeSpent - (hours * 60) + " min";
-    }
-
-    public void SaveAdditionalDataToFile(){
-        string destination = Application.persistentDataPath + "/Level Editor/" + levelName.text + ".potato";
-        FileStream file;
-
-        if(File.Exists(destination)){
-            file = File.OpenWrite(destination);
-        }else{
-            file = File.Create(destination);
-        }
-
-        AdditionalLevelInfo additionalLevelInfo = new AdditionalLevelInfo(timeSpent);
-        BinaryFormatter bf = new BinaryFormatter();
-        bf.Serialize(file, additionalLevelInfo);
-        file.Close();
     }
 
     public void LoadAdditionalDataFromFile(){
@@ -80,5 +58,3 @@ public class AdditionalLevelInfo{
         timeSpentEditing = time;
     }
 }
-
-

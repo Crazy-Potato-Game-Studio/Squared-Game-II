@@ -8,56 +8,51 @@ namespace LevelBuilder
     public class ClimbableHandler : MonoBehaviour,ISaveLoad
     {
         public Tilemap climbableTilemap;
-        public Dictionary<string, ClimbableProperty> climbableDictionary = new();
-        Vector3Int startPos;
-        Vector3Int maxValidPos;
-        Vector3Int minValidPos;
-        Vector3Int currentValidPos;
-
+        public Dictionary<string, TileProperty> climbableDictionary = new();
+        Vector2Int startPos;
+        Vector2Int maxValidPos;
+        Vector2Int minValidPos;
+        Vector2Int currentValidPos;
+        bool selectingTile;
         public string UniqueSaveID { get => uniqueId; set => uniqueId = value; }
-        private string uniqueId = "Climbable";
-        public void OnEnable()
+        private string uniqueId = SaveLoadManager.SaveClimable;
+        public bool ValidationCheckForClimbable(LevelEditorItem selectedItem, Vector2Int gridPos)
         {
-            SaveLoadManager.Singleton.saveLoadList.Add(this);
-        }
-        public bool ValidationCheckForClimbable(LevelEditorItem selectedItem, Vector3Int gridPos)
-        {
-            if (GridCursor.Singleton.locked)
+            if (selectingTile)
             {
                 currentValidPos = GetValidPos(gridPos);
-                GridCursor.Singleton.gridPos = currentValidPos;
+                GridCursor.Singleton.SetCursor(currentValidPos, Vector2Int.one, CursorType.Dynamic);
                 if (Input.GetMouseButtonDown(0))
                 {
+                    GridCursor.Singleton.SetScaling(false);
+                    selectingTile = false;
                     CreateClimbableProperty(selectedItem);
                     currentValidPos = gridPos;
-                    GridCursor.Singleton.gridPos = gridPos;
-                    GridCursor.Singleton.LockCursor(false);
                 }
                 return true;
             }
             else
             {
+                GridCursor.Singleton.SetCursor(gridPos, Vector2Int.one, CursorType.Dynamic);
                 string tileKey = LevelCreateManager.GetTileKey(gridPos);
                 if (!LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(tileKey) &&
-                    !LevelCreateManager.Singleton.PlatformHandler.childDictionary.ContainsKey(tileKey)&&
-                    !LevelCreateManager.Singleton.DecorationHandler.decorationChildDictionary.ContainsKey(tileKey))
+                    !LevelCreateManager.Singleton.PlatformHandler.tileDictionary.ContainsKey(tileKey)&&
+                    !LevelCreateManager.Singleton.DecorationHandler.occupiedTiles.ContainsKey(tileKey))
                 {
                     if (climbableDictionary.ContainsKey(tileKey))
                     {
                         if (Input.GetMouseButtonDown(0))
                         {
-                            climbableTilemap.SetTile(gridPos, null);
+                            climbableTilemap.SetTile(new(gridPos.x,gridPos.y), null);
                             climbableDictionary.Remove(tileKey);
                         }
                         return false;
                     }
                     if (Input.GetMouseButtonDown(0))
                     {
-                        if (!GridCursor.Singleton.locked)
-                        {
-                            SetValidPos(gridPos);
-                            GridCursor.Singleton.LockCursor(true);
-                        }
+                        GridCursor.Singleton.SetScaling(true);
+                        selectingTile = true;
+                        SetValidPos(gridPos);
                     }
                     return true;
                 }
@@ -72,22 +67,19 @@ namespace LevelBuilder
             int length = (int)MathF.Abs(startPos.y - currentValidPos.y);
             for (int i = startMinPosY; i < startMinPosY + length + 1; i++)
             {
-                ClimbableProperty climbableProperty = new()
-                {
-                    itemId = selectedItem.id,
-                    gridPos = new(startPos.x, i)
-                };
+                TileProperty climbableProperty = new(selectedItem.id, new(startPos.x, i));
                 PlaceChilbable(climbableProperty);
             }
         }
-        public void PlaceChilbable(ClimbableProperty climbableProperty)
+        public void PlaceChilbable(TileProperty climbableProperty)
         {
-            string tileKey = LevelCreateManager.GetTileKey(climbableProperty.gridPos.x, climbableProperty.gridPos.y);
+            string tileKey = LevelCreateManager.GetTileKey(climbableProperty.position.x, climbableProperty.position.y);
             climbableDictionary.Add(tileKey, climbableProperty);
-            climbableTilemap.SetTile(new(climbableProperty.gridPos.x, climbableProperty.gridPos.y), ItemManager.Singleton.GetItemDetails(climbableProperty.itemId,ItemCategory.Other).tile);
+            climbableTilemap.SetTile(new(climbableProperty.position.x, climbableProperty.position.y),
+                ItemManager.Singleton.GetItemDetails(climbableProperty.id, ItemCategory.Other).states[0].tile);
         }
 
-        private void SetValidPos(Vector3Int gridPos)
+        private void SetValidPos(Vector2Int gridPos)
         {
             startPos = gridPos;
             minValidPos = new(gridPos.x, gridPos.y - 4);
@@ -98,7 +90,7 @@ namespace LevelBuilder
                 Vector2Int checkPos = new(gridPos.x, gridPos.y - i);
                 string tileKey = LevelCreateManager.GetTileKey(checkPos.x, checkPos.y);
                 if (LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(tileKey) ||
-                    LevelCreateManager.Singleton.PlatformHandler.childDictionary.ContainsKey(tileKey) ||
+                    LevelCreateManager.Singleton.PlatformHandler.tileDictionary.ContainsKey(tileKey) ||
                     climbableDictionary.ContainsKey(tileKey))
                 {
                     minValidPos = new(checkPos.x, checkPos.y + 1);
@@ -111,7 +103,7 @@ namespace LevelBuilder
                 Vector2Int checkPos = new(gridPos.x, gridPos.y + i);
                 string tileKey = LevelCreateManager.GetTileKey(checkPos.x, checkPos.y);
                 if (LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(tileKey) ||
-                    LevelCreateManager.Singleton.PlatformHandler.childDictionary.ContainsKey(tileKey) ||
+                    LevelCreateManager.Singleton.PlatformHandler.tileDictionary.ContainsKey(tileKey) ||
                     climbableDictionary.ContainsKey(tileKey))
                 {
                     maxValidPos = new(checkPos.x, checkPos.y - 1);
@@ -120,18 +112,18 @@ namespace LevelBuilder
             }
             currentValidPos = gridPos;
         }
-        private Vector3Int GetValidPos(Vector3Int gridPos)
+        private Vector2Int GetValidPos(Vector2Int gridPos)
         {
             if (gridPos.y > maxValidPos.y) return maxValidPos;
             if (gridPos.y < minValidPos.y) return minValidPos;
             return new(maxValidPos.x, gridPos.y);
         }
-        public LevelSave Save()
+        public LevelData Save()
         {
             return new() { ClimbableDictionary = climbableDictionary };
         }
 
-        public void Load(LevelSave mapSave)
+        public void Load(LevelData mapSave)
         {
             climbableDictionary = new();
             climbableTilemap.ClearAllTiles();
@@ -140,11 +132,5 @@ namespace LevelBuilder
                 PlaceChilbable(item);
             }
         }
-    }
-    [System.Serializable]
-    public struct ClimbableProperty
-    {
-        public int itemId;
-        public Vector2IntSerializable gridPos;
     }
 }

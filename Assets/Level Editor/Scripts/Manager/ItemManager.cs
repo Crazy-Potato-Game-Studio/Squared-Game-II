@@ -57,6 +57,7 @@ namespace LevelBuilder
             LevelEditorItem newSelectedItem = GetItemDetails(id, category);
             selectedItem = newSelectedItem == selectedItem ? null : newSelectedItem;
             LevelCreateManager.Singleton.SelectItem(selectedItem);
+            GridCursor.Singleton.ResetCursor();
         }
     }
 
@@ -93,16 +94,13 @@ namespace LevelBuilder
         BoxGrid,
         None
     }
-
-    public enum GroundValidationType
-    {
-        None,
-        GroundCheck,
-        GroundAndCeilingCheck
-    }
-
-    
-
-
 }
-
+[Flags]
+public enum SupportType
+{
+    None = 0,
+    Up = 2,
+    Down = 4,
+    Left = 8,
+    Right = 16
+}

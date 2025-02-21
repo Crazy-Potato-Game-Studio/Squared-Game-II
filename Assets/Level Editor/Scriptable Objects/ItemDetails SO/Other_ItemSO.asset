@@ -14,107 +14,157 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - name: Wooden Ladder
+    description: 
     id: 0
     uiSprite: {fileID: -3099821582696442049, guid: 4ce1df44dfb48a84090863579fa74c35, type: 3}
     editorPrefab: {fileID: 0}
     gamePrefab: {fileID: 0}
-    tile: {fileID: 11400000, guid: 839ff641a7db13f458ca93599860f96a, type: 2}
     validationType: 7
-    objectOffset: {x: 0, y: 0}
-    gridDimension: {x: 1, y: 1}
-    description: 
-    cursorType: 1
-    extra:
-      maxAllowedItem: 0
-      checkType: 0
-      standingBlock: 0
-      changeable: 0
-      propertyType: 0
-      leftPos: {x: 0, y: 0}
-      upPos: {x: 0, y: 0}
-      RightPos: {x: 0, y: 0}
+    states:
+    - position: {x: 0, y: 0}
+      rotation: 0
+      dimension: {x: 1, y: 1}
+      cursorType: 0
+      alignment: 0
+      supportType: 0
+      tile: {fileID: 11400000, guid: 839ff641a7db13f458ca93599860f96a, type: 2}
+    maxAllowedItem: 0
     includeInGame: 1
   - name: Steel Ladder
+    description: 
     id: 1
     uiSprite: {fileID: 4528032786334852116, guid: 4ce1df44dfb48a84090863579fa74c35, type: 3}
     editorPrefab: {fileID: 0}
     gamePrefab: {fileID: 0}
-    tile: {fileID: 11400000, guid: 544c140dcad28ed45bc19e8cdda20bd2, type: 2}
     validationType: 7
-    objectOffset: {x: 0, y: 0}
-    gridDimension: {x: 0, y: 0}
-    description: 
-    cursorType: 1
-    extra:
-      maxAllowedItem: 0
-      checkType: 0
-      standingBlock: 0
-      changeable: 0
-      propertyType: 0
-      leftPos: {x: 0, y: 0}
-      upPos: {x: 0, y: 0}
-      RightPos: {x: 0, y: 0}
+    states:
+    - position: {x: 0, y: 0}
+      rotation: 0
+      dimension: {x: 0, y: 0}
+      cursorType: 0
+      alignment: 0
+      supportType: 0
+      tile: {fileID: 11400000, guid: 544c140dcad28ed45bc19e8cdda20bd2, type: 2}
+    maxAllowedItem: 0
     includeInGame: 1
   - name: Spikes
+    description: 
     id: 2
     uiSprite: {fileID: -6735606462096518543, guid: 4ce1df44dfb48a84090863579fa74c35, type: 3}
     editorPrefab: {fileID: 5800782778787392565, guid: 72ed8e0792a31de4d9ce6293f5261cdd, type: 3}
     gamePrefab: {fileID: 0}
-    tile: {fileID: 11400000, guid: 19a17580c97c2e145b2bbfff7d970182, type: 2}
     validationType: 9
-    objectOffset: {x: 0.5, y: 0.5}
-    gridDimension: {x: 1, y: 1}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 1
-      standingBlock: 0
-      changeable: 1
-      propertyType: 0
-      leftPos: {x: 0, y: 0}
-      upPos: {x: 0, y: 0}
-      RightPos: {x: 0, y: 0}
+    states:
+    - position: {x: 0.5, y: 0.5}
+      rotation: 0
+      dimension: {x: 1, y: 1}
+      cursorType: 1
+      alignment: 4
+      supportType: 4
+      tile: {fileID: 11400000, guid: 19a17580c97c2e145b2bbfff7d970182, type: 2}
+    - position: {x: 0.5, y: 0.5}
+      rotation: 90
+      dimension: {x: 1, y: 1}
+      cursorType: 1
+      alignment: 1
+      supportType: 16
+      tile: {fileID: 11400000, guid: 19a17580c97c2e145b2bbfff7d970182, type: 2}
+    - position: {x: 0.5, y: 0.5}
+      rotation: 180
+      dimension: {x: 1, y: 1}
+      cursorType: 1
+      alignment: 3
+      supportType: 2
+      tile: {fileID: 11400000, guid: 19a17580c97c2e145b2bbfff7d970182, type: 2}
+    - position: {x: 0.5, y: 0.5}
+      rotation: -90
+      dimension: {x: 1, y: 1}
+      cursorType: 1
+      alignment: 2
+      supportType: 8
+      tile: {fileID: 11400000, guid: 19a17580c97c2e145b2bbfff7d970182, type: 2}
+    maxAllowedItem: 0
     includeInGame: 1
   - name: Trampoline
+    description: 
     id: 3
     uiSprite: {fileID: 21300000, guid: ad95a1f16997e0c4d950877470c28a17, type: 3}
     editorPrefab: {fileID: 7675797964396151461, guid: 160ab28b3cf429e489570c2ca3a966ea, type: 3}
     gamePrefab: {fileID: 5526748109424042925, guid: b05303abc578e8a478da0afb447cfe53, type: 3}
-    tile: {fileID: 0}
     validationType: 9
-    objectOffset: {x: 1, y: 0.25}
-    gridDimension: {x: 2, y: 1}
-    description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 1
-      standingBlock: 0
-      changeable: 0
-      propertyType: 0
-      leftPos: {x: 0, y: 0}
-      upPos: {x: 0, y: 0}
-      RightPos: {x: 0, y: 0}
+    states:
+    - position: {x: 1, y: 0.25}
+      rotation: 0
+      dimension: {x: 2, y: 1}
+      cursorType: 4
+      alignment: 4
+      supportType: 4
+      tile: {fileID: 0}
+    maxAllowedItem: 0
     includeInGame: 1
   - name: Mirror
-    id: 4
-    uiSprite: {fileID: 21300000, guid: 91128aee26017084eafa57fe47e101fc, type: 3}
-    editorPrefab: {fileID: 0}
-    gamePrefab: {fileID: 0}
-    tile: {fileID: 0}
-    validationType: 9
-    objectOffset: {x: 0, y: 0}
-    gridDimension: {x: 1, y: 1}
     description: 
-    cursorType: 0
-    extra:
-      maxAllowedItem: 0
-      checkType: 0
-      standingBlock: 0
-      changeable: 0
-      propertyType: 0
-      leftPos: {x: 0, y: 0}
-      upPos: {x: 0, y: 0}
-      RightPos: {x: 0, y: 0}
-    includeInGame: 0
+    id: 4
+    uiSprite: {fileID: 21300000, guid: f80477ad7d113d14f80b5b60b4f2fb0d, type: 3}
+    editorPrefab: {fileID: 2906320820798765157, guid: 7978044806f76f645bdf343d21dcf6f5, type: 3}
+    gamePrefab: {fileID: 5747474008609950931, guid: 037c1153492db4e43a71c8479653f024, type: 3}
+    validationType: 5
+    states:
+    - position: {x: 0.5, y: 0.5}
+      rotation: 0
+      dimension: {x: 1, y: 1}
+      cursorType: 1
+      alignment: 0
+      supportType: 0
+      tile: {fileID: 0}
+    - position: {x: 0.5, y: 0.5}
+      rotation: 45
+      dimension: {x: 1, y: 1}
+      cursorType: 1
+      alignment: 0
+      supportType: 0
+      tile: {fileID: 0}
+    - position: {x: 0.5, y: 0.5}
+      rotation: 90
+      dimension: {x: 1, y: 1}
+      cursorType: 1
+      alignment: 0
+      supportType: 0
+      tile: {fileID: 0}
+    - position: {x: 0.5, y: 0.5}
+      rotation: 135
+      dimension: {x: 1, y: 1}
+      cursorType: 1
+      alignment: 0
+      supportType: 0
+      tile: {fileID: 0}
+    - position: {x: 0.5, y: 0.5}
+      rotation: 180
+      dimension: {x: 1, y: 1}
+      cursorType: 1
+      alignment: 0
+      supportType: 0
+      tile: {fileID: 0}
+    - position: {x: 0.5, y: 0.5}
+      rotation: 225
+      dimension: {x: 1, y: 1}
+      cursorType: 1
+      alignment: 0
+      supportType: 0
+      tile: {fileID: 0}
+    - position: {x: 0.5, y: 0.5}
+      rotation: 270
+      dimension: {x: 1, y: 1}
+      cursorType: 1
+      alignment: 0
+      supportType: 0
+      tile: {fileID: 0}
+    - position: {x: 0.5, y: 0.5}
+      rotation: 315
+      dimension: {x: 1, y: 1}
+      cursorType: 1
+      alignment: 0
+      supportType: 0
+      tile: {fileID: 0}
+    maxAllowedItem: 0
+    includeInGame: 1

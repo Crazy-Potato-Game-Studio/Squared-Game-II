@@ -9,7 +9,7 @@ namespace LevelBuilder
         public List<PlatformDetails> properties;
     }
     [System.Serializable]
-    public struct PlatformParentProperty
+    public class PlatformParentProperty
     {
         public int itemId;
         public List<PlatformChildProperty> childs;

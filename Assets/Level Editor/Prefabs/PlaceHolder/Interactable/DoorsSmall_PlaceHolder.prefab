@@ -345,7 +345,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5288803483605460327}
-  - component: {fileID: 2585315562929009308}
   m_Layer: 6
   m_Name: DoorsSmall_PlaceHolder
   m_TagString: Ground
@@ -372,17 +371,3 @@ Transform:
   - {fileID: 214029599239970073}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2585315562929009308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8918236665436084295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea0c39e8ff4147f4398e183cbce915cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 0}
-  canvasObject: {fileID: 0}

@@ -1,117 +1,157 @@
-using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LevelBuilder
+public class GridCursor : MonoBehaviour
 {
-    public class GridCursor : MonoBehaviour
+    [Header("UI")]
+    [SerializeField] public Image gridCursorImage;
+    [SerializeField] public Color cursorValidColor;
+    [SerializeField] public Color cursorInvalidColor;
+    [SerializeField] public Color cursorScaleColor;
+
+    [Header("Settings")]
+    [SerializeField] private Vector2Int gridCellSize = Vector2Int.one;
+    [SerializeField] private Vector2Int dynamicScaleLimit = new(20, 20);
+
+    private Vector2 startAnchoredPosition;
+    private Vector2 startGridPosition;
+    private RectTransform cursorRect;
+    private Vector2Int gridPos;
+    private bool isCursorIsScaling = false;
+    public static GridCursor Singleton;
+
+    private void Awake() => Singleton = this;
+    private void Start() => cursorRect = GetComponent<RectTransform>();
+
+    public void SetCursor(Vector2Int gridPos, Vector2Int size, CursorType cursorType = CursorType.Center)
     {
-        public static GridCursor Singleton;
-        public Image gridCursorImage;
-        public Color cursorValidColor;
-        public Color cursorInvalidColor;
-        public Color cursorScaleColor;
-        public bool locked = false;
-        public bool enable = false;
-        public Vector2 cursorDimension;
-        public Vector2 startAnchorePos;
-        public Vector3 startGridPos;
-        RectTransform cursorTransform;
-        LevelEditorItem selectedItem;
-        public Vector3 gridPos;
-        public bool multiGridCursor;
-        private void Awake()
+        this.gridPos = gridPos;
+        if (cursorType == CursorType.None)
         {
-            Singleton = this;
+            gridCursorImage.enabled = false;
         }
-        private void Start()
+        else if (cursorType == CursorType.Dynamic)
         {
-            cursorTransform = GetComponent<RectTransform>();
+            ShowDynamicCursor();
         }
-        public void DisplayCursor(LevelEditorItem sandBoxItem)
+        else
         {
-            selectedItem = sandBoxItem;
-            if (selectedItem == null || selectedItem.cursorType == PlacementType.None)
-            {
-                gridCursorImage.enabled = false;
-                multiGridCursor = false;
-                locked = false;
-                enable = false;
-                gameObject.SetActive(false);
-                return;
-            }
-            cursorDimension = Vector3.one;
-            cursorTransform.pivot = Vector2.zero;
-            cursorTransform.sizeDelta = cursorDimension * 100;
-            gridCursorImage.enabled = true;
-            multiGridCursor = false;
-            locked = false;
-            enable = true;
-            gameObject.SetActive(true);
-        }
-
-        public void DisplayMultiGridCursor(Vector3Int _startPos,Vector2 dimention)
-        {
-            multiGridCursor = true;
-            transform.position = _startPos;
-            startAnchorePos = cursorTransform.anchoredPosition;
-            cursorTransform.sizeDelta = dimention * 100;
-        }
-        private void Update()
-        {
-            if (!enable) { return; }
-            if (locked) {ScaleGridCursor();return; }
-            gridCursorImage.color = LevelCreateManager.Singleton.itemPlaceable ? cursorValidColor : cursorInvalidColor;
-            if (multiGridCursor) { return; }
-            transform.position = LevelCreateManager.Singleton.gridPos;
-        }
-        public void LockCursor(bool doEnable)
-        {
-            if (!doEnable)
-            {
-                cursorDimension = Vector3.one;
-                cursorTransform.pivot = Vector2.zero;
-                cursorTransform.sizeDelta = cursorDimension * 100;
-                locked = false;
-            }
-            else
-            {
-                startAnchorePos = cursorTransform.anchoredPosition;
-                startGridPos = LevelCreateManager.Singleton.gridPos;
-                gridCursorImage.color = cursorScaleColor;
-                locked = true;
-            }
-        }
-        private void ScaleGridCursor()
-        {
-            cursorTransform.pivot = new Vector2(
-                    gridPos.x >= startGridPos.x ? 0 : 1,
-                    gridPos.y >= startGridPos.y ? 0 : 1);
-
-            Vector2 adjustedStartPos = Vector2.zero;
-            cursorTransform.anchoredPosition = startAnchorePos + new Vector2(
-                gridPos.x >= startGridPos.x ? 0 : 1,
-                gridPos.y >= startGridPos.y ? 0 : 1);
-            cursorTransform.anchoredPosition += adjustedStartPos;
-            cursorTransform.sizeDelta = CalculateDimension() * 100;
-        }
-        private Vector2 CalculateDimension()
-        {
-            Vector2 dimention = Vector2.zero;
-            if (selectedItem.cursorType == PlacementType.VarticleGrid)
-            {
-                dimention = new(1, Mathf.Abs(gridPos.y - startGridPos.y) + 1);
-            }
-            else if (selectedItem.cursorType == PlacementType.HorizontalGrid)
-            {
-                dimention = new(Mathf.Abs(gridPos.x - startGridPos.x) + 1, 1);
-            }
-            else if (selectedItem.cursorType == PlacementType.BoxGrid)
-            {
-                dimention = new(Mathf.Abs(gridPos.x - startGridPos.x) + 1,
-                                Mathf.Abs(gridPos.y - startGridPos.y) + 1);
-            }
-            return dimention;
+            ShowStaticCursor(size, cursorType);
         }
     }
+
+    public void SetScaling(bool value)
+    {
+        if (value)
+        {
+            StartCursorScaling();
+        }
+        else
+        {
+            EndCursorScaling();
+        }
+    }
+
+    private void ShowDynamicCursor()
+    {
+        if (isCursorIsScaling)
+        {
+            ScaleGridCursor();
+        }
+        else
+        {
+            ShowStaticCursor(Vector2Int.one);
+        }
+    }
+
+    private void ShowStaticCursor(Vector2Int cursorSize, CursorType cursorType = CursorType.Center)
+    {
+        cursorRect.position = GetBottomLeftPos(gridPos, cursorSize, cursorType);
+        cursorRect.sizeDelta = cursorSize * 100;
+        cursorRect.pivot = Vector2.zero;
+    }
+
+    private void StartCursorScaling()
+    {
+        startAnchoredPosition = cursorRect.anchoredPosition;
+        startGridPosition = gridPos;
+        isCursorIsScaling = true;
+    }
+
+    private void EndCursorScaling()
+    {
+        isCursorIsScaling = false;
+        cursorRect.sizeDelta = gridCellSize * 100;
+        cursorRect.pivot = Vector2.zero;
+    }
+
+    private void ScaleGridCursor()
+    {
+        Vector2 anchorPivot = new(gridPos.x >= startGridPosition.x ? 0 : 1,
+                                  gridPos.y >= startGridPosition.y ? 0 : 1);
+
+        Vector2 cursorDimension = new(
+            Mathf.Clamp(Mathf.Abs(gridPos.x - startGridPosition.x) + 1, 1, dynamicScaleLimit.x),
+            Mathf.Clamp(Mathf.Abs(gridPos.y - startGridPosition.y) + 1, 1, dynamicScaleLimit.y));
+
+        cursorRect.pivot = anchorPivot;
+        cursorRect.anchoredPosition = startAnchoredPosition + anchorPivot;
+        cursorRect.sizeDelta = cursorDimension * 100;
+    }
+
+    public void SetVisibility(bool value)
+    {
+        float alpha = value ? 100f : 0f;
+        gridCursorImage.color = new Color(
+            gridCursorImage.color.r,
+            gridCursorImage.color.g,
+            gridCursorImage.color.b,
+            alpha);
+    }
+    public void ResetCursor()
+    {
+        isCursorIsScaling = false;
+        cursorRect.sizeDelta = gridCellSize * 100;
+        cursorRect.pivot = Vector2.zero;
+    }
+    private Vector3 GetBottomLeftPos(Vector2Int gridPos, Vector2Int dimension, CursorType cursorType)
+    {
+        Vector3 tileDimensionBottomLeftPos = new();
+        if (cursorType == CursorType.BottomCenter)
+        {
+            tileDimensionBottomLeftPos.x = gridPos.x - (int)dimension.x / 2;
+            tileDimensionBottomLeftPos.y = gridPos.y;
+        }
+        else if (cursorType == CursorType.TopCenter)
+        {
+            tileDimensionBottomLeftPos.x = gridPos.x - (int)dimension.x / 2;
+            tileDimensionBottomLeftPos.y = (gridPos.y - dimension.y) + 1;
+        }
+        else if (cursorType == CursorType.LeftCenter)
+        {
+            tileDimensionBottomLeftPos.x = gridPos.x;
+            tileDimensionBottomLeftPos.y = gridPos.y - (int)dimension.y / 2;
+        }
+        else if (cursorType == CursorType.RightCenter)
+        {
+            tileDimensionBottomLeftPos.x = (gridPos.x - dimension.x) + 1;
+            tileDimensionBottomLeftPos.y = gridPos.y - (int)dimension.y / 2;
+        }
+        else
+        {
+            tileDimensionBottomLeftPos.x = gridPos.x - (int)dimension.x / 2;
+            tileDimensionBottomLeftPos.y = gridPos.y - (int)dimension.y / 2;
+        }
+        return tileDimensionBottomLeftPos;
+    }
+}
+public enum CursorType
+{
+    None,
+    Center,
+    TopCenter,
+    BottomCenter,
+    LeftCenter,
+    RightCenter,
+    Dynamic
 }

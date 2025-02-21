@@ -1,7 +1,12 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 namespace LevelBuilder
 {
@@ -14,12 +19,16 @@ namespace LevelBuilder
     [RequireComponent(typeof(InteractableHandler))]
     [RequireComponent(typeof(ItemHandler))]
     [RequireComponent(typeof(OtherHandler))]
+
     public class LevelCreateManager : MonoBehaviour
     {
+        public Transform cursorObjectParent;
+        public GameObject[] disableGameObjectOnScreenShot;
         public static Action EscButtonEvent;
         public static Action<LevelEditorItem> ItemSelectEvent;
         public static Action OverUiEvent;
         public static LevelCreateManager Singleton;
+        public PlayableMaker playableMaker { get; private set; }
         public PlatformHandler PlatformHandler { get; private set; }
         public FloorHandler FloorHandler { get; private set; }
         public ClimbableHandler ClimbableHandler { get; private set; }
@@ -28,22 +37,22 @@ namespace LevelBuilder
         public InteractableHandler InteractableHandler  { get; private set; }
         public ItemHandler ItemHandler  { get; private set; }
         public OtherHandler OtherHandler  { get; private set; }
-        [field:SerializeField]public LevelEditorItem selectedItem { get; private set; }
+        [field:SerializeField] public LevelEditorItem selectedItem { get; private set; }
         [Header("Grid")]
         public Camera editCamera;
         public Grid grid;
         public bool itemPlaceable { get; private set; }
         EventSystem eventSystem;
-        public Vector3Int gridPos { get; private set; }
-        public  UnityEvent escButtonEvent;
+        public Vector2Int gridPos { get; private set; }
+        public UnityEvent escButtonEvent;
 
-        public UiDoorPopUp popUp;
         private void Awake()
         {
             Singleton = this;
             InitializeScene();
             eventSystem = FindObjectOfType<EventSystem>();
         }
+         
         private void InitializeScene()
         {
             PlatformHandler = GetComponent<PlatformHandler>();
@@ -54,6 +63,7 @@ namespace LevelBuilder
             InteractableHandler = GetComponent<InteractableHandler>();
             ItemHandler = GetComponent<ItemHandler>();
             OtherHandler = GetComponent<OtherHandler>();
+            playableMaker = GetComponent<PlayableMaker>();
         }
         private void Start()
         {
@@ -61,57 +71,70 @@ namespace LevelBuilder
             {
                 Destroy(FindObjectOfType<SceneManagement>().gameObject);
             }
+            SaveLoadManager.Singleton.objectToHideOnScreenshot = disableGameObjectOnScreenShot;
+            SaveLoadManager.Singleton.OnLoad += OnLevelLoad;
+            SaveLoadManager.Singleton.Load();
         }
+        private void OnLevelLoad(SaveData saveData)
+        {
+            if (saveData.saveInfo.floatValues == null) { return; }
+
+            Dictionary<string, float> floatValues = saveData.saveInfo.floatValues;
+            Camera camera = Camera.main;
+            floatValues.TryGetValue("camPosX", out float camPosX);
+            floatValues.TryGetValue("camPosY", out float camPosY);
+            camera.transform.position = new(camPosX, camPosY,-10);
+        }
+        public void SaveLevel()
+        {
+            Dictionary<string, float> floatValues = new();
+            Camera camera = Camera.main;
+            floatValues.Add("camPosX", camera.transform.position.x);
+            floatValues.Add("camPosY", camera.transform.position.y);
+            ItemSelectEvent?.Invoke(null);
+            SaveLoadManager.Singleton.currentlyLoadedSaveData.saveInfo.floatValues = floatValues;
+            SaveLoadManager.Singleton.Save();
+            ItemSelectEvent?.Invoke(ItemManager.Singleton.selectedItem);
+        }
+        public void PlayLevel()
+        {
+            PlayableMaker.Singleton.Play();
+        }
+       
         public void SelectItem(LevelEditorItem sandBoxItem)
         {
             selectedItem = sandBoxItem;
-            GridCursor.Singleton.DisplayCursor(selectedItem);
             ItemSelectEvent?.Invoke(selectedItem);
         }
 
         private void Update()
         {
-            gridPos = grid.WorldToCell(editCamera.ScreenToWorldPoint(Input.mousePosition));
-            if (Input.GetKeyDown(KeyCode.Escape)) { EscButtonEvent?.Invoke(); escButtonEvent?.Invoke(); }
-            if (eventSystem.IsPointerOverGameObject()) { GridCursor.Singleton.gridCursorImage.enabled = false; OverUiEvent?.Invoke(); return; }
+            Vector3Int cellPos = grid.WorldToCell(editCamera.ScreenToWorldPoint(Input.mousePosition));
+            gridPos = new(cellPos.x, cellPos.y);
 
-            if (InteractableHandler.childDictionary.TryGetValue(TileHandler.GetTileKey(gridPos.x, gridPos.y), out var parentKey))
+            if (Input.GetKeyDown(KeyCode.Escape)) { escButtonEvent?.Invoke(); }
+
+            if (eventSystem.IsPointerOverGameObject())
             {
-                InteractableHandler.interactableDictionary.TryGetValue(parentKey, out var property);
-                LevelEditorItem item = ItemManager.Singleton.GetItemDetails(property.id, ItemCategory.Interactable);
-                if (item.extra.propertyType == PropertyType.Door)
-                {
-                    popUp.ShowDoorName("Door [" + property.key+ "]");
-                }
-                else if (item.extra.propertyType == PropertyType.Portal)
-                {
-                    popUp.ShowDoorName("Portal [" + property.key + "]");
-                }
-                else
-                {
-                    popUp.gameObject.SetActive(false);
-                }
+                GridCursor.Singleton.SetVisibility(false);
+                OverUiEvent?.Invoke();
+                return;
+            }
 
-                if (item.extra.propertyType == PropertyType.Trigger)
-                {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        InteractableHandler.powerTriggerManager.ShowTrigger(InteractableHandler.interactableDictionary, property);
-                    }
-                }
+            if(selectedItem == null) { return; }
+
+            GridCursor.Singleton.SetVisibility(true);
+            itemPlaceable = CheckValidTile();
+            if (itemPlaceable)
+            {
+                GridCursor.Singleton.gridCursorImage.color = GridCursor.Singleton.cursorValidColor;
             }
             else
             {
-//                popUp.gameObject.SetActive(false);
-            }
-
-
-            if (selectedItem != null)
-            {
-                GridCursor.Singleton.gridCursorImage.enabled = true;
-                itemPlaceable = CheckValidTile();
+                GridCursor.Singleton.gridCursorImage.color = GridCursor.Singleton.cursorInvalidColor;
             }
         }
+
         private bool CheckValidTile()
         {
             switch (selectedItem.validationType)
@@ -137,6 +160,7 @@ namespace LevelBuilder
         }
 
         public static string GetTileKey(Vector3Int pos) => "X" + pos.x + "Y" + pos.y;
+        public static string GetTileKey(Vector2Int pos) => "X" + pos.x + "Y" + pos.y;
         public static string GetTileKey(int x,int y) => "X" + x + "Y" + y;
     }
 

@@ -8,45 +8,46 @@ namespace LevelBuilder
     {
         public Tilemap platformTileMap;
         [Header("Debug")]
-        Vector3Int startPos;
-        Vector3Int validPos;
-        Vector3Int endPos;
-        Vector3Int supportPos;
+        Vector2Int startPos;
+        Vector2Int validPos;
+        Vector2Int endPos;
+        Vector2Int supportPos;
+        bool selectingTile;
         [field:SerializeField]
         public PlatformSO platformDetails { get; private set; }
-        private string uniqueId = "Platform";
+        private string uniqueId = SaveLoadManager.SavePlatform;
         public string UniqueSaveID { get => uniqueId; set => uniqueId = value; }
         public void OnEnable()
         {
-            SaveLoadManager.Singleton.saveLoadList.Add(this);
             EventHandler.OnFloorUpdate += OnFloorUpdate;
             EventHandler.OnFloorDestroy += OnFloorDestroy;
         }
-        public Dictionary<string, PlatformChildProperty> childDictionary = new();
-        public Dictionary<string, PlatformParentProperty> parentDictionary = new();
+        public Dictionary<string, PlatformChildProperty> tileDictionary = new();
+        public Dictionary<string, PlatformParentProperty> platformDictionary = new();
 
         
 
         public void OnFloorDestroy(int x,int y)
         {
-            if (parentDictionary.TryGetValue(LevelCreateManager.GetTileKey(x + 1, y), out PlatformParentProperty rightPlatformParent))
+            if (platformDictionary.TryGetValue(LevelCreateManager.GetTileKey(x + 1, y), out PlatformParentProperty rightPlatformParent))
             {
                 DestroyPlatform(rightPlatformParent);
             }
-            if (parentDictionary.TryGetValue(LevelCreateManager.GetTileKey(x - 1, y), out PlatformParentProperty leftPlatformParent))
+            if (platformDictionary.TryGetValue(LevelCreateManager.GetTileKey(x - 1, y), out PlatformParentProperty leftPlatformParent))
             {
                 DestroyPlatform(leftPlatformParent);
             }
         }
-        public bool ValidationCheckForPlatform(LevelEditorItem selectedItem, Vector3Int gridPos)
+        public bool ValidationCheckForPlatform(LevelEditorItem selectedItem, Vector2Int gridPos)
         {
-            if (!GridCursor.Singleton.locked)
+            if (!selectingTile)
             {
-                if (childDictionary.TryGetValue(LevelCreateManager.GetTileKey(gridPos), out PlatformChildProperty platformChildDetails))
+                GridCursor.Singleton.SetCursor(gridPos, Vector2Int.one, CursorType.Dynamic);
+                if (tileDictionary.TryGetValue(LevelCreateManager.GetTileKey(gridPos), out PlatformChildProperty platformChildDetails))
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
-                        if (parentDictionary.TryGetValue(platformChildDetails.parentId, out PlatformParentProperty parentDetails))
+                        if (platformDictionary.TryGetValue(platformChildDetails.parentId, out PlatformParentProperty parentDetails))
                         {
                             DestroyPlatform(parentDetails);
                         }
@@ -55,14 +56,17 @@ namespace LevelBuilder
                 }
                 
                 if ((LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(LevelCreateManager.GetTileKey(gridPos.x + 1, gridPos.y)) ||
-                    LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(LevelCreateManager.GetTileKey(gridPos.x - 1, gridPos.y))) &&
+                     LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(LevelCreateManager.GetTileKey(gridPos.x - 1, gridPos.y))) &&
                     !LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(LevelCreateManager.GetTileKey(gridPos.x, gridPos.y))&&
                     !LevelCreateManager.Singleton.ClimbableHandler.climbableDictionary.ContainsKey(LevelCreateManager.GetTileKey(gridPos.x, gridPos.y))&&
-                    !LevelCreateManager.Singleton.DecorationHandler.decorationChildDictionary.ContainsKey(LevelCreateManager.GetTileKey(gridPos.x, gridPos.y)))
+                    !LevelCreateManager.Singleton.DecorationHandler.occupiedTiles.ContainsKey(LevelCreateManager.GetTileKey(gridPos.x, gridPos.y)))
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
-                        SetMultiTileSelection(selectedItem, gridPos);
+                        startPos = gridPos;
+                        endPos = GetValidMaxCursorScalePosition(selectedItem, gridPos);
+                        selectingTile = true;
+                        GridCursor.Singleton.SetScaling(selectingTile);
                     }
                     return true;
                 }
@@ -71,23 +75,18 @@ namespace LevelBuilder
             else
             {
                 validPos = GetCurrentValidEndPos(gridPos);
-                GridCursor.Singleton.gridPos = validPos;
+                GridCursor.Singleton.SetCursor(validPos, Vector2Int.one, CursorType.Dynamic);
                 if (Input.GetMouseButtonDown(0))
                 {
                     PlatformParentProperty parent = CreatePlatform(selectedItem);
                     PlacePlatform(parent);
-                    GridCursor.Singleton.LockCursor(false);
+                    selectingTile = false;
+                    GridCursor.Singleton.SetScaling(selectingTile);
                 }
                 return true;
             }
         }
-        public void SetMultiTileSelection(LevelEditorItem selectedItem,Vector3Int gridPos)
-        {
-            startPos = gridPos;
-            endPos = GetValidMaxCursorScalePosition(selectedItem, gridPos);
-            GridCursor.Singleton.gridPos = gridPos;
-            GridCursor.Singleton.LockCursor(true);
-        }
+
         public PlatformParentProperty CreatePlatform(LevelEditorItem selectedItem)
         {
             int length = (int)MathF.Abs(startPos.x - validPos.x) + 1;
@@ -119,36 +118,49 @@ namespace LevelBuilder
             foreach (var child in parentDetails.childs)
             {
                 string childKey = LevelCreateManager.GetTileKey(child.gridPos.x, child.gridPos.y);
-                childDictionary.Remove(childKey);
+                tileDictionary.Remove(childKey);
                 platformTileMap.SetTile(new(child.gridPos.x, child.gridPos.y), null);
             }
-            parentDictionary.Remove(parentDetails.parentKey);
+            platformDictionary.Remove(parentDetails.parentKey);
         }
         public void PlacePlatform(PlatformParentProperty platformParentDetails)
         {
             foreach (var child in platformParentDetails.childs)
             {
-                TileHandler.ConnectPlatformTile(platformParentDetails.itemId, new(child.gridPos.x, child.gridPos.y), LevelCreateManager.Singleton.FloorHandler.floorDictionary,platformTileMap,platformDetails);
                 string childKey = LevelCreateManager.GetTileKey(child.gridPos.x, child.gridPos.y);
-                childDictionary.Add(childKey, child);
+                tileDictionary.Add(childKey, child);
+                int platformId = platformParentDetails.itemId;
+                Vector3Int childPos = new(child.gridPos.x, child.gridPos.y);
+                var floorDictionary = LevelCreateManager.Singleton.FloorHandler.floorDictionary;
+                TileHandler.ConnectPlatformTile(platformId, childPos, floorDictionary, platformTileMap, platformDetails);
             }
-            parentDictionary.Add(platformParentDetails.parentKey, platformParentDetails);
+            platformDictionary.Add(platformParentDetails.parentKey, platformParentDetails);
         }
         
         public void OnFloorUpdate(int x, int y)
         {
-            if (childDictionary.TryGetValue(LevelCreateManager.GetTileKey(x + 1, y), out PlatformChildProperty rightChildDetails))
+            foreach (var platform in platformDictionary.Values)
             {
-                parentDictionary.TryGetValue(rightChildDetails.parentId, out PlatformParentProperty rightPlatformChildParent);
-                TileHandler.ConnectPlatformTile(rightPlatformChildParent.itemId, new(x + 1, y), LevelCreateManager.Singleton.FloorHandler.floorDictionary, platformTileMap,platformDetails);
+                foreach (var child in platform.childs)
+                {
+                    int platformId = platform.itemId;
+                    Vector3Int childPos = new(child.gridPos.x, child.gridPos.y);
+                    var floorDictionary = LevelCreateManager.Singleton.FloorHandler.floorDictionary;
+                    TileHandler.ConnectPlatformTile(platformId, childPos, floorDictionary, platformTileMap, platformDetails);
+                }
             }
-            if (childDictionary.TryGetValue(LevelCreateManager.GetTileKey(x - 1, y), out PlatformChildProperty leftChildDetails))
+            if (tileDictionary.TryGetValue(LevelCreateManager.GetTileKey(x + 1, y), out PlatformChildProperty rightChildDetails))
             {
-                parentDictionary.TryGetValue(leftChildDetails.parentId, out PlatformParentProperty leftPlatformChildParent);
+                platformDictionary.TryGetValue(rightChildDetails.parentId, out PlatformParentProperty rightPlatformChildParent);
+                TileHandler.ConnectPlatformTile(rightPlatformChildParent.itemId, new(x + 1, y), LevelCreateManager.Singleton.FloorHandler.floorDictionary, platformTileMap, platformDetails);
+            }
+            if (tileDictionary.TryGetValue(LevelCreateManager.GetTileKey(x - 1, y), out PlatformChildProperty leftChildDetails))
+            {
+                platformDictionary.TryGetValue(leftChildDetails.parentId, out PlatformParentProperty leftPlatformChildParent);
                 TileHandler.ConnectPlatformTile(leftPlatformChildParent.itemId, new(x - 1, y), LevelCreateManager.Singleton.FloorHandler.floorDictionary, platformTileMap, platformDetails);
             }
         }
-        private Vector3Int GetValidMaxCursorScalePosition(LevelEditorItem selectedItem, Vector3Int gridPos)
+        private Vector2Int GetValidMaxCursorScalePosition(LevelEditorItem selectedItem, Vector2Int gridPos)
         {
             supportPos = LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(LevelCreateManager.GetTileKey(gridPos.x - 1, gridPos.y)) ? new(1, 0) : new(-1, 0);
 
@@ -156,14 +168,14 @@ namespace LevelBuilder
             {
                 Vector2Int checkPos = new(gridPos.x + (i * supportPos.x), gridPos.y);
                 if (LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(LevelCreateManager.GetTileKey(checkPos.x, checkPos.y)) ||
-                    childDictionary.ContainsKey(LevelCreateManager.GetTileKey(checkPos.x, checkPos.y)))
+                    tileDictionary.ContainsKey(LevelCreateManager.GetTileKey(checkPos.x, checkPos.y)))
                 {
                     return new(checkPos.x - supportPos.x, checkPos.y);
                 }
             }
             return new(gridPos.x + supportPos.x * (platformDetails.properties[selectedItem.id - 11].maxPlacementDimention.x - 1), gridPos.y);
         }
-        private Vector3Int GetCurrentValidEndPos(Vector3Int gridPos)
+        private Vector2Int GetCurrentValidEndPos(Vector2Int gridPos)
         {
             if (supportPos.x > 0)
             {
@@ -175,20 +187,19 @@ namespace LevelBuilder
                 if (gridPos.x < endPos.x) return endPos;
                 if (gridPos.x > startPos.x) return startPos;
             }
-            return new Vector3Int(gridPos.x, startPos.y);
+            return new Vector2Int(gridPos.x, startPos.y);
         }
-        public LevelSave Save()
+        public LevelData Save()
         {
-            return new() { PlatformDictionary = parentDictionary };
+            return new() { PlatformDictionary = platformDictionary };
         }
-        public void Load(LevelSave mapSave)
+        public void Load(LevelData mapSave)
         {
-            childDictionary = new();
-            parentDictionary = new();
-            platformTileMap.ClearAllTiles();
-            foreach (var iteparent in mapSave.PlatformDictionary.Values)
+            tileDictionary = new();
+            platformDictionary = new();
+            foreach (var platform in mapSave.PlatformDictionary.Values)
             {
-                PlacePlatform(iteparent);
+                PlacePlatform(platform);
             }
         }
     }

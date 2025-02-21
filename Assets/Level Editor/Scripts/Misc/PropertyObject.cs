@@ -1,22 +1,18 @@
-using NativeSerializableDictionary;
+using LevelBuilder;
 using System.Collections.Generic;
-using UnityEngine;
-
-namespace LevelBuilder
+[System.Serializable]
+public class ObjectProperty
 {
-    public class PropertyObject : MonoBehaviour
+    public int id;
+    public int state;
+    public Vector2IntSerializable pos;
+    public Dictionary<string, string> stringValues;
+    public ObjectProperty() { }
+    public ObjectProperty(int id,int state,Vector2IntSerializable pos) 
     {
-        public ObjectProperty property;
-    }
-    [System.Serializable]
-    public class ObjectProperty
-    {
-        public int id;
-        public ItemCategory category;
-        public int state;
-        public string key;
-        public Vector2IntSerializable position;
-        public Dictionary<string, string> valueStrings;
-        public Dictionary<string, float> valueFloats;
+        this.id = id;
+        this.state = state;
+        this.pos = pos;
+        stringValues = new();
     }
 }

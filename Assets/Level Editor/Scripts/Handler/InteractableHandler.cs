@@ -1,480 +1,389 @@
-using NativeSerializableDictionary;
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
+using static TMPro.TMP_Dropdown;
 
 namespace LevelBuilder
 {
     public class InteractableHandler : MonoBehaviour,ISaveLoad
     {
-        public UiPowerTriggerManager powerTriggerManager;
+        public InteractableLink interactableLink;
         public Dictionary<string, ObjectProperty> interactableDictionary = new();
-        public Dictionary<string, string> childDictionary = new();
-        //Gameobject
+        public Dictionary<string, string> occupiedTileDictionary = new();
         public Dictionary<string, GameObject> interactableObjects= new();
-        public Dictionary<string, GameObject> doors = new();
-        public Dictionary<string, GameObject> triggers = new();
-        public Dictionary<string, GameObject> portals = new();
-        //Current
-        ObjectTransformValue adjustValue = new();
-        GameObject cursorGameObject;
+        public Dictionary<int, int> interactableItemCountDictionary = new();
+        GameObject cursorObject;
         public int state;
-        //Save
-        public Dictionary<int,int> interactableItemCountDictionary = new();
-        private string uniqueId = "Interactable";
+        private string uniqueId = SaveLoadManager.SaveInteractable;
         public string UniqueSaveID { get => uniqueId; set => uniqueId = value; }
         private void OnEnable()
         {
-            SaveLoadManager.Singleton.saveLoadList.Add(this);
-            LevelCreateManager.ItemSelectEvent += OnSelectItem;
-            LevelCreateManager.OverUiEvent += OverUi;
+            LevelCreateManager.ItemSelectEvent += OnItemSelect;
+            LevelCreateManager.OverUiEvent += CursorOverUI;
         }
-
-
-        public void OverUi()
+        private void CursorOverUI()
         {
-            if (cursorGameObject != null)
+            if (cursorObject != null)
             {
-                cursorGameObject.transform.position = new(cursorGameObject.transform.position.x, cursorGameObject.transform.position.y, -20);
+                cursorObject.transform.position = new(cursorObject.transform.position.x, cursorObject.transform.position.y, -20);
             }
         }
-        private void OnSelectItem(LevelEditorItem selectedItem)
+        void OnItemSelect(LevelEditorItem selectedItem)
         {
-            if(cursorGameObject!=null) { Destroy(cursorGameObject); }
+            if (cursorObject != null) { Destroy(cursorObject); }
+            if (selectedItem == null) { return; }
+            if (selectedItem.validationType != ValidationType.Interactable) { return; }
             state = 0;
-            if (selectedItem != null && selectedItem.validationType == ValidationType.Interactable)
-            {
-                state = (int)selectedItem.extra.standingBlock;
-                Vector3Int gridPos = LevelCreateManager.Singleton.gridPos;
-                adjustValue = GetObjectTransformAdjustValue(selectedItem, state);
-                cursorGameObject = Instantiate(selectedItem.editorPrefab);
-                cursorGameObject.transform.position = new(gridPos.x + adjustValue.positionX, gridPos.y + adjustValue.positionY, 0);
-                cursorGameObject.transform.rotation = Quaternion.Euler(0, 0, adjustValue.rotationZ);
-            }
+
+            if (selectedItem.editorPrefab == null) { return; }
+            cursorObject = Instantiate(selectedItem.editorPrefab, 
+                new Vector3(0, 0, -20), 
+                Quaternion.Euler(0f, 0f, selectedItem.states[state].rotation),
+                LevelCreateManager.Singleton.cursorObjectParent);
+            cursorObject.transform.name = "====="+cursorObject.transform.name;
         }
-        public bool ValidationCheckForInteractableObject(LevelEditorItem selectedItem, Vector3Int gridPos)
+
+        public bool ValidationCheckForInteractableObject(LevelEditorItem selectedItem, Vector2Int gridPos)
         {
-            if(cursorGameObject!= null) 
+            ShowPopup(gridPos);
+            ItemStateDetails stateDetails = selectedItem.states[state];
+            GridCursor.Singleton.SetCursor(gridPos, stateDetails.dimension, stateDetails.cursorType);
+
+            if (Input.GetKeyDown(KeyCode.R) && selectedItem.states.Length > 1)
             {
-                cursorGameObject.transform.position =  new(LevelCreateManager.Singleton.gridPos.x + selectedItem.objectOffset.x, LevelCreateManager.Singleton.gridPos.y + selectedItem.objectOffset.y, 0);
-            }
-            if (selectedItem.extra.changeable)
-            {
-                if (Input.GetKeyDown(KeyCode.R))
-                {
-                    state++;
-                    state = state != 4 ? state : 0;
-                    adjustValue = GetObjectTransformAdjustValue(selectedItem, state);
-                    cursorGameObject.transform.rotation = Quaternion.Euler(0, 0, adjustValue.rotationZ);
-                }
+                state++;
+                state = state == selectedItem.states.Length ? 0 : state;
             }
 
-            Vector2Int dimension = new();
-            Vector3Int startPos = new();
-            List<Vector2Int> groundTiles = new();
-            List<Vector2Int> ceilingTiles = new();
-            int middleX = Mathf.FloorToInt(selectedItem.gridDimension.x / 2);
-            cursorGameObject.transform.position = new(gridPos.x+ adjustValue.positionX , gridPos.y+ adjustValue.positionY, 0);
-
-            if (state == 0)
+            if (cursorObject)
             {
-                dimension = selectedItem.gridDimension;
-                startPos = new(gridPos.x - middleX, gridPos.y);
-                groundTiles.Clear();
-                ceilingTiles.Clear();
-                for (int i = startPos.x; i < startPos.x + selectedItem.gridDimension.x; i++)
-                {
-                    groundTiles.Add(new(i, gridPos.y - 1));
-                    ceilingTiles.Add(new(i, gridPos.y + selectedItem.gridDimension.y));
-                }
-            }
-            else if (state == 1)
-            {
-                dimension = new(selectedItem.gridDimension.y, selectedItem.gridDimension.x);
-                startPos = new(gridPos.x, gridPos.y - middleX);
-                groundTiles.Clear();
-                ceilingTiles.Clear();
-                for (int i = startPos.y; i < startPos.y + dimension.y; i++)
-                {
-                    groundTiles.Add(new(gridPos.x-1, i));
-                    ceilingTiles.Add(new(gridPos.x + dimension.x, i));
-                }
-            }
-            else if (state == 2)
-            {
-                dimension = selectedItem.gridDimension;
-                startPos = new(gridPos.x - middleX, gridPos.y - dimension.y + 1);
-                groundTiles.Clear();
-                ceilingTiles.Clear();
-                for (int i = startPos.x; i < startPos.x + selectedItem.gridDimension.x; i++)
-                {
-                    groundTiles.Add(new(i, gridPos.y + 1));
-                    ceilingTiles.Add(new(i, gridPos.y - selectedItem.gridDimension.y));
-                }
-            }
-            else if (state == 3)
-            {
-                dimension = new(selectedItem.gridDimension.y, selectedItem.gridDimension.x);
-                startPos = new(gridPos.x - dimension.x + 1, gridPos.y - middleX);
-                groundTiles.Clear();
-                ceilingTiles.Clear();
-                for (int i = startPos.y; i < startPos.y + dimension.y; i++)
-                {
-                    groundTiles.Add(new(gridPos.x + 1, i));
-                    ceilingTiles.Add(new(gridPos.x - dimension.x, i));
-                }
+                cursorObject.transform.position = new(gridPos.x + stateDetails.position.x, gridPos.y+ stateDetails.position.y,0f);
+                cursorObject.transform.rotation = Quaternion.Euler(0f, 0f, stateDetails.rotation);
             }
 
-            if (selectedItem.id == 18 || selectedItem.id == 19 || selectedItem.id == 20)
+            if (occupiedTileDictionary.TryGetValue(TileHandler.GetTileKey(gridPos.x, gridPos.y), out string parentKey))
             {
-                dimension = new(selectedItem.gridDimension.x, selectedItem.gridDimension.y);
-                startPos = new(gridPos.x - 1, gridPos.y - 1);
-            }
-            GridCursor.Singleton.DisplayMultiGridCursor(startPos, dimension);
-
-            if (selectedItem.extra.checkType == GroundValidationType.GroundCheck || selectedItem.extra.checkType == GroundValidationType.GroundAndCeilingCheck)
-            {
-                for (int i = 0; i < groundTiles.Count; i++)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    if (!LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(LevelCreateManager.GetTileKey(groundTiles[i].x, groundTiles[i].y)))
+                    interactableDictionary.TryGetValue(parentKey, out var objectProperty);
+
+                    if (interactableLink.triggerId.Contains(objectProperty.id))
                     {
-                        return false;
+                        ShowInteractableLinkProperty(objectProperty);
+                    }
+                    else
+                    {
+                        DestroyInteractable(objectProperty);
                     }
                 }
-            }
-            if (selectedItem.extra.checkType == GroundValidationType.GroundAndCeilingCheck)
-            {
-                for (int i = 0; i < ceilingTiles.Count; i++)
-                {
-                    if (!LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(LevelCreateManager.GetTileKey(ceilingTiles[i].x, ceilingTiles[i].y)))
-                    {
-                        return false;
-                    }
-                }
+                return false;
             }
 
-            for (int x = startPos.x; x < startPos.x + dimension.x; x++)
+            Vector2Int bottomLeftTilePos = GetBottomLeftPos(gridPos, stateDetails);
+            if (stateDetails.supportType != SupportType.None && 
+                !HasSupportTile(bottomLeftTilePos, stateDetails)) { return false; }
+
+            for (int x = bottomLeftTilePos.x; x < bottomLeftTilePos.x + stateDetails.dimension.x; x++)
             {
-                for (int y = startPos.y; y < startPos.y + dimension.y; y++)
+                for (int y = bottomLeftTilePos.y; y < bottomLeftTilePos.y + stateDetails.dimension.y; y++)
                 {
                     string tileKey = LevelCreateManager.GetTileKey(x, y);
-                    if (LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(tileKey) ||
-                       LevelCreateManager.Singleton.PlatformHandler.childDictionary.ContainsKey(tileKey) ||
-                       LevelCreateManager.Singleton.ClimbableHandler.climbableDictionary.ContainsKey(tileKey) ||
-                       childDictionary.ContainsKey(tileKey))
-                    {
-                        if (Input.GetMouseButtonDown(0) && childDictionary.TryGetValue((tileKey),out string parentKey))
-                        {
-                            childDictionary.TryGetValue(LevelCreateManager.GetTileKey(gridPos), out var currentChildParentKey);
-                            if (parentKey == currentChildParentKey)
-                            {
-                                interactableDictionary.TryGetValue(parentKey, out var property);
-                                LevelEditorItem item = ItemManager.Singleton.GetItemDetails(property.id, ItemCategory.Interactable);
-                                if (item.extra.propertyType == PropertyType.Trigger)
-                                {
-                                    powerTriggerManager.ShowTrigger(interactableDictionary, property);
-                                    return false;
-                                } 
-                                else if(item.extra.propertyType == PropertyType.Door)
-                                {
-                                    RemoveConnectedTrigger(property);
-                                }
-                                DestroyInteractable(parentKey);
-                            }
-                        }
-                        return false;
-                    }
+                    if (!RequireTileEmpty(tileKey)) return false;
                 }
             }
-            if(Input.GetMouseButtonDown(0))
+
+            if (Input.GetMouseButtonDown(0))
             {
-                ObjectProperty objectProperty = CreateObjectProperty(selectedItem, gridPos,state,ItemCategory.Interactable);
-                PlaceInteractable(objectProperty);
+                ObjectProperty newInteractableProperty = CreateObjectProperty(selectedItem, gridPos, state, ItemCategory.Interactable);
+                PlaceInteractable(newInteractableProperty);
             }
             return true;
         }
-
-        private void RemoveConnectedTrigger(ObjectProperty doorProperty)
-        {
-            if (doorProperty.valueStrings.TryGetValue("ConnectedTrigger", out var triggerKey))
-            {
-                if(triggerKey == "NONE") { return; }
-                if (interactableDictionary.TryGetValue(triggerKey, out var trigger))
-                {
-                    trigger.valueStrings.Remove("ConnectedDoor");
-                    trigger.valueStrings.Add("ConnectedDoor","NONE");
-                }
-            }
-        }
-
         void PlaceInteractable(ObjectProperty objectProperty)
         {
-            LevelEditorItem selectedItem = ItemManager.Singleton.GetItemDetails(objectProperty.id,objectProperty.category);
-            if (!interactableItemCountDictionary.ContainsKey(objectProperty.id))
+            LevelEditorItem selectedItem = ItemManager.Singleton.GetItemDetails(objectProperty.id, ItemCategory.Interactable);
+            if (selectedItem.maxAllowedItem > 0)
             {
-                interactableItemCountDictionary.Add(objectProperty.id, 0);
-            }
-            if (interactableItemCountDictionary[objectProperty.id] >= selectedItem.extra.maxAllowedItem)
-            {
-                return;
+                if (!interactableItemCountDictionary.ContainsKey(objectProperty.id))
+                {
+                    interactableItemCountDictionary.Add(objectProperty.id, 0);
+                }
+
+                if (interactableItemCountDictionary[objectProperty.id] >= selectedItem.maxAllowedItem)
+                {
+                    return;
+                }
+                interactableItemCountDictionary[objectProperty.id]++;
+
             }
 
-            interactableItemCountDictionary[objectProperty.id]++;
-            adjustValue = GetObjectTransformAdjustValue(selectedItem, objectProperty.state);
-            Vector3Int gridPos = new(objectProperty.position.x,objectProperty.position.y);
+            Vector2Int gridPos = new(objectProperty.pos.x, objectProperty.pos.y);
             string parentKey = LevelCreateManager.GetTileKey(gridPos);
+            ItemStateDetails stateDetails = selectedItem.states[objectProperty.state];
 
 
-            GameObject newObject = Instantiate(selectedItem.editorPrefab, new Vector3(gridPos.x + adjustValue.positionX, gridPos.y + adjustValue.positionY,0), Quaternion.Euler(new(0,0, adjustValue.rotationZ)));
+            GameObject newObject = Instantiate(selectedItem.editorPrefab, LevelCreateManager.Singleton.transform);
+            newObject.transform.position = new(gridPos.x + stateDetails.position.x, gridPos.y + stateDetails.position.y);
+            newObject.transform.rotation = Quaternion.Euler(new(0, 0, stateDetails.rotation));
             interactableObjects.Add(parentKey, newObject);
 
 
-            Vector2Int dimension = new();
-            Vector3Int startPos = new();
-            int middleX = Mathf.FloorToInt(selectedItem.gridDimension.x / 2);
-            if (objectProperty.state == 0)
+            Vector2Int bottomLeftTilePos = GetBottomLeftPos(gridPos, stateDetails);
+            for (int x = 0; x < stateDetails.dimension.x; x++)
             {
-                dimension = selectedItem.gridDimension;
-                startPos = new(gridPos.x - middleX, gridPos.y);
-            }
-            else if (objectProperty.state == 1)
-            {
-                dimension = new(selectedItem.gridDimension.y, selectedItem.gridDimension.x);
-                startPos = new(gridPos.x, gridPos.y - middleX);
-            }
-            else if (objectProperty.state == 2)
-            {
-                dimension = selectedItem.gridDimension;
-                startPos = new(gridPos.x - middleX, gridPos.y - dimension.y + 1);
-            }
-            else if (objectProperty.state == 3)
-            {
-                dimension = new(selectedItem.gridDimension.y, selectedItem.gridDimension.x);
-                startPos = new(gridPos.x - dimension.x + 1, gridPos.y - middleX);
-            }
-            
-            for (int x = startPos.x; x < startPos.x + dimension.x; x++)
-            {
-                for (int y = startPos.y; y < startPos.y + dimension.y; y++)
+                for (int y = 0; y < stateDetails.dimension.y; y++)
                 {
-                    string tileKey = LevelCreateManager.GetTileKey(x, y);
-                    childDictionary.Add(tileKey, parentKey);
+                    string tileKey = LevelCreateManager.GetTileKey(bottomLeftTilePos.x + x, bottomLeftTilePos.y + y);
+                    occupiedTileDictionary.Add(tileKey, parentKey);
                 }
             }
             interactableDictionary.Add(parentKey, objectProperty);
-            ManagePowerObject(objectProperty);
         }
 
-
-        public void DestroyInteractable(string parentKey)
+        public void DestroyInteractable(ObjectProperty property)
         {
-            interactableDictionary.TryGetValue(parentKey, out var property);
-            LevelEditorItem selectedItem = ItemManager.Singleton.GetItemDetails(property.id, property.category);
-            interactableItemCountDictionary[property.id]--;
-            if (interactableItemCountDictionary[property.id] < 0)
+            if(interactableItemCountDictionary.TryGetValue(property.id, out int count))
             {
-                interactableItemCountDictionary[property.id] = 0;
+                interactableItemCountDictionary[property.id]--;
+                if (interactableItemCountDictionary[property.id] < 0)
+                {
+                    interactableItemCountDictionary[property.id] = 0;
+                }
             }
+            
+            HandleObjectLink(property);
 
-            if (doors.ContainsKey(parentKey))
-            {
-                interactableDictionary.TryGetValue(parentKey, out var doorProperty);
-                if (doorProperty.valueStrings.TryGetValue("ConnectedTrigger", out var connectedTriggerKey))
-                {
-                    if (interactableDictionary.TryGetValue(connectedTriggerKey, out var triggerProperty))
-                    {
-                        triggerProperty.valueStrings.Remove("ConnectedDoor");
-                        triggerProperty.valueStrings.Add("ConnectedDoor", "NONE");
-                    }
-                }
-                doors.Remove(parentKey); 
-            }
-            if(triggers.ContainsKey(parentKey)) 
-            {
-                interactableDictionary.TryGetValue(parentKey, out var trigerProperty);
-                if (trigerProperty.valueStrings.TryGetValue("ConnectedDoor", out var connectedDoorkey))
-                {
-                    if (interactableDictionary.TryGetValue(connectedDoorkey, out var doorProperty))
-                    {
-                        doorProperty.valueStrings.Remove("ConnectedTrigger");
-                        doorProperty.valueStrings.Add("ConnectedTrigger", "NONE");
-                    }
-                }
-                triggers.Remove(parentKey); 
-            }
-            RemovePropertyTile(property);
+            string parentKey = TileHandler.GetTileKey(property.pos.x, property.pos.y);
             if (interactableObjects.TryGetValue(parentKey, out var obj))
             {
                 Destroy(obj);
                 interactableObjects.Remove(parentKey);
             }
-        }
-        void RemovePropertyTile(ObjectProperty property)
-        {
             LevelEditorItem selectedItem = ItemManager.Singleton.GetItemDetails(property.id, ItemCategory.Interactable);
-            int middleX = Mathf.FloorToInt(selectedItem.gridDimension.x / 2);
-            Vector2Int gridPos = new(property.position.x, property.position.y);
-            Vector2Int dimension = new();
-            Vector3Int cursorStartPos = new();
-            if (property.state == 0)
-            {
-                dimension = selectedItem.gridDimension;
-                cursorStartPos = new(gridPos.x - middleX, gridPos.y);
-            }
-            else if (property.state == 1)
-            {
-                dimension = new(selectedItem.gridDimension.y, selectedItem.gridDimension.x);
-                cursorStartPos = new(gridPos.x, gridPos.y - middleX);
-            }
-            else if (property.state == 2)
-            {
-                dimension = selectedItem.gridDimension;
-                cursorStartPos = new(gridPos.x - middleX, gridPos.y - dimension.y + 1);
-            }
-            else if (property.state == 3)
-            {
-                dimension = new(selectedItem.gridDimension.y, selectedItem.gridDimension.x);
-                cursorStartPos = new(gridPos.x - dimension.x + 1, gridPos.y - middleX);
-            }
+            ItemStateDetails stateDetails = selectedItem.states[property.state];
+            Vector2Int bottomLeftTilePos = GetBottomLeftPos(new(property.pos.x, property.pos.y), stateDetails);
 
-            for (int x = cursorStartPos.x; x < cursorStartPos.x + dimension.x; x++)
+            for (int x = 0; x < stateDetails.dimension.x; x++)
             {
-                for (int y = cursorStartPos.y; y < cursorStartPos.y + dimension.y; y++)
+                for (int y = 0; y < stateDetails.dimension.y; y++)
                 {
-                    string tileKey = LevelCreateManager.GetTileKey(x, y);
-                    childDictionary.Remove(tileKey);
+                    string tileKey = LevelCreateManager.GetTileKey(bottomLeftTilePos.x + x, bottomLeftTilePos.y + y);
+                    occupiedTileDictionary.Remove(tileKey);
                 }
             }
-            interactableDictionary.Remove(property.key);
+            interactableDictionary.Remove(parentKey);
+
         }
-        public ObjectTransformValue GetObjectTransformAdjustValue(LevelEditorItem selectedItem, int state_)
+        private void ShowPopup(Vector2Int gridPos)
         {
-            int State = state_;
-            if (!selectedItem.extra.changeable) { State = 0; }
-
-
-            ObjectTransformValue value = new();
-            if (State == 0)
+            string key = TileHandler.GetTileKey(gridPos.x, gridPos.y);
+            if (occupiedTileDictionary.TryGetValue(key, out var parentKey))
             {
-                value.positionX = selectedItem.objectOffset.x;
-                value.positionY = selectedItem.objectOffset.y;
-                value.rotationZ = 0;
-            }
-            else if (State == 1)
-            {
-                value.positionX = selectedItem.extra.leftPos.x;
-                value.positionY = selectedItem.extra.leftPos.y;
-                value.rotationZ = -90;
-            }
-            else if (State == 2)
-            {
-                value.positionX = selectedItem.extra.upPos.x;
-                value.positionY = selectedItem.extra.upPos.y;
-                value.rotationZ = -180;
-            }
-            else if (State == 3)
-            {
-                value.positionX = selectedItem.extra.RightPos.x;
-                value.positionY = selectedItem.extra.RightPos.y;
-                value.rotationZ = 90;
-            }
-            if (selectedItem.validationType == ValidationType.Interactable && selectedItem.id == 17)
-            {
-                if (State == 0)
+                interactableDictionary.TryGetValue(parentKey, out var property);
+                if (interactableLink.doorId.Contains(property.id))
                 {
-                    value.rotationZ = -90;
-                }
-                else if(State == 1)
-                {
-                    value.rotationZ = 180;
+                    string doorKey = "Door [" + TileHandler.GetTileKey(property.pos.x, property.pos.y) + "]";
                     
+                    interactableLink.popUp.ShowDoorName(doorKey);
+                    return;
                 }
-                else if (State == 2)
+            }
+            interactableLink.popUp.gameObject.SetActive(false);
+        }
+        private bool RequireTileEmpty(string tileKey)
+        {
+            return !occupiedTileDictionary.ContainsKey(tileKey) &&
+                   !LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(tileKey) &&
+                   !LevelCreateManager.Singleton.PlatformHandler.tileDictionary.ContainsKey(tileKey) &&
+                   !LevelCreateManager.Singleton.ClimbableHandler.climbableDictionary.ContainsKey(tileKey);
+        }
+        Vector2Int GetBottomLeftPos(Vector2Int gridPos, ItemStateDetails stateDetails)
+        {
+            Vector2Int tileDimensionBottomLeftPos = new();
+            if (stateDetails.alignment == ObjectAlignment.Bottom)
+            {
+                tileDimensionBottomLeftPos.x = gridPos.x - (int)stateDetails.dimension.x / 2;
+                tileDimensionBottomLeftPos.y = gridPos.y;
+            }
+            else if (stateDetails.alignment == ObjectAlignment.Top)
+            {
+                tileDimensionBottomLeftPos.x = gridPos.x - (int)stateDetails.dimension.x / 2;
+                tileDimensionBottomLeftPos.y = gridPos.y - stateDetails.dimension.y+1;
+            }
+            else if (stateDetails.alignment == ObjectAlignment.Left)
+            {
+                tileDimensionBottomLeftPos.x = gridPos.x;
+                tileDimensionBottomLeftPos.y = gridPos.y - (int)stateDetails.dimension.y / 2;
+            }
+            else if (stateDetails.alignment == ObjectAlignment.Right)
+            {
+                tileDimensionBottomLeftPos.x = gridPos.x - stateDetails.dimension.x+1;
+                tileDimensionBottomLeftPos.y = gridPos.y - (int)stateDetails.dimension.y / 2;
+            }
+            else
+            {
+                tileDimensionBottomLeftPos.x = gridPos.x - (int)stateDetails.dimension.x / 2;
+                tileDimensionBottomLeftPos.y = gridPos.y - (int)stateDetails.dimension.y / 2;
+            }
+            return tileDimensionBottomLeftPos;
+        }
+        private bool HasSupportTile(Vector2Int bottomLeftTilePos, ItemStateDetails stateDetails)
+        {
+            List<Vector2Int> supportTiles = new();
+            if (stateDetails.supportType.HasFlag(SupportType.Down))
+            {
+                for (int x = 0; x < stateDetails.dimension.x; x++)
                 {
-                    value.rotationZ = 90;
+                    supportTiles.Add(new(bottomLeftTilePos.x + x, bottomLeftTilePos.y-1));
+                }
+            }
+            if (stateDetails.supportType.HasFlag(SupportType.Up))
+            {
+                int yPos = bottomLeftTilePos.y + stateDetails.dimension.y;
+                for (int x = 0; x < stateDetails.dimension.x; x++)
+                {
+                    supportTiles.Add(new(bottomLeftTilePos.x + x, yPos));
+                }
+            }
+            if (stateDetails.supportType.HasFlag(SupportType.Left))
+            {
+                for (int y = 0; y < stateDetails.dimension.y; y++)
+                {
+                    supportTiles.Add(new(bottomLeftTilePos.x-1, bottomLeftTilePos.y + y));
+                }
+            }
+            if (stateDetails.supportType.HasFlag(SupportType.Right))
+            {
+                int xPos = bottomLeftTilePos.x + stateDetails.dimension.x;
+                for (int y = 0; y < stateDetails.dimension.y; y++)
+                {
+                    supportTiles.Add(new(xPos, bottomLeftTilePos.y+y));
+                }
+            }
+            foreach (var supportTile in supportTiles)
+            {
+                string tileKey = TileHandler.GetTileKey(supportTile);
+                if (!LevelCreateManager.Singleton.FloorHandler.floorDictionary.ContainsKey(tileKey))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
-                }
-                else if (State == 3)
-                {
-                    value.rotationZ = 0;
-                }
-            }
-            return value;
-        }
-        void ManagePowerObject(ObjectProperty objectProperty)
+
+
+
+        private void HandleObjectLink(ObjectProperty objectProperty)
         {
-            LevelEditorItem item = ItemManager.Singleton.GetItemDetails(objectProperty.id, ItemCategory.Interactable);
-            if (item.extra.propertyType == PropertyType.Door)
+            if (!objectProperty.stringValues.TryGetValue(Settings.LinkedObjectKey, out var linkedObjectKey) ||
+                !interactableDictionary.TryGetValue(linkedObjectKey, out var linkedObject) ||
+                !linkedObject.stringValues.TryGetValue(Settings.LinkedObjectKey, out var linkedKeyOfLinkedObject))
+                return;
+            string thisInteratableKey = TileHandler.GetTileKey(objectProperty.pos.x, objectProperty.pos.y);
+            if (linkedKeyOfLinkedObject == thisInteratableKey)
             {
-                doors.Add(objectProperty.key, interactableObjects[objectProperty.key]);
+                linkedObject.stringValues.Remove(Settings.LinkedObjectKey);
             }
-            if (item.extra.propertyType == PropertyType.Trigger)
-            {
-                triggers.Add(objectProperty.key, interactableObjects[objectProperty.key]);
-            }
-        }
-        public LevelSave Save()
-        {
-            LevelSave levelSave = new();
-            levelSave.InteractableDictionary = new();
-            foreach (var dictionaryItem in interactableDictionary)
-            {
-                LevelEditorItem item = ItemManager.Singleton.GetItemDetails(dictionaryItem.Value.id, ItemCategory.Interactable);
-                if (item.extra.propertyType == PropertyType.Spawn)
-                {
-                    levelSave.Spawn = dictionaryItem.Value;
-                }
-                else if (item.extra.propertyType == PropertyType.Exit)
-                {
-                    levelSave.Exit = dictionaryItem.Value;
-                }
-                else
-                {
-                    levelSave.InteractableDictionary.Add(dictionaryItem.Key, dictionaryItem.Value);
-                }
-            }
-            return levelSave;
         }
 
-        public void Load(LevelSave mapSave)
-        {
-            if (mapSave.Spawn != null)
-            {
-                PlaceInteractable(mapSave.Spawn);
-            }
-            if (mapSave.Exit != null)
-            {
-                PlaceInteractable(mapSave.Exit);
-            }
-            foreach (var interactable in mapSave.InteractableDictionary.Values)
-            {
-                PlaceInteractable(interactable);
-            }
-        }
-        public ObjectProperty CreateObjectProperty(LevelEditorItem selectedItem, Vector3Int gridPos, int state, ItemCategory category)
+
+        public ObjectProperty CreateObjectProperty(LevelEditorItem selectedItem, Vector2Int gridPos, int state, ItemCategory category)
         {
             ObjectProperty objectProperty = new()
             {
                 id = selectedItem.id,
-                key = TileHandler.GetTileKey(gridPos.x, gridPos.y),
-                category = category,
-                position = new(gridPos.x, gridPos.y),
+                pos = new(gridPos.x, gridPos.y),
                 state = state,
-                valueStrings = new(),
-                valueFloats = new()
+                stringValues = new(),
             };
-            if(selectedItem.extra.propertyType == PropertyType.Trigger)
-            {
-                objectProperty.valueStrings.Add("ConnectedDoor", "NONE");
-            }
-            if (selectedItem.extra.propertyType == PropertyType.Door)
-            {
-                objectProperty.valueStrings.Add("ConnectedTrigger", "NONE");
-            }
             return objectProperty;
+        }
+
+        public void ShowInteractableLinkProperty(ObjectProperty triggerProperty)
+        {
+            LevelEditorItem item = ItemManager.Singleton.GetItemDetails(triggerProperty.id, ItemCategory.Interactable);
+            interactableLink.interactableTitle.text = item.name;
+            
+            List<OptionData> optionsData;
+            optionsData = new();
+            optionsData.Add(new() { text = "Select" });
+            foreach (var interactableObject in interactableDictionary.Values)
+            {
+                if (interactableLink.doorId.Contains(interactableObject.id))
+                {
+                    string doorKey = TileHandler.GetTileKey(new(interactableObject.pos.x, interactableObject.pos.y));
+                    optionsData.Add(new() { text = doorKey });
+                }
+            }
+            interactableLink.dropDown.options = optionsData;
+            interactableLink.dropDown.value = 0;
+
+            //Load trigger already linked door/object
+            if (triggerProperty.stringValues.TryGetValue(Settings.LinkedObjectKey, out var linkedObject))
+            {
+                int optionIndexOfLinkedObject = optionsData.FindIndex(item => item.text == linkedObject);
+                if(optionIndexOfLinkedObject == -1)
+                { 
+                    triggerProperty.stringValues.Remove(Settings.LinkedObjectKey);
+                    return;
+                }
+                interactableLink.dropDown.value = optionIndexOfLinkedObject;
+            }
+
+            //set new linked object
+            interactableLink.dropDown.onValueChanged.AddListener((index) => {
+
+                triggerProperty.stringValues.Remove(Settings.LinkedObjectKey);
+                if (index == 0) { return; }//0=drop down select/first option
+
+                string newLinkedObjectKey = interactableLink.dropDown.options[index].text;
+                triggerProperty.stringValues.Add(Settings.LinkedObjectKey, newLinkedObjectKey);
+
+                string linkedTriggerKey = TileHandler.GetTileKey(triggerProperty.pos.x, triggerProperty.pos.y);
+                interactableDictionary.TryGetValue(newLinkedObjectKey, out var newLinkedObject);
+                HandleObjectLink(newLinkedObject);
+                newLinkedObject.stringValues.Remove(Settings.LinkedObjectKey);
+                newLinkedObject.stringValues.Add(Settings.LinkedObjectKey, linkedTriggerKey);
+
+                Debug.Log("Linked!");
+            });
+
+            interactableLink.destroyTrigger.onClick.AddListener(() =>
+            {
+                interactableLink.dropDown.onValueChanged.RemoveAllListeners();
+                interactableLink.destroyTrigger.onClick.RemoveAllListeners();
+                interactableLink.Done.onClick.RemoveAllListeners();
+                interactableLink.uiPanel.SetActive(false);
+
+                DestroyInteractable(triggerProperty);
+            });
+            interactableLink.Done.onClick.AddListener(() =>
+            {
+                interactableLink.dropDown.onValueChanged.RemoveAllListeners();
+                interactableLink.destroyTrigger.onClick.RemoveAllListeners();
+                interactableLink.Done.onClick.RemoveAllListeners();
+                interactableLink.uiPanel.SetActive(false);
+            });
+            interactableLink.uiPanel.SetActive(true);
+        }
+        public LevelData Save()
+        {
+            LevelData levelSave = new()
+            {
+                InteractableDictionary = this.interactableDictionary
+            };
+            return levelSave;
+        }
+
+        public void Load(LevelData mapSave)
+        {
+            if(mapSave == null || mapSave.InteractableDictionary == null) { return; }
+            foreach (var interactable in mapSave.InteractableDictionary.Values)
+            {
+                PlaceInteractable(interactable);
+            }
         }
     }
     
@@ -487,3 +396,28 @@ namespace LevelBuilder
     }
 }
 
+public static class Settings
+{
+    public const string LinkedObjectKey = "LK";
+}
+
+public enum ObjectAlignment
+{
+    Center,
+    Right, 
+    Left,
+    Top,
+    Bottom
+}
+[System.Serializable]
+public class InteractableLink
+{
+    public List<int> doorId;
+    public List<int> triggerId;
+    public UiDoorPopUp popUp;
+    public GameObject uiPanel;
+    public TextMeshProUGUI interactableTitle;
+    public TMP_Dropdown dropDown;
+    public Button destroyTrigger;
+    public Button Done;
+}
