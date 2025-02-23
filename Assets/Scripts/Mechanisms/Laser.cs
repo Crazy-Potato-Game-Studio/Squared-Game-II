@@ -62,20 +62,23 @@ public class Laser : MonoBehaviour
                 lineRenderer.SetPosition(lineRenderer.positionCount - 1, ray.origin + ray.direction * remainingLength);
             }
         }
+        if(hit.collider != null){
+            if(hit.collider.tag == "LaserDetector" && !hitDetector){
+                hitDetector = true;
+                detectorId = hit.collider.gameObject.GetInstanceID();
+                laserDetector = hit.collider.gameObject;
+                laserDetector.GetComponent<LaserDetector>().TurnObjects();
+            }
 
-        if(hit.collider.tag == "LaserDetector" && !hitDetector){
-            hitDetector = true;
-            detectorId = hit.collider.gameObject.GetInstanceID();
-            laserDetector = hit.collider.gameObject;
-            laserDetector.GetComponent<LaserDetector>().TurnObjects();
-        }
+            if(hit.collider.gameObject.GetInstanceID() != detectorId && hitDetector){
+                hitDetector = false;
+                laserDetector.GetComponent<LaserDetector>().TurnObjects();
+            }
 
-        if(hit.collider.gameObject.GetInstanceID() != detectorId && hitDetector){
-            hitDetector = false;
-            laserDetector.GetComponent<LaserDetector>().TurnObjects();
+            DealDamage(hit);
         }
-        
-        DealDamage(hit);
+     
+
     }
 
     private void DealDamage(RaycastHit2D hit){

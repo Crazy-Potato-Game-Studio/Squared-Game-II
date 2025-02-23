@@ -31,7 +31,7 @@ public class PlayerRotateMirror : MonoBehaviour
     }
 
     private void OnDestroy() {
-        playerInputActions.Player.Disable();
-        playerInputActions.Disable();
+        // playerInputActions.Player.Disable();
+        // playerInputActions.Disable();
     }
 }

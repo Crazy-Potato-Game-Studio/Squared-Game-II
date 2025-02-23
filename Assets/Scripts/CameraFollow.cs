@@ -9,8 +9,8 @@ public class CameraFollow : MonoBehaviour
     Vector3 offset = new Vector3(0,0,-10f);
 
     private void Awake() {
-        Transform spawn = GameObject.FindGameObjectWithTag("Respawn").transform;
-        transform.position = new Vector3(spawn.transform.position.x, spawn.transform.position.y + 1, spawn.transform.position.z) + offset;
+//        Transform spawn = GameObject.FindGameObjectWithTag("Respawn").transform;
+    //    transform.position = new Vector3(spawn.transform.position.x, spawn.transform.position.y + 1, spawn.transform.position.z) + offset;
     }
 
     private void FixedUpdate() {

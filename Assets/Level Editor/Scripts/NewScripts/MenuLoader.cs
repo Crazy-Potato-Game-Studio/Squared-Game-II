@@ -48,8 +48,8 @@ public class MenuLoader : MonoBehaviour
     }
 
     private void OnDestroy() {
-        playerInputActions.Player.InGameMenu.performed -= PauseGameEditor;
-        playerInputActions.Player.Disable();
-        playerInputActions.Disable();
+        // playerInputActions.Player.InGameMenu.performed -= PauseGameEditor;
+        // playerInputActions.Player.Disable();
+        // playerInputActions.Disable();
     }
 }

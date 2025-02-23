@@ -42,6 +42,9 @@ namespace LevelBuilder
                 BuildClimbable(playableLevelData);
                 BuildDecoration(playableLevelData);
                 BuildOther(playableLevelData);
+                BuildItem(playableLevelData);
+                BuildEnemy(playableLevelData);
+                BuildInteractable(playableLevelData);
 
                 LevelEditorItem spawnItem = interactableItemSO.items[playableLevelData.Spawn.id];
                 Vector2 spawnPosition = new(playableLevelData.Spawn.pos.x + spawnItem.states[0].position.x,
@@ -53,9 +56,7 @@ namespace LevelBuilder
                     playableLevelData.Exit.pos.y + exitItem.states[0].position.y);
                 GameObject Exit = Instantiate(exitItem.gamePrefab, exitPosition, Quaternion.identity);
 
-                BuildItem(playableLevelData);
-                BuildEnemy(playableLevelData);
-                BuildInteractable(playableLevelData);
+                
                 playerObject.transform.position = spawnPosition;
                 playerObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             }
@@ -166,7 +167,9 @@ namespace LevelBuilder
             foreach (var interactable in playableLevelData.InteractableData)
             {
                 LevelEditorItem item = interactableItemSO.items[interactable.id];
+                Debug.Log(interactable.id + " " + interactable.state);
                 ItemStateDetails stateDetails = item.states[interactable.state];
+                
                 if(interactable.id ==0 ||  interactable.id == 1) { continue; }//ignore spawn and exit since already been Instantiated
                 GameObject interactableObject = Instantiate(item.gamePrefab,
                         new(interactable.pos.x + stateDetails.position.x,

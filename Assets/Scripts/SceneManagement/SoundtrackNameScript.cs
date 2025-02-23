@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundtrackNameScript : MonoBehaviour
-{
+{/*
     public AudioClip soundtrack;
     private string soundtrackName;
 
@@ -31,5 +31,5 @@ public class SoundtrackNameScript : MonoBehaviour
         }else{
             StartCoroutine(SearchForSceneManager());
         }
-    }
+    }*/
 }
