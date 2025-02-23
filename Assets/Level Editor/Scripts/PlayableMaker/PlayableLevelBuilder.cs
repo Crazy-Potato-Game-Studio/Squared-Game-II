@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections;
 
 namespace LevelBuilder
 {
     public class PlayableLevelBuilder : MonoBehaviour
     {
         public GameObject playerObject;
+        public GameObject playerPrefab;
         public List<int> triggerIds;
         [Header("Tilemaps")]
         public Tilemap floorTileMap;
@@ -51,18 +53,27 @@ namespace LevelBuilder
                     playableLevelData.Spawn.pos.y + spawnItem.states[0].position.y);
                 GameObject Spawn = Instantiate(spawnItem.gamePrefab, spawnPosition, Quaternion.identity);
 
+
+                SpawnPlayer(spawnPosition);
+                EnableCameraFollow();
+              
                 LevelEditorItem exitItem = interactableItemSO.items[playableLevelData.Exit.id];
                 Vector2 exitPosition = new(playableLevelData.Exit.pos.x + exitItem.states[0].position.x,
                     playableLevelData.Exit.pos.y + exitItem.states[0].position.y);
                 GameObject Exit = Instantiate(exitItem.gamePrefab, exitPosition, Quaternion.identity);
 
-                
-                playerObject.transform.position = spawnPosition;
-                playerObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             }
         }
 
+        private void SpawnPlayer(Vector2 spawnPosition){
+                playerObject = Instantiate(playerPrefab, spawnPosition + new Vector2(0, 1f), Quaternion.identity);
+                playerObject.transform.parent = null;
+                playerObject.GetComponent<Collider2D>().isTrigger = false;
+        }
 
+        private void EnableCameraFollow(){
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().enabled = true;
+        }
 
         private Dictionary<string, TileProperty> BuildFloor(PlayableLevelData playableLevelData)
         {

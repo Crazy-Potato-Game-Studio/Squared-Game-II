@@ -120,7 +120,7 @@ MonoBehaviour:
     gamePrefab: {fileID: 8347049534917771893, guid: 068a19f4bb02c804bb54f00104ef68f9, type: 3}
     validationType: 5
     states:
-    - position: {x: 0, y: 0.255}
+    - position: {x: 0, y: 0}
       rotation: 0
       dimension: {x: 2, y: 1}
       cursorType: 1
@@ -367,7 +367,7 @@ MonoBehaviour:
     gamePrefab: {fileID: 8352826743756971513, guid: 4ab7298cdb3db3041b6f8ccf3492125c, type: 3}
     validationType: 5
     states:
-    - position: {x: 0, y: 1.3}
+    - position: {x: 0, y: 1.125}
       rotation: 0
       dimension: {x: 2, y: 3}
       cursorType: 3
@@ -384,7 +384,7 @@ MonoBehaviour:
     gamePrefab: {fileID: 800345421707473485, guid: 58ec3b040f6892c4f8c13264769a1b24, type: 3}
     validationType: 5
     states:
-    - position: {x: 0, y: 1.3}
+    - position: {x: 0, y: 1.125}
       rotation: 0
       dimension: {x: 2, y: 3}
       cursorType: 3
@@ -401,7 +401,7 @@ MonoBehaviour:
     gamePrefab: {fileID: 6089674372979618550, guid: 27d1d32847a2d4c49945bb2eedc0fecf, type: 3}
     validationType: 5
     states:
-    - position: {x: 0, y: 1.3}
+    - position: {x: 0, y: 1.125}
       rotation: 0
       dimension: {x: 2, y: 3}
       cursorType: 3
@@ -418,7 +418,7 @@ MonoBehaviour:
     gamePrefab: {fileID: 3389906142610684305, guid: e784fec52315cbf43be402e783d2a175, type: 3}
     validationType: 5
     states:
-    - position: {x: 0, y: 1.3}
+    - position: {x: 0, y: 1.125}
       rotation: 0
       dimension: {x: 2, y: 3}
       cursorType: 3

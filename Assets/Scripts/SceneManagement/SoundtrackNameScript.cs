@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundtrackNameScript : MonoBehaviour
-{/*
+{
     public AudioClip soundtrack;
     private string soundtrackName;
 
     private void Awake() {
-        
-        soundtrackName = soundtrack.name;
+
+        if(soundtrack){
+            soundtrackName = soundtrack.name;
+        }else{
+            Debug.Log("NO MUSIC IS PLAYING");
+        }
 
         Search();
     }
@@ -31,5 +35,5 @@ public class SoundtrackNameScript : MonoBehaviour
         }else{
             StartCoroutine(SearchForSceneManager());
         }
-    }*/
+    }
 }

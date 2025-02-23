@@ -10,6 +10,7 @@ public class PlayerRotateMirror : MonoBehaviour
     private PlayerInputActions playerInputActions;
 
     private void Start() {
+        
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
     }
@@ -31,7 +32,7 @@ public class PlayerRotateMirror : MonoBehaviour
     }
 
     private void OnDestroy() {
-        // playerInputActions.Player.Disable();
-        // playerInputActions.Disable();
+        playerInputActions.Player.Disable();
+        playerInputActions.Disable();
     }
 }
